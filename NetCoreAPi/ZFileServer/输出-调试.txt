@@ -1,0 +1,155 @@
+﻿“ZFileApiServer.exe”(CoreCLR: DefaultDomain): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Private.CoreLib.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\ZFileApiServer.dll”。已加载符号。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Runtime.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Hosting.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\netstandard.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Hosting.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Hosting.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Configuration.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.DependencyInjection.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.DependencyInjection.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Logging.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Collections.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.ComponentModel.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.IO.FileSystem.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Hosting.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Configuration.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Configuration.EnvironmentVariables.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Primitives.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Threading.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Linq.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Server.Kestrel.Core.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Server.Kestrel.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Server.IIS.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Runtime.InteropServices.RuntimeInformation.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Server.IISIntegration.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Configuration.CommandLine.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Mvc.Core.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.FileProviders.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.FileProviders.Physical.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Memory.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Configuration.FileExtensions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Configuration.Binder.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Configuration.Json.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Configuration.UserSecrets.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Runtime.InteropServices.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.IO.FileSystem.Watcher.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.ComponentModel.Primitives.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Collections.Concurrent.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.FileSystemGlobbing.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Threading.Overlapped.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\Microsoft.Win32.Primitives.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Text.Json.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Text.Encoding.Extensions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Numerics.Vectors.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Runtime.CompilerServices.Unsafe.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Options.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Logging.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Logging.EventLog.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Logging.Configuration.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Options.ConfigurationExtensions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Logging.Console.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Logging.Debug.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Logging.EventSource.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Diagnostics.Tracing.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Diagnostics.DiagnosticSource.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Http.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Http.Features.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Http.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Connections.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Net.Primitives.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.HostFiltering.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.HttpOverrides.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Routing.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.ObjectPool.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Routing.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.ObjectModel.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\ZFile.Extensions.dll”。已加载符号。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Text.Encodings.Web.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Runtime.Intrinsics.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Authentication.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Authentication.Cookies.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Authorization.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Authorization.Policy.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Cors.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Mvc.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\ZFile.Service.dll”。已加载符号。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\ZFile.Core.dll”。已加载符号。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Linq.Expressions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\ZFile.Common.dll”。已加载符号。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Authentication.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Authentication.Core.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Security.Claims.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.DataProtection.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.DataProtection.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Cryptography.Internal.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.WebEncoders.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\Microsoft.OpenApi.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Runtime.Loader.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Mvc.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Mvc.ApiExplorer.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Mvc.Cors.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Mvc.DataAnnotations.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Localization.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Threading.ThreadPool.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Runtime.Extensions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Threading.Thread.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Console.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Threading.Tasks.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\System.Diagnostics.EventLog.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Collections.Specialized.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.ComponentModel.TypeConverter.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\Microsoft.Win32.Registry.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Xml.XDocument.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Private.Xml.Linq.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Private.Xml.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\System.IO.Pipelines.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Security.Principal.Windows.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Security.Cryptography.Algorithms.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Text.RegularExpressions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Reflection.Emit.ILGeneration.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Reflection.Emit.Lightweight.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Reflection.Primitives.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.HttpsPolicy.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Diagnostics.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Net.Http.Headers.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Private.Uri.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Metadata.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.ComponentModel.Annotations.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.StaticFiles.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.FileProviders.Embedded.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“Anonymously Hosted DynamicMethods Assembly”。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Diagnostics.Abstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Net.Security.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Security.Cryptography.X509Certificates.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Security.Cryptography.Primitives.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Collections.NonGeneric.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Security.Cryptography.Encoding.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Security.Cryptography.Cng.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Security.Cryptography.Csp.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Net.Sockets.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Net.NameResolution.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+Microsoft.Hosting.Lifetime: Information: Now listening on: https://localhost:5001
+Microsoft.Hosting.Lifetime: Information: Now listening on: http://localhost:5000
+Microsoft.Hosting.Lifetime: Information: Application started. Press Ctrl+C to shut down.
+Microsoft.Hosting.Lifetime: Information: Hosting environment: Development
+Microsoft.Hosting.Lifetime: Information: Content root path: D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\Microsoft.Extensions.PlatformAbstractions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Reflection.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.AppContext.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Reflection.TypeExtensions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Xml.XPath.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Xml.ReaderWriter.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Net.Http.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Net.WebSockets.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.AspNetCore.Http.Extensions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“D:\待完成得项目\网盘\ZFileServer\ZFileServer\ZFileApiServer\bin\Debug\net5.0\SqlSugar.dll”。
+“ZFileApiServer.exe”(CoreCLR: clrhost): 已加载“C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.7\System.Buffers.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+程序“[11424] ZFileApiServer.exe”已退出，返回值为 -1 (0xffffffff)。

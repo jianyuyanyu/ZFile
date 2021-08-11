@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="App.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="wwwroot\font\iconfont.svg" />
+    <None Include="wwwroot\font\iconfont.woff2" />
+    <None Include="wwwroot\webuploader\README.md" />
+    <None Include="wwwroot\webuploader\Uploader.swf" />
+    <None Include="wwwroot\webuploader\webuploader.custom.js" />
+    <None Include="wwwroot\webuploader\webuploader.custom.min.js" />
+    <None Include="wwwroot\webuploader\webuploader.fis.js" />
+    <None Include="wwwroot\webuploader\webuploader.flashonly.js" />
+    <None Include="wwwroot\webuploader\webuploader.flashonly.min.js" />
+    <None Include="wwwroot\webuploader\webuploader.html5only.js" />
+    <None Include="wwwroot\webuploader\webuploader.html5only.min.js" />
+    <None Include="wwwroot\webuploader\webuploader.js" />
+    <None Include="wwwroot\webuploader\webuploader.min.js" />
+    <None Include="wwwroot\webuploader\webuploader.noimage.js" />
+    <None Include="wwwroot\webuploader\webuploader.noimage.min.js" />
+    <None Include="wwwroot\webuploader\webuploader.nolog.js" />
+    <None Include="wwwroot\webuploader\webuploader.nolog.min.js" />
+    <None Include="wwwroot\webuploader\webuploader.withoutimage.js" />
+    <None Include="wwwroot\webuploader\webuploader.withoutimage.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Domain\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ZFile.Service\ZFile.Service.csproj" />
+  </ItemGroup>
+
+</Project>

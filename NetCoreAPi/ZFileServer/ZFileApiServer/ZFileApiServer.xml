@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZFileApiServer</name>
+    </assembly>
+    <members>
+        <member name="M:ZFileApiServer.Controllers.AdminController.#ctor(Microsoft.Extensions.Logging.ILogger{ZFileApiServer.Controllers.AdminController},ZFile.Service.Interfaces.ISysAdminService,ZFile.Service.Interfaces.ISysAppseting,ZFile.Service.Interfaces.IFileQycodeService)">
+            <summary>
+            构造
+            </summary>
+            <param name="logger"></param>
+            <param name="sysAdmin"></param>
+            <param name="sysAppseting"></param>
+            <param name="fileQycode"></param>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.AdminController.GetUserSysInfo">
+            <summary>
+            获取用户设置信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.AdminController.Login(ZFile.Service.DtoModel.UserModelDto)">
+            <summary>
+            用户登入
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.GetFilelistData(System.Int32,System.String,System.String)">
+            <summary>
+            获取文件数据
+            </summary>
+            <param name="FolderID">上级文件夹ID</param>
+            <param name="p2"></param>
+            <param name="itemtype">文件夹类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.AddFileInfo(System.String,System.String)">
+            <summary>
+            添加文件
+            </summary>
+            <param name="P1"></param>
+            <param name="P2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.Checkwholefile(System.String,System.String)">
+            <summary>
+            判断文件MD5校验证是否存在
+            </summary>
+            <param name="md5Client"></param>
+            <param name="spacecode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.Checkauth(System.String,System.String)">
+            <summary>
+            查询用户权限
+            </summary>
+            <param name="code"></param>
+            <param name="secret"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.AddFolders(ZFile.Core.Model.File.FT_Folder)">
+            <summary>
+            创建文件夹
+            </summary>
+            <param name="Folder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.DelFLODER(System.String)">
+            <summary>
+            删除文件
+            </summary>
+            <param name="P1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.GetFileInfo(System.String,System.String)">
+            <summary>
+            查询文件
+            </summary>
+            <param name="P1"></param>
+            <param name="P2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.MenuController.GetMenu">
+            <summary>
+            查询菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Startup.AddAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>  
+            自动注册服务——获取程序集中的实现类对应的多个接口
+            </summary>
+            <param name="services">服务集合</param>  
+            <param name="assemblyName">程序集名称</param>
+        </member>
+    </members>
+</doc>

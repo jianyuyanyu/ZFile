@@ -1,0 +1,213 @@
+﻿<UserControl
+    x:Class="WorkModel.Views.GRKJ"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    av:DesignHeight="768"
+    av:DesignWidth="1024"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="av">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="Margin" Value="2,0" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1E90FF" />
+                    <Setter Property="Foreground" Value="#1E90FF" />
+                    <Setter Property="BorderThickness" Value="1" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Border
+                Grid.ColumnSpan="2"
+                BorderBrush="Gray"
+                BorderThickness="0,0.5,0,0.5" />
+            <WrapPanel VerticalAlignment="Center">
+                <Button
+                    Background="Transparent"
+                    Command="{Binding AddFileInfoCommand}"
+                    Content="上传" />
+                <Button Content="新建" />
+            </WrapPanel>
+            <StackPanel
+                Grid.Column="1"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <TextBox
+                    Width="200"
+                    Height="30"
+                    Background="Transparent"
+                    FontSize="18" />
+                <Button
+                    Width="100"
+                    Height="30"
+                    Content="搜索" />
+
+            </StackPanel>
+        </Grid>
+
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding NavTabFileInfo}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button
+                        Margin="5,0"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Command="{Binding DataContext.OpenFloderCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                        CommandParameter="{Binding .}"
+                        Content="{Binding Name}"
+                        FontSize="14"
+                        ToolTip="{Binding Name}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Cursor" Value="Hand" />
+                                        <Setter Property="Foreground" Value="Blue" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <DataGrid
+            Grid.Row="2"
+            AutoGenerateColumns="False"
+            Background="Transparent"
+            BorderThickness="0"
+            CanUserAddRows="False"
+            CanUserReorderColumns="False"
+            CanUserResizeColumns="False"
+            CanUserResizeRows="False"
+            CanUserSortColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding UserFolderItem}"
+            SelectedItem="{Binding SelectItem}">
+            <DataGrid.ContextMenu>
+                <ContextMenu Name="dgmenu1" StaysOpen="true">
+                    <MenuItem Header="下载" />
+                    <MenuItem Command="{Binding DeleteItemCommand}" Header="删除" />
+                    <MenuItem Header="分享" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="0.5*">
+                    <DataGridTemplateColumn.Header>
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                            <CheckBox Margin="5,0" VerticalAlignment="Center" />
+                            <TextBlock Margin="5,0">文件名</TextBlock>
+                        </StackPanel>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Height="30" Orientation="Horizontal">
+                                <CheckBox Margin="4,0" VerticalAlignment="Center" />
+                                <TextBlock
+                                    FontFamily="{StaticResource IconFont}"
+                                    FontSize="28"
+                                    Foreground="#90C1FF"
+                                    Text="{Binding format, Converter={StaticResource ForamtConverter}}" />
+                                <Button
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Command="{Binding DataContext.OpenFloderCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                                    CommandParameter="{Binding .}"
+                                    Content="{Binding Name}"
+                                    FontSize="14"
+                                    ToolTip="{Binding Name}">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                    <Setter Property="Foreground" Value="Blue" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="0.1*" Header="类型">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                Text="{Binding format}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTemplateColumn Width="0.2*" Header="大小">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{Binding Size}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTemplateColumn Width="0.2*">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock>创建时间</TextBlock>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{Binding CRTime, StringFormat='{}{0:yyyy-MM-dd hh:MM}'}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

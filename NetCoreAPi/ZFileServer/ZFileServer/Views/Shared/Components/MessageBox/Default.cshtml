@@ -1,0 +1,19 @@
+﻿@model ZFileServer.Domain.MessageBoxVO
+<script>
+        //这是一个JS自执行函数，在该函数创建完成后将会自动调用，因为页面的JS是按照顺序执行的，所以将它放在页面Body的最底部，将会在页面渲染完成自动执行
+        !function (msg, redrectUrl) { //函数接收msg和redrectUrl两个参数，第一个为提示内容，第二个为跳转地址
+            if (msg && msg.toString().length > 0)//如果存在msg则弹出
+            {
+                alert(msg);
+            }
+            if (redrectUrl && redrectUrl.toString().length > 0)//如果redrectUrl有内容则在弹窗被关闭（点确认）后会继续执行页面跳转
+            {
+                parent.location.href = redrectUrl;
+            }
+        }
+            (
+                //在这里给自执行函数传参
+                @Html.Raw((Model == null ? "null" : "'"+Model.Msg+"'")),
+                @Html.Raw(( Model == null ? "null" : "'" +Model.RedrectUrl+"'"))
+            );
+</script>
