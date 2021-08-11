@@ -252,7 +252,8 @@ namespace Component.Common.Helpers
             SplitFileStream.Seek(ChunkCount * iFileSize, SeekOrigin.Begin);
             //以FileStream文件流来初始化BinaryReader文件阅读器
             BinaryReader SplitFileReader = new BinaryReader(SplitFileStream);
-            for (int i = ChunkCount; i < iFileCount; i++)
+
+            while (ChunkCount< iFileCount)
             {
                 switch (item.state)
                 {
@@ -294,7 +295,8 @@ namespace Component.Common.Helpers
                     default:
                         break;
                 }
-            };
+            }
+
             SplitFileReader.Close();
             SplitFileStream.Close();
             var model = await service.UploadfileMergeServer(new fileuploadDto()
