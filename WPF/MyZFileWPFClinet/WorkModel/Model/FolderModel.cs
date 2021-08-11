@@ -20,6 +20,12 @@ namespace WorkModel
 
     }
 
+    public class DelFile
+    {
+        public int Id { get; set; }
 
-   
+
+        public int Type { get; set; }
+    }
+
 }

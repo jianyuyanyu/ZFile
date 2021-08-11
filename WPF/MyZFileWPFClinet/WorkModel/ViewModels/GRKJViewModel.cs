@@ -72,9 +72,18 @@ namespace WorkModel.ViewModels
             {
                 MessageBox.Show("请选择一个文件");
                 return;
-            } 
-            
-            await Task.Delay(100);
+            }
+            List<DelFile> items = new List<DelFile>();
+            DelFile model = new DelFile() { Id = SelectItem.Id, Type = SelectItem.Type, };
+            items.Add(model);
+            var ResqustData = await service.DelFileRequst(items);
+            if (ResqustData.statusCode != 200)
+            {
+                MessageBox.Show("删除异常");
+                return;
+            }
+            MessageBox.Show("删除成功");
+            await GetFloderInfo();
         }
 
         private async void OpenFloder(FolderModel o)

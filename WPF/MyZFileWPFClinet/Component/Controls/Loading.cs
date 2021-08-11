@@ -13,6 +13,7 @@ namespace Component
         static Loading()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Loading), new FrameworkPropertyMetadata(typeof(Loading)));
+            
         }
 
         #region Property

@@ -56,6 +56,21 @@ namespace WorkModel
               );
         }
 
+
+        public async Task<BaseResponse> DelFileRequst(List<DelFile> dto)
+        {
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new DelFileRequst()
+            {
+
+                parameters = new Dictionary<string, object>()
+             {
+                 {"",dto }
+             },
+                Method = Method.POST,
+
+            });
+        }
+
     }
 
 
@@ -82,7 +97,7 @@ namespace WorkModel
 
     public class DelFileRequst : BaseRequest
     {
-        public override string route { get => "api/GetDownLoadFileInfo"; }
+        public override string route { get => "api/DelFile"; }
     }
 
 }

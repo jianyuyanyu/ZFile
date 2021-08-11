@@ -132,25 +132,37 @@ namespace ZFileApiServer.Controllers
         /// <summary>
         /// 删除文件
         /// </summary>
-        /// <param name="P1"></param>
+        /// <param name="delFile"></param>
         /// <returns></returns>
         [HttpPost]
         [Route("/api/DelFile")]
-        public async Task<IActionResult> DelFLODER([FromBody] string P1)
+        public async Task<IActionResult> DelFLODER([FromBody] List<DelFile> delFile)
         {
-            JArray DELITEM = (JArray)JsonConvert.DeserializeObject(P1);
-            foreach (var item in DELITEM)
+            var Apires = new ApiResult<object>
             {
-                if (item["type"].ToString() == "file")
-                {//删除文件
+                statusCode = (int)ApiEnum.Error
+            };
 
-                    await _sysFille.DeleteAsync(d => d.ID.ToString() == item["ID"].ToString());
-                    string strZYID = item["zyid"].ToString();
+            foreach (var item in delFile)
+            {
+                if (item.Type == 1)
+                {//删除文件
+                    var FileInfo = await _sysFille.GetModelAsync(o => o.ID == item.Id);
+                    if (FileInfo.statusCode != 200)
+                    {
+                        return Ok(Apires);
+                    }
+                    var DelModel = await _sysFille.DeleteAsync(d => d.ID == item.Id);
+                    if (DelModel.statusCode != 200)
+                    {
+                        return Ok(Apires);
+                    }
+                    string strZYID = FileInfo.data.zyid;
                     //物理删除
                     var Model = await _FileDocumentService.GetModelAsync(D => D.ID == strZYID); /*new DocumentB().GetEntity(D => D.ID == ID);*/
                     if (Model.statusCode == (int)ApiEnum.Status)
                     {
-                        string strFile = Model.data.FullPath;
+                        string strFile = AppDomain.CurrentDomain.BaseDirectory+ Model.data.FullPath;
                         var res = await _FileDocumentService.DeleteAsync(Model.data.ID);
                         if (res.statusCode == 200)
                         {
@@ -161,16 +173,30 @@ namespace ZFileApiServer.Controllers
                         }
 
                     }
-                    await _fT_FileAuth.DeleteAsync(d => d.RefID.ToString() == item["ID"].ToString() && d.RefType == "1");
+                    //删除目录
+                    var AllfolderInfo = await _sysFileFolder.GetListAsync();
+                    var Folder = await _sysFileFolder.GetModelAsync(o => o.ID == item.Id);
+
+                    await _fT_FileAuth.DeleteAsync(d => d.RefID == item.Id && d.RefType == "1");
+                    Apires.statusCode = 200;
 
                 }
                 else
                 {
-                    //删除目录                
-                    await _fT_FileAuth.DeleteAsync(d => d.RefID.ToString() == item["ID"].ToString() && d.RefType == "0");
+                    //删除目录  
+                    var AllfolderInfo = await _sysFileFolder.GetListAsync();
+                    var Folder = await _sysFileFolder.GetModelAsync(o => o.ID == item.Id);
+                    List<FT_Folder> fs = new List<FT_Folder>();
+                    fs.Add(Folder.data);
+                    var list = AllfolderInfo.data.Where(o => o.PFolderID == Folder.data.ID);
+                    var FileResdata = await _sysFille.GetListAsync();
+                    var fileList = FileResdata.data.Where(o => o.FolderID == Folder.data.ID);
+                    
+                    await _fT_FileAuth.DeleteAsync(d => d.RefID == item.Id && d.RefType == "0");
+                    Apires.statusCode = 200;
                 }
             }
-            return Ok();
+            return Ok(Apires);
         }
 
         /// <summary>
@@ -362,7 +388,8 @@ namespace ZFileApiServer.Controllers
         {
             var Apires = new ApiResult<DownSplitDto>
             {
-                statusCode = (int)ApiEnum.Error, data = new DownSplitDto()
+                statusCode = (int)ApiEnum.Error,
+                data = new DownSplitDto()
             };
             var Model = await _FileDocumentService.GetModelAsync(O => O.ID == Code);
             if (Model.data.ID != null)
@@ -381,7 +408,7 @@ namespace ZFileApiServer.Controllers
                     //以FileStream文件流来初始化BinaryReader文件阅读器
                     using (BinaryReader SplitFileReader = new BinaryReader(SplitFileStream))
                     {
-                        
+
                         TempBytes = SplitFileReader.ReadBytes(iFileSize);
                     }
                 }
