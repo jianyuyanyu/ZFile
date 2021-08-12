@@ -742,6 +742,7 @@ namespace ZFile.Common
         /// </summary>
         /// <param name="TimeStamp"></param>
         /// <returns></returns>
+        [Obsolete]
         public static DateTime ConvertToDateTime(long timeStamp)
         {
             var dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));

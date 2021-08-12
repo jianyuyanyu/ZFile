@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>ZFileWPFClient</AssemblyName>
   </PropertyGroup>
@@ -9,21 +9,18 @@
     <None Remove="Images\Cover.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.2" />
-    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
-    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
-    <PackageReference Include="RestSharp" Version="106.11.7" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Component\Component.csproj" />
     <ProjectReference Include="..\HomeModel\HomeModel.csproj" />
     <ProjectReference Include="..\TranmissionModel\TranmissionModel.csproj" />
     <ProjectReference Include="..\WorkModel\WorkModel.csproj" />
+    <ProjectReference Include="..\ZFileComponent\ZFileComponent.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Cover.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
   </ItemGroup>
 </Project>

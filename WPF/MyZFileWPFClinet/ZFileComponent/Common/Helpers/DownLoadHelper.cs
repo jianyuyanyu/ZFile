@@ -19,9 +19,6 @@ namespace Component.Common.Helpers
 {
     public class DownLoadHelper : BaseViewModel
     {
-
-
-
         ObservableCollection<DownLoadInfo> CurrentDownFileitem { get; set; } = new ObservableCollection<DownLoadInfo>();
         ObservableCollection<UploadInfo> CurrentUploadItem { get; set; } = new ObservableCollection<UploadInfo>();
 
@@ -34,21 +31,13 @@ namespace Component.Common.Helpers
             LoadInfo();
 
         }
-
-        private void UpdateDownOrUploadInfo(object sender, EventArgs e)
-        {
-
-        }
-
         public Action<double, int> UpdateSunProgreesAct;
         double SunSize;
         int SunProgressValues;
         string DownInfoFath = AppDomain.CurrentDomain.BaseDirectory + "SystemConfig";
         public ObservableCollection<DownLoadInfo> GetAllDownInfo() => CurrentDownFileitem;
-
         public ObservableCollection<UploadInfo> GetAllUploadInfo() => CurrentUploadItem;
         public bool GetFileInfo(string Id) => CurrentDownFileitem.Any(o => o.Id == Id);
-
         public void LoadInfo()
         {
             if (!Directory.Exists(DownInfoFath)) Directory.CreateDirectory(DownInfoFath);
@@ -72,7 +61,6 @@ namespace Component.Common.Helpers
             if (!Directory.Exists(DownInfoFath)) Directory.CreateDirectory(DownInfoFath);
             XmlHelper.SerializeToXmlFile(CurrentUploadItem, DownInfoFath + "\\UploadSYSTEM.xml");
         }
-
         void downDisk(DownSplitDto data, DownLoadInfo info)
         {
             var buffer = new byte[data.data.Length];
@@ -106,7 +94,6 @@ namespace Component.Common.Helpers
             UpdateSunProgreesAct?.Invoke(SunSize, SunProgressValues);
             DownSave();
         }
-
         public object locks = new object();
         public async void DownloadPatch(DownLoadInfo info)
         {
@@ -183,23 +170,6 @@ namespace Component.Common.Helpers
             UpdateSunProgress();
             MessageBox.Show("下载成功");
         }
-     
-        //async Task DownSplitFile(string Id, int Index, DownLoadInfo info)
-        //{
-        //    //var item = await service.DownloadFile(Id, Index);
-        //    //if (item == null)
-        //    //{
-        //    //    await DownSplitFile(Id, Index, info);
-        //    //}
-        //    //else
-        //    //{
-        //    //    lock (locks)
-        //    //    {
-                    
-        //    //    }
-        //    //}
-
-        //}
         public async Task ExcuVerify(string safeFileName, string FilePATH)
         {
             try
@@ -436,7 +406,6 @@ namespace Component.Common.Helpers
             set { SetProperty(ref _RemainingTime, value); }
         }
     }
-
     public class DownSplitDto
     {
         public byte[] data { get; set; }

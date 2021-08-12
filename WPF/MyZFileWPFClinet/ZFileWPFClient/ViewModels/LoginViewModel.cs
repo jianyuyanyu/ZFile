@@ -1,7 +1,7 @@
 ﻿using Component;
 using Component.Api;
 using Component.ViewModelBase;
-using GalaSoft.MvvmLight.Command;
+using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Prism.Commands;
 using Prism.Ioc;

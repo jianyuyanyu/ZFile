@@ -17,7 +17,6 @@ namespace Component.Api
     {
         [JsonIgnore]
         public string apiUrl { get { return Contract.webUrl + route; } }
-
         /// <summary>
         /// 路由地址
         /// </summary>

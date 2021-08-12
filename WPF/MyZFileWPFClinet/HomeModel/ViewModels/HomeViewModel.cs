@@ -15,7 +15,7 @@ namespace HomeModel.ViewModels
     public class HomeViewModel : BaseViewModel
     {
         private readonly MenuService Service;
-        private readonly DownLoadHelper downLoadHelper;
+      
         private ObservableCollection<Menu> _MenuItems;
         public ObservableCollection<Menu> MenuItems
         {

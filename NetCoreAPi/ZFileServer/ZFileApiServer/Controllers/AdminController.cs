@@ -144,7 +144,7 @@ namespace ZFileApiServer.Controllers
                 apiRes.statusCode = (int)ApiEnum.Status;
                 apiRes.data = token;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
 

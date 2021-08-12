@@ -2,7 +2,7 @@
     x:Class="ZFileWPFClient.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Nv="clr-namespace:Component.Common;assembly=Component"
+    xmlns:Nv="clr-namespace:Component.Common;assembly=ZFileComponent"
     xmlns:prism="http://prismlibrary.com/"
     Title="{Binding Title}"
     Width="1024"

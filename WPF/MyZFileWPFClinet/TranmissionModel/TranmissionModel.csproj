@@ -8,6 +8,6 @@
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Component\Component.csproj" />
+    <ProjectReference Include="..\ZFileComponent\ZFileComponent.csproj" />
   </ItemGroup>
 </Project>

@@ -90,7 +90,9 @@ namespace Component.Common.Helpers
         }
         public static TimeSpan GetRemainingTime(int Size,int Speed)
         {
-           return TimeSpan.FromSeconds(Size / 1); ;
+            if (Speed == 0) Speed = 1;
+         
+           return TimeSpan.FromSeconds(Size / Speed); ;
         }
     }
 

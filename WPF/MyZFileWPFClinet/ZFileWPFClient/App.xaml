@@ -8,7 +8,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/ZFileWPFClient;component/Resoues/DefaultStyle.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Component;component/Control.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/Controls.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
