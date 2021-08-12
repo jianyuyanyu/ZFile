@@ -13,7 +13,7 @@
 ## 框架
 WPF：Net5+PrismWpf+RestSharp
 
-Api: Net5+ SqlSugar+sqlite
+Api：Net5+ SqlSugar+sqlite
 
 ## 功能
 
