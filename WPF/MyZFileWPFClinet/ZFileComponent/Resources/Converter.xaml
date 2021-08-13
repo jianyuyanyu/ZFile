@@ -6,4 +6,5 @@
     <local:LoadingLineYConverter x:Key="LoadingLineYConverter" />
     <local:LoadingBackgroundThicknessConverter x:Key="LoadingBackgroundThicknessConverter" />
     <local:FormatConverter x:Key="ForamtConverter" />
+
 </ResourceDictionary>

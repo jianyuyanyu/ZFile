@@ -10,6 +10,7 @@ namespace ZFileWPFClient.Views
         public MainWindow()
         {
             InitializeComponent();
+          
         }
     }
 }

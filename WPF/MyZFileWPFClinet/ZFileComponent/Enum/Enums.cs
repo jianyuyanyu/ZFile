@@ -18,5 +18,9 @@ namespace Component
     }
     #endregion
 
-
+    public enum MenuStyle
+    {
+        Standard,
+        Modern,
+    }
 }

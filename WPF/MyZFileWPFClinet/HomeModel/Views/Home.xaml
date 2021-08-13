@@ -25,7 +25,53 @@
             <RowDefinition Height="40" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Grid.ColumnSpan="2" Background="BlueViolet" />
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <TextBlock
+                    FontFamily="{StaticResource IconFont}"
+                    FontSize="32"
+                    Foreground="#1E90FF"
+                    Text="&#xe654;" />
+                <TextBlock
+                    Margin="10,0"
+                    VerticalAlignment="Center"
+                    FontSize="28"
+                    FontWeight="Black"
+                    Foreground="Black"
+                    Text="ZFile网盘" />
+
+            </StackPanel>
+            <StackPanel
+                Grid.Column="2"
+                Margin="20,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <Button Width="100" Style="{StaticResource BtnLinkStyle}">关于</Button>
+                <Ellipse
+                    Width="40"
+                    Height="40"
+                    Margin="5,0"
+                    Fill="Bisque" />
+                <TextBlock VerticalAlignment="Center">UserName</TextBlock>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontFamily="{StaticResource IconFont}"
+                    FontSize="24"
+                    Text="&#xe60c;" />
+                <Button
+                    Background="Transparent"
+                    Content="&#xe63d;"
+                    FontFamily="{StaticResource IconFont}"
+                    FontSize="28"
+                    Style="{StaticResource BtnLinkStyle}" />
+            </StackPanel>
+        </Grid>
         <ListBox
             Grid.Row="1"
             ItemsSource="{Binding MenuItems}"
