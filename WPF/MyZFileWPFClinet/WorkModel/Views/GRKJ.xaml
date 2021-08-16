@@ -19,13 +19,14 @@
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FontSize" Value="17" />
+            <Setter Property="FontSize" Value="14" />
             <Setter Property="Margin" Value="2,0" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#1E90FF" />
+                    <Setter Property="Background" Value="AliceBlue" />
                     <Setter Property="Foreground" Value="#1E90FF" />
-                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="FontWeight" Value="Black" />
+                    <Setter Property="BorderThickness" Value="0" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -55,7 +56,37 @@
                     Background="Transparent"
                     Command="{Binding AddFileInfoCommand}"
                     Content="上传" />
-                <Button Command="{Binding AddFolderCommand}" Content="新建" />
+                <Grid Width="300">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+
+                    </Grid.ColumnDefinitions>
+                    <Border
+                        Grid.ColumnSpan="3"
+                        Background="#C80084FF"
+                        CornerRadius="15"
+                        Opacity="0.15" />
+                    <Button
+                        Command="{Binding AddFolderCommand}"
+                        Content="新建文件夹"
+                        FontSize="14"
+                        Style="{StaticResource BtnLinkStyle}" />
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding AddFolderCommand}"
+                        Content="新建文件夹"
+                        FontSize="14"
+                        Style="{StaticResource BtnLinkStyle}" />
+                    <Button
+                        Grid.Column="2"
+                        Command="{Binding AddFolderCommand}"
+                        Content="新建文件夹"
+                        FontSize="14"
+                        Style="{StaticResource BtnLinkStyle}" />
+                </Grid>
+
             </WrapPanel>
             <StackPanel
                 Grid.Column="1"
@@ -92,21 +123,10 @@
                             CommandParameter="{Binding .}"
                             Content="{Binding Name}"
                             FontSize="14"
-                            ToolTip="{Binding Name}">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Cursor" Value="Hand" />
-                                            <Setter Property="Foreground" Value="Blue" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
+                            Style="{StaticResource BtnLinkStyle}"
+                            ToolTip="{Binding Name}" />
                         <TextBlock VerticalAlignment="Center">&gt;</TextBlock>
                     </StackPanel>
-
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -150,7 +170,7 @@
                                     zt:CheckBoxHelper.CheckBoxStyle="Standard" />
                                 <TextBlock
                                     FontFamily="{StaticResource IconFont}"
-                                    FontSize="28"
+                                    FontSize="24"
                                     Foreground="#90C1FF"
                                     Text="{Binding format, Converter={StaticResource ForamtConverter}}" />
                                 <Button
@@ -162,18 +182,8 @@
                                     CommandParameter="{Binding .}"
                                     Content="{Binding Name}"
                                     FontSize="14"
-                                    ToolTip="{Binding Name}">
-                                    <Button.Style>
-                                        <Style TargetType="{x:Type Button}">
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Cursor" Value="Hand" />
-                                                    <Setter Property="Foreground" Value="Blue" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
+                                    Style="{StaticResource BtnLinkStyle}"
+                                    ToolTip="{Binding Name}" />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -184,7 +194,7 @@
                             <TextBlock
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                FontSize="18"
+                                FontSize="16"
                                 Text="{Binding format}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

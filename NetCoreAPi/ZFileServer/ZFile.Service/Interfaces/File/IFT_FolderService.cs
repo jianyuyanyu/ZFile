@@ -12,7 +12,6 @@ namespace ZFile.Service.Interfaces
 {
     public interface IFT_FolderService : IBaseService<FT_Folder>
     {
-
         public Task<ApiResult<List<FT_FolderDto>>> GetUserCreateFile(int FolderID,string  UserName);
         /// <summary>
         /// 添加文件夹
@@ -21,7 +20,5 @@ namespace ZFile.Service.Interfaces
         /// <param name="UserName"></param>
         /// <returns></returns>
         public Task<ApiResult<FT_Folder>> AddFolders(FT_Folder Folder, string UserName);
-
-        
     }
 }

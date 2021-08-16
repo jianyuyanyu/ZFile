@@ -68,9 +68,10 @@ namespace WorkModel.ViewModels
             _provider = provider;
             _regionManager = regionManager;
             CurrnetFolder = new FolderModel();
+            LoadMenu();
 
         }
-        public DelegateCommand LoadedCommand => new DelegateCommand(LoadMenu);
+        //public DelegateCommand LoadedCommand => new DelegateCommand(LoadMenu);
         public DelegateCommand AddFileInfoCommand => new DelegateCommand(AddFileInfo);
         public DelegateCommand<FolderModel> OpenFloderCommand => new DelegateCommand<FolderModel>((o) => OpenFloder(o));
         public DelegateCommand DeleteItemCommand => new DelegateCommand(DeleteItem);
