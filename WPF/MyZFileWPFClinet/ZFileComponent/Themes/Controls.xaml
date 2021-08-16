@@ -5,6 +5,10 @@
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/ButtonStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/Loading.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/FontsStyle.xaml" />
+        <!--<ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/ScrollViewer.xaml" />-->
+        <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/CheckBoxStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/MenuStyle.xaml" />
+
 
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

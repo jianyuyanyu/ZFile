@@ -25,7 +25,7 @@ namespace ZFileComponent.Themes.ControlHelper
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuStyleProperty =
-            DependencyProperty.Register("MenuStyle", typeof(MenuStyle), typeof(MenuHelper), new PropertyMetadata(MenuStyle.Standard));
+            DependencyProperty.RegisterAttached("MenuStyle", typeof(MenuStyle), typeof(MenuHelper), new PropertyMetadata(MenuStyle.Standard));
         #endregion
 
         #region Orientation

@@ -23,4 +23,15 @@ namespace Component
         Standard,
         Modern,
     }
+
+    #region CheckBox
+    public enum CheckBoxStyle
+    {
+        Standard,
+        Switch,
+        Switch2,
+        Button,
+        Selector,
+    }
+    #endregion
 }

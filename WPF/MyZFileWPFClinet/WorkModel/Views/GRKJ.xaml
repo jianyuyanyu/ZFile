@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    xmlns:zt="clr-namespace:ZFileComponent.Themes.ControlHelper;assembly=ZFileComponent"
     av:DesignHeight="768"
     av:DesignWidth="1024"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -129,14 +130,21 @@
                 <DataGridTemplateColumn Width="0.5*">
                     <DataGridTemplateColumn.Header>
                         <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                            <CheckBox Margin="5,0" VerticalAlignment="Center" />
+                            <CheckBox
+                                Margin="5,0"
+                                VerticalAlignment="Center"
+                                zt:CheckBoxHelper.CheckBoxStyle="Standard" />
                             <TextBlock Margin="5,0">文件名</TextBlock>
                         </StackPanel>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Height="30" Orientation="Horizontal">
-                                <CheckBox Margin="4,0" VerticalAlignment="Center" />
+                                <CheckBox
+                                    Margin="4,0"
+                                    VerticalAlignment="Center"
+                                    zt:CheckBoxHelper.CheckBoxStyle="Standard"
+                                     />
                                 <TextBlock
                                     FontFamily="{StaticResource IconFont}"
                                     FontSize="28"

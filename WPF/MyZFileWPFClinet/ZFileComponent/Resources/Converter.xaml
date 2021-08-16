@@ -6,5 +6,14 @@
     <local:LoadingLineYConverter x:Key="LoadingLineYConverter" />
     <local:LoadingBackgroundThicknessConverter x:Key="LoadingBackgroundThicknessConverter" />
     <local:FormatConverter x:Key="ForamtConverter" />
-
+    <local:GridLengthConverter x:Key="GridLengthConverter" />
+    <local:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter" />
+    <local:CheckBoxGlyphPathConverter x:Key="CheckBoxGlyphPathConverter" />
+    <local:IsNotNullConverter x:Key="IsNotNullConverter" />
+    <local:IconConverter x:Key="IconConverter" />
+    <local:IsNullConverter x:Key="IsNullConverter" />
+    <local:NullableColorToColoConverter x:Key="NullableColorToColoConverter" />
+    <local:Minus2Converter x:Key="Minus2Converter" />
+    <local:SwitchToggleMarginConverter x:Key="SwitchToggleMarginConverter" />
+    <local:Add3Converter x:Key="Add3Converter" />
 </ResourceDictionary>

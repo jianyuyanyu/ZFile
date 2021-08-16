@@ -7,13 +7,11 @@ using System.Windows.Data;
 
 namespace Component
 {
-
-    #region Minus 2
-    internal class Minus2Converter : IValueConverter
+    internal class ThicknessToDoubleConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (double)value - 2;
+            return ((Thickness)value).Left;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -22,15 +20,11 @@ namespace Component
         }
     }
 
-    #endregion
-
-
-    #region Add 3
-    internal class Add3Converter : IValueConverter
+    internal class DoubleToRightMarginConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (double)value + 3;
+            return new Thickness(0, 0, ((double)value), 0);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -38,5 +32,17 @@ namespace Component
             return DependencyProperty.UnsetValue;
         }
     }
-    #endregion
+
+    internal class DoubleToLeftMarginConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return new Thickness(((double)value), 0, 0, 0);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
 }

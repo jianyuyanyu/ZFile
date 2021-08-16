@@ -7,13 +7,11 @@ using System.Windows.Data;
 
 namespace Component
 {
-
-    #region Minus 2
-    internal class Minus2Converter : IValueConverter
+    internal class IsNullConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (double)value - 2;
+            return value == null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -22,15 +20,11 @@ namespace Component
         }
     }
 
-    #endregion
-
-
-    #region Add 3
-    internal class Add3Converter : IValueConverter
+    internal class IsNotNullConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (double)value + 3;
+            return value != null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -38,5 +32,5 @@ namespace Component
             return DependencyProperty.UnsetValue;
         }
     }
-    #endregion
+
 }

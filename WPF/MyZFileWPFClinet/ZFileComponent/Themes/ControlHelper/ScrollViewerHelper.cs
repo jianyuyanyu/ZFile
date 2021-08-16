@@ -21,7 +21,7 @@ namespace ZFileComponent.Themes.ControlHelper
             obj.SetValue(TrackBrushProperty, value);
         }
         public static readonly DependencyProperty TrackBrushProperty =
-            DependencyProperty.Register("MyProperty", typeof(Brush), typeof(ScrollViewerHelper));
+            DependencyProperty.Register("TrackBrush", typeof(Brush), typeof(ScrollViewerHelper));
 
         #endregion
 
