@@ -33,7 +33,7 @@ namespace ZFile.Service.Implements.File
                 Folder.CRDate = DateTime.Now;
                 Folder.ComId = 1;
                 Folder.ViewAuthUsers = "0";//默认不在回收站 //new FT_FolderB().Insert(Folder);
-                 var addRes = await AddAsync(Folder, true);
+                 var addRes = await AddAsync(Folder);
                 if (addRes.statusCode != 200)
                 {
                     res.statusCode = addRes.statusCode;
@@ -41,9 +41,10 @@ namespace ZFile.Service.Implements.File
                     res.message = addRes.message;
                     return res;
                 }
+               
                 //更新文件夹路径Code
                 Folder.Remark = Folder.Remark + "-" + Folder.ID;
-                addRes= await UpdateAsync(Folder, true);
+                addRes= await UpdateAsync(Folder);
                 if (addRes.statusCode != 200)
                 {
                     res.statusCode = addRes.statusCode;

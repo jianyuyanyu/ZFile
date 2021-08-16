@@ -27,8 +27,8 @@ namespace ZFile.Service.Repository
             var res = new ApiResult<string>() { statusCode = (int)ApiEnum.Error };
             try
             {
-                var dbres = Async ? await Db.Insertable<T>(parm).ExecuteCommandAsync() : Db.Insertable<T>(parm).ExecuteCommand();
-                res.data = dbres.ToString();
+                parm = Async ? await Db.Insertable<T>(parm).ExecuteReturnEntityAsync() : Db.Insertable<T>(parm).ExecuteReturnEntity();
+                res.data = parm.ToString();
                 res.statusCode = (int)ApiEnum.Status;
             }
             catch (Exception ex)

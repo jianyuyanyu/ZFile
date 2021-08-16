@@ -25,6 +25,7 @@ namespace ZFile.Service.Repository
         /// <returns></returns>
         Task<ApiResult<string>> AddAsync(T parm, bool Async = true);
 
+     
         /// <summary>
         /// 批量添加数据
         /// </summary>

@@ -1,4 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ZFileComponent.Themes.ControlHelper">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Resources/Resource.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Resources/Converter.xaml" />
@@ -9,6 +12,10 @@
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/CheckBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/MenuStyle.xaml" />
 
+        <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/DialogBoxStyle.xaml" />
+
 
     </ResourceDictionary.MergedDictionaries>
+
+    <Style BasedOn="{StaticResource ZtDialogBox}" TargetType="{x:Type local:DialogBox}" />
 </ResourceDictionary>

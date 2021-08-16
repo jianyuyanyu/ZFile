@@ -1,4 +1,5 @@
 ﻿using Component;
+using Component.Common;
 using Component.Common.Helpers;
 using Component.Dto;
 using Component.ViewModelBase;
@@ -19,6 +20,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using WorkModel.WindosDlg;
+using ZFileComponent.Themes.ControlHelper;
 
 namespace WorkModel.ViewModels
 {
@@ -53,18 +56,39 @@ namespace WorkModel.ViewModels
             set { SetProperty(ref _SelectItem, value); }
         }
 
+
+        IContainerProvider _provider;
+        IRegionManager _regionManager;
         public GRKJViewModel(IContainerProvider provider, IRegionManager regionManager) : base(provider, regionManager)
         {
             UserFolderItem = new ObservableCollection<FolderModel>();
             NavTabFileInfo = new ObservableCollection<FolderModel>() { new FolderModel() { Id = 2, Name = "我的网盘>" } };
             service = provider.Resolve<WorkService>();
             downLoadHelper = provider.Resolve<DownLoadHelper>();
+            _provider = provider;
+            _regionManager = regionManager;
+            CurrnetFolder = new FolderModel();
 
         }
         public DelegateCommand LoadedCommand => new DelegateCommand(LoadMenu);
         public DelegateCommand AddFileInfoCommand => new DelegateCommand(AddFileInfo);
         public DelegateCommand<FolderModel> OpenFloderCommand => new DelegateCommand<FolderModel>((o) => OpenFloder(o));
         public DelegateCommand DeleteItemCommand => new DelegateCommand(DeleteItem);
+
+        public DelegateCommand AddFolderCommand => new DelegateCommand(AddFolder);
+
+        private void AddFolder()
+        {
+            var content = new AddFloder(_provider,CurrnetFolder);
+            DialogBox.Show(SystemResource.Nav_MainContent, content, "创建文件夹",null, DialogClose);
+        }
+
+        private async void DialogClose(DialogBox arg1, object arg2)
+        {
+            if (arg2 == null) return;
+            MessageBox.Show(arg2.ToString());
+            await GetFloderInfo(CurrnetFolder.Id);
+        }
 
         private async void DeleteItem()
         {
@@ -86,16 +110,18 @@ namespace WorkModel.ViewModels
             await GetFloderInfo();
         }
 
+   
+        FolderModel CurrnetFolder;
         private async void OpenFloder(FolderModel o)
         {
-
-
+           
             if (o.Type == 1)
                 DownFile(o);
             else
             {
+                if (SelectItem == o) return;
                 if (NavTabFileInfo.Contains(o))
-                {
+                {                  
                     int Index = NavTabFileInfo.IndexOf(o);
                     for (int i = Index; i < NavTabFileInfo.Count; i++)
                     {
@@ -110,6 +136,7 @@ namespace WorkModel.ViewModels
                 {
                     NavTabFileInfo.Add(o);
                 }
+                CurrnetFolder.Remark = o.Remark;
                 await GetFloderInfo(o.Id);
             }
 
@@ -144,15 +171,20 @@ namespace WorkModel.ViewModels
         private async void LoadMenu()
         {
             await GetFloderInfo();
+            CurrnetFolder.Type = 2;
+            CurrnetFolder.Id = 2;
+            CurrnetFolder.Remark = "2";
         }
+     
         async Task GetFloderInfo(int FloderID = 2, int Id = 2)
         {
             UserFolderItem.Clear();
             var model = await service.GetFolderInfo(Id, FloderID);
             if (model != null)
             {
+                CurrnetFolder.Id = FloderID;
                 model.data.FileInfo.ForEach(o => UserFolderItem.Add(new FolderModel() { CRTime = o.CRDate.Value, format = o.FileExtendName, Size = ByteConvert.GetSize(Convert.ToInt64(o.FileSize)), Id = o.ID, Name = o.Name, Type = 1 }));
-                model.data.FolderInfo.ForEach(o => UserFolderItem.Add(new FolderModel() { CRTime = o.CRDate.Value, format = "文件", Size = "", Id = o.ID, Name = o.Name, Type = 2 }));
+                model.data.FolderInfo.ForEach(o => UserFolderItem.Add(new FolderModel() { CRTime = o.CRDate.Value, format = "文件", Size = "", Id = o.ID, Name = o.Name, Type = 2,Remark=o.Remark }));
             }
         }
     }

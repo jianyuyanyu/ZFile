@@ -71,6 +71,24 @@ namespace WorkModel
             });
         }
 
+        public async Task<BaseResponse> CreateFolderRequst(FolderModel dto)
+        {
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new CreateFolder()
+            {
+
+                parameters = new Dictionary<string, object>()
+             {
+                 {"Name",dto.Name },
+                 {"FolderType",dto.Type },
+                 {"PFolderID",dto.Id },
+                 {"FolderLev",0},
+                 {"Remark",dto.Remark },
+             },
+                Method = Method.POST,
+                IsJson = false
+            });
+        }
+
     }
 
 
@@ -99,5 +117,10 @@ namespace WorkModel
     {
         public override string route { get => "api/DelFile"; }
     }
+    public class CreateFolder : BaseRequest
+    {
+        public override string route { get => "api/CreateFolder"; }
+    }
+
 
 }

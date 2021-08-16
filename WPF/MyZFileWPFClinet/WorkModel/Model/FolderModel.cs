@@ -18,6 +18,8 @@ namespace WorkModel
 
         public DateTime CRTime { get; set; }
 
+        public string Remark { get; set; }
+
     }
 
     public class DelFile

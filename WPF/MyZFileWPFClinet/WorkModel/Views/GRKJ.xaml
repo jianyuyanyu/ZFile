@@ -55,7 +55,7 @@
                     Background="Transparent"
                     Command="{Binding AddFileInfoCommand}"
                     Content="上传" />
-                <Button Content="新建" />
+                <Button Command="{Binding AddFolderCommand}" Content="新建" />
             </WrapPanel>
             <StackPanel
                 Grid.Column="1"
@@ -143,8 +143,7 @@
                                 <CheckBox
                                     Margin="4,0"
                                     VerticalAlignment="Center"
-                                    zt:CheckBoxHelper.CheckBoxStyle="Standard"
-                                     />
+                                    zt:CheckBoxHelper.CheckBoxStyle="Standard" />
                                 <TextBlock
                                     FontFamily="{StaticResource IconFont}"
                                     FontSize="28"
@@ -217,5 +216,7 @@
 
             </DataGrid.Columns>
         </DataGrid>
+
+     
     </Grid>
 </UserControl>
