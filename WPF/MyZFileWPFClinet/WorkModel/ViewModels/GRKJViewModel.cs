@@ -62,7 +62,7 @@ namespace WorkModel.ViewModels
         public GRKJViewModel(IContainerProvider provider, IRegionManager regionManager) : base(provider, regionManager)
         {
             UserFolderItem = new ObservableCollection<FolderModel>();
-            NavTabFileInfo = new ObservableCollection<FolderModel>() { new FolderModel() { Id = 2, Name = "我的网盘>" } };
+            NavTabFileInfo = new ObservableCollection<FolderModel>() { new FolderModel() { Id = 2, Name = "我的网盘" } };
             service = provider.Resolve<WorkService>();
             downLoadHelper = provider.Resolve<DownLoadHelper>();
             _provider = provider;
@@ -119,17 +119,16 @@ namespace WorkModel.ViewModels
                 DownFile(o);
             else
             {
-                if (SelectItem == o) return;
-                if (NavTabFileInfo.Contains(o))
-                {                  
-                    int Index = NavTabFileInfo.IndexOf(o);
-                    for (int i = Index; i < NavTabFileInfo.Count; i++)
+                if (CurrnetFolder.Id == o.Id) return;
+
+                int index = NavTabFileInfo.IndexOf(o);
+                if (index >=0)
+                {
+                    int count = NavTabFileInfo.Count -(index + 1) ;
+                    while (count!=0)
                     {
-                        if (Index + 1 < NavTabFileInfo.Count)
-                        {
-                            Index = Index + 1;
-                            NavTabFileInfo.Remove(NavTabFileInfo[Index]);
-                        }
+                        NavTabFileInfo.Remove(NavTabFileInfo[NavTabFileInfo.Count-1]);
+                        count--;
                     }
                 }
                 else
