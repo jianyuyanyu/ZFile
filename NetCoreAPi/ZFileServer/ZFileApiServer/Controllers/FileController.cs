@@ -184,14 +184,41 @@ namespace ZFileApiServer.Controllers
                 else
                 {
                     //删除目录  
-                    var AllfolderInfo = await _sysFileFolder.GetListAsync();
-                    var Folder = await _sysFileFolder.GetModelAsync(o => o.ID == item.Id);
-                    List<FT_Folder> fs = new List<FT_Folder>();
-                    fs.Add(Folder.data);
-                    var list = AllfolderInfo.data.Where(o => o.PFolderID == Folder.data.ID);
-                    var FileResdata = await _sysFille.GetListAsync();
-                    var fileList = FileResdata.data.Where(o => o.FolderID == Folder.data.ID);
-                    
+                  
+                    List<FoldFileItem> ListID = new List<FoldFileItem>();
+
+                    var folderListRes = await _sysFileFolder.GetListAsync();
+                    List<FT_Folder> ListAll = folderListRes.data;
+
+                    var folderRes = await _sysFileFolder.GetModelAsync(o=>o.ID==item.Id);
+                    FT_Folder Folder = folderRes.data;
+
+                    FoldFile Model = new FoldFile();
+                    Model.Name = Folder.Name;
+                    Model.FolderID = Folder.ID;
+                    Model.CRUser = Folder.CRUser;
+                    Model.PFolderID = Folder.PFolderID.Value;
+                    ListID.Add(new FoldFileItem() { ID = Folder.ID, Type = "folder" });
+                    var SubFileSres = await _sysFille.GetListAsync(o => o.FolderID == Folder.ID, c => c.ID == Folder.ID, DbOrderEnum.Asc);
+                    Model.SubFileS = SubFileSres.data;
+
+                    foreach (var items in Model.SubFileS)
+                        ListID.Add(new FoldFileItem() { ID = items.ID, Type = "file" });
+
+                      _sysFille.GetNextFloder(item.Id,ListAll,ref ListID);
+
+                    foreach (var listitem in ListID)
+                    {
+                        if (listitem.Type == "file")
+                        {
+                          await  _sysFille.DeleteAsync(o=>o.ID==listitem.ID);
+                        }
+                        else
+                        {
+                            await _sysFileFolder.DeleteAsync(o => o.ID == listitem.ID);
+                        }
+                    }
+                  
                     await _fT_FileAuth.DeleteAsync(d => d.RefID == item.Id && d.RefType == "0");
                     Apires.statusCode = 200;
                 }
@@ -367,9 +394,6 @@ namespace ZFileApiServer.Controllers
                     {
 
                     }
-
-                    //Apires.data = 
-
                 }
 
             }
@@ -415,31 +439,6 @@ namespace ZFileApiServer.Controllers
                 Apires.data.data = TempBytes;
                 Apires.data.Index = Index;
                 Apires.statusCode = (int)ApiEnum.Status;
-
-
-                //using (var fs = new FileStream(Model.data.Directory + Model.data.FullPath, FileMode.Open))
-                //{
-                //    int shardSize = 1000 * 1024;
-                //    int FileCount = (int)(int.Parse(Model.data.filesize) / shardSize);
-                //    if ((int.Parse(Model.data.filesize) % shardSize) > 0)
-                //    {
-                //        FileCount += 1;
-                //    }
-                //    if (Index > FileCount - 1)
-                //    {
-                //        Apires.message = "无效的下标！";
-                //        return Ok(Apires);
-                //    }
-                //    if (Index == FileCount - 1)
-                //    {
-                //        //最后一片 = 总长 - (每次片段大小 * 已下载片段个数)
-                //        shardSize = (int)(int.Parse(Model.data.filesize) - (shardSize * Index));
-                //    }
-                //    byte[] datas = new byte[shardSize];
-                //    await fs.ReadAsync(datas, 0, datas.Length);
-                //    Apires.data = datas;
-                //    Apires.statusCode = (int)ApiEnum.Status;
-                //}
             }
             return Ok(Apires);
         }

@@ -22,5 +22,6 @@ namespace ZFile.Service.Interfaces
         /// <returns></returns>
         public Task<ApiResult<FT_Folder>> AddFolders(FT_Folder Folder, string UserName);
 
+        
     }
 }

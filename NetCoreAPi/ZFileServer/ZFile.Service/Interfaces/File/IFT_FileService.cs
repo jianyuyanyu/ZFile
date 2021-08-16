@@ -32,6 +32,6 @@ namespace ZFile.Service.Interfaces
         public Task<ApiResult<List<FT_FileDtoTwo>>> GetFileListInfo(string foldertype, string FileExtendName, string UserName);
 
         public Task<ApiResult<Object>> UploadFile(UploadDto dto);
-
+        public List<FoldFile> GetNextFloder(int FolderID, List<FT_Folder> ListAll, ref List<FoldFileItem> ListID);
     }
 }

@@ -66,6 +66,35 @@ namespace ZFile.Service.Implements
 
             return res;
         }
+        /// <summary>
+        ///  循环查询文件
+        /// </summary>
+        /// <param name="FolderID"></param>
+        /// <param name="ListAll"></param>
+        /// <param name="ListID"></param>
+        /// <returns></returns>
+        public  List<FoldFile> GetNextFloder(int FolderID, List<FT_Folder> ListAll, ref List<FoldFileItem> ListID)
+        {
+            List<FoldFile> ListData = new List<FoldFile>();
+            var list = ListAll.Where(d => d.PFolderID == FolderID);
+            foreach (var item in list)
+            {
+                FoldFile FolderNew = new FoldFile();
+                FolderNew.FolderID = item.ID;
+                FolderNew.Name = item.Name;
+                FolderNew.CRUser = item.CRUser;
+                FolderNew.PFolderID = item.PFolderID.Value;
+                var SubFileSres =  GetListAsync(o => o.FolderID == item.ID, s => s.ID, DbOrderEnum.Asc).Result;
+                FolderNew.SubFileS = SubFileSres.data;
+                foreach (var SubFile in FolderNew.SubFileS)
+                    ListID.Add(new FoldFileItem() { ID = SubFile.ID, Type = "file" });
+                var SubFolderRes =   GetNextFloder(item.ID, ListAll, ref ListID);
+                FolderNew.SubFolder = SubFolderRes;
+                ListData.Add(FolderNew);
+                ListID.Add(new FoldFileItem() { ID = item.ID, Type = "folder" });
+            }
+            return ListData;
+        }
 
 
         /// <summary>
