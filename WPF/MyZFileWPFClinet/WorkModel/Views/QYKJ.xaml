@@ -68,7 +68,7 @@
                         Command="{Binding AddFolderCommand}"
                         Content="新建文件夹"
                         FontSize="14"
-                        Style="{StaticResource BtnLinkStyle}" />-->
+                         />-->
 
                 </Grid>
 
@@ -108,7 +108,7 @@
                             CommandParameter="{Binding .}"
                             Content="{Binding Name}"
                             FontSize="14"
-                            Style="{StaticResource BtnLinkStyle}"
+                            
                             ToolTip="{Binding Name}" />
                         <TextBlock VerticalAlignment="Center" Text="&gt;" />
                     </StackPanel>
@@ -167,7 +167,7 @@
                                     CommandParameter="{Binding .}"
                                     Content="{Binding Name}"
                                     FontSize="14"
-                                    Style="{StaticResource BtnLinkStyle}"
+                                    
                                     ToolTip="{Binding Name}" />
                             </StackPanel>
                         </DataTemplate>

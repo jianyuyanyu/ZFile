@@ -70,11 +70,11 @@
                                     Margin="0,5"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
+                                    internal:ButtonHelper.ButtonStyle="Link"
                                     Command="{Binding CloseCommand, RelativeSource={RelativeSource AncestorType=internal:NoticeCard}}"
                                     CommandParameter="{Binding Path=., RelativeSource={RelativeSource AncestorType=internal:NoticeCard}}"
                                     Content="×"
-                                    FontSize="25"
-                                    Style="{StaticResource BtnLinkStyle}" />
+                                    FontSize="25" />
                             </Grid>
                         </Grid>
                     </Grid>

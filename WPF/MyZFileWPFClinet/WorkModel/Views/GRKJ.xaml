@@ -13,7 +13,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="av">
     <UserControl.Resources>
-        <Style TargetType="{x:Type Button}">
+        <!--<Style TargetType="{x:Type Button}">
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="30" />
             <Setter Property="Background" Value="Transparent" />
@@ -21,6 +21,23 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Margin" Value="2,0" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="AliceBlue" />
+                    <Setter Property="Foreground" Value="#1E90FF" />
+                    <Setter Property="FontWeight" Value="Black" />
+                    <Setter Property="BorderThickness" Value="0" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>-->
+
+        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+
+            <Setter Property="Height" Value="30" />
+            <Setter Property="zt:ButtonHelper.ButtonStyle" Value="Link" />
+            <Setter Property="zt:ButtonHelper.HoverBrush" Value="Red" />
+            <Setter Property="zt:ButtonHelper.ClickStyle" Value="Sink" />
+            <Setter Property="FontFamily" Value="{StaticResource IconFont}" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="AliceBlue" />
@@ -55,7 +72,7 @@
                 <Button
                     Background="Transparent"
                     Command="{Binding AddFileInfoCommand}"
-                    Content="上传" />
+                    Content="上传"  Width="100"/>
                 <Grid Width="300">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -120,7 +137,6 @@
                             CommandParameter="{Binding .}"
                             Content="{Binding Name}"
                             FontSize="14"
-                            Style="{StaticResource BtnLinkStyle}"
                             ToolTip="{Binding Name}" />
                         <TextBlock VerticalAlignment="Center" Text="&gt;" />
                     </StackPanel>
@@ -179,7 +195,6 @@
                                     CommandParameter="{Binding .}"
                                     Content="{Binding Name}"
                                     FontSize="14"
-                                    Style="{StaticResource BtnLinkStyle}"
                                     ToolTip="{Binding Name}" />
                             </StackPanel>
                         </DataTemplate>

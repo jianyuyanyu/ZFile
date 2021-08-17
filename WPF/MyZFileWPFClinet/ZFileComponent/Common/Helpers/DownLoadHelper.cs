@@ -166,10 +166,11 @@ namespace Component.Common.Helpers
             CurrentDownFileitem.Remove(info);
             SunSize = SunSize - info.Size;
             SunProgressValues = SunProgressValues - (int)info.Size;
-            info = null;
+        
             UpdateSunProgreesAct?.Invoke(SunSize, SunProgressValues);
             UpdateSunProgress();
-            Notice.Show("下载成功", "Notice", 3, MessageBoxIcon.Success);
+            Notice.Show("下载成功", info.Name, 8, MessageBoxIcon.Success);
+            info = null;
             //MessageBox.Show("下载成功");
         }
         public async Task ExcuVerify(string safeFileName, string FilePATH)
@@ -302,7 +303,8 @@ namespace Component.Common.Helpers
             if (model.statusCode != 200) return;
             CurrentUploadItem.Remove(item);
             UploadSave();
-            MessageBox.Show("上传成功");
+            Notice.Show("上传成功", Name, 8, MessageBoxIcon.Success);
+       
         }
     }
     public class DownLoadInfo : BindableBase

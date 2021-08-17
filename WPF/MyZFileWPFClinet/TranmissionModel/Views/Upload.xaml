@@ -16,6 +16,13 @@
         <converters:BufferConverter x:Key="MBConverter" />
         <converters:DownStateChanageConverter x:Key="DownStateChanage" />
         <converters:DownStateVisBilityConverter x:Key="DownStateVisBility" />
+
+        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+            <Setter Property="zt:ButtonHelper.ButtonStyle" Value="Link" />
+            <Setter Property="zt:ButtonHelper.HoverBrush" Value="Red" />
+            <Setter Property="zt:ButtonHelper.ClickStyle" Value="Sink" />
+            <Setter Property="FontFamily" Value="{StaticResource IconFont}" />
+        </Style>
     </UserControl.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -142,21 +149,18 @@
                                 Content="{Binding state, Converter={StaticResource DownStateChanage}}"
                                 FontFamily="{StaticResource IconFont}"
                                 FontSize="22"
-                                Foreground="#90C1FF"
-                                Style="{StaticResource BtnLinkStyle}" />
+                                Foreground="#90C1FF" />
                             <Button
                                 Content="&#xE618;"
                                 FontFamily="{StaticResource IconFont}"
                                 FontSize="22"
-                                Foreground="#90C1FF"
-                                Style="{StaticResource BtnLinkStyle}" />
+                                Foreground="#90C1FF" />
                             <Button
                                 BorderThickness="0"
                                 Content="&#xE739;"
                                 FontFamily="{StaticResource IconFont}"
                                 FontSize="22"
-                                Foreground="#90C1FF"
-                                Style="{StaticResource BtnLinkStyle}" />
+                                Foreground="#90C1FF" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

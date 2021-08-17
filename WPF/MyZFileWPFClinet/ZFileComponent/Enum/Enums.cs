@@ -70,4 +70,20 @@ namespace Component
         CancelOrNo,
     }
     #endregion
+
+    #region Button
+    public enum ButtonStyle
+    {
+        Standard,
+        Hollow,
+        Outline,
+        Link,
+    }
+
+    public enum ClickStyle
+    {
+        None,
+        Sink,
+    }
+    #endregion
 }
