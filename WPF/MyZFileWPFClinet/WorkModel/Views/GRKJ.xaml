@@ -10,29 +10,9 @@
     xmlns:zt="clr-namespace:ZFileComponent.Themes.ControlHelper;assembly=ZFileComponent"
     av:DesignHeight="768"
     av:DesignWidth="1024"
-    prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="av">
     <UserControl.Resources>
-        <!--<Style TargetType="{x:Type Button}">
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Margin" Value="2,0" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="AliceBlue" />
-                    <Setter Property="Foreground" Value="#1E90FF" />
-                    <Setter Property="FontWeight" Value="Black" />
-                    <Setter Property="BorderThickness" Value="0" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>-->
-
         <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
-
             <Setter Property="Height" Value="30" />
             <Setter Property="zt:ButtonHelper.ButtonStyle" Value="Link" />
             <Setter Property="zt:ButtonHelper.HoverBrush" Value="Red" />
@@ -48,11 +28,11 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <i:Interaction.Triggers>
+    <!--<i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
         </i:EventTrigger>
-    </i:Interaction.Triggers>
+    </i:Interaction.Triggers>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />

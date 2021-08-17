@@ -152,7 +152,7 @@ namespace Component.Common.Helpers
             if (File.Exists(info.Name + "." + info.format))
                 File.Delete(info.Name + "." + info.format);
 
-            using (Stream stream = new FileStream(info.Name + "." + info.format, FileMode.Create, FileAccess.Write))
+            using (Stream stream = new FileStream(info.SaveFile, FileMode.Create, FileAccess.Write))
             {
                 foreach (string chunkFile in chunkFiles)
                 {
@@ -357,6 +357,8 @@ namespace Component.Common.Helpers
             get { return _RemainingTime; }
             set { SetProperty(ref _RemainingTime, value); }
         }
+
+        public string SaveFile { get; set; }
     }
     public class UploadInfo : BindableBase
     {

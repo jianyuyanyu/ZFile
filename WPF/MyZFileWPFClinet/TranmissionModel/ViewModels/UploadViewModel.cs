@@ -80,13 +80,13 @@ namespace TranmissionModel.ViewModels
             CurrnetDowmFileInfoitem = downLoadHelper.GetAllUploadInfo();
             if (CurrnetDowmFileInfoitem?.Count != 0)
                 CurrnetDowmFileInfoitem[0].state = DownState.Suspend;
-            downLoadHelper.UpdateSunProgreesAct += UpdateSumProgrees;
+          //  downLoadHelper.UpdateSunProgreesAct += UpdateSumProgrees;
         }
 
-        private void UpdateSumProgrees(double Size, int Progrees)
-        {
-            SumSize = Size;
-            ProgressValues = Progrees;
-        }
+        //private void UpdateSumProgrees(double Size, int Progrees)
+        //{
+        //    SumSize = Size;
+        //    ProgressValues = Progrees;
+        //}
     }
 }

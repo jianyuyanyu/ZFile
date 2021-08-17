@@ -50,7 +50,6 @@
 
                 <Button
                     Background="Transparent"
-                    Command="{Binding AddFileInfoCommand}"
                     Content="下载" />
                 <Grid Width="300">
                     <Grid.ColumnDefinitions>
@@ -59,17 +58,6 @@
                         <ColumnDefinition />
 
                     </Grid.ColumnDefinitions>
-                    <!--<Border
-                        Grid.ColumnSpan="3"
-                        Background="#C80084FF"
-                        CornerRadius="15"
-                        Opacity="0.15" />-->
-                    <!--<Button
-                        Command="{Binding AddFolderCommand}"
-                        Content="新建文件夹"
-                        FontSize="14"
-                         />-->
-
                 </Grid>
 
             </WrapPanel>
@@ -108,7 +96,6 @@
                             CommandParameter="{Binding .}"
                             Content="{Binding Name}"
                             FontSize="14"
-                            
                             ToolTip="{Binding Name}" />
                         <TextBlock VerticalAlignment="Center" Text="&gt;" />
                     </StackPanel>

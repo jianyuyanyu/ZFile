@@ -80,8 +80,8 @@ namespace WorkModel.ViewModels
 
         private void AddFolder()
         {
-            var content = new AddFloder(_provider,CurrnetFolder);
-            DialogBox.Show(SystemResource.Nav_MainContent, content, "创建文件夹",null, DialogClose);
+            var content = new AddFloder(_provider, CurrnetFolder);
+            DialogBox.Show(SystemResource.Nav_MainContent, content, "创建文件夹", null, DialogClose);
         }
 
         private async void DialogClose(DialogBox arg1, object arg2)
@@ -111,24 +111,39 @@ namespace WorkModel.ViewModels
             await GetFloderInfo();
         }
 
-   
+
         FolderModel CurrnetFolder;
         private async void OpenFloder(FolderModel o)
         {
-           
+
             if (o.Type == 1)
-                DownFile(o);
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.FilterIndex = 1;
+                sfd.RestoreDirectory = true;
+                sfd.FileName = o.Name+"."+o.format;
+                Nullable<bool> result = sfd.ShowDialog();
+                if (result == true)
+                {
+                    DownFile(o, sfd.FileName);
+                }
+                else
+                {
+                    return;
+                }
+               
+            }
             else
             {
                 if (CurrnetFolder.Id == o.Id) return;
 
                 int index = NavTabFileInfo.IndexOf(o);
-                if (index >=0)
+                if (index >= 0)
                 {
-                    int count = NavTabFileInfo.Count -(index + 1) ;
-                    while (count!=0)
+                    int count = NavTabFileInfo.Count - (index + 1);
+                    while (count != 0)
                     {
-                        NavTabFileInfo.Remove(NavTabFileInfo[NavTabFileInfo.Count-1]);
+                        NavTabFileInfo.Remove(NavTabFileInfo[NavTabFileInfo.Count - 1]);
                         count--;
                     }
                 }
@@ -142,14 +157,14 @@ namespace WorkModel.ViewModels
 
         }
 
-        async void DownFile(FolderModel o)
+        async void DownFile(FolderModel o,string SaveFile)
         {
             var ApiResData = await service.GetDownFileInfo(o.Id);
             if (ApiResData.statusCode != 200) return;
             string Id = ApiResData.data.FileData;
             int Size = int.Parse(ApiResData.data.FileSize);
             int Count = ApiResData.data.FileCount;
-            var model = new DownLoadInfo() { Id = Id, Size = Size, SumCount = Count, format = o.format, Name = o.Name };
+            var model = new DownLoadInfo() { Id = Id, Size = Size, SumCount = Count, format = o.format, Name = o.Name,SaveFile= SaveFile };
             downLoadHelper.DownloadPatch(model);
         }
 
@@ -175,7 +190,7 @@ namespace WorkModel.ViewModels
             CurrnetFolder.Id = 2;
             CurrnetFolder.Remark = "2";
         }
-     
+
         async Task GetFloderInfo(int FloderID = 2, int Id = 2)
         {
             UserFolderItem.Clear();
@@ -184,7 +199,7 @@ namespace WorkModel.ViewModels
             {
                 CurrnetFolder.Id = FloderID;
                 model.data.FileInfo.ForEach(o => UserFolderItem.Add(new FolderModel() { CRTime = o.CRDate.Value, format = o.FileExtendName, Size = ByteConvert.GetSize(Convert.ToInt64(o.FileSize)), Id = o.ID, Name = o.Name, Type = 1 }));
-                model.data.FolderInfo.ForEach(o => UserFolderItem.Add(new FolderModel() { CRTime = o.CRDate.Value, format = "文件", Size = "", Id = o.ID, Name = o.Name, Type = 2,Remark=o.Remark }));
+                model.data.FolderInfo.ForEach(o => UserFolderItem.Add(new FolderModel() { CRTime = o.CRDate.Value, format = "文件", Size = "", Id = o.ID, Name = o.Name, Type = 2, Remark = o.Remark }));
             }
         }
     }
