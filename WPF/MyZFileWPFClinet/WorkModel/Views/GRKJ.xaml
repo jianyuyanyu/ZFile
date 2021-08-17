@@ -71,20 +71,17 @@
                     <Button
                         Command="{Binding AddFolderCommand}"
                         Content="新建文件夹"
-                        FontSize="14"
-                        Style="{StaticResource BtnLinkStyle}" />
+                        FontSize="14" />
                     <Button
                         Grid.Column="1"
                         Command="{Binding AddFolderCommand}"
                         Content="新建文件夹"
-                        FontSize="14"
-                        Style="{StaticResource BtnLinkStyle}" />
+                        FontSize="14" />
                     <Button
                         Grid.Column="2"
                         Command="{Binding AddFolderCommand}"
                         Content="新建文件夹"
-                        FontSize="14"
-                        Style="{StaticResource BtnLinkStyle}" />
+                        FontSize="14" />
                 </Grid>
 
             </WrapPanel>
@@ -125,7 +122,7 @@
                             FontSize="14"
                             Style="{StaticResource BtnLinkStyle}"
                             ToolTip="{Binding Name}" />
-                        <TextBlock VerticalAlignment="Center">&gt;</TextBlock>
+                        <TextBlock VerticalAlignment="Center" Text="&gt;" />
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
@@ -158,7 +155,7 @@
                                 Margin="5,0"
                                 VerticalAlignment="Center"
                                 zt:CheckBoxHelper.CheckBoxStyle="Standard" />
-                            <TextBlock Margin="5,0">文件名</TextBlock>
+                            <TextBlock Margin="5,0" Text="文件名" />
                         </StackPanel>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
@@ -216,7 +213,7 @@
 
                 <DataGridTemplateColumn Width="0.2*">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock>创建时间</TextBlock>
+                        <TextBlock Text="创建时间" />
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

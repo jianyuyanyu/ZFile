@@ -16,6 +16,14 @@
     <local:Minus2Converter x:Key="Minus2Converter" />
     <local:SwitchToggleMarginConverter x:Key="SwitchToggleMarginConverter" />
     <local:Add3Converter x:Key="Add3Converter" />
-
     <local:BoolToVisibilityConverter x:Key="boolToVisibility" />
+    <local:ProgressBarCornerRadiusConverter x:Key="ProgressBarCornerRadiusConverter" />
+    <local:RingProgressBarConverter x:Key="RingProgressBarConverter" />
+    <local:ProgressBarPercentConverter x:Key="ProgressBarPercentConverter" />
+    <local:ProgressBarOffset1Converter x:Key="ProgressBarOffset1Converter" />
+    <local:ProgressBarOffset2Converter x:Key="ProgressBarOffset2Converter" />
+
+
+    <local:DoubleToCornerRadiusConverter x:Key="DoubleToCornerRadiusConverter" />
+    <local:CornerRadiusToDoubleConverter x:Key="CornerRadiusToDoubleConverter" />
 </ResourceDictionary>

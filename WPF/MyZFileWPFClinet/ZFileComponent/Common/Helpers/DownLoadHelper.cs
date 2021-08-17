@@ -14,6 +14,7 @@ using System.Windows;
 using Component.Dto;
 using System.Windows.Threading;
 using Component.Api;
+using ZFileComponent.Internal;
 
 namespace Component.Common.Helpers
 {
@@ -168,7 +169,8 @@ namespace Component.Common.Helpers
             info = null;
             UpdateSunProgreesAct?.Invoke(SunSize, SunProgressValues);
             UpdateSunProgress();
-            MessageBox.Show("下载成功");
+            Notice.Show("下载成功", "Notice", 3, MessageBoxIcon.Success);
+            //MessageBox.Show("下载成功");
         }
         public async Task ExcuVerify(string safeFileName, string FilePATH)
         {

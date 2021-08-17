@@ -34,4 +34,40 @@ namespace Component
         Selector,
     }
     #endregion
+
+    #region ProgressBarStyle
+    public enum ProgressBarStyle
+    {
+        Standard,
+        Ring
+    }
+    #endregion
+
+    #region MessageBoxStyle
+    public enum MessageBoxStyle
+    {
+        Standard,
+        Modern,
+        Classic,
+        //Poster
+    }
+
+    public enum MessageBoxIcon
+    {
+        None,
+        Info,
+        Success,
+        Error,
+        Warning,
+        Question,
+    }
+
+    public enum DefaultButton
+    {
+        None,
+        YesOK,
+        NoOrCancel,
+        CancelOrNo,
+    }
+    #endregion
 }

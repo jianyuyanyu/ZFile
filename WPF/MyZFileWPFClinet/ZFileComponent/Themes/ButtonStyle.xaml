@@ -3,13 +3,14 @@
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Resources/Resource.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Resources/Converter.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="BtnLinkStyle" TargetType="Button">
+    <Style x:Key="BtnLinkStyle" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="White" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontFamily" Value="{StaticResource IconFont}" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border
                         x:Name="border"
                         Background="{TemplateBinding Background}"

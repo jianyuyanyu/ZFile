@@ -4,7 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:prism="http://prismlibrary.com/"
+    xmlns:zt="clr-namespace:ZFileComponent.Themes.ControlHelper;assembly=ZFileComponent"
     prism:ViewModelLocator.AutoWireViewModel="True">
+
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Width" Value="100" />
@@ -12,13 +14,14 @@
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FontSize" Value="17" />
+            <Setter Property="FontSize" Value="14" />
             <Setter Property="Margin" Value="2,0" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#1E90FF" />
+                    <Setter Property="Background" Value="AliceBlue" />
                     <Setter Property="Foreground" Value="#1E90FF" />
-                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="FontWeight" Value="Black" />
+                    <Setter Property="BorderThickness" Value="0" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -30,6 +33,7 @@
     </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
             <RowDefinition Height="40" />
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -43,11 +47,31 @@
                 BorderBrush="Gray"
                 BorderThickness="0,0.5,0,0.5" />
             <WrapPanel VerticalAlignment="Center">
+
                 <Button
                     Background="Transparent"
                     Command="{Binding AddFileInfoCommand}"
-                    Content="上传" />
-                <Button Content="新建" />
+                    Content="下载" />
+                <Grid Width="300">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+
+                    </Grid.ColumnDefinitions>
+                    <!--<Border
+                        Grid.ColumnSpan="3"
+                        Background="#C80084FF"
+                        CornerRadius="15"
+                        Opacity="0.15" />-->
+                    <!--<Button
+                        Command="{Binding AddFolderCommand}"
+                        Content="新建文件夹"
+                        FontSize="14"
+                        Style="{StaticResource BtnLinkStyle}" />-->
+
+                </Grid>
+
             </WrapPanel>
             <StackPanel
                 Grid.Column="1"
@@ -62,17 +86,37 @@
                     Width="100"
                     Height="30"
                     Content="搜索" />
-                <TextBlock VerticalAlignment="Center" Text="{Binding ProgressbarText}" />
-                <ProgressBar
-                    Width="100"
-                    Height="20"
-                    Maximum="{Binding ProgressbarValueMax}"
-                    Value="{Binding ProgressbarValue}" />
 
             </StackPanel>
         </Grid>
+
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding NavTabFileInfo}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Button
+                            Margin="5,0"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Command="{Binding DataContext.OpenFloderCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                            CommandParameter="{Binding .}"
+                            Content="{Binding Name}"
+                            FontSize="14"
+                            Style="{StaticResource BtnLinkStyle}"
+                            ToolTip="{Binding Name}" />
+                        <TextBlock VerticalAlignment="Center" Text="&gt;" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <DataGrid
-            Grid.Row="1"
+            Grid.Row="2"
             AutoGenerateColumns="False"
             Background="Transparent"
             BorderThickness="0"
@@ -82,30 +126,36 @@
             CanUserResizeRows="False"
             CanUserSortColumns="False"
             IsReadOnly="True"
-            ItemsSource="{Binding UserFolderItem}">
+            ItemsSource="{Binding UserFolderItem}"
+            SelectedItem="{Binding SelectItem}">
             <DataGrid.ContextMenu>
                 <ContextMenu Name="dgmenu1" StaysOpen="true">
                     <MenuItem Header="下载" />
-                    <MenuItem Header="删除" />
+                    <MenuItem Command="{Binding DeleteItemCommand}" Header="删除" />
                     <MenuItem Header="分享" />
                 </ContextMenu>
             </DataGrid.ContextMenu>
-
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="0.5*">
                     <DataGridTemplateColumn.Header>
                         <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                            <CheckBox Margin="5,0" VerticalAlignment="Center" />
-                            <TextBlock Margin="5,0">文件名</TextBlock>
+                            <CheckBox
+                                Margin="5,0"
+                                VerticalAlignment="Center"
+                                zt:CheckBoxHelper.CheckBoxStyle="Standard" />
+                            <TextBlock Margin="5,0" Text="文件名" />
                         </StackPanel>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Height="30" Orientation="Horizontal">
-                                <CheckBox Margin="4,0" VerticalAlignment="Center" />
+                                <CheckBox
+                                    Margin="4,0"
+                                    VerticalAlignment="Center"
+                                    zt:CheckBoxHelper.CheckBoxStyle="Standard" />
                                 <TextBlock
                                     FontFamily="{StaticResource IconFont}"
-                                    FontSize="28"
+                                    FontSize="24"
                                     Foreground="#90C1FF"
                                     Text="{Binding format, Converter={StaticResource ForamtConverter}}" />
                                 <Button
@@ -117,18 +167,8 @@
                                     CommandParameter="{Binding .}"
                                     Content="{Binding Name}"
                                     FontSize="14"
-                                    ToolTip="{Binding Name}">
-                                    <Button.Style>
-                                        <Style TargetType="{x:Type Button}">
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Cursor" Value="Hand" />
-                                                    <Setter Property="Foreground" Value="Blue" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
+                                    Style="{StaticResource BtnLinkStyle}"
+                                    ToolTip="{Binding Name}" />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -139,7 +179,7 @@
                             <TextBlock
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                FontSize="18"
+                                FontSize="16"
                                 Text="{Binding format}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -161,7 +201,7 @@
 
                 <DataGridTemplateColumn Width="0.2*">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock>创建时间</TextBlock>
+                        <TextBlock Text="创建时间" />
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -175,5 +215,8 @@
 
             </DataGrid.Columns>
         </DataGrid>
+
+
     </Grid>
+
 </UserControl>

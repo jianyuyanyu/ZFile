@@ -7,6 +7,7 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
+    xmlns:zt="clr-namespace:ZFileComponent.Themes.ControlHelper;assembly=ZFileComponent"
     av:DesignHeight="502.234"
     av:DesignWidth="1049.078"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -15,123 +16,6 @@
         <converters:BufferConverter x:Key="MBConverter" />
         <converters:DownStateChanageConverter x:Key="DownStateChanage" />
         <converters:DownStateVisBilityConverter x:Key="DownStateVisBility" />
-
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FontFamily" Value="{StaticResource IconFont}" />
-            <Setter Property="Foreground" Value="#90C1FF" />
-            <Setter Property="FontSize" Value="22" />
-            <Setter Property="Width" Value="30" />
-        </Style>
-
-        <Style TargetType="{x:Type ProgressBar}">
-            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="Height" Value="15" />
-            <Setter Property="Background" Value="#6fae5f" />
-            <Setter Property="FontSize" Value="10" />
-            <Setter Property="Padding" Value="5,0" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ProgressBar}">
-                        <Grid Background="#00000000">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <Grid Height="{TemplateBinding Height}">
-                                <Border
-                                    Background="#000000"
-                                    CornerRadius="7.5"
-                                    Opacity="0.05" />
-                                <Border
-                                    BorderBrush="#000000"
-                                    BorderThickness="1"
-                                    CornerRadius="7.5"
-                                    Opacity="0.1" />
-                                <Grid Margin="{TemplateBinding BorderThickness}">
-                                    <Border x:Name="PART_Track" />
-                                    <Grid
-                                        x:Name="PART_Indicator"
-                                        HorizontalAlignment="Left"
-                                        ClipToBounds="True">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition x:Name="width1" />
-                                            <ColumnDefinition x:Name="width2" Width="0" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid x:Name="Animation" RenderTransformOrigin="0.5,0.5">
-                                            <Grid.RenderTransform>
-                                                <TransformGroup>
-                                                    <ScaleTransform ScaleX="1" ScaleY="-1" />
-                                                    <SkewTransform AngleX="0" AngleY="0" />
-                                                    <RotateTransform Angle="180" />
-                                                    <TranslateTransform />
-                                                </TransformGroup>
-                                            </Grid.RenderTransform>
-                                            <Border Background="{TemplateBinding Background}" CornerRadius="7.5">
-                                                <Viewbox
-                                                    Margin="{TemplateBinding Padding}"
-                                                    HorizontalAlignment="Left"
-                                                    SnapsToDevicePixels="True"
-                                                    StretchDirection="DownOnly">
-                                                    <TextBlock
-                                                        VerticalAlignment="Center"
-                                                        FontSize="{TemplateBinding FontSize}"
-                                                        Foreground="#ffffff"
-                                                        RenderTransformOrigin="0.5,0.5"
-                                                        SnapsToDevicePixels="True"
-                                                        Text="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, StringFormat=\{0\}%}">
-                                                        <TextBlock.RenderTransform>
-                                                            <TransformGroup>
-                                                                <ScaleTransform ScaleX="-1" ScaleY="1" />
-                                                                <SkewTransform AngleX="0" AngleY="0" />
-                                                                <RotateTransform Angle="0" />
-                                                                <TranslateTransform />
-                                                            </TransformGroup>
-                                                        </TextBlock.RenderTransform>
-                                                    </TextBlock>
-                                                </Viewbox>
-                                            </Border>
-                                            <Border
-                                                BorderBrush="#000000"
-                                                BorderThickness="1"
-                                                CornerRadius="7.5"
-                                                Opacity="0.1" />
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Determinate" />
-                                    <VisualState x:Name="Indeterminate">
-                                        <Storyboard RepeatBehavior="Forever">
-                                            <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
-                                                <EasingPointKeyFrame KeyTime="0:0:0" Value="0.5,0.5" />
-                                                <EasingPointKeyFrame KeyTime="0:0:1.5" Value="1.95,0.5" />
-                                                <EasingPointKeyFrame KeyTime="0:0:3" Value="0.5,0.5" />
-                                            </PointAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Background" Value="#c5c5c5" />
-                            </Trigger>
-                            <Trigger Property="IsIndeterminate" Value="true">
-                                <Setter TargetName="width1" Property="Width" Value="0.25*" />
-                                <Setter TargetName="width2" Property="Width" Value="0.725*" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
     </UserControl.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -153,18 +37,27 @@
             <ProgressBar
                 Grid.Column="1"
                 Height="20"
+                zt:ProgressBarHelper.IsPercentVisible="True"
+                Background="LightGray"
+                BorderThickness="1"
+                Foreground="#FF0091FF"
                 Maximum="{Binding SumSize}"
                 Value="{Binding ProgressValues}" />
             <StackPanel Grid.Column="2" Orientation="Horizontal">
                 <Button
                     Width="50"
                     Command="{Binding AllStartCommand}"
-                    Content="&#xE74F;" />
+                    Content="&#xe74f;"
+                    FontFamily="{StaticResource IconFont}"
+                    FontSize="22"
+                    Foreground="#90C1FF" />
                 <Button
                     Width="50"
                     Command="{Binding AllSupendCommand}"
-                    Content="&#xE65A;"
-                    FontSize="32" />
+                    Content="&#xe65a;"
+                    FontFamily="{StaticResource IconFont}"
+                    FontSize="32"
+                    Foreground="#90C1FF" />
             </StackPanel>
         </Grid>
         <ItemsControl
@@ -246,9 +139,24 @@
                             <Button
                                 Command="{Binding DataContext.ContinueOrSuspendCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}, AncestorLevel=1, Mode=FindAncestor}}"
                                 CommandParameter="{Binding .}"
-                                Content="{Binding state, Converter={StaticResource DownStateChanage}}" />
-                            <Button Content="&#xE618;" />
-                            <Button BorderThickness="0" Content="&#xE739;" />
+                                Content="{Binding state, Converter={StaticResource DownStateChanage}}"
+                                FontFamily="{StaticResource IconFont}"
+                                FontSize="22"
+                                Foreground="#90C1FF"
+                                Style="{StaticResource BtnLinkStyle}" />
+                            <Button
+                                Content="&#xE618;"
+                                FontFamily="{StaticResource IconFont}"
+                                FontSize="22"
+                                Foreground="#90C1FF"
+                                Style="{StaticResource BtnLinkStyle}" />
+                            <Button
+                                BorderThickness="0"
+                                Content="&#xE739;"
+                                FontFamily="{StaticResource IconFont}"
+                                FontSize="22"
+                                Foreground="#90C1FF"
+                                Style="{StaticResource BtnLinkStyle}" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

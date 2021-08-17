@@ -1,0 +1,111 @@
+﻿<UserControl
+    x:Class="ZFileComponent.Internal.CheckIcon"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:ZFileComponent.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZFileComponent.Internal"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="icon"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:ClassModifier="internal"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="SuccessBrush" Color="#75CD43" />
+        <SolidColorBrush x:Key="InfoBrush" Color="#55CEF1" />
+        <SolidColorBrush x:Key="ErrorBrush" Color="#FF5656" />
+        <SolidColorBrush x:Key="WarnBrush" Color="#F9D01A" />
+        <SolidColorBrush x:Key="QuestionBrush" Color="#55CEF1" />
+        <converter:CheckIconConverter x:Key="CheckIconConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid x:Name="GrdInfo" Visibility="Collapsed">
+            <Ellipse Stroke="{StaticResource InfoBrush}" StrokeThickness="{Binding Thickness, ElementName=icon}" />
+            <Path
+                Width="{Binding Thickness, ElementName=icon}"
+                Stroke="{StaticResource InfoBrush}"
+                StrokeEndLineCap="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="{Binding Thickness, ElementName=icon}">
+                <Path.Data>
+                    <MultiBinding Converter="{StaticResource CheckIconConverter}">
+                        <Binding ElementName="icon" Path="ActualWidth" />
+                        <Binding ElementName="icon" Path="MessageBoxIcon" />
+                        <Binding ElementName="icon" Path="Thickness" />
+                    </MultiBinding>
+                </Path.Data>
+            </Path>
+        </Grid>
+        <Grid x:Name="GrdError" Visibility="Collapsed">
+            <Ellipse Stroke="{StaticResource ErrorBrush}" StrokeThickness="{Binding Thickness, ElementName=icon}" />
+            <Path
+                Stroke="{StaticResource ErrorBrush}"
+                StrokeEndLineCap="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="{Binding Thickness, ElementName=icon}">
+                <Path.Data>
+                    <MultiBinding Converter="{StaticResource CheckIconConverter}">
+                        <Binding ElementName="icon" Path="ActualWidth" />
+                        <Binding ElementName="icon" Path="MessageBoxIcon" />
+                        <Binding ElementName="icon" Path="Thickness" />
+                    </MultiBinding>
+                </Path.Data>
+            </Path>
+        </Grid>
+        <Grid x:Name="GrdSuccess" Visibility="Collapsed">
+            <Ellipse Stroke="{StaticResource SuccessBrush}" StrokeThickness="{Binding Thickness, ElementName=icon}" />
+            <Path
+                Stroke="{StaticResource SuccessBrush}"
+                StrokeEndLineCap="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="{Binding Thickness, ElementName=icon}">
+                <Path.Data>
+                    <MultiBinding Converter="{StaticResource CheckIconConverter}">
+                        <Binding ElementName="icon" Path="ActualWidth" />
+                        <Binding ElementName="icon" Path="MessageBoxIcon" />
+                        <Binding ElementName="icon" Path="Thickness" />
+                    </MultiBinding>
+                </Path.Data>
+            </Path>
+
+        </Grid>
+        <Grid
+            x:Name="GrdWarn"
+            Margin="-5"
+            Visibility="Collapsed">
+            <Path
+                Stroke="{StaticResource WarnBrush}"
+                StrokeDashCap="Round"
+                StrokeEndLineCap="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="{Binding Thickness, ElementName=icon}">
+                <Path.Data>
+                    <MultiBinding Converter="{StaticResource CheckIconConverter}">
+                        <Binding ElementName="GrdWarn" Path="ActualWidth" />
+                        <Binding ElementName="icon" Path="MessageBoxIcon" />
+                        <Binding ElementName="icon" Path="Thickness" />
+                    </MultiBinding>
+                </Path.Data>
+            </Path>
+
+        </Grid>
+        <Grid x:Name="GrdQuestion" Visibility="Collapsed">
+            <Ellipse Stroke="{StaticResource QuestionBrush}" StrokeThickness="{Binding Thickness, ElementName=icon}" />
+            <Path
+                Stroke="{StaticResource QuestionBrush}"
+                StrokeEndLineCap="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="{Binding Thickness, ElementName=icon}">
+                <Path.Data>
+                    <MultiBinding Converter="{StaticResource CheckIconConverter}">
+                        <Binding ElementName="icon" Path="ActualWidth" />
+                        <Binding ElementName="icon" Path="MessageBoxIcon" />
+                        <Binding ElementName="icon" Path="Thickness" />
+                    </MultiBinding>
+                </Path.Data>
+            </Path>
+        </Grid>
+
+    </Grid>
+</UserControl>
