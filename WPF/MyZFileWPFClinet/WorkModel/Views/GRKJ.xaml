@@ -70,9 +70,10 @@
                 BorderThickness="0,0.5,0,0.5" />
             <WrapPanel VerticalAlignment="Center">
                 <Button
+                    Width="100"
                     Background="Transparent"
                     Command="{Binding AddFileInfoCommand}"
-                    Content="上传"  Width="100"/>
+                    Content="上传" />
                 <Grid Width="300">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -158,7 +159,10 @@
             SelectedItem="{Binding SelectItem}">
             <DataGrid.ContextMenu>
                 <ContextMenu Name="dgmenu1" StaysOpen="true">
-                    <MenuItem Header="下载" />
+                    <MenuItem
+                        Command="{Binding OpenFloderCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}"
+                        Header="下载" />
                     <MenuItem Command="{Binding DeleteItemCommand}" Header="删除" />
                     <MenuItem Header="分享" />
                 </ContextMenu>
