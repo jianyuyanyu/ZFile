@@ -48,7 +48,7 @@ namespace WorkModel.ViewModels
         async Task GetFloderInfo(int FloderID = 2, int Id = 1)
         {
             UserFolderItem.Clear();
-            var model = await service.GetFolderInfo(Id, FloderID);
+            var model = await service.GetSpaceInfo(Id, FloderID);
             if (model != null)
             {
                 CurrnetFolder.Id = FloderID;

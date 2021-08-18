@@ -28,6 +28,8 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
+
+
     <!--<i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
@@ -72,8 +74,8 @@
                         FontSize="14" />
                     <Button
                         Grid.Column="1"
-                        Command="{Binding AddFolderCommand}"
-                        Content="新建文件夹"
+                        Command="{Binding PASTEITEMCommand}"
+                        Content="移动"
                         FontSize="14" />
                     <Button
                         Grid.Column="2"
@@ -164,7 +166,10 @@
                                 <CheckBox
                                     Margin="4,0"
                                     VerticalAlignment="Center"
-                                    zt:CheckBoxHelper.CheckBoxStyle="Standard" />
+                                    zt:CheckBoxHelper.CheckBoxStyle="Standard"
+                                    Command="{Binding DataContext.CheckCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                                    CommandParameter="{Binding .}"
+                                    IsChecked="{Binding IsCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock
                                     FontFamily="{StaticResource IconFont}"
                                     FontSize="24"

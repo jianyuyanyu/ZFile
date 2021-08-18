@@ -43,24 +43,29 @@ namespace WorkModel.ViewModels
         public ObservableCollection<FolderModel> NavTabFileInfo
         {
             get { return _NavTabFileInfo; }
-            set
-            {
-                _NavTabFileInfo = value;
-            }
+            set { SetProperty(ref _NavTabFileInfo, value);}
         }
 
         private FolderModel _SelectItem;
         public FolderModel SelectItem
         {
             get { return _SelectItem; }
-            set { SetProperty(ref _SelectItem, value); }
+            set
+            {
+
+                SetProperty(ref _SelectItem, value);
+               
+            }
         }
+
+        public List<FolderModel> SelectCheckItems { get; set; }
 
 
         IContainerProvider _provider;
         IRegionManager _regionManager;
         public GRKJViewModel(IContainerProvider provider, IRegionManager regionManager) : base(provider, regionManager)
         {
+            SelectCheckItems = new List<FolderModel>();
             UserFolderItem = new ObservableCollection<FolderModel>();
             NavTabFileInfo = new ObservableCollection<FolderModel>() { new FolderModel() { Id = 2, Name = "我的网盘" } };
             service = provider.Resolve<WorkService>();
@@ -70,6 +75,8 @@ namespace WorkModel.ViewModels
             CurrnetFolder = new FolderModel();
             LoadMenu();
 
+
+
         }
         //public DelegateCommand LoadedCommand => new DelegateCommand(LoadMenu);
         public DelegateCommand AddFileInfoCommand => new DelegateCommand(AddFileInfo);
@@ -78,10 +85,33 @@ namespace WorkModel.ViewModels
 
         public DelegateCommand AddFolderCommand => new DelegateCommand(AddFolder);
 
+        public DelegateCommand PASTEITEMCommand => new DelegateCommand(PASTEITEM);
+
+        public DelegateCommand<FolderModel> CheckCommand => new DelegateCommand<FolderModel>(Check);
+
+        private void Check(FolderModel obj)
+        {
+            if (obj.IsCheck)
+                SelectCheckItems.Add(obj);
+            else
+                SelectCheckItems.Remove(obj);
+        }
+
         private void AddFolder()
         {
             var content = new AddFloder(_provider, CurrnetFolder);
             DialogBox.Show(SystemResource.Nav_MainContent, content, "创建文件夹", null, DialogClose);
+        }
+
+        
+
+        private void PASTEITEM()
+        {
+            if (SelectCheckItems.Count == 0) return;
+            PasteitemsDto dto = new PasteitemsDto();
+            SelectCheckItems.ForEach(item=> dto.Child.Add(new PasteitemsChild() { itemId=item.Id,ItemType=item.Type }));
+              var content = new PasteItem(_provider, dto);
+            DialogBox.Show(SystemResource.Nav_MainContent, content, "文件迁移", null, DialogClose);
         }
 
         private async void DialogClose(DialogBox arg1, object arg2)
@@ -121,7 +151,7 @@ namespace WorkModel.ViewModels
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.FilterIndex = 1;
                 sfd.RestoreDirectory = true;
-                sfd.FileName = o.Name+"."+o.format;
+                sfd.FileName = o.Name + "." + o.format;
                 Nullable<bool> result = sfd.ShowDialog();
                 if (result == true)
                 {
@@ -131,7 +161,7 @@ namespace WorkModel.ViewModels
                 {
                     return;
                 }
-               
+
             }
             else
             {
@@ -157,14 +187,14 @@ namespace WorkModel.ViewModels
 
         }
 
-        async void DownFile(FolderModel o,string SaveFile)
+        async void DownFile(FolderModel o, string SaveFile)
         {
             var ApiResData = await service.GetDownFileInfo(o.Id);
             if (ApiResData.statusCode != 200) return;
             string Id = ApiResData.data.FileData;
             int Size = int.Parse(ApiResData.data.FileSize);
             int Count = ApiResData.data.FileCount;
-            var model = new DownLoadInfo() { Id = Id, Size = Size, SumCount = Count, format = o.format, Name = o.Name,SaveFile= SaveFile };
+            var model = new DownLoadInfo() { Id = Id, Size = Size, SumCount = Count, format = o.format, Name = o.Name, SaveFile = SaveFile };
             downLoadHelper.DownloadPatch(model);
         }
 
@@ -194,7 +224,7 @@ namespace WorkModel.ViewModels
         async Task GetFloderInfo(int FloderID = 2, int Id = 2)
         {
             UserFolderItem.Clear();
-            var model = await service.GetFolderInfo(Id, FloderID);
+            var model = await service.GetSpaceInfo(Id, FloderID);
             if (model != null)
             {
                 CurrnetFolder.Id = FloderID;

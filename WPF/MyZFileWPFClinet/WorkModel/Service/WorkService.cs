@@ -11,9 +11,24 @@ namespace WorkModel
 {
     public class WorkService
     {
-        public async Task<BaseResponse<FolderData>> GetFolderInfo(int Type, int FolderId = 2)
+        public async Task<BaseResponse<FolderData>> GetSpaceInfo(int Type, int FolderId = 2)
         {
-            var model = await new BaseServiceRequest().GetRequest<BaseResponse<FolderData>>(new GetFolderRequst()
+            var model = await new BaseServiceRequest().GetRequest<BaseResponse<FolderData>>(new GetSpaceInfoRequst()
+            {
+                parameters = new Dictionary<string, object>()
+                {
+                    {"Type",Type },
+                    {"FolderId",FolderId },
+                },
+                Method = Method.POST,
+                IsJson = false
+            });
+            return model;
+        }
+
+        public async Task<BaseResponse<List<FT_FolderDto>>> GetFolderInfo(int Type, int FolderId = 2)
+        {
+            var model = await new BaseServiceRequest().GetRequest<BaseResponse<List<FT_FolderDto>>>(new GetFolderInfoRequst()
             {
                 parameters = new Dictionary<string, object>()
                 {
@@ -89,17 +104,36 @@ namespace WorkModel
             });
         }
 
+        public async Task<BaseResponse> PasteitemRequst(PasteitemsDto dto)
+        {
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new PasteitemRequst()
+            {
+
+                parameters = new Dictionary<string, object>()
+             {
+                 {"",dto }
+             },
+                Method = Method.POST,
+
+            });
+        }
+
+
     }
 
 
 
-    public class GetFolderRequst : BaseRequest
+    public class GetSpaceInfoRequst : BaseRequest
     {
-        public override string route { get => "api/GetFolderInfo"; }
+        public override string route { get => "api/GetSpaceInfo"; }
 
         public override string ContentType { get => "*/*"; }
     }
 
+    public class GetFolderInfoRequst : BaseRequest
+    {
+        public override string route { get => "api/GetFolderInfo"; }
+    }
 
     public class CheckAuth : BaseRequest
     {
@@ -117,10 +151,19 @@ namespace WorkModel
     {
         public override string route { get => "api/DelFile"; }
     }
+
+
     public class CreateFolder : BaseRequest
     {
         public override string route { get => "api/CreateFolder"; }
     }
+
+    public class PasteitemRequst : BaseRequest
+    {
+        public override string route { get => "api/Pasteitem"; }
+    }
+
+
 
 
 }

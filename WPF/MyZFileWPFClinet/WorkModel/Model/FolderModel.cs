@@ -20,6 +20,8 @@ namespace WorkModel
 
         public string Remark { get; set; }
 
+        public bool IsCheck { get; set; }
+
     }
 
     public class DelFile
@@ -28,6 +30,24 @@ namespace WorkModel
 
 
         public int Type { get; set; }
+    }
+
+    public class PasteitemsDto
+    {
+        public PasteitemsDto()
+        {
+            Child = new List<PasteitemsChild>();
+        }
+        public int Pid { get; set; }
+
+        public List<PasteitemsChild> Child { get; set; }
+
+    }
+    public class PasteitemsChild
+    {
+        public int itemId { get; set; }
+
+        public int ItemType { get; set; }
     }
 
 }

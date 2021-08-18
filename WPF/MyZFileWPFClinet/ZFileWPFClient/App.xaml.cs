@@ -23,7 +23,6 @@ namespace ZFileWPFClient
             return Container.Resolve<MainWindow>();
         }
 
-
         protected override void OnInitialized()
         {
             var win = Container.Resolve<LoginView>();
@@ -40,6 +39,7 @@ namespace ZFileWPFClient
             containerRegistry.Register<ILoginService, LoginService>();
             containerRegistry.Register<DownService>();
             containerRegistry.RegisterInstance<DownLoadHelper>(new DownLoadHelper(this.Container,null));
+            
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

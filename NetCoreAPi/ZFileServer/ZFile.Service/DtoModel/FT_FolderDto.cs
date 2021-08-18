@@ -7,7 +7,7 @@ using ZFile.Core.Model.File;
 
 namespace ZFile.Service.DtoModel
 {
-   public class FT_FolderDto: FT_Folder
+    public class FT_FolderDto : FT_Folder
     {
         public string AuthUser { get; set; }
     }
@@ -25,8 +25,25 @@ namespace ZFile.Service.DtoModel
     public class DelFile
     {
         public int Id { get; set; }
-        
-   
+
+
         public int Type { get; set; }
     }
+
+
+    public class PasteitemsDto
+    {
+       
+        public int Pid { get; set; }
+
+        public IEnumerable<PasteitemsChild>  Child { get; set; }
+
+    }
+    public class PasteitemsChild
+    {
+        public int itemId { get; set; }
+
+        public int ItemType { get; set; }
+    }
+
 }

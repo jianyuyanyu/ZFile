@@ -55,11 +55,11 @@ namespace ZFileApiServer.Controllers
         /// 查询网盘文件信息
         /// </summary>
         /// <param name="FolderId"></param>
-        /// <param name="Type"></param>
+        /// <param name="Type">1:公司空间，2：个人网盘</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("/api/GetFolderInfo")]
-        public async Task<IActionResult> GetFileInfoData(int Type, int FolderId = 2)
+        [Route("/api/GetSpaceInfo")]
+        public async Task<IActionResult> GetSpaceInfo(int Type, int FolderId = 2)
         {
             var apiRes = new ApiResult<FolderData>() { statusCode = (int)ApiEnum.HttpRequestError };
             string[] accesToken = Request.Headers["Authorization"].ToString().Split(' ');
@@ -82,6 +82,72 @@ namespace ZFileApiServer.Controllers
                 data.FileInfo = FileModel.data;
                 apiRes.data = data;
                 apiRes.statusCode = (int)ApiEnum.Status;
+            }
+            return Ok(apiRes);
+        }
+
+        /// <summary>
+        /// 查询文件夹信息
+        /// </summary>
+        /// <param name="Type"></param>
+        /// <param name="FolderId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/GetFolderInfo")]
+        public async Task<IActionResult> GetFolderInfo(int Type,int FolderId)
+        {
+            var apiRes = new ApiResult<IEnumerable<FT_FolderDto>>() { statusCode = (int)ApiEnum.HttpRequestError };
+            string[] accesToken = Request.Headers["Authorization"].ToString().Split(' ');
+            TokenModel token = JwtHelper.SerializeJWT(accesToken[1]);
+            var FolderModel = await _sysFileFolder.GetUserCreateFile(FolderId, token.UserName);
+            apiRes.data = FolderModel.data;
+            apiRes.statusCode = (int)ApiEnum.Status;
+            return Ok(apiRes);
+        }
+
+        /// <summary>
+        /// 移动文件或移动文件夹
+        /// </summary>
+        /// <param name="Pid"></param>
+        /// <param name="Dto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("/api/Pasteitem")]
+        public async Task<IActionResult> Pasteitem([FromBody] PasteitemsDto Dto)
+        {
+            var apiRes = new ApiResult<IEnumerable<FT_FolderDto>>() { statusCode = (int)ApiEnum.HttpRequestError };
+            foreach (var item in Dto.Child)
+            {
+                //1：文件，2：文件夹
+                if (item.ItemType==1)
+                {
+                    var FileResut =await _sysFille.GetModelAsync(o=>o.ID==item.itemId);
+                    if (FileResut.statusCode != 200) return Ok(apiRes);
+                    FileResut.data.FolderID = Dto.Pid;
+                    await _sysFille.UpdateAsync(FileResut.data);
+                    apiRes.statusCode = (int)ApiEnum.Status;
+                }
+                else
+                {
+                    var FolderResut = await _sysFileFolder.GetModelAsync(o => o.ID == Dto.Pid);
+                    if (FolderResut.statusCode != 200) return Ok(apiRes);
+                    var Folder2Resut = await _sysFileFolder.GetModelAsync(o=>o.ID==item.itemId);
+                    if (Folder2Resut.statusCode != 200) return Ok(apiRes);
+                    Folder2Resut.data.PFolderID = Dto.Pid;
+                    await _sysFileFolder.UpdateAsync(Folder2Resut.data);
+                    //找到所有需要更新得，然后批量更新
+                    var ALLFolders = await _sysFileFolder.GetListAsync(o=>o.Remark.Contains(Folder2Resut.data.Remark),o=>o.ID,DbOrderEnum.Asc);
+                    if (ALLFolders.statusCode != 200) return Ok(apiRes);
+
+                    string strOldRemark = Folder2Resut.data.Remark;
+                    string strNewRemark = FolderResut.data.Remark + "-" + Folder2Resut.data.ID;
+                    foreach (var FolderItem in ALLFolders.data)
+                    {
+                        FolderItem.Remark = FolderItem.Remark.Replace(strOldRemark, strNewRemark);
+                    }
+                    await _sysFileFolder.UpdateAsync(ALLFolders.data);
+                    apiRes.statusCode = (int)ApiEnum.Status;
+                }
             }
             return Ok(apiRes);
         }
