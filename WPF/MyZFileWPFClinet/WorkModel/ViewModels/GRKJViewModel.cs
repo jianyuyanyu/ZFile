@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 using WorkModel.WindosDlg;
 using ZFileComponent.Themes.ControlHelper;
@@ -200,6 +201,7 @@ namespace WorkModel.ViewModels
 
         private async void AddFileInfo()
         {
+            
             //获取用户文件权限
             var model = await service.CheckAuth();
             if (model.statusCode != 200) return;

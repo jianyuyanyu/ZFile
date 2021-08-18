@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ZFileWPFClient.Views
 {
@@ -7,10 +9,10 @@ namespace ZFileWPFClient.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+       
         public MainWindow()
         {
             InitializeComponent();
-          
         }
     }
 }

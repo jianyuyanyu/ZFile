@@ -23,7 +23,7 @@ namespace ZFile.Core
             Db.Aop.OnLogExecuting = (sql, pars) =>
             {
                 string s = sql;
-                System.Console.WriteLine(sql);
+                //System.Console.WriteLine(sql);
                 //    Db.Utilities.SerializeObject(pars.ToDictionary(it => it.ParameterName, it => it.Value)));
                 //Console.WriteLine();
             };
