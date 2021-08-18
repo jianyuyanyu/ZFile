@@ -38,6 +38,8 @@ namespace ZFileComponent.Themes.ControlHelper
             ButtonBase closeButton = GetTemplateChild(CloseButtonPartName) as ButtonBase;
             closeButton.Click += (sender, args) =>
             {
+
+
                 closeParameter = null;
                 IsShow = false;
             };
