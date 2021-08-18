@@ -506,6 +506,11 @@ namespace ZFileApiServer.Controllers
                 Apires.data.Index = Index;
                 Apires.statusCode = (int)ApiEnum.Status;
             }
+            else
+            {
+                Apires.statusCode = (int)ApiEnum.Status;
+                Apires.success = false;
+            }
             return Ok(Apires);
         }
 

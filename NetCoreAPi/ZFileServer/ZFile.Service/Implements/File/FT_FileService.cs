@@ -138,6 +138,9 @@ namespace ZFile.Service.Implements
                 }
                 else
                 {
+                    var md5 = await PushChunk(dto.fileMd5, dto.chunk, dto.name, Path.GetExtension(dto.name), dto.Filetype, new MemoryStream(dto.upinfo));
+                    ApiRes.data = md5;
+                    ApiRes.statusCode = (int)ApiEnum.Status;
                     return ApiRes;
                 }
             }

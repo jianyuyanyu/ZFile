@@ -126,6 +126,13 @@ namespace Component.Common.Helpers
                     case DownState.Start:
                         var item = await service.DownloadFile(info.Id, info.CurrnetCount);
                         if (item.statusCode != 200) continue;
+                        if (item.success == false)
+                        {
+                            Directory.Delete(rootPath2, true);
+                            CurrentDownFileitem.Remove(info);
+                            Notice.Show("文件出错", info.Name, 8, MessageBoxIcon.Error);
+                            return;
+                        }
                         info.CurrnetCount++;
                         tasks.Add(Task.Run(()=> downDisk(item.data,info)));
                         break;
