@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Splat;
+using System;
 using Xamarin.Forms;
 
 using Xamarin.Forms.Xaml;
@@ -6,7 +7,7 @@ using ZFileXamarin.Base;
 
 namespace ZFileXamarin
 {
-    public partial class App : Application
+    public partial class App : Application, IEnableLogger
     {
       
         public App()
@@ -14,13 +15,14 @@ namespace ZFileXamarin
             InitializeComponent();
             var bootstrapper = new AppBootstrapper();
             MainPage = bootstrapper.CreateMainPage();
+        
         }
 
     
 
         protected override void OnStart()
         {
-
+         
         }
 
         protected override void OnSleep()

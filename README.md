@@ -15,6 +15,8 @@ WPF：Net5+PrismWpf+RestSharp
 
 Api：Net5+ SqlSugar+sqlite
 
+新增xamarim:Reactiveui+RestSharp
+
 ## 功能
 
 - [x] 读取文件夹列表/新建文件夹
@@ -25,6 +27,7 @@ Api：Net5+ SqlSugar+sqlite
 - [x] 支持文件夹上传
 - [x] 支持文件夹下载
 - [x] 支持文件迁移
+- [x] 支持app
 - [ ] win系统下的gui管理工具
 - [ ] 其他系统下的gui管理工具
 
