@@ -32,6 +32,7 @@
                 <ColumnDefinition Width="0.5*" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
+           
             <StackPanel Grid.Column="1" Orientation="Horizontal">
                 <TextBlock
                     FontFamily="{StaticResource IconFont}"

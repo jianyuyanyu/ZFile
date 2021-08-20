@@ -127,7 +127,7 @@ namespace ZFileApiServer
             {
                 options.AddPolicy("Any", policy =>
                 {
-                    policy.WithOrigins("http://localhost:8081", "http://localhost:8082", "http://localhost:8083")
+                    policy.WithOrigins("*:*")
                       .AllowAnyHeader()
                        .AllowAnyMethod()
                        .AllowCredentials();

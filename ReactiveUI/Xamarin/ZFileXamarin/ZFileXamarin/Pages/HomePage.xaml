@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<reactiveui:ReactiveContentPage
+    x:Class="ZFileXamarin.Pages.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ZFileXamarin.Models"
+    xmlns:reactiveui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+    xmlns:vm="clr-namespace:ZFileXamarin.ViewModel"
+    x:TypeArguments="vm:HomeViewModel">
+    <NavigationPage.TitleView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackLayout Orientation="Horizontal">
+                <Ellipse
+                    HeightRequest="50"
+                    HorizontalOptions="Start"
+                    Stroke="Red"
+                    StrokeThickness="1"
+                    WidthRequest="50" />
+            </StackLayout>
+
+        </Grid>
+    </NavigationPage.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Priority="0" Text="123" />
+
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <Grid
+            BackgroundColor="#F5F5F5"
+            HeightRequest="50"
+            VerticalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="0.3*" />
+            </Grid.ColumnDefinitions>
+            <CollectionView Grid.Column="1" ItemsSource="{Binding TabItemList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="40" Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton
+                            Content="{Binding Name}"
+                            ControlTemplate="{StaticResource radTemplate}"
+                            HorizontalOptions="Fill" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+        <ContentView Content="{Binding SelectPage}" />
+    </StackLayout>
+</reactiveui:ReactiveContentPage>

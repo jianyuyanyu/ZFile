@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<reactiveui:ReactiveContentPage
+    x:Class="ZFileXamarin.Pages.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:reactiveui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+    xmlns:vm="clr-namespace:ZFileXamarin.ViewModel"
+    x:TypeArguments="vm:LogViewModel">
+
+
+    <Grid>
+        <StackLayout>
+            <Grid Padding="20,140,20,0" VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label
+                    FontSize="Title"
+                    Text="账号:"
+                    VerticalOptions="Center" />
+                <Entry Grid.Column="1" Text="{Binding UserName}" />
+            </Grid>
+            <Grid Padding="20,0,20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    FontSize="Title"
+                    Text="密码:"
+                    VerticalOptions="Center" />
+                <Entry
+                    Grid.Column="1"
+                    IsPassword="True"
+                    Text="{Binding Password}" />
+            </Grid>
+
+
+            <Button
+                Margin="20"
+                Background="#6D71FE"
+                Command="{Binding LoginCommand}"
+                FontSize="16"
+                Text="登入"
+                TextColor="White" />
+            <Grid>
+                <Button
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource LineBtn}"
+                    Text="注册账号"
+                    TextColor="Gray" />
+                <Button
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="End"
+                    Style="{StaticResource LineBtn}"
+                    Text="忘记密码"
+                    TextColor="Gray" />
+            </Grid>
+        </StackLayout>
+        <Grid IsVisible="{Binding DialogIsOpen}">
+            <Frame BackgroundColor="Gray" Opacity="0.8" />
+            <Label
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="{Binding Msg}"
+                TextColor="White"
+                VerticalOptions="Center" />
+        </Grid>
+
+    </Grid>
+</reactiveui:ReactiveContentPage>

@@ -106,7 +106,6 @@ namespace ZFileWPFClient.ViewModels
                     username = USE.data.Result.username,
                     userRealName = USE.data.Result.userRealName
                 };
-
                 Contract.Title = USE.data.Result1;
                 Contract.Company = USE.data.Result2;
                 Contract.qycodeDto = new QycodeDto()
@@ -123,6 +122,7 @@ namespace ZFileWPFClient.ViewModels
                     updatetime = USE.data.Result4.updatetime,
                     yyspace = USE.data.Result4.yyspace
                 };
+
                 await Task.Delay(1000);
                 WeakReferenceMessenger.Default.Send("", "NavigationPage");
             }

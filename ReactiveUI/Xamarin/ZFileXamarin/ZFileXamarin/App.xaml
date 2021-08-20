@@ -1,8 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZFileXamarin.App">
+<Application
+    x:Class="ZFileXamarin.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:locak="clr-namespace:ZFileXamarin.Converters">
     <Application.Resources>
 
+
+        <ResourceDictionary>
+            <locak:FormatConverter x:Key="FormatConverter" />
+            <x:String x:Key="IconFont">iconfont.ttf#</x:String>
+            <ControlTemplate x:Key="radTemplate">
+                <Grid>
+                    <StackLayout>
+                        <ContentPresenter
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                        <BoxView
+                            x:Name="boder"
+                            HeightRequest="5"
+                            HorizontalOptions="Center"
+                            WidthRequest="50"
+                            Color="#1E90FF" />
+                    </StackLayout>
+
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CheckedStates">
+                                <VisualState x:Name="Checked">
+                                    <VisualState.Setters>
+                                        <Setter TargetName="boder" Property="Opacity" Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                        <Setter TargetName="boder" Property="Opacity" Value="0" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                </Grid>
+            </ControlTemplate>
+
+            <Style TargetType="{x:Type RadioButton}">
+                <Style.Triggers>
+                    <Trigger TargetType="RadioButton" Property="IsChecked" Value="True">
+                        <Setter Property="TextColor" Value="Blue" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+
+
+            <Style x:Key="LineBtn" TargetType="{x:Type Button}">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Style.Triggers>
+                    <Trigger TargetType="Button" Property="IsPressed" Value="True">
+                        <Setter Property="TextColor" Value="Blue" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
