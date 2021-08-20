@@ -2,8 +2,8 @@
 <ContentPage
     x:Class="ZFileXamarin.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-     
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.NavBarHasShadow="True">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="LineBtn" TargetType="{x:Type Button}">
@@ -17,7 +17,7 @@
     </ContentPage.Resources>
 
     <StackLayout>
-        
+
         <Frame
             Padding="24"
             BackgroundColor="#2196F3"

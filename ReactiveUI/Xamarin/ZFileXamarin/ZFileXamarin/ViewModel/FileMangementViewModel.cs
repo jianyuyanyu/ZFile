@@ -8,12 +8,13 @@ namespace ZFileXamarin.ViewModel
 {
     public class FileMangementViewModel : ReactiveObject
     {
-        public FileMangementViewModel(IScreen screen = null)
+
+        public FileMangementViewModel()
         {
-            HostScreen = screen ?? Locator.Current.GetService<IScreen>();
+         
             
         }
 
-        public IScreen HostScreen  {get;}
+ 
     }
 }

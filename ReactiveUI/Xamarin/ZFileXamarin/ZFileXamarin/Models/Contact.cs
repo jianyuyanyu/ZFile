@@ -33,7 +33,9 @@ namespace ZFileXamarin.Models
 
     public class TabItem
     {
-        public int ID { get; set; }
+        public string PageName { get; set; }
         public string Name { get; set; }
     }
+
+    
 }

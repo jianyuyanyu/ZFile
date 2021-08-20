@@ -15,6 +15,8 @@ using ReactiveUI.XamForms;
 
 namespace ZFileXamarin.ViewModel
 {
+
+   
    public class HomeViewModel : ReactiveObject, IRoutableViewModel
     {
         public string UrlPathSegment => "Home";
@@ -24,17 +26,36 @@ namespace ZFileXamarin.ViewModel
         public object SelectPage { get; set; }
         [Reactive]
         public ObservableCollection<TabItem> TabItemList { get; set; }
+        [Reactive]
+        public TabItem SelectItem { get; set; }
+        public Dictionary<string, object> PagesItem = new Dictionary<string, object>(); 
         public HomeViewModel(IScreen screen = null)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
-            SelectPage = new FileMangementPage();
             TabItemList = new ObservableCollection<TabItem>() {
-            new TabItem(){ ID=2,Name="网盘" },
-            new TabItem(){ ID=3,Name="上传"},
-            new TabItem(){ ID=4,Name="下载"}
+            new TabItem(){ PageName=typeof(FileMangementPage).Name,Name="网盘" },
+            new TabItem(){ PageName="",Name="上传"},
+            new TabItem(){ PageName="",Name="下载"}
             };
-            
+            SelectItem = TabItemList[0];
+            NvaPageGo<FileMangementPage, FileMangementViewModel>();
+        }
 
+
+        public void NvaPageGo<TView,TViewmodel>() where TView:new() where TViewmodel:new() 
+        {
+            if (PagesItem.ContainsKey(typeof(TView).Name))
+            {
+                SelectPage = PagesItem[typeof(TView).Name];
+            }
+            else
+            {
+                var page = new TView();
+                (page as ContentView).BindingContext = new TViewmodel();
+                PagesItem.Add(typeof(TView).Name, page);
+                SelectPage = page;
+            };
+           
         }
     }
 }

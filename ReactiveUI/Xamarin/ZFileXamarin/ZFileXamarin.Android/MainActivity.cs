@@ -18,18 +18,15 @@ namespace ZFileXamarin.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //ToolbarResource = Resources.lst;
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             LoadApplication(new App());
-
-
         }
 
-       
     }
   
 }

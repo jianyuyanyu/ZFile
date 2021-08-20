@@ -7,7 +7,7 @@ using ZFileXamarin.Base;
 
 namespace ZFileXamarin
 {
-    public partial class App : Application, IEnableLogger
+    public partial class App : Application
     {
       
         public App()

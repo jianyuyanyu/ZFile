@@ -32,7 +32,7 @@
                 <ColumnDefinition Width="0.5*" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-           
+
             <StackPanel Grid.Column="1" Orientation="Horizontal">
                 <TextBlock
                     FontFamily="{StaticResource IconFont}"
@@ -54,7 +54,13 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Orientation="Horizontal">
-                <Button Width="100" zt:ButtonHelper.ButtonStyle="Link" Foreground="Gray" zt:ButtonHelper.HoverBrush="AliceBlue">关于</Button>
+                <Button
+                    Width="100"
+                    zt:ButtonHelper.ButtonStyle="Link"
+                    zt:ButtonHelper.HoverBrush="AliceBlue"
+                    Foreground="Gray">
+                    关于
+                </Button>
                 <Ellipse
                     Width="40"
                     Height="40"

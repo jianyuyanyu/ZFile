@@ -41,4 +41,9 @@
   <ItemGroup>
     <Resource Include="Fonts\iconfont.ttf" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\FlyoutPages\" />
+    <Folder Include="Pages\Shells\" />
+  </ItemGroup>
 </Project>

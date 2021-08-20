@@ -22,7 +22,8 @@ namespace ZFileXamarin.Base
             Locator.CurrentMutable.RegisterConstant(this, typeof(IScreen));
             RegisterServices();
             RegisterViews();
-            Router.Navigate.Execute(new HomeViewModel());
+            Router.Navigate.Execute(new LogViewModel());
+           
         }
 
         /// <summary>
