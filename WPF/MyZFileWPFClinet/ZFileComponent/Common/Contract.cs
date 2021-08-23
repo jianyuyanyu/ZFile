@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Component
 {
-    public static class Contract
+    public  class Contract
     {
         public static readonly string webUrl = "https://localhost:5001/";
 

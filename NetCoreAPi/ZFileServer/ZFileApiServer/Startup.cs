@@ -86,8 +86,8 @@ namespace ZFileApiServer
                 options.AddPolicy("Admin", policy => policy.RequireRole("Admin").Build());
                 options.AddPolicy("AdminOrApp", policy => policy.RequireRole("Admin,App").Build());
             });
-            #endregion
-          
+            #endregion       
+
             services.AddSwaggerGen(c =>
             {
                 c.IgnoreObsoleteActions();

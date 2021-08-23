@@ -49,6 +49,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZFileXamarin", "ReactiveUI\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamarinCommom", "ReactiveUI\Xamarin\ZFileXamarin\XamarinCommom\XamarinCommom\XamarinCommom.csproj", "{5139BD74-2B80-46DB-B7D2-FD1C796A3A4C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "支付", "支付", "{C053AA54-4990-4BC9-BB8B-DC92F0F078DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

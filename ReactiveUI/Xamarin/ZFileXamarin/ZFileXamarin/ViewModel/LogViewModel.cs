@@ -41,12 +41,6 @@ namespace ZFileXamarin.ViewModel
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             _loginService = _loginService ?? (ILoginService)Locator.Current.GetService(typeof(ILoginService));
-            
-           //var NavigateCommand = ReactiveCommand.CreateFromObservable(() =>
-           // {
-           //     return HostScreen.Router.Navigate.Execute(new HomeViewModel());
-           // });
-       
             var canExecuteLogin = this.WhenAnyValue(vm => vm.UserName, vm => vm.Password, (U, p) =>
             {
                 if (string.IsNullOrEmpty(U) && p.Length > 3)
@@ -64,23 +58,21 @@ namespace ZFileXamarin.ViewModel
         {
             DialogIsOpen = true;
                Msg = "正在登入";
+          
             //var LoginApiReust = await _loginService.LoginAsync(UserName, Password);
-            //if (LoginApiReust.statusCode!=200)
+       
+            //if (LoginApiReust.statusCode != 200)
             //{
             //    Msg = "登入异常！";
             //    await Task.Delay(1000);
-                
+
             //    DialogIsOpen = false;
             //    return;
-            //}
-            Msg = "登入成功！";
+            // }
+                Msg = "登入成功！";
             await Task.Delay(1000);
             DialogIsOpen = false;
             await HostScreen.Router.NavigateAndReset.Execute(new HomeViewModel());
-            //await  HostScreen.Router.Navigate.Execute(new HomeShellPage());
-            //App.Current.MainPage = new HomeShellPage();
-            //HostScreen.Router.Navigate.Execute();
-
         }
        
     }

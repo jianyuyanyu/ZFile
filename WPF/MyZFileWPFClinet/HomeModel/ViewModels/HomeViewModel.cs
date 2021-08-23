@@ -1,4 +1,5 @@
-﻿using Component.Common;
+﻿using Component;
+using Component.Common;
 using Component.Common.Helpers;
 using Component.ViewModelBase;
 using Prism.Commands;
@@ -33,6 +34,14 @@ namespace HomeModel.ViewModels
                     NvChangagePage(SystemResource.Nav_HomeContent, Seleitem.ModelCode + "View");
             }
         }
+        private string _UserName;
+        public string UserName
+        {
+            get { return _UserName; }
+            set { SetProperty(ref _UserName, value); }
+        }
+
+
         public HomeViewModel(IContainerProvider provider, IRegionManager regionManager) : base(provider, regionManager)
         {
             this.Service = provider.Resolve<MenuService>();
@@ -47,7 +56,7 @@ namespace HomeModel.ViewModels
             MenuItems.Add(new Menu() { IsSys = 1, PModelCode = "WORK", ModelName = "下载",ModelCode="Down" });
             Seleitem = MenuItems[0];
             NvChangagePage(SystemResource.Nav_HomeContent, Seleitem.ModelCode + "View");
-            
+            UserName = Contract.UserInfo.username;
         }
     }
 }

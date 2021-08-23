@@ -99,8 +99,9 @@ namespace ZFileApiServer.Controllers
                     apiRes.message = "您没有权限查看全部职员，请按部门查找";
                     return Ok(apiRes);
                 }
-
+                
                 var user = dbres.data;
+                
                 #region 废弃
 
 
@@ -134,6 +135,7 @@ namespace ZFileApiServer.Controllers
                 //    });
                 //}
                 #endregion
+
                 token = JwtHelper.IssueJWT(new TokenModel()
                 {
                     Uid = user.User.ID.ToString(),

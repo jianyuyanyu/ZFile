@@ -7,15 +7,12 @@
     xmlns:vm="clr-namespace:ZFileXamarin.ViewModel"
     x:TypeArguments="vm:HomeViewModel"
     Shell.NavBarHasShadow="False">
-
-
     <ContentPage Title="我的网盘">
         <ContentView Content="{Binding SelectPage}" />
     </ContentPage>
     <ContentPage Title="上传" />
 
     <ContentPage Title="下载" />
-
 
     <NavigationPage.TitleView>
         <Grid>
@@ -35,7 +32,10 @@
                     Stroke="red"
                     StrokeThickness="1"
                     WidthRequest="40" />
-                <Label Text="UserName" />
+                <Label
+                    Text="UserName"
+                    TextColor="White"
+                    VerticalOptions="Center" />
             </StackLayout>
 
         </Grid>
