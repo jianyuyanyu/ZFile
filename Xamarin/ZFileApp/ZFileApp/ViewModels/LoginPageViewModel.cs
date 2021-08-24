@@ -3,7 +3,9 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Prism.Navigation;
+using Prism.Services;
 using ReactiveUI;
+using ZFileApp.Services;
 
 namespace ZFileApp.ViewModels
 {
@@ -11,12 +13,15 @@ namespace ZFileApp.ViewModels
     {
         private readonly ObservableAsPropertyHelper<bool> _isLoading;
         private readonly INavigationService _navigationService;
+        private readonly ILoginService _loginService;
+        private readonly IPageDialogService _pageDialogService;
         private string _username="admin";
         private string _password="123abc";
-        public LoginPageViewModel(INavigationService navigationService)
+        public LoginPageViewModel(INavigationService navigationService,ILoginService loginService, IPageDialogService pageDialogService)
         {
             _navigationService = navigationService;
-
+            _loginService = loginService;
+            _pageDialogService = pageDialogService;
             // set the canExecute to an observable of two properties selector.
             var canExecuteLogin =
                 this.WhenAnyValue(
@@ -58,10 +63,25 @@ namespace ZFileApp.ViewModels
         private async Task ExecuteLogin()
         {
             await Observable.Return(Unit.Default).Delay(TimeSpan.FromSeconds(3));
-            await _navigationService.NavigateAsync($"NavigationPage/MainPage");
+
+            var LogResqust = await _loginService.LoginAsync(Username, Password);
+            if (LogResqust.statusCode==200)
+            {
+                await _navigationService.NavigateAsync($"NavigationPage/MainPage");
+            }
+            else
+            {
+                if (LogResqust.statusCode == 406)
+                {
+                    await _pageDialogService.DisplayAlertAsync("提示", LogResqust.message, "ok");
+                    return;
+                }
+
+                await _pageDialogService.DisplayAlertAsync("提示", $"编号:{LogResqust.statusCode},未知错误{LogResqust.message}" , "ok");
+            }
         }
 
-        private static bool ValidateEmail(string email) => !string.IsNullOrEmpty(email) && email.Length > 2;
+        private static bool ValidateEmail(string UserName) => !string.IsNullOrEmpty(UserName) && UserName.Length > 2;
 
         private static bool ValidatePassword(string password) => !string.IsNullOrEmpty(password) && password.Length > 5;
     }

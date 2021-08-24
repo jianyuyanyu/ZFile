@@ -5,6 +5,7 @@ using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
 using ZFileApp.Behaviors;
+using ZFileApp.Services;
 using ZFileApp.ViewModels;
 using ZFileApp.Views;
 
@@ -30,7 +31,6 @@ namespace ZFileApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<TabbedPage>();
             //containerRegistry.RegisterSingleton<IPageBehaviorFactory, SampleBehaviorFactory>();
@@ -38,6 +38,7 @@ namespace ZFileApp
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<NetDiskPage, NetDiskPageViewModel>();
             containerRegistry.RegisterForNavigation<UserPage, UserPageViewModel>();
+            containerRegistry.RegisterSingleton<ILoginService, LoginService>();
         }
     }
 }

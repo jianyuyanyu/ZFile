@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="80" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="50" />
+
         </Grid.RowDefinitions>
         <StackLayout
             Margin="0,10,0,0"
@@ -91,17 +91,10 @@
                 HorizontalOptions="Center"
                 Orientation="Horizontal">
                 <Image Source="facebook.png" />
-                <Label Text="Log in with Facebook" TextColor="#485992" />
+                <Label Text="" TextColor="#485992" />
             </StackLayout>
         </Grid>
-        <StackLayout Grid.Row="2" BackgroundColor="#FFFFFF">
-            <Label BackgroundColor="#E3E3E3" HeightRequest="1" />
-            <Label
-                HorizontalTextAlignment="Center"
-                Text="Don't have an account? Sign up."
-                VerticalOptions="FillAndExpand"
-                VerticalTextAlignment="Center" />
-        </StackLayout>
+
         <ActivityIndicator x:Name="Loading" Grid.Row="1" />
     </Grid>
 </views:ContentPageBase>
