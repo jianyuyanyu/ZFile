@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="ZFileApp.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}"
+    IsTabStop="False">
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label>欢迎进入网盘</Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage Title="网盘" />
+    <ContentPage Title="用户" />
+</TabbedPage>
