@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Prism.Navigation;
 using Prism.Services;
 using ReactiveUI;
+using XamarinCommom.Api;
 using ZFileApp.Services;
 
 namespace ZFileApp.ViewModels
@@ -16,7 +17,7 @@ namespace ZFileApp.ViewModels
         private readonly ILoginService _loginService;
         private readonly IPageDialogService _pageDialogService;
         private string _username="admin";
-        private string _password="123abc";
+        private string _password="abc123";
         public LoginPageViewModel(INavigationService navigationService,ILoginService loginService, IPageDialogService pageDialogService)
         {
             _navigationService = navigationService;
@@ -28,7 +29,7 @@ namespace ZFileApp.ViewModels
                     x => x.Username,
                     x => x.Password,
                     (username, password) =>
-                        ValidateEmail(username) && ValidatePassword(password));
+                        ValidateUserName(username) && ValidatePassword(password));
 
             Login = ReactiveCommand.CreateFromTask(ExecuteLogin, canExecuteLogin);
 
@@ -67,6 +68,7 @@ namespace ZFileApp.ViewModels
             var LogResqust = await _loginService.LoginAsync(Username, Password);
             if (LogResqust.statusCode==200)
             {
+                RestSharpCertificateMethod.Token = LogResqust.data.ToString();
                 await _navigationService.NavigateAsync($"NavigationPage/MainPage");
             }
             else
@@ -81,7 +83,7 @@ namespace ZFileApp.ViewModels
             }
         }
 
-        private static bool ValidateEmail(string UserName) => !string.IsNullOrEmpty(UserName) && UserName.Length > 2;
+        private static bool ValidateUserName(string UserName) => !string.IsNullOrEmpty(UserName) && UserName.Length > 2;
 
         private static bool ValidatePassword(string password) => !string.IsNullOrEmpty(password) && password.Length > 5;
     }

@@ -1,8 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<views:ContentPageBase
     x:Class="ZFileApp.Views.NetDiskPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="http://prismlibrary.com"
+    xmlns:viewModels="clr-namespace:ZFileApp.ViewModels"
+    xmlns:views="clr-namespace:ZFileApp.Views"
     Title="321"
-    prism:ViewModelLocator.AutowireViewModel="True" />
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:TypeArguments="viewModels:NetDiskPageViewModel">
+    <NavigationPage.TitleView>
+        <Button Text="我得网盘" />
+    </NavigationPage.TitleView>
+    <StackLayout>
+        <SearchBar x:Name="SearchBar" />
+
+        <ListView
+            x:Name="FolderListView"
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="False"
+            RowHeight="80">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <views:NetDiskViewCell />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label
+            x:Name="Instructions"
+            HorizontalOptions="CenterAndExpand"
+            Text="12313123"
+            VerticalOptions="CenterAndExpand" />
+    </StackLayout>
+
+</views:ContentPageBase>

@@ -27,15 +27,26 @@ namespace XamarinCommom.Api
            
             if (IsAuto)
                 client.AddDefaultHeader("Authorization", "Bearer "+Token);
-            var response = await client.ExecuteAsync(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                return JsonConvert.DeserializeObject<Response>(response.Content);
-            else
-                return new BaseResponse()
-                {
-                    statusCode = (int)response.StatusCode,
-                    message = response.StatusDescription ?? response.ErrorMessage,
-                } as Response;
+            
+            try
+            {
+                var response = await client.ExecuteAsync(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    return JsonConvert.DeserializeObject<Response>(response.Content);
+                else
+                    return new BaseResponse()
+                    {
+                        statusCode = (int)response.StatusCode,
+                        message = response.StatusDescription ?? response.ErrorMessage,
+                    } as Response;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
+           
         }
     }
 }

@@ -9,5 +9,10 @@ namespace ZFileApp.Views
            where TViewModel : ViewModelBase
     {
         protected readonly CompositeDisposable ViewCellBindings = new CompositeDisposable();
+
+        public void Destroy()
+        {
+            ViewCellBindings?.Dispose();
+        }
     }
 }

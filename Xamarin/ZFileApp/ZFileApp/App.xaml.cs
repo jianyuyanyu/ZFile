@@ -38,7 +38,12 @@ namespace ZFileApp
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<NetDiskPage, NetDiskPageViewModel>();
             containerRegistry.RegisterForNavigation<UserPage, UserPageViewModel>();
+
+            ///×¢²á·þÎñ
             containerRegistry.RegisterSingleton<ILoginService, LoginService>();
+            containerRegistry.RegisterSingleton<IFolderService, FolderService>();
+          
+            //containerRegistry.RegisterForNavigation<NetDiskViewCell, NetDiskViewCellViewModel>();
         }
     }
 }
