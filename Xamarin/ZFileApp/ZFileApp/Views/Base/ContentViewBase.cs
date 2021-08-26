@@ -1,5 +1,4 @@
 ﻿using System.Reactive.Disposables;
-
 using ReactiveUI.XamForms;
 using ZFileApp.ViewModels;
 

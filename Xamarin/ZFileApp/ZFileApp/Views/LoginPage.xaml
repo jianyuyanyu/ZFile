@@ -96,6 +96,11 @@
             </StackLayout>
         </Grid>
 
-        <ActivityIndicator x:Name="Loading" Grid.Row="1" />
+        <ActivityIndicator
+            x:Name="Loading"
+            Grid.Row="1"
+            HeightRequest="120"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand" />
     </Grid>
 </views:ContentPageBase>

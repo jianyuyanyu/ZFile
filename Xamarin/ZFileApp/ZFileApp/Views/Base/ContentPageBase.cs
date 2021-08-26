@@ -1,6 +1,5 @@
 ﻿using System.Reactive.Disposables;
 using Prism.Navigation;
-
 using ReactiveUI.XamForms;
 using ZFileApp.ViewModels;
 

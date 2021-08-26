@@ -4,7 +4,7 @@ using ReactiveUI;
 
 namespace ZFileApp.ViewModels
 {
-    public class ViewModelBase : ReactiveObject, IDestructible
+    public class ViewModelBase : ReactiveObject, IDestructible, INavigationAware
     {
         protected CompositeDisposable Disposal = new CompositeDisposable();
 
@@ -12,5 +12,8 @@ namespace ZFileApp.ViewModels
         {
             Disposal.Dispose();
         }
+
+        public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
+        public virtual void OnNavigatedTo(INavigationParameters parameters) { }
     }
 }

@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ReactiveUI.Events.XamForms" Version="11.5.35" />
-    <PackageReference Include="ReactiveUI.XamForms" Version="11.5.35" />
+    <PackageReference Include="ReactiveUI.Events.XamForms" Version="11.5.17" />
+    <PackageReference Include="ReactiveUI.XamForms" Version="11.5.17" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1364" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.5.3.2" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
@@ -20,13 +20,10 @@
     <EmbeddedResource Update="Views\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NetDiskPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\NetDiskViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\UserPage.xaml">
+    <EmbeddedResource Update="Views\NetDisListkPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

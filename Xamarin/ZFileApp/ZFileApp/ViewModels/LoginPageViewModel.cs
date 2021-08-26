@@ -23,7 +23,7 @@ namespace ZFileApp.ViewModels
             _navigationService = navigationService;
             _loginService = loginService;
             _pageDialogService = pageDialogService;
-            // set the canExecute to an observable of two properties selector.
+           
             var canExecuteLogin =
                 this.WhenAnyValue(
                     x => x.Username,
@@ -69,7 +69,7 @@ namespace ZFileApp.ViewModels
             if (LogResqust.statusCode==200)
             {
                 RestSharpCertificateMethod.Token = LogResqust.data.ToString();
-                await _navigationService.NavigateAsync($"NavigationPage/MainPage");
+                await _navigationService.NavigateAsync($"NavigationPage/NetDisListkPage");
             }
             else
             {
