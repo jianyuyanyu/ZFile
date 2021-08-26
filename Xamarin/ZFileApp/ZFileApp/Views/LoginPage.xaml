@@ -99,8 +99,8 @@
         <ActivityIndicator
             x:Name="Loading"
             Grid.Row="1"
-            HeightRequest="120"
-            HorizontalOptions="CenterAndExpand"
-            VerticalOptions="CenterAndExpand" />
+            HeightRequest="130"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
     </Grid>
 </views:ContentPageBase>

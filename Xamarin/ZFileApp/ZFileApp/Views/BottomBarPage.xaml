@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:TabbedPageBase
+    x:Class="ZFileApp.Views.BottomBarPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ViewModel="clr-namespace:ZFileApp.ViewModels"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:converters="clr-namespace:ZFileApp.Converters"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:views="clr-namespace:ZFileApp.Views"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:TypeArguments="ViewModel:BottomBarPageViewModel">
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <prism:ContainerProvider x:Key="LocalImagePathConverter" x:TypeArguments="converters:LocalImagePathConverter" />
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+    <TabbedPage.Children>
+        <views:NetDisListkPage Title="网盘" IconImageSource="Netdisimg.png" />
+        <ContentPage Title="我的" IconImageSource="User.png" />
+    </TabbedPage.Children>
+</views:TabbedPageBase>

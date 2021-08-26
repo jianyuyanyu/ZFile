@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MasterDetailPageBase
+    x:Class="ZFileApp.Views.ManPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:viewmodel="clr-namespace:ZFileApp.ViewModels"
+    xmlns:views="clr-namespace:ZFileApp.Views"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:TypeArguments="viewmodel:ManPageViewModel">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <StackLayout>
+                <Grid>
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="NetDisListkPage"
+                        
+                        Text="网盘" />
+                </Grid>
+
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+</views:MasterDetailPageBase>

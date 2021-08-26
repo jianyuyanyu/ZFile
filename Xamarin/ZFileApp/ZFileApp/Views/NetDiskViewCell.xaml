@@ -6,7 +6,6 @@
     xmlns:ViewModel="clr-namespace:ZFileApp.ViewModels"
     xmlns:prism="http://prismlibrary.com"
     xmlns:views="clr-namespace:ZFileApp.Views"
-    
     x:TypeArguments="ViewModel:NetDiskViewCellViewModel">
     <ContentView.Content>
         <Grid RowSpacing="0">

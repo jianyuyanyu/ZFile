@@ -69,7 +69,7 @@ namespace ZFileApp.ViewModels
             if (LogResqust.statusCode==200)
             {
                 RestSharpCertificateMethod.Token = LogResqust.data.ToString();
-                await _navigationService.NavigateAsync($"NavigationPage/NetDisListkPage");
+                await _navigationService.NavigateAsync($"ManPage/NavigationPage/BottomBarPage");
             }
             else
             {

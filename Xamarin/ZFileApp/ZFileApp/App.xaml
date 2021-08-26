@@ -6,6 +6,8 @@
     xmlns:prism="http://prismlibrary.com">
     <Application.Resources>
 
+        <x:String x:Key="IcoFont">iconfont.ttf</x:String>
+
         <Color x:Key="PrimaryColor">#00A5F2</Color>
         <Color x:Key="AccentColor">#00A5F2</Color>
         <Color x:Key="TextColor">White</Color>

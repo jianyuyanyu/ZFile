@@ -16,7 +16,7 @@ using ZFileApp.Services;
 
 namespace ZFileApp.ViewModels
 {
-    public class NetDisListkPageViewModel : ViewModelBase
+    public class NetDisListkPageViewModel : NavigationViewModelBase
     {
 
         public readonly SourceCache<FolderModel, int> _FolderCache = new SourceCache<FolderModel, int>(x => x.Id);
@@ -65,6 +65,8 @@ namespace ZFileApp.ViewModels
             //  .Where(x => x == null)
             //  .Subscribe(_ => _FolderCache.Clear())
             //  .DisposeWith(Disposal);
+            //Title = "我的网盘";
+            //GetFileInfo();
         }
 
 

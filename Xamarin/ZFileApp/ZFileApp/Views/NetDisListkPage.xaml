@@ -5,6 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ViewModel="clr-namespace:ZFileApp.ViewModels"
     xmlns:Views="clr-namespace:ZFileApp.Views"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
     x:TypeArguments="ViewModel:NetDisListkPageViewModel"
     NavigationPage.HasBackButton="True"
     NavigationPage.HasNavigationBar="True">
@@ -18,7 +20,6 @@
                 FontSize="18"
                 Text="{Binding Title}"
                 TextColor="White" />
-
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
@@ -30,12 +31,11 @@
         <StackLayout>
             <SearchBar x:Name="SearchBar" Grid.Column="1" />
             <ListView
-                x:Name="NuGetPackageListView"
+                x:Name="FolderListView"
                 HasUnevenRows="True"
                 IsPullToRefreshEnabled="True"
                 RowHeight="80"
-                SelectedItem="{Binding SelectItem}"
-                SelectionMode="Single">
+                SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
