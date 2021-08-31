@@ -121,7 +121,6 @@
                         <common:PasswordBoxBehavior />
                     </i:Interaction.Behaviors>
                 </PasswordBox>
-
                 <Button
                     Grid.Row="3"
                     Width="220"
@@ -133,7 +132,6 @@
                     FontSize="17"
                     Foreground="White"
                     Style="{x:Null}" />
-
                 <UniformGrid Margin="0,10,0,0">
                     <TextBlock
                         FontFamily="微软雅黑"

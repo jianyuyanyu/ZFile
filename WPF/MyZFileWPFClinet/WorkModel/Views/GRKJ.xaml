@@ -50,41 +50,40 @@
                 Grid.ColumnSpan="2"
                 BorderBrush="Gray"
                 BorderThickness="0,0.5,0,0.5" />
-            <WrapPanel VerticalAlignment="Center">
+
+
+            <UniformGrid
+                Width="310"
+                HorizontalAlignment="Left"
+                Columns="3">
                 <Button
                     Width="100"
-                    Background="Transparent"
+                    Margin="1,0"
+                    Background="#C80084FF"
                     Command="{Binding AddFileInfoCommand}"
-                    Content="上传" />
-                <Grid Width="300">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                    Content="上传"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+                <Button
+                    Background="BlueViolet"
+                    Command="{Binding AddFolderCommand}"
+                    Content="新建文件夹"
+                    FontSize="14"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+                <Button
+                    Grid.Column="1"
+                    Margin="1,0"
+                    Background="BlueViolet"
+                    Command="{Binding PASTEITEMCommand}"
+                    Content="移动"
+                    FontSize="14"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
 
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        Grid.ColumnSpan="3"
-                        Background="#C80084FF"
-                        CornerRadius="15"
-                        Opacity="0.15" />
-                    <Button
-                        Command="{Binding AddFolderCommand}"
-                        Content="新建文件夹"
-                        FontSize="14" />
-                    <Button
-                        Grid.Column="1"
-                        Command="{Binding PASTEITEMCommand}"
-                        Content="移动"
-                        FontSize="14" />
-                    <Button
-                        Grid.Column="2"
-                        Command="{Binding AddFolderCommand}"
-                        Content="新建文件夹"
-                        FontSize="14" />
-                </Grid>
+            </UniformGrid>
 
-            </WrapPanel>
+
             <StackPanel
                 Grid.Column="1"
                 HorizontalAlignment="Right"
@@ -97,7 +96,9 @@
                 <Button
                     Width="100"
                     Height="30"
-                    Content="搜索" />
+                    Margin="5"
+                    Content="搜索"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
 
             </StackPanel>
         </Grid>
@@ -142,7 +143,6 @@
             <DataGrid.ContextMenu>
                 <ContextMenu Name="dgmenu1" StaysOpen="true">
                     <MenuItem
-                       
                         Command="{Binding OpenFloderCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}"
                         Header="下载" />

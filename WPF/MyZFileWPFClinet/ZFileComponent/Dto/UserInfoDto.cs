@@ -21,6 +21,7 @@ namespace Component
         public int filecount { get; set; }
         public string yyspace { get; set; }
     }
+
    public  class UserInfoDto
     {
 

@@ -23,41 +23,21 @@
             <ColumnDefinition Width="140" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid Grid.ColumnSpan="2">
+
+        <!--<Grid Grid.ColumnSpan="2" Background="{StaticResource MahApps.Brushes.WindowTitle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20" />
                 <ColumnDefinition Width="0.5*" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <TextBlock
-                    FontFamily="{StaticResource IconFont}"
-                    FontSize="32"
-                    Foreground="#1E90FF"
-                    Text="&#xe654;" />
-                <TextBlock
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    FontSize="28"
-                    FontWeight="Black"
-                    Foreground="Black"
-                    Text="ZFile网盘" />
-            </StackPanel>
+
             <StackPanel
                 Grid.Column="2"
                 Margin="20,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Orientation="Horizontal">
-                <Button
-                    Width="100"
-                    zt:ButtonHelper.ButtonStyle="Link"
-                    zt:ButtonHelper.HoverBrush="AliceBlue"
-                    Foreground="Gray">
+                <Button Style="{StaticResource MaterialDesignIconButton}">
                     关于
                 </Button>
                 <Ellipse
@@ -72,59 +52,87 @@
                     FontSize="24"
                     Text="&#xe60c;" />
                 <Button
-                    zt:ButtonHelper.ButtonStyle="Link"
-                    zt:ButtonHelper.ClickCoverOpacity="0.5"
-                    zt:ButtonHelper.ClickStyle="Sink"
+                    Background="{StaticResource MahApps.Brushes.WindowTitle}"
                     Content="&#xe63d;"
                     FontFamily="{StaticResource IconFont}"
-                    FontSize="28"
-                    Foreground="BlueViolet" />
+                    FontSize="24"
+                    Foreground="White"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" />
             </StackPanel>
+        </Grid>-->
+        <Grid Background="{StaticResource MahApps.Brushes.WindowTitle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition />
+
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <Ellipse
+                    Width="40"
+                    Height="40"
+                    Margin="10"
+                    Fill="{StaticResource DataGridRow.BorderBrush}" />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    Text="{Binding UserName}" />
+            </StackPanel>
+
+            <ListBox
+                Grid.Row="1"
+                ItemsSource="{Binding MenuItems}"
+                SelectedItem="{Binding Seleitem}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Grid>
+                                        <Border Name="border" />
+                                        <ContentPresenter />
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="Transparent" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton
+                            Width="100"
+                            Height="40"
+                            HorizontalAlignment="Center"
+                            Content="{Binding ModelName}"
+                            Foreground="White"
+                            Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}">
+                            <RadioButton.IsChecked>
+                                <Binding
+                                    Mode="TwoWay"
+                                    Path="IsSelected"
+                                    RelativeSource="{RelativeSource AncestorType=ListBoxItem}" />
+                            </RadioButton.IsChecked>
+                        </RadioButton>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
-        <ListBox
-            Grid.Row="1"
-            ItemsSource="{Binding MenuItems}"
-            SelectedItem="{Binding Seleitem}">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="HorizontalAlignment" Value="Stretch" />
-                    <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                <Grid>
-                                    <Border Name="border" />
-                                    <ContentPresenter />
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter TargetName="border" Property="Background" Value="Transparent" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListBox.ItemContainerStyle>
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <RadioButton Height="40" Content="{Binding ModelName}">
-                        <RadioButton.IsChecked>
-                            <Binding
-                                Mode="TwoWay"
-                                Path="IsSelected"
-                                RelativeSource="{RelativeSource AncestorType=ListBoxItem}" />
-                        </RadioButton.IsChecked>
-                    </RadioButton>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+
+
+
 
         <ContentControl
             Grid.Row="1"

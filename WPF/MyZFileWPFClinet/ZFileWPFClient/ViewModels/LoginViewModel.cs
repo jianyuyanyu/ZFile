@@ -97,6 +97,7 @@ namespace ZFileWPFClient.ViewModels
                     SnackBar(r == null ? "获取用户信息异常,请稍后重试!" : r.message);
                     return;
                 }
+
                 Contract.UserInfo = new UserInfo()
                 {
                     id = USE.data.Result.id,

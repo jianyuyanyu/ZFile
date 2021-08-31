@@ -50,7 +50,6 @@
                                         x:Name="PART_CloseButton"
                                         Width="32"
                                         HorizontalAlignment="Right"
-                                        local:ButtonHelper.ButtonStyle="Link"
                                         Content="X"
                                         Foreground="{DynamicResource DefaultForeground}"
                                         Visibility="{TemplateBinding IsShowCloseButton,

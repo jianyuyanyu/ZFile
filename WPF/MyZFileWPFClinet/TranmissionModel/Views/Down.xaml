@@ -52,19 +52,23 @@
                 Value="{Binding ProgressValues}" />
             <StackPanel Grid.Column="2" Orientation="Horizontal">
                 <Button
-                    Width="50"
+                    Width="40"
+                    Height="40"
                     Command="{Binding AllStartCommand}"
                     Content="&#xe74f;"
                     FontFamily="{StaticResource IconFont}"
-                    FontSize="22"
-                    Foreground="#90C1FF" />
+                    FontSize="20"
+                    Foreground="#90C1FF"
+                    Style="{StaticResource MaterialDesignIconButton}" />
                 <Button
-                    Width="50"
+                    Width="40"
+                    Height="40"
                     Command="{Binding AllSupendCommand}"
                     Content="&#xe65a;"
                     FontFamily="{StaticResource IconFont}"
-                    FontSize="32"
-                    Foreground="#90C1FF" />
+                    FontSize="24"
+                    Foreground="#90C1FF"
+                    Style="{StaticResource MaterialDesignIconButton}" />
             </StackPanel>
         </Grid>
         <ItemsControl
@@ -146,31 +150,32 @@
 
                         <StackPanel
                             Grid.Column="4"
-                            Height="25"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
                             <Button
-                                Margin="5,0"
+                                Width="40"
+                                Height="40"
                                 Command="{Binding DataContext.ContinueOrSuspendCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1, AncestorType=ItemsControl}}"
                                 CommandParameter="{Binding .}"
                                 Content="{Binding state, Converter={StaticResource DownStateChanage}}"
                                 FontFamily="{StaticResource IconFont}"
-                                FontSize="22"
-                                Foreground="#90C1FF" />
+                                FontSize="15"
+                                Foreground="#90C1FF"
+                                Style="{StaticResource MaterialDesignIconButton}" />
                             <Button
-                                Margin="5,0"
                                 Content="&#xe618;"
                                 FontFamily="{StaticResource IconFont}"
-                                FontSize="22"
-                                Foreground="#90C1FF" />
+                                FontSize="20"
+                                Foreground="#90C1FF"
+                                Style="{StaticResource MaterialDesignIconButton}" />
                             <Button
-                                Margin="5,0"
                                 BorderThickness="0"
                                 Content="&#xe739;"
                                 FontFamily="{StaticResource IconFont}"
                                 FontSize="22"
-                                Foreground="#90C1FF" />
+                                Foreground="#90C1FF"
+                                Style="{StaticResource MaterialDesignIconButton}" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
