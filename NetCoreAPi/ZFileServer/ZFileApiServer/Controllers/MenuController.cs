@@ -89,17 +89,17 @@ namespace ZFileApiServer.Controllers
             var UserInfo =  await _sysAdmin.GetModelAsync(o => o.ID == int.Parse(token.Uid));
 
 
-         
-            if (UserInfo.data.UserRealName!="超级管理员")
+
+            if (UserInfo.data.UserRealName != "超级管理员")
             {
-                apiRes.data = SysMenuDtio.Where(o=>o.PModelCode== "WORK").ToList();
+                apiRes.data = SysMenuDtio.Where(o => o.PModelCode == "WORK").ToList();
             }
             else
             {
                 apiRes.data = SysMenuDtio;
             }
-          
-           
+
+
             return  Ok(apiRes);
 
 

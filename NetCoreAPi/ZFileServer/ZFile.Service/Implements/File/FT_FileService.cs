@@ -20,21 +20,20 @@ using ZFile.Service.Repository;
 
 namespace ZFile.Service.Implements
 {
+
     public class FT_FileService : BaseService<FT_File>, IFT_FileService
     {
-   
-
         public async Task<ApiResult<List<FT_FileDtoTwo>>> GetFileListInfo(string foldertype, string FileExtendName, string UserName)
         {
             var res = new ApiResult<List<FT_FileDtoTwo>>
             {
                 statusCode = (int)ApiEnum.Error
             };
+
             if (foldertype == "2")
             {
                 res.data = await Db.Queryable<FT_File, FT_Folder>((o, i) => new object[] {
                     JoinType.Left,o.FolderID==i.ID
-
                 }).Where((o, i) =>
                 i.FolderType == foldertype &&
                 o.CRUser == UserName &&
@@ -50,7 +49,6 @@ namespace ZFile.Service.Implements
             {
                 res.data = await Db.Queryable<FT_File, FT_Folder>((o, i) => new object[] {
                     JoinType.Left,o.FolderID==i.ID
-
                 }).Where((o, i) =>
                 i.FolderType == foldertype &&
                 (o.Name.StartsWith(FileExtendName)
@@ -61,11 +59,10 @@ namespace ZFile.Service.Implements
                 ).Select<FT_FileDtoTwo>().ToListAsync();
                 res.statusCode = (int)ApiEnum.Status;
             }
-
-
-
             return res;
+
         }
+
         /// <summary>
         ///  循环查询文件
         /// </summary>

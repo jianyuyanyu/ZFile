@@ -36,7 +36,7 @@ namespace ZFile.Service.Implements
                 res.data = new UserInfoDto() { User= UserInfo };
              
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 

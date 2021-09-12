@@ -62,9 +62,9 @@ namespace ZFileApiServer.Controllers
             QYinfo.FileServerUrl = HttpContext.Connection.LocalIpAddress + ":" + HttpContext.Connection.LocalPort;
             var UserToken = await _sysAdmin.GetModelAsync(o => o.ID == int.Parse(token.Uid));
             UserInfo info = new UserInfo();
-            info.UserRealName = UserToken.data.UserRealName;
+            //info.UserRealName = UserToken.data.UserRealName;
             info.username = UserToken.data.username;
-            info.Role = token.Role;
+            //info.Role = token.Role;
             msg.Result = info;
             msg.Result1 = _sysAppseting.GetValueByKey("sysname").Result.data;
             msg.Result2 = _sysAppseting.GetValueByKey("qyname").Result.data;
@@ -152,6 +152,15 @@ namespace ZFileApiServer.Controllers
 
             }
             return Ok(apiRes);
+        }
+
+
+        [HttpPost]
+        [Route("Register")]
+        public async Task<IActionResult> AddUserInfo([FromBody] AddUserDto user)
+        {
+            await Task.Delay(1);
+            return Ok();
         }
     }
 }

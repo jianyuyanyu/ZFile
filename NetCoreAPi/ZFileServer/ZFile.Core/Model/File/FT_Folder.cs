@@ -9,10 +9,6 @@ namespace ZFile.Core.Model.File
     public class FT_Folder
     {
 
-        public FT_Folder()
-        {
-            
-        }
         public int? ComId { get; set; }
         [SqlSugar.SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
         public int ID { get; set; }

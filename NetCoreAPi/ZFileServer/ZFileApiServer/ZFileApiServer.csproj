@@ -20,12 +20,6 @@
     <ProjectReference Include="..\ZFile.Service\ZFile.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="User.db">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

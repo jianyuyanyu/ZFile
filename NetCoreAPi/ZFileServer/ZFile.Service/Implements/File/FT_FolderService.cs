@@ -81,7 +81,6 @@ namespace ZFile.Service.Implements.File
             }).Where((o, i) => o.ComId == 1 & o.PFolderID == FolderID && o.CRUser == UserName).Select<FT_FolderDto>().ToListAsync();
 
             if (model == null) return res;
-
             res.statusCode = (int)ApiEnum.Status;
             res.data = model;
 

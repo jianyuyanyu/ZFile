@@ -13,12 +13,15 @@ namespace ZFile.Core
         public SqlSugarClient Db;
         public DbContext()
         {
-            Db = new SqlSugarClient(new ConnectionConfig() {
+
+            Db = new SqlSugarClient(new ConnectionConfig()
+            {
 
                 ConnectionString = ConfigExtensions.Configuration["DBConnection:SqllistConnectionString"],
                 DbType = DbType.Sqlite,
                 IsAutoCloseConnection = true
             });
+
 
             Db.Aop.OnLogExecuting = (sql, pars) =>
             {
@@ -27,6 +30,7 @@ namespace ZFile.Core
                 //    Db.Utilities.SerializeObject(pars.ToDictionary(it => it.ParameterName, it => it.Value)));
                 //Console.WriteLine();
             };
+           
         }
 
         public void InitDb()
@@ -34,10 +38,7 @@ namespace ZFile.Core
             Db.CodeFirst.BackupTable().InitTables<FileAppseting>();
             Db.CodeFirst.BackupTable().InitTables<FileDocument>();
             Db.CodeFirst.BackupTable().InitTables<FT_File>();
-            Db.CodeFirst.BackupTable().InitTables<FT_File_Downhistory>();
-            Db.CodeFirst.BackupTable().InitTables<FT_File_Share>();
             Db.CodeFirst.BackupTable().InitTables<FT_File_UserAuth>();
-            Db.CodeFirst.BackupTable().InitTables<FT_File_UserTag>();
             Db.CodeFirst.BackupTable().InitTables<FT_File_Vesion>();
             Db.CodeFirst.BackupTable().InitTables<FT_Folder>();
             Db.CodeFirst.BackupTable().InitTables<Qycode>();
@@ -45,13 +46,10 @@ namespace ZFile.Core
             Db.CodeFirst.BackupTable().InitTables<UserLog>();
         }
 
-        public SimpleClient<FileAppseting> FileAppseting =>new SimpleClient<FileAppseting>(Db);
+        public SimpleClient<FileAppseting> FileAppseting => new SimpleClient<FileAppseting>(Db);
         public SimpleClient<FileDocument> Documents => new SimpleClient<FileDocument>(Db);
         public SimpleClient<FT_File> FT_File => new SimpleClient<FT_File>(Db);
-        public SimpleClient<FT_File_Downhistory> FT_File_Downhistory => new SimpleClient<FT_File_Downhistory>(Db);
-        public SimpleClient<FT_File_Share> FT_File_Share => new SimpleClient<FT_File_Share>(Db);
         public SimpleClient<FT_File_UserAuth> FT_File_UserAuth => new SimpleClient<FT_File_UserAuth>(Db);
-        public SimpleClient<FT_File_UserTag> FT_File_UserTag => new SimpleClient<FT_File_UserTag>(Db);
         public SimpleClient<FT_File_Vesion> FT_File_Vesion => new SimpleClient<FT_File_Vesion>(Db);
         public SimpleClient<FT_Folder> FT_Folder => new SimpleClient<FT_Folder>(Db);
         public SimpleClient<Qycode> Qycode => new SimpleClient<Qycode>(Db);

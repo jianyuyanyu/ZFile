@@ -21,6 +21,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using System.Threading.Tasks;
+using ZFile.Core;
 using ZFile.Extensions.Authorize;
 using ZFile.Extensions.JWT;
 
@@ -167,8 +168,9 @@ namespace ZFileApiServer
             {
                 endpoints.MapControllers();
             });
+           
         }
-
+        
         /// <summary>  
         /// 自动注册服务——获取程序集中的实现类对应的多个接口
         /// </summary>

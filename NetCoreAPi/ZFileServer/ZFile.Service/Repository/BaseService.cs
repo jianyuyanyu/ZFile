@@ -16,6 +16,7 @@ namespace ZFile.Service.Repository
 {
    public class BaseService<T> :DbContext, IBaseService<T> where T : class, new()
     {
+
         #region 添加操作
         /// <summary>
         /// 添加一条数据

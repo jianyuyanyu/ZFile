@@ -106,6 +106,8 @@ namespace ZFileServer
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            InitializeAsync(app);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -119,7 +121,7 @@ namespace ZFileServer
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-          //  InitializeAsync(app);
+            
         }
 
         public static void InitializeAsync(IApplicationBuilder app)

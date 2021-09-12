@@ -44,7 +44,7 @@ namespace WorkModel.ViewModels
         public ObservableCollection<FolderModel> NavTabFileInfo
         {
             get { return _NavTabFileInfo; }
-            set { SetProperty(ref _NavTabFileInfo, value);}
+            set { SetProperty(ref _NavTabFileInfo, value); }
         }
 
         private FolderModel _SelectItem;
@@ -55,7 +55,7 @@ namespace WorkModel.ViewModels
             {
 
                 SetProperty(ref _SelectItem, value);
-               
+
             }
         }
 
@@ -90,6 +90,12 @@ namespace WorkModel.ViewModels
 
         public DelegateCommand<FolderModel> CheckCommand => new DelegateCommand<FolderModel>(Check);
 
+        public DelegateCommand<string> SelectMenuCommand => new DelegateCommand<string>(SelectMenu);
+        private void SelectMenu(string obj)
+        {
+
+        }
+
         private void Check(FolderModel obj)
         {
             if (obj.IsCheck)
@@ -104,14 +110,14 @@ namespace WorkModel.ViewModels
             DialogBox.Show(SystemResource.Nav_MainContent, content, "创建文件夹", null, DialogClose);
         }
 
-        
+
 
         private void PASTEITEM()
         {
             if (SelectCheckItems.Count == 0) return;
             PasteitemsDto dto = new PasteitemsDto();
-            SelectCheckItems.ForEach(item=> dto.Child.Add(new PasteitemsChild() { itemId=item.Id,ItemType=item.Type }));
-              var content = new PasteItem(_provider, dto);
+            SelectCheckItems.ForEach(item => dto.Child.Add(new PasteitemsChild() { itemId = item.Id, ItemType = item.Type }));
+            var content = new PasteItem(_provider, dto);
             DialogBox.Show(SystemResource.Nav_MainContent, content, "文件迁移", null, DialogClose);
         }
 
@@ -201,7 +207,7 @@ namespace WorkModel.ViewModels
 
         private async void AddFileInfo()
         {
-            
+
             //获取用户文件权限
             var model = await service.CheckAuth();
             if (model.statusCode != 200) return;
