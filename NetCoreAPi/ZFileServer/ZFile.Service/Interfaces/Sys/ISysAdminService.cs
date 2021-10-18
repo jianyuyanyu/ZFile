@@ -10,7 +10,7 @@ using ZFile.Service.Repository;
 
 namespace ZFile.Service.Interfaces
 {
-   public interface  ISysAdminService : IBaseService<UserInfo>
+   public interface  ISysAdminService : IBaseService<SysAdmin>
     {
 
         /// <summary>

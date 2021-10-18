@@ -12,14 +12,14 @@ namespace ZFile.Core.Model.User
      /// 系统菜单表
      ///</summary>
     [SugarTable("Sys_Menu")]
-    public class Menu
+    public class SysMenu
     {
         /// <summary>
         /// Desc:唯一标识Guid
         /// Default:
         /// Nullable:False
         /// </summary> 
-        [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
+        [SugarColumn(IsPrimaryKey = true)]
         public string Guid { get; set; }
 
         /// <summary>

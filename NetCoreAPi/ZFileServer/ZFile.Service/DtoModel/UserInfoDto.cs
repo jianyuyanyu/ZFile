@@ -10,7 +10,7 @@ namespace ZFile.Service.DtoModel
 {
    public class UserInfoDto
     {
-        public UserInfo User;
+        public SysAdmin User;
         public string UserRoleCode;
         public Qycode Qycode;
         public JH_Auth_QYDto QYinfo;

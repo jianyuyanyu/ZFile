@@ -49,7 +49,8 @@ namespace ZFileApiServer.Controllers
         /// 获取用户设置信息
         /// </summary>
         /// <returns></returns>     
-        [HttpGet]
+        
+        [HttpGet("Get"), ApiAuthorize(Modules = "Admin", Methods = "Add", LogType = LogEnum.ADD)]
         public async Task<IActionResult> GetUserSysInfo()
         {
             var apiRes = new ApiResult<Msg_Result>() { statusCode = (int)ApiEnum.HttpRequestError };
@@ -60,8 +61,8 @@ namespace ZFileApiServer.Controllers
             JH_Auth_QYDto QYinfo = new JH_Auth_QYDto();
             QYinfo.QYCode = res.data.Code;
             QYinfo.FileServerUrl = HttpContext.Connection.LocalIpAddress + ":" + HttpContext.Connection.LocalPort;
-            var UserToken = await _sysAdmin.GetModelAsync(o => o.ID == int.Parse(token.Uid));
-            UserInfo info = new UserInfo();
+            var UserToken = await _sysAdmin.GetModelAsync(o => o.Guid == token.Uid);
+            SysAdmin info = new SysAdmin();
             //info.UserRealName = UserToken.data.UserRealName;
             info.username = UserToken.data.username;
             //info.Role = token.Role;
@@ -138,7 +139,7 @@ namespace ZFileApiServer.Controllers
 
                 token = JwtHelper.IssueJWT(new TokenModel()
                 {
-                    Uid = user.User.ID.ToString(),
+                    Uid = user.User.Guid.ToString(),
                     UserName = user.User.username,
                     Role = "Admin",
                     TokenType = "Web"
@@ -155,12 +156,14 @@ namespace ZFileApiServer.Controllers
         }
 
 
-        [HttpPost]
-        [Route("Register")]
-        public async Task<IActionResult> AddUserInfo([FromBody] AddUserDto user)
+       
+        [HttpPost("add"), ApiAuthorize(Modules = "Admin", Methods = "Add", LogType = LogEnum.ADD)]
+        public async Task<IActionResult> AddUserInfo([FromBody] SysAdmin parm)
         {
-            await Task.Delay(1);
-            return Ok();
+            return Ok(await _sysAdmin.AddAsync(parm));
+           
         }
+      
+      
     }
 }

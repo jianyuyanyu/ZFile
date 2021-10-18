@@ -152,7 +152,7 @@ namespace WorkModel.ViewModels
         FolderModel CurrnetFolder;
         private async void OpenFloder(FolderModel o)
         {
-
+            if (o == null) return;
             if (o.Type == 1)
             {
                 SaveFileDialog sfd = new SaveFileDialog();
