@@ -50,7 +50,7 @@ namespace ZFileWPFClinet.Service
     }
     public class UserInfoRequest : BaseRequest
     {
-        public override string route { get => "api/Admin"; }
+        public override string route { get => "api/Admin/Get"; }
     }
     public class UserLoginRequest : BaseRequest
     {

@@ -51,7 +51,7 @@ namespace ZFile.Core
             Db.CodeFirst.InitTables<SysPermissions>();
             Db.CodeFirst.InitTables<SysRole>();
             Db.CodeFirst.InitTables<SysBtnFun>();
-            SeedData();
+          //  SeedData();
         }
 
         void SeedData()
@@ -428,9 +428,19 @@ namespace ZFile.Core
             DepartmentName ="项目负责人",
             DepartmentGuid = "0bb7aaaf-8b91-4ce5-b261-72d7bc6157fc",
             DepartmentGuidList = ",883deb1c-ddd7-484e-92c1-b3ad3b32e655,0f04b2e0-1ab8-4cc9-b6bf-a3e7dd53f77b,0bb7aaaf-8b91-4ce5-b261-72d7bc6157fc,",
-          
-
-
+                LoginName = "demo888",
+                LoginPwd = "pPo9vFeTWOCF0oLKKdX9Jw==",
+                TrueName = "李四",
+                Number ="1002",
+                HeadPic ="",
+                Sex = "男",
+                Mobile = "123123123123",
+                Status =true,
+                Email ="",
+                Summary = "",
+                AddDate =DateTime.Now,
+                LoginDate = DateTime.Now,
+                UserRealName = "",
 
 
             }).ExecuteCommand();

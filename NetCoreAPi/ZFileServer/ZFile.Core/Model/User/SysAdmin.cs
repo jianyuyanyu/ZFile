@@ -19,6 +19,15 @@ namespace ZFile.Core.Model.User
 
         public string LoginPwd { get; set; }
 
+        public string TrueName { get; set; }
+
+        public string Number { get; set; }
+        public string HeadPic { get; set; }
+
+        public string Sex { get; set; }
+
+        public string Mobile { get; set; }
+
         public string UserRealName { get; set; }
 
         /// <summary>
@@ -63,6 +72,16 @@ namespace ZFile.Core.Model.User
         ///// 状态 1=整除 0=不允许登录
         ///// </summary>
         public bool Status { get; set; }
+
+        /// <summary>
+        /// 邮箱
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// 描述
+        /// </summary>
+        public string Summary { get; set; }
 
         ///// <summary>
         ///// 添加时间

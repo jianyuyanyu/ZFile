@@ -68,8 +68,8 @@ namespace ZFileServer.Controllers
                 var identity = new ClaimsPrincipal(
                  new ClaimsIdentity(new[]
                      {
-                              new Claim(ClaimTypes.Role,user.User.Role),
-                              new Claim(ClaimTypes.Name,user.User.username),
+                              new Claim(ClaimTypes.Role,user.User.RoleGuid),
+                              new Claim(ClaimTypes.Name,user.User.LoginName),
                               new Claim(ClaimTypes.WindowsAccountName,user.User.UserRealName),
                      }, CookieAuthenticationDefaults.AuthenticationScheme)
                 );

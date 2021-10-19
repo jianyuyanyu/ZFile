@@ -66,8 +66,8 @@ namespace ZFileWPFClient.ViewModels
             this.service = provider.Resolve<ILoginService>();
             Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             LoginCommand = new RelayCommand(Login);
-            UserName = "admin";
-            PassWord = "abc123";
+            UserName = "demo888";
+            PassWord = "demo888";
         }
 
         private async void Login()
