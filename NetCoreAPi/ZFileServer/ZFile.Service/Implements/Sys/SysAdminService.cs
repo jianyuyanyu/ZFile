@@ -26,7 +26,7 @@ namespace ZFile.Service.Implements
             try
             {
               
-                var UserInfo = await Db.Queryable<SysAdmin>().Where(d => d.username == User && d.pasd == Common.Utils.GetMD5(pasd)).FirstAsync();
+                var UserInfo = await Db.Queryable<SysAdmin>().Where(d => d.LoginName == User && d.LoginPwd == Common.Utils.GetMD5(pasd)).FirstAsync();
                 if (UserInfo == null)
                 {
                     res.statusCode = (int)ApiEnum.Error;
@@ -58,13 +58,13 @@ namespace ZFile.Service.Implements
             {
                 statusCode = (int)ApiEnum.Unauthorized
             };
-            var qymodel = await GetModelAsync(o => o.username == strUserName);
+            var qymodel = await GetModelAsync(o => o.LoginName == strUserName);
             if (qymodel != null)
             {
                 qymodel.data.Space = qymodel.data.Space + FileSize;
             }
 
-            Db.Updateable<SysAdmin>().SetColumns(it => it.Space == int.Parse(qymodel.data.Space.ToString())).Where(it => it.username == strUserName).ExecuteCommand();
+            Db.Updateable<SysAdmin>().SetColumns(it => it.Space == int.Parse(qymodel.data.Space.ToString())).Where(it => it.LoginName == strUserName).ExecuteCommand();
             res.statusCode = (int)ApiEnum.Status;
             return res;
         }

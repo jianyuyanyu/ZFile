@@ -421,6 +421,21 @@ namespace ZFile.Core
 
             #endregion
 
+            #region 用户管理
+            Db.Insertable<SysAdmin>(new SysAdmin() {
+            Guid = "30d3da88-bb72-4ace-a303-b3aae0ecb732",
+            RoleGuid ="",
+            DepartmentName ="项目负责人",
+            DepartmentGuid = "0bb7aaaf-8b91-4ce5-b261-72d7bc6157fc",
+            DepartmentGuidList = ",883deb1c-ddd7-484e-92c1-b3ad3b32e655,0f04b2e0-1ab8-4cc9-b6bf-a3e7dd53f77b,0bb7aaaf-8b91-4ce5-b261-72d7bc6157fc,",
+          
+
+
+
+
+            }).ExecuteCommand();
+            #endregion
+
 
         }
 

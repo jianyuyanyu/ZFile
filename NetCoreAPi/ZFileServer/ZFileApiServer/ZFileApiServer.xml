@@ -4,6 +4,39 @@
         <name>ZFileApiServer</name>
     </assembly>
     <members>
+        <member name="P:ZFileApiServer.ApiAuthorize.Modules">
+            <summary>
+            模块别名，可配置更改
+            </summary>
+        </member>
+        <member name="P:ZFileApiServer.ApiAuthorize.Methods">
+            <summary>
+            权限动作
+            </summary>
+        </member>
+        <member name="P:ZFileApiServer.ApiAuthorize.Sign">
+            <summary>
+            权限访问控制器参数
+            </summary>
+        </member>
+        <member name="P:ZFileApiServer.ApiAuthorize.IsLog">
+            <summary>
+            是否保存日志
+            </summary>
+        </member>
+        <member name="P:ZFileApiServer.ApiAuthorize.LogType">
+            <summary>
+            操作类型CRUD
+            </summary>
+        </member>
+        <member name="M:ZFileApiServer.ApiAuthorize.ContextReturn(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,System.String,System.Int32)">
+            <summary>
+            返回API的信息
+            </summary>
+            <param name="context"></param>
+            <param name="mes"></param>
+            <param name="enumValue"></param>
+        </member>
         <member name="M:ZFileApiServer.Controllers.AdminController.#ctor(Microsoft.Extensions.Logging.ILogger{ZFileApiServer.Controllers.AdminController},ZFile.Service.Interfaces.ISysAdminService,ZFile.Service.Interfaces.ISysAppseting,ZFile.Service.Interfaces.IFileQycodeService)">
             <summary>
             构造
@@ -17,7 +50,7 @@
             <summary>
             获取用户设置信息
             </summary>
-            <returns></returns>
+            <returns></returns>     
         </member>
         <member name="M:ZFileApiServer.Controllers.AdminController.Login(ZFile.Service.DtoModel.UserModelDto)">
             <summary>
@@ -26,21 +59,232 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:ZFileApiServer.Controllers.FileController.GetFilelistData(System.Int32,System.String,System.String)">
+        <member name="M:ZFileApiServer.Controllers.CodeTypeController.GetListPage">
             <summary>
-            获取文件数据
+            获得字典栏目Tree列表
             </summary>
-            <param name="FolderID">上级文件夹ID</param>
-            <param name="p2"></param>
-            <param name="itemtype">文件夹类型</param>
             <returns></returns>
         </member>
-        <member name="M:ZFileApiServer.Controllers.FileController.AddFileInfo(System.String,System.String)">
+        <member name="M:ZFileApiServer.Controllers.CodeTypeController.AddCodeType(ZFile.Core.Model.User.SysCodeType)">
             <summary>
-            添加文件
+            获得字典栏目Tree列表
             </summary>
-            <param name="P1"></param>
-            <param name="P2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.CodeTypeController.DeleteCode(ZFile.Service.DtoModel.ParmString)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.CodeTypeController.EditCode(ZFile.Core.Model.User.SysCodeType)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.CodeValController.GetPages(ZFile.Service.DtoModel.SysCodePostPage)">
+            <summary>
+            查询列表
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.CodeValController.AddCodeType(ZFile.Core.Model.User.SysCode)">
+            <summary>
+            获得字典栏目Tree列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.CodeValController.DeleteCode(ZFile.Service.DtoModel.ParmString)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.CodeValController.EditCode(ZFile.Core.Model.User.SysCode)">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.CodeValController.EditStatusCode(ZFile.Core.Model.User.SysCode)">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.MenuController.GetListPage(ZFile.Service.DtoModel.MenuTreeParm)">
+            <summary>
+            获得组织结构Tree列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.MenuController.GetMenuByRole(ZFile.Service.DtoModel.MenuTreeParm)">
+            <summary>
+            提供角色弹框授权返回客户端菜单列表和当前角色的列表
+            涉及到选中状态
+            </summary>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.MenuController.GetPages(ZFile.Service.DtoModel.PageParm)">
+            <summary>
+            查询列表
+            </summary>
+            <param name="parm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.MenuController.AddMenu(ZFile.Core.Model.User.SysMenu)">
+            <summary>
+            添加菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.MenuController.DeleteMenu(ZFile.Service.DtoModel.ParmString)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.MenuController.EditMenu(ZFile.Core.Model.User.SysMenu)">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.MenuController.ColStor(ZFile.Service.DtoModel.ParmStringSort)">
+            <summary>
+            排序
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.MenuController.GetAuthorizaionMenu(ZFile.Service.DtoModel.ParmString)">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.Admin.OrganizeController.GetListPage">
+            <summary>
+            获得组织结构Tree列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.Admin.OrganizeController.GetPages(ZFile.Service.DtoModel.PageParm)">
+            <summary>
+            查询列表
+            </summary>
+            <param name="parm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.Admin.OrganizeController.AddOrganize(ZFile.Core.Model.User.SysOrganize)">
+            <summary>
+            获得字典栏目Tree列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.Admin.OrganizeController.DeleteOrganize(ZFile.Service.DtoModel.ParmString)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.Admin.OrganizeController.EditOrganize(ZFile.Core.Model.User.SysOrganize)">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.Admin.RoleController.GetPages(ZFile.Service.DtoModel.PageParm)">
+            <summary>
+            查询列表
+            </summary>
+            <param name="parm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.Admin.RoleController.GetToRolePages(ZFile.Service.DtoModel.RoleByAdminParam)">
+            <summary>
+            查询授权列表
+            </summary>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.Admin.RoleController.AddRole(ZFile.Core.Model.User.SysRole)">
+            <summary>
+            获得字典栏目Tree列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.Admin.RoleController.DeleteRole(ZFile.Service.DtoModel.ParmString)">
+            <summary>
+            删除
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.Admin.RoleController.EditRole(ZFile.Core.Model.User.SysRole)">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.Admin.RoleController.GetModelByGuid(ZFile.Service.DtoModel.ParmString)">
+            <summary>
+            根据编号查询角色信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.RoleMenuController.GetPages(ZFile.Service.DtoModel.PageParm)">
+            <summary>
+            查询列表
+            </summary>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.RoleMenuController.SaveRoleMenu(ZFile.Core.Model.User.SysPermissions)">
+            <summary>
+            角色授权菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.RoleMenuController.SaveAuthorization(ZFile.Service.DtoModel.SysMenuAuthorization)">
+            <summary>
+            角色授权菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.RoleMenuController.AdminToRole(ZFile.Core.Model.User.SysPermissions)">
+            <summary>
+            用户授权角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.RoleMenuController.RoleMenuToFun(ZFile.Service.DtoModel.SysPermissionsParm)">
+            <summary>
+            菜单授权-菜单功能
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.GetSpaceInfo(System.Int32,System.Int32)">
+            <summary>
+            查询网盘文件信息
+            </summary>
+            <param name="FolderId"></param>
+            <param name="Type">1:公司空间，2：个人网盘</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.GetFolderInfo(System.Int32,System.Int32)">
+            <summary>
+            查询文件夹信息
+            </summary>
+            <param name="Type"></param>
+            <param name="FolderId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.Pasteitem(ZFile.Service.DtoModel.PasteitemsDto)">
+            <summary>
+            移动文件或移动文件夹
+            </summary>
+            <param name="Pid"></param>
+            <param name="Dto"></param>
             <returns></returns>
         </member>
         <member name="M:ZFileApiServer.Controllers.FileController.Checkwholefile(System.String,System.String)">
@@ -59,32 +303,58 @@
             <param name="secret"></param>
             <returns></returns>
         </member>
-        <member name="M:ZFileApiServer.Controllers.FileController.AddFolders(ZFile.Core.Model.File.FT_Folder)">
+        <member name="M:ZFileApiServer.Controllers.FileController.CreateFolders(System.String,System.String,System.Int32,System.Int32,System.String)">
             <summary>
             创建文件夹
             </summary>
-            <param name="Folder"></param>
+            <param name="Name"></param>
+            <param name="FolderType"></param>
+            <param name="PFolderID"></param>
+            <param name="FolderLev"></param>
+            <param name="Remark"></param>
             <returns></returns>
         </member>
-        <member name="M:ZFileApiServer.Controllers.FileController.DelFLODER(System.String)">
+        <member name="M:ZFileApiServer.Controllers.FileController.DelFLODER(System.Collections.Generic.List{ZFile.Service.DtoModel.DelFile})">
             <summary>
             删除文件
             </summary>
-            <param name="P1"></param>
+            <param name="delFile"></param>
             <returns></returns>
         </member>
-        <member name="M:ZFileApiServer.Controllers.FileController.GetFileInfo(System.String,System.String)">
+        <member name="M:ZFileApiServer.Controllers.FileController.AddFileUpload(ZFile.Service.DtoModel.UploadDto)">
             <summary>
-            查询文件
+            上传文件
             </summary>
-            <param name="P1"></param>
-            <param name="P2"></param>
+            <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:ZFileApiServer.Controllers.MenuController.GetMenu">
+        <member name="M:ZFileApiServer.Controllers.FileController.fileMerge(ZFile.Service.DtoModel.UploadDto)">
             <summary>
-            查询菜单
+            上传最后一个文件
             </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.AddFilesuccess(System.Collections.Generic.List{ZFile.Service.DtoModel.UploadSuccessDto})">
+            <summary>
+            上传文件成功
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.GetDownLoadFileInfo(System.Int32)">
+            <summary>
+            查询要下载得文件信息
+            </summary>
+            <param name="FileId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.FileController.DownloadFile(System.String,System.Int32)">
+            <summary>
+            下载文件
+            </summary>
+            <param name="Code"></param>
+            <param name="Index"></param>
             <returns></returns>
         </member>
         <member name="M:ZFileApiServer.Startup.AddAssembly(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">

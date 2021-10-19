@@ -64,7 +64,7 @@ namespace ZFileApiServer.Controllers
             var UserToken = await _sysAdmin.GetModelAsync(o => o.Guid == token.Uid);
             SysAdmin info = new SysAdmin();
             //info.UserRealName = UserToken.data.UserRealName;
-            info.username = UserToken.data.username;
+            info.LoginName = UserToken.data.LoginName;
             //info.Role = token.Role;
             msg.Result = info;
             msg.Result1 = _sysAppseting.GetValueByKey("sysname").Result.data;
@@ -140,7 +140,7 @@ namespace ZFileApiServer.Controllers
                 token = JwtHelper.IssueJWT(new TokenModel()
                 {
                     Uid = user.User.Guid.ToString(),
-                    UserName = user.User.username,
+                    UserName = user.User.LoginName,
                     Role = "Admin",
                     TokenType = "Web"
                 });

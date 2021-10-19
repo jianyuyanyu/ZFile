@@ -402,7 +402,7 @@ namespace ZFileApiServer.Controllers
                     await _sysFille.AddAsync(item);
                     int filesize = 0;
                     //更新企业空间占用
-                    var User = await _sysAdmin.GetModelAsync(o => o.username == token.UserName);
+                    var User = await _sysAdmin.GetModelAsync(o => o.LoginName == token.UserName);
                     int.TryParse(item.FileSize, out filesize);
                     User.data.Space = User.data.Space + filesize;
                     await _sysAdmin.UpdateAsync(User.data);

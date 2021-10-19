@@ -15,9 +15,9 @@ namespace ZFile.Core.Model.User
         [SugarColumn(IsPrimaryKey = true)]
         public string Guid { get; set; }
 
-        public string username { get; set; }
+        public string LoginName { get; set; }
 
-        public string pasd { get; set; }
+        public string LoginPwd { get; set; }
 
         public string UserRealName { get; set; }
 
