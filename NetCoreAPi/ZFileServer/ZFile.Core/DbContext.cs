@@ -226,11 +226,199 @@ namespace ZFile.Core
 
 
             #region 菜单管理
-            //Db.Insertable<SysMenu>(new SysMenu() 
-            //{
-            //Guid=
+            Db.Insertable<SysMenu>(new SysMenu()
+            {
+                Guid = "a4b3b26f-076a-4267-b03d-613081b13a12",
+                SiteGuid="",
+                ParentGuid="",
+                ParentName="根目录",
+                Name= "CMS内容管理",
+                NameCode="Risk",
+                ParentGuidList= ",a4b3b26f-076a-4267-b03d-613081b13a12,",
+                Layer=1,
+                Urls="",
+                Icon="",
+                Sort=50,
+                Status=true,
+                BtnFunJson="[]",
+                EditTime=DateTime.Now,
+                AddTIme= DateTime.Now,
+            }).ExecuteCommand();
 
-            //}).ExecuteCommand();
+            //系统菜单
+            Db.Insertable<SysMenu>(new SysMenu()
+            {
+                Guid = "5ed17c74-0fff-4f88-8581-3b4f26d005a8",
+                SiteGuid = "",
+                ParentGuid = "a4b3b26f-076a-4267-b03d-613081b13a12",
+                ParentName = "风险预警平台",
+                Name = "系统管理",
+                NameCode = "Sys",
+                ParentGuidList = ",a4b3b26f-076a-4267-b03d-613081b13a12,5ed17c74-0fff-4f88-8581-3b4f26d005a8,",
+                Layer = 2,
+                Urls = "",
+                Icon = "",
+                Sort = 2,
+                Status = true,
+                BtnFunJson = "[]",
+                EditTime = DateTime.Now,
+                AddTIme = DateTime.Now,
+            }).ExecuteCommand();
+
+            Db.Insertable<SysMenu>(new SysMenu()
+            {
+                Guid = "6d4cfcf7-ff1c-4537-aa3f-75cc9df27583",
+                SiteGuid = "",
+                ParentGuid = "5ed17c74-0fff-4f88-8581-3b4f26d005a8",
+                ParentName = "系统管理",
+                Name = "组织机构",
+                NameCode = "Department",
+                ParentGuidList = ",a4b3b26f-076a-4267-b03d-613081b13a12,5ed17c74-0fff-4f88-8581-3b4f26d005a8,6d4cfcf7-ff1c-4537-aa3f-75cc9df27583,",
+                Layer = 3,
+                Urls = "",
+                Icon = "",
+                Sort = 96,
+                Status = true,
+                BtnFunJson = "[]",
+                EditTime = DateTime.Now,
+                AddTIme = DateTime.Now,
+            }).ExecuteCommand();
+
+            Db.Insertable<SysMenu>(new SysMenu()
+            {
+                Guid = "404d4b8b-8e3c-42ee-aee5-f29df31308fa",
+                SiteGuid = "",
+                ParentGuid = "5ed17c74-0fff-4f88-8581-3b4f26d005a8",
+                ParentName = "系统管理",
+                Name = "菜单管理",
+                NameCode = "Menu",
+                ParentGuidList = ",a4b3b26f-076a-4267-b03d-613081b13a12,5ed17c74-0fff-4f88-8581-3b4f26d005a8,404d4b8b-8e3c-42ee-aee5-f29df31308fa,",
+                Layer = 3,
+                Urls = "",
+                Icon = "",
+                Sort = 7,
+                Status = true,
+                BtnFunJson = "[]",
+                EditTime = DateTime.Now,
+                AddTIme = DateTime.Now,
+            }).ExecuteCommand();
+
+            Db.Insertable<SysMenu>(new SysMenu()
+            {
+                Guid = "5ce13ead-971b-4ed4-ad5f-acacccd82381",
+                SiteGuid = "",
+                ParentGuid = "5ed17c74-0fff-4f88-8581-3b4f26d005a8",
+                ParentName = "系统管理",
+                Name = "角色管理    ",
+                NameCode = "Role",
+                ParentGuidList = ",a4b3b26f-076a-4267-b03d-613081b13a12,5ed17c74-0fff-4f88-8581-3b4f26d005a8,5ce13ead-971b-4ed4-ad5f-acacccd82381,",
+                Layer = 3,
+                Urls = "",
+                Icon = "",
+                Sort = 5,
+                Status = true,
+                BtnFunJson = "[]",
+                EditTime = DateTime.Now,
+                AddTIme = DateTime.Now,
+            }).ExecuteCommand();
+
+            Db.Insertable<SysMenu>(new SysMenu()
+            {
+                Guid = "1fc3d8e8-e3f2-49cf-a652-2341082643df",
+                SiteGuid = "",
+                ParentGuid = "5ed17c74-0fff-4f88-8581-3b4f26d005a8",
+                ParentName = "系统管理",
+                Name = "用户管理    ",
+                NameCode = "Admin",
+                ParentGuidList = ",a4b3b26f-076a-4267-b03d-613081b13a12,5ed17c74-0fff-4f88-8581-3b4f26d005a8,1fc3d8e8-e3f2-49cf-a652-2341082643df,",
+                Layer = 3,
+                Urls = "",
+                Icon = "",
+                Sort = 6,
+                Status = true,
+                BtnFunJson = "[]",
+                EditTime = DateTime.Now,
+                AddTIme = DateTime.Now,
+            }).ExecuteCommand();
+
+            Db.Insertable<SysMenu>(new SysMenu()
+            {
+                Guid = "946bc7c1-6c84-4934-9bda-5f766a61801b",
+                SiteGuid = "",
+                ParentGuid = "5ed17c74-0fff-4f88-8581-3b4f26d005a8",
+                ParentName = "系统管理",
+                Name = "权限管理    ",
+                NameCode = "Authorization",
+                ParentGuidList = ",a4b3b26f-076a-4267-b03d-613081b13a12,5ed17c74-0fff-4f88-8581-3b4f26d005a8,946bc7c1-6c84-4934-9bda-5f766a61801b,",
+                Layer = 3,
+                Urls = "",
+                Icon = "",
+                Sort = 9,
+                Status = true,
+                BtnFunJson = "[]",
+                EditTime = DateTime.Now,
+                AddTIme = DateTime.Now,
+            }).ExecuteCommand();
+
+
+            Db.Insertable<SysMenu>(new SysMenu()
+            {
+                Guid = "a280f6e2-3100-445f-871d-77ea443356a9",
+                SiteGuid = "",
+                ParentGuid = "5ed17c74-0fff-4f88-8581-3b4f26d005a8",
+                ParentName = "系统管理",
+                Name = "字典管理    ",
+                NameCode = "Key",
+                ParentGuidList = ",a4b3b26f-076a-4267-b03d-613081b13a12,5ed17c74-0fff-4f88-8581-3b4f26d005a8,a280f6e2-3100-445f-871d-77ea443356a9,",
+                Layer = 3,
+                Urls = "",
+                Icon = "",
+                Sort = 87,
+                Status = true,
+                BtnFunJson = "[]",
+                EditTime = DateTime.Now,
+                AddTIme = DateTime.Now,
+            }).ExecuteCommand();
+
+            Db.Insertable<SysMenu>(new SysMenu()
+            {
+                Guid = "97f0f915-43fc-4d19-9ee2-0d1a5c21877b",
+                SiteGuid = "",
+                ParentGuid = "5ed17c74-0fff-4f88-8581-3b4f26d005a8",
+                ParentName = "系统管理",
+                Name = "系统设置    ",
+                NameCode = "SysSetting",
+                ParentGuidList = ",a4b3b26f-076a-4267-b03d-613081b13a12,5ed17c74-0fff-4f88-8581-3b4f26d005a8,97f0f915-43fc-4d19-9ee2-0d1a5c21877b,",
+                Layer = 3,
+                Urls = "",
+                Icon = "",
+                Sort = 88,
+                Status = true,
+                BtnFunJson = "[]",
+                EditTime = DateTime.Now,
+                AddTIme = DateTime.Now,
+            }).ExecuteCommand();
+
+
+            Db.Insertable<SysMenu>(new SysMenu()
+            {
+                Guid = "b354ea64-88b6-4032-a26a-fee198e24d9d",
+                SiteGuid = "",
+                ParentGuid = "5ed17c74-0fff-4f88-8581-3b4f26d005a8",
+                ParentName = "系统管理",
+                Name = "系统日志    ",
+                NameCode = "Log",
+                ParentGuidList = ",a4b3b26f-076a-4267-b03d-613081b13a12,5ed17c74-0fff-4f88-8581-3b4f26d005a8,b354ea64-88b6-4032-a26a-fee198e24d9d,",
+                Layer = 3,
+                Urls = "",
+                Icon = "",
+                Sort = 145,
+                Status = true,
+                BtnFunJson = "[]",
+                EditTime = DateTime.Now,
+                AddTIme = DateTime.Now,
+            }).ExecuteCommand();
+
             #endregion
 
 
