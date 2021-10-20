@@ -50,7 +50,7 @@ namespace ZFileApiServer.Controllers
         /// 获取用户设置信息
         /// </summary>
         /// <returns></returns>     
-
+        
         [HttpGet("Get"), ApiAuthorize(Modules = "Admin", Methods = "Add", LogType = LogEnum.ADD)]
         public async Task<IActionResult> GetUserSysInfo()
         {
@@ -101,25 +101,54 @@ namespace ZFileApiServer.Controllers
                     apiRes.message = "您没有权限查看全部职员，请按部门查找";
                     return Ok(apiRes);
                 }
-
-                var user = dbres.data.admin;
-           
-                var menuSaveType = ConfigExtensions.Configuration[KeyHelper.LOGINAUTHORIZE];
-                //   MemoryCacheService.Default.SetCache(KeyHelper.NOWSITE, site.data.FirstOrDefault());
+                
+                var user = dbres.data;
                 MemoryCacheService.Default.SetCache(KeyHelper.ADMINMENU + "_" + dbres.data.admin.Guid, dbres.data.menu, 600);
+                #region 废弃
 
+
+                // var identity = new ClaimsPrincipal(
+                // new ClaimsIdentity(new[]
+                //     {
+                //                new Claim(ClaimTypes.Role,user.User.Role),
+                //                new Claim(ClaimTypes.Name,user.User.username),
+                //                new Claim(ClaimTypes.WindowsAccountName,user.User.UserRealName),
+                //                new Claim(ClaimTypes.Expiration,DateTime.UtcNow.AddSeconds(12).ToString())
+                //     }, CookieAuthenticationDefaults.AuthenticationScheme)
+                //);
+
+                ////如果保存用户类型是Session，则默认设置cookie退出浏览器 清空
+                //if (ConfigExtensions.Configuration[KeyHelper.LOGINSAVEUSER] == "Session")
+                //{
+                //    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, identity, new AuthenticationProperties
+                //    {
+                //        AllowRefresh = false
+                //    });
+                //}
+                //else
+                //{
+                //    //根据配置保存浏览器用户信息，小时单位
+                // var hours = int.Parse(ConfigExtensions.Configuration[KeyHelper.LOGINCOOKIEEXPIRES]);
+                //    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, identity, new AuthenticationProperties
+                //    {
+                //        ExpiresUtc = DateTime.UtcNow.AddSeconds(10),
+                //        IsPersistent = true,
+                //        AllowRefresh = false
+                //    });
+                //}
+                #endregion
 
                 token = JwtHelper.IssueJWT(new TokenModel()
                 {
-                    Uid = user.Guid.ToString(),
-                    UserName = user.LoginName,
+                    Uid = user.admin.Guid.ToString(),
+                    UserName = user.admin.LoginName,
                     Role = "Admin",
                     TokenType = "Web"
                 });
                 apiRes.statusCode = (int)ApiEnum.Status;
                 apiRes.data = token;
             }
-            catch (Exception)
+            catch (Exception )
             {
 
 
@@ -128,17 +157,14 @@ namespace ZFileApiServer.Controllers
         }
 
 
-
+       
         [HttpPost("add"), ApiAuthorize(Modules = "Admin", Methods = "Add", LogType = LogEnum.ADD)]
         public async Task<IActionResult> AddUserInfo([FromBody] SysAdmin parm)
         {
             return Ok(await _sysAdmin.AddAsync(parm));
-
+           
         }
-
-
-
-
-
+      
+      
     }
 }
