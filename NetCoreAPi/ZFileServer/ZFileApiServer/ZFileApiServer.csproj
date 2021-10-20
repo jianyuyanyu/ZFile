@@ -6,7 +6,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <DocumentationFile>C:\Users\Administrator\source\repos\ZFile\NetCoreAPi\ZFileServer\ZFileApiServer\ZFileApiServer.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\M5510\source\repos\ZFile\NetCoreAPi\ZFileServer\ZFileApiServer\ZFileApiServer.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 

@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using ZFile.Common;
 using ZFile.Common.ApiClient;
+using ZFile.Common.Cache;
 using ZFile.Common.ConfigHelper;
 using ZFile.Common.EnumHelper;
 using ZFile.Core.Model.User;
@@ -24,16 +25,16 @@ namespace ZFileApiServer.Controllers
 {
     [Produces("application/json")]
     [Route("api/Menu")]
-    [JwtAuthorize(Roles = "Admin")]
+     [JwtAuthorize(Roles = "Admin")]
     public class MenuController : ControllerBase
     {
     
-        private readonly SysMenuService _sysMenuService;
+        private readonly ISysMenuService _sysMenuService;
         //private readonly SysAuthorizeService _authorizeService;
         //private readonly CacheService _cacheService;
-        private readonly SysPermissionsService _sysPermissionsService;
-        public MenuController(SysMenuService sysMenuService
-            , SysPermissionsService sysPermissionsService)
+        private readonly ISysPermissionsService _sysPermissionsService;
+        public MenuController(ISysMenuService sysMenuService
+            , ISysPermissionsService sysPermissionsService)
         {
             _sysMenuService = sysMenuService;
          
@@ -138,6 +139,38 @@ namespace ZFileApiServer.Controllers
         public async Task<IActionResult> GetAuthorizaionMenu([FromBody] ParmString obj)
         {
             return Ok(await _sysMenuService.GetMenuByRole(obj.parm));
+        }
+
+
+        /// <summary>
+        /// 提供权限查询
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("authmenu")]
+        [ApiAuthorize(Modules = "Menu", Methods = "Update", LogType = LogEnum.STATUS)]
+        public async Task<IActionResult> GetAuthMenuAsync()
+        {
+            await Task.Delay(100);
+            var res = new ApiResult<List<SysMenuDto>>();
+            string[] accesToken = Request.Headers["Authorization"].ToString().Split(' ');
+            TokenModel token = JwtHelper.SerializeJWT(accesToken[1]);
+            var userGuid = token.Uid;
+            //res.data = JsonConvert.DeserializeObject<List<SysMenuDto>>(menu);
+            var menuSaveType = ConfigExtensions.Configuration[KeyHelper.LOGINAUTHORIZE];
+            if (menuSaveType == "Redis")
+            {
+                //res.data = RedisHelper.Get<List<SysMenuDto>>(KeyHelper.ADMINMENU + "_" + userGuid);
+            }
+            else
+            {
+                res.data = MemoryCacheService.Default.GetCache<List<SysMenuDto>>(KeyHelper.ADMINMENU + "_" + userGuid);
+            }
+            if (res.data == null)
+            {
+                res.statusCode = (int)ApiEnum.URLExpireError;
+                res.message = "Session已过期，请重新登录";
+            }
+            return Ok(res);
         }
     }
 

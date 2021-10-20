@@ -10,6 +10,7 @@ using ZFile.Common.EnumHelper;
 using ZFile.Common.LogHelper;
 using ZFile.Core.Model.User;
 using ZFile.Service.DtoModel;
+using ZFile.Service.Interfaces;
 using ZFile.Service.Repository;
 
 namespace ZFile.Service.Implements
@@ -17,7 +18,7 @@ namespace ZFile.Service.Implements
     /// <summary>
     /// 角色关联菜单的实现
     /// </summary>
-    public class SysPermissionsService : BaseService<SysPermissions>
+    public class SysPermissionsService : BaseService<SysPermissions>, ISysPermissionsService
     {
 
         /// <summary>

@@ -12,13 +12,14 @@ using SqlSugar;
 using ZFile.Service.DtoModel;
 using ZFile.Service.Extensions;
 using ZFile.Common.LogHelper;
+using ZFile.Service.Interfaces;
 
 namespace ZFile.Service.Implements
 {
     /// <summary>
     /// 菜单管理
     /// </summary>
-    public class SysMenuService : BaseService<SysMenu>
+    public class SysMenuService : BaseService<SysMenu>,ISysMenuService
     {
 
         /// <summary>

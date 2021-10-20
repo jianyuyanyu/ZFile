@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ZFile.Common.ApiClient;
 using ZFile.Core.Model.User;
 using ZFile.Service.DtoModel;
+using ZFile.Service.DtoModel.Sys;
 using ZFile.Service.Repository;
 
 namespace ZFile.Service.Interfaces
@@ -18,7 +19,7 @@ namespace ZFile.Service.Interfaces
         /// </summary>
         /// <param name="parm"></param>
         /// <returns></returns>
-        Task<ApiResult<UserInfoDto>> LoginAsync(string User,string pasd );
+        Task<ApiResult<SysAdminMenuDto>> LoginAsync(string User,string pasd );
 
         /// <summary>
         /// 更新容量

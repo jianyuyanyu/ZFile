@@ -51,7 +51,7 @@ namespace ZFile.Core
             Db.CodeFirst.InitTables<SysPermissions>();
             Db.CodeFirst.InitTables<SysRole>();
             Db.CodeFirst.InitTables<SysBtnFun>();
-          //  SeedData();
+          // SeedData();
         }
 
         void SeedData()
@@ -429,7 +429,7 @@ namespace ZFile.Core
             DepartmentGuid = "0bb7aaaf-8b91-4ce5-b261-72d7bc6157fc",
             DepartmentGuidList = ",883deb1c-ddd7-484e-92c1-b3ad3b32e655,0f04b2e0-1ab8-4cc9-b6bf-a3e7dd53f77b,0bb7aaaf-8b91-4ce5-b261-72d7bc6157fc,",
                 LoginName = "demo888",
-                LoginPwd = "pPo9vFeTWOCF0oLKKdX9Jw==",
+                LoginPwd = Common.Utils.GetMD5("demo888"),
                 TrueName = "李四",
                 Number ="1002",
                 HeadPic ="",
@@ -447,6 +447,111 @@ namespace ZFile.Core
             #endregion
 
 
+            #region 关联 
+            Db.Insertable<SysPermissions>(new SysPermissions() { 
+            RoleGuid= "4d98e862-af34-4e11-a585-658014333bbc",
+            AdminGuid= "30d3da88-bb72-4ace-a303-b3aae0ecb732",
+            MenuGuid="",
+            BtnFunJson="",
+            Types=2,
+                status = true
+            }).ExecuteCommand();
+
+            Db.Insertable<SysPermissions>(new SysPermissions()
+            {
+                RoleGuid = "4d98e862-af34-4e11-a585-658014333bbc",
+                AdminGuid = "",
+                MenuGuid = "5ed17c74-0fff-4f88-8581-3b4f26d005a8",
+                BtnFunJson = "",
+                Types = 1,
+                status = true
+            }).ExecuteCommand();
+            Db.Insertable<SysPermissions>(new SysPermissions()
+            {
+                RoleGuid = "4d98e862-af34-4e11-a585-658014333bbc",
+                AdminGuid = "",
+                MenuGuid = "6d4cfcf7-ff1c-4537-aa3f-75cc9df27583",
+                BtnFunJson = "",
+                Types = 1,
+                status = true
+            }).ExecuteCommand();
+
+            Db.Insertable<SysPermissions>(new SysPermissions()
+            {
+                RoleGuid = "4d98e862-af34-4e11-a585-658014333bbc",
+                AdminGuid = "",
+                MenuGuid = "5ce13ead-971b-4ed4-ad5f-acacccd82381",
+                BtnFunJson = "",
+                Types = 1,
+                status = true
+            }).ExecuteCommand();
+
+            Db.Insertable<SysPermissions>(new SysPermissions()
+            {
+                RoleGuid = "4d98e862-af34-4e11-a585-658014333bbc",
+                AdminGuid = "",
+                MenuGuid = "1fc3d8e8-e3f2-49cf-a652-2341082643df",
+                BtnFunJson = "",
+                Types = 1,
+                status = true
+            }).ExecuteCommand();
+
+            Db.Insertable<SysPermissions>(new SysPermissions()
+            {
+                RoleGuid = "4d98e862-af34-4e11-a585-658014333bbc",
+                AdminGuid = "",
+                MenuGuid = "404d4b8b-8e3c-42ee-aee5-f29df31308fa",
+                BtnFunJson = "",
+                Types = 1,
+                status = true
+            }).ExecuteCommand();
+
+            Db.Insertable<SysPermissions>(new SysPermissions()
+            {
+                RoleGuid = "4d98e862-af34-4e11-a585-658014333bbc",
+                AdminGuid = "",
+                MenuGuid = "946bc7c1-6c84-4934-9bda-5f766a61801b",
+                BtnFunJson = "",
+                Types = 1,
+                status = true
+            }).ExecuteCommand();
+
+
+            Db.Insertable<SysPermissions>(new SysPermissions()
+            {
+                RoleGuid = "4d98e862-af34-4e11-a585-658014333bbc",
+                AdminGuid = "",
+                MenuGuid = "a280f6e2-3100-445f-871d-77ea443356a9",
+                BtnFunJson = "",
+                Types = 1,
+                status = true
+            }).ExecuteCommand();
+
+            Db.Insertable<SysPermissions>(new SysPermissions()
+            {
+                RoleGuid = "4d98e862-af34-4e11-a585-658014333bbc",
+                AdminGuid = "",
+                MenuGuid = "a4b3b26f-076a-4267-b03d-613081b13a12",
+                BtnFunJson = "",
+                Types = 1,
+                status = true
+            }).ExecuteCommand();
+
+            Db.Insertable<SysPermissions>(new SysPermissions()
+            {
+                RoleGuid = "4d98e862-af34-4e11-a585-658014333bbc",
+                AdminGuid = "",
+                MenuGuid = "97f0f915-43fc-4d19-9ee2-0d1a5c21877b",
+                BtnFunJson = "",
+                Types = 1,
+                status = true
+
+            }).ExecuteCommand();
+
+
+
+            #endregion
+
         }
 
         public SimpleClient<FileAppseting> FileAppseting => new SimpleClient<FileAppseting>(Db);
@@ -456,7 +561,7 @@ namespace ZFile.Core
         public SimpleClient<FT_File_Vesion> FT_File_Vesion => new SimpleClient<FT_File_Vesion>(Db);
         public SimpleClient<FT_Folder> FT_Folder => new SimpleClient<FT_Folder>(Db);
         public SimpleClient<Qycode> Qycode => new SimpleClient<Qycode>(Db);
-        public SimpleClient<SysAdmin> UserInfo => new SimpleClient<SysAdmin>(Db);
+        public SimpleClient<SysAdmin> SysAdminDb => new SimpleClient<SysAdmin>(Db);
 
         public SimpleClient<SysCode> SysCodeDb => new SimpleClient<SysCode>(Db);
         public SimpleClient<SysCodeType> SysCodeTypeDb => new SimpleClient<SysCodeType>(Db);

@@ -9,6 +9,7 @@ using ZFile.Common.ApiClient;
 using ZFile.Common.EnumHelper;
 using ZFile.Core.Model.User;
 using ZFile.Service.DtoModel;
+using ZFile.Service.DtoModel.Sys;
 using ZFile.Service.Interfaces;
 using ZFile.Service.Repository;
 
@@ -17,30 +18,55 @@ namespace ZFile.Service.Implements
     public class SysAdminService : BaseService<SysAdmin>, ISysAdminService
     {
 
-        public async Task<ApiResult<UserInfoDto>> LoginAsync(string User, string pasd)
+        public async Task<ApiResult<SysAdminMenuDto>> LoginAsync(string User, string pasd)
         {
-            var res = new ApiResult<UserInfoDto>
+            var res = new ApiResult<SysAdminMenuDto>
             {
                 statusCode = (int)ApiEnum.Unauthorized
             };
             try
             {
-              
-                var UserInfo = await Db.Queryable<SysAdmin>().Where(d => d.LoginName == User && d.LoginPwd == Common.Utils.GetMD5(pasd)).FirstAsync();
-                if (UserInfo == null)
+                var adminModel = new SysAdminMenuDto();
+
+                var model = await Db.Queryable<SysAdmin>().Where(d => d.LoginName == User && d.LoginPwd == Common.Utils.GetMD5(pasd)).FirstAsync();
+                if (model == null)
                 {
-                    res.statusCode = (int)ApiEnum.Error;
-                    res.message = "账号或密码错误";
+                    res.message = "账号错误";
                     return res;
                 }
+                if (!model.LoginPwd.Equals(Common.Utils.GetMD5(pasd)))
+                {
+                    res.message = "密码错误~";
+                    return res;
+                }
+                if (!model.Status)
+                {
+                    res.message = "登录账号被冻结，请联系管理员~";
+                    return res;
+                }
+
+                adminModel.menu = GetMenuByAdmin(model.Guid);
+                if (adminModel == null)
+                {
+                    res.message = "当前账号没有授权功能模块，无法登录~";
+                    return res;
+                }
+                model.LoginDate = DateTime.Now;
+                model.UpLoginDate = model.LoginDate;
+                // model.LoginSum = model.LoginSum + 1;
+                SysAdminDb.Update(model);
+
                 res.statusCode = (int)ApiEnum.Status;
                 res.message = "登入成功";
-                res.data = new UserInfoDto() { User= UserInfo };
-             
+                adminModel.admin = model;
+                res.data = adminModel;
+
+
             }
             catch (Exception ex)
             {
-
+                res.message = ex.Message;
+                //  Logger.Default.ProcessError((int)ApiEnum.Error, ex.Message);
 
             }
             return res;
@@ -101,7 +127,8 @@ namespace ZFile.Service.Implements
                     sort = sm.Sort,
                     btnJson = sp.BtnFunJson
                 })
-                .Mapper((it, cache) => {
+                .Mapper((it, cache) =>
+                {
                     var codeList = cache.Get(list =>
                     {
                         return Db.Queryable<SysCode>().Where(m => m.ParentGuid == "a88fa4d3-3658-4449-8f4a-7f438964d716")

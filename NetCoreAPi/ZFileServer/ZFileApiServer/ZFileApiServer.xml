@@ -163,6 +163,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ZFileApiServer.Controllers.MenuController.GetAuthMenuAsync">
+            <summary>
+            提供权限查询
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ZFileApiServer.Controllers.Admin.OrganizeController.GetListPage">
             <summary>
             获得组织结构Tree列表

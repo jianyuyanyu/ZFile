@@ -1,0 +1,60 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using ZFile.Common.ApiClient;
+using ZFile.Core.Model.User;
+using ZFile.Service.DtoModel;
+using ZFile.Service.Repository;
+
+namespace ZFile.Service.Interfaces
+{
+    /// <summary>
+    /// 系统菜单业务接口
+    /// </summary>
+    public interface ISysMenuService : IBaseService<SysMenu>
+    {
+        /// <summary>
+        /// 获得菜单列表，提供给权限管理，根据角色查询所有菜单
+        /// </summary>
+        /// <returns></returns>
+        Task<ApiResult<List<SysMenuDto>>> GetMenuByRole(string role);
+
+        /// <summary>
+        /// 获得列表
+        /// </summary>
+        /// <returns></returns>
+        Task<ApiResult<Page<SysMenu>>> GetPagesAsync(PageParm parm);
+
+        /// <summary>
+        /// 获得树列表
+        /// </summary>
+        /// <returns></returns>
+        Task<ApiResult<List<SysMenuTree>>> GetListTreeAsync(string roleGuid);
+
+        /// <summary>
+        /// 获得一条数据
+        /// </summary>
+        /// <returns></returns>
+        Task<ApiResult<SysMenu>> GetByGuidAsync(string parm);
+
+        /// <summary>
+        /// 添加一条数据
+        /// </summary>
+        /// <returns></returns>
+        Task<ApiResult<string>> AddAsync(SysMenu parm, List<string> btnfun);
+
+        /// <summary>
+        /// 修改一条数据
+        /// </summary>
+        /// <returns></returns>
+        Task<ApiResult<string>> ModifyAsync(SysMenu parm, List<string> btnfun);
+
+        /// <summary>
+        /// 排序
+        /// </summary>
+        /// <param name="p">父级</param>
+        /// <param name="i">当前id</param>
+        /// <param name="o">排序方式</param>
+        /// <returns></returns>
+        Task<ApiResult<string>> ColSort(string p, string i, int o);
+    }
+}
