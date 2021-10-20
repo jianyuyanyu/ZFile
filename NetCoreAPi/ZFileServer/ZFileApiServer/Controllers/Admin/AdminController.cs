@@ -98,7 +98,7 @@ namespace ZFileApiServer.Controllers
                 }
                 else if (dbres.statusCode == (int)ApiEnum.Unauthorized)
                 {
-                    apiRes.message = "您没有权限查看全部职员，请按部门查找";
+                    apiRes.message = "账号密码错误！！";
                     return Ok(apiRes);
                 }
                 
