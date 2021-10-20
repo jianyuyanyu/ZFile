@@ -51,7 +51,15 @@ namespace ZFile.Core
             Db.CodeFirst.InitTables<SysPermissions>();
             Db.CodeFirst.InitTables<SysRole>();
             Db.CodeFirst.InitTables<SysBtnFun>();
-          // SeedData();
+            try
+            {
+                SeedData();
+            }
+            catch (Exception)
+            {
+
+            }
+          // 
         }
 
         void SeedData()

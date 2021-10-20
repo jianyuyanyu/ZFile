@@ -16,9 +16,9 @@ namespace HomeModel.ViewModels
     public class HomeViewModel : BaseViewModel
     {
         private readonly MenuService Service;
-      
+
         private ObservableCollection<Menu> _MenuItems;
-        public ObservableCollection<Menu> MenuItems
+        public ObservableCollection<Menu>  MenuItems
         {
             get { return _MenuItems; }
             set { SetProperty(ref _MenuItems, value); }
@@ -31,7 +31,7 @@ namespace HomeModel.ViewModels
             set
             {
                 if (SetProperty(ref _Seleitem, value))
-                    NvChangagePage(SystemResource.Nav_HomeContent, Seleitem.ModelCode + "View");
+                    NvChangagePage(SystemResource.Nav_HomeContent,  "View");
             }
         }
         private string _UserName;
@@ -50,13 +50,29 @@ namespace HomeModel.ViewModels
         public async void LoadMenu()
         {
             var model = await Service.GetMenuInfo();
-            MenuItems = new ObservableCollection<Menu>();
-            MenuItems.AddRange(model.data.Where(o => o.PModelCode == "WORK").ToArray()) ;
-            MenuItems.Add(new Menu() { IsSys = 1, PModelCode = "WORK", ModelName = "上传", ModelCode = "Upload" });
-            MenuItems.Add(new Menu() { IsSys = 1, PModelCode = "WORK", ModelName = "下载",ModelCode="Down" });
-            Seleitem = MenuItems[0];
-            NvChangagePage(SystemResource.Nav_HomeContent, Seleitem.ModelCode + "View");
-            UserName = Contract.UserInfo.username;
+            if (model.success && model.statusCode == 200)
+            {
+                MenuItems = new ObservableCollection<Menu>();
+                model.data.ForEach(o =>
+                {
+                    if (o.layer == 2)
+                        MenuItems.Add(new Menu() { Head=o});
+                    if (o.layer == 3)
+                    {
+                        var AddVar = MenuItems.Where(c => c.Head.guid == o.parentGuid).FirstOrDefault();
+                        if (AddVar != null)
+                            AddVar.ChilderList.Add(o);
+                    }
+                });
+            }
+
+
+            //MenuItems.AddRange(model.data.Where(o => o.PModelCode == "WORK").ToArray()) ;
+            //MenuItems.Add(new Menu() { IsSys = 1, PModelCode = "WORK", ModelName = "上传", ModelCode = "Upload" });
+            //MenuItems.Add(new Menu() { IsSys = 1, PModelCode = "WORK", ModelName = "下载",ModelCode="Down" });
+            //Seleitem = MenuItems[0];
+            //NvChangagePage(SystemResource.Nav_HomeContent, Seleitem.ModelCode + "View");
+            //UserName = Contract.UserInfo.username;
         }
     }
 }

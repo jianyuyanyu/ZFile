@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:zt="clr-namespace:ZFileComponent.Themes.ControlHelper;assembly=ZFileComponent"
+    xmlns:vm="clr-namespace:HomeModel"
     av:DesignHeight="768"
     av:DesignWidth="1024"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -20,7 +21,7 @@
     </i:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="140" />
+            <ColumnDefinition Width="110" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -78,7 +79,22 @@
                     Foreground="White"
                     Text="{Binding UserName}" />
             </StackPanel>
-
+            <!--<TreeView Grid.Row="1" x:Name="treeView" ItemsSource="{Binding MenuItems}"   HorizontalAlignment="Left">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectedItemChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectItemChangeCommand}"
+               CommandParameter="{Binding ElementName=treeView,Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type vm:Menu}" ItemsSource="{Binding ChilderList}">
+                        <TextBlock Text="{Binding Head.name}"/>
+                    </HierarchicalDataTemplate>
+                    <DataTemplate DataType="{x:Type vm:SysMenuDto}" >
+                        <TextBlock Text="{Binding name}"  ></TextBlock>
+                    </DataTemplate>
+                </TreeView.Resources>
+            </TreeView>-->
             <ListBox
                 Grid.Row="1"
                 ItemsSource="{Binding MenuItems}"
@@ -112,20 +128,57 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <RadioButton
-                            Width="100"
+                        <StackPanel>
+                            <Expander Header="{Binding Head.name}" Style="{StaticResource MahApps.Styles.Expander}"  Foreground="White"  Background="Transparent">
+                                <ListBox ItemsSource="{Binding ChilderList}">
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="HorizontalAlignment" Value="Stretch" />
+                                            <Setter Property="BorderThickness" Value="0" />
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                                        <Grid>
+                                                            <Border Name="border" />
+                                                            <ContentPresenter />
+                                                        </Grid>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsSelected" Value="True">
+                                                                <Setter TargetName="border" Property="Background" Value="Transparent" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <RadioButton
+                            Width="90"
                             Height="40"
-                            HorizontalAlignment="Center"
-                            Content="{Binding ModelName}"
+                            HorizontalContentAlignment="Center"
+                            Content="{Binding name}"
                             Foreground="White"
                             Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}">
-                            <RadioButton.IsChecked>
-                                <Binding
+                                                <RadioButton.IsChecked>
+                                                    <Binding
                                     Mode="TwoWay"
                                     Path="IsSelected"
                                     RelativeSource="{RelativeSource AncestorType=ListBoxItem}" />
-                            </RadioButton.IsChecked>
-                        </RadioButton>
+                                                </RadioButton.IsChecked>
+                                            </RadioButton>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Expander>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

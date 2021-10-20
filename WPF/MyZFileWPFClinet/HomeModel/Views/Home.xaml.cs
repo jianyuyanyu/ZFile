@@ -10,6 +10,7 @@ namespace HomeModel.Views
         public Home()
         {
             InitializeComponent();
+            
         }
     }
 }

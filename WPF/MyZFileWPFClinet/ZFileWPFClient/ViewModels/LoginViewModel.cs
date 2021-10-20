@@ -91,38 +91,38 @@ namespace ZFileWPFClient.ViewModels
                 }
                 RestSharpCertificateMethod.Token = r.data.ToString();
                 Msg = "登入成功获取用户信息中。。。";
-                var USE = await service.GetUserInfoAsync();
-                if (USE == null || !USE.success || USE.statusCode != 200)
-                {
-                    SnackBar(r == null ? "获取用户信息异常,请稍后重试!" : r.message);
-                    return;
-                }
+                //var USE = await service.GetUserInfoAsync();
+                //if (USE == null || !USE.success || USE.statusCode != 200)
+                //{
+                //    SnackBar(r == null ? "获取用户信息异常,请稍后重试!" : r.message);
+                //    return;
+                //}
 
-                Contract.UserInfo = new UserInfo()
-                {
-                    id = USE.data.Result.id,
-                    pasd = USE.data.Result.pasd,
-                    role = USE.data.Result.role,
-                    space = USE.data.Result.space,
-                    username = USE.data.Result.username,
-                    userRealName = USE.data.Result.userRealName
-                };
-                Contract.Title = USE.data.Result1;
-                Contract.Company = USE.data.Result2;
-                Contract.qycodeDto = new QycodeDto()
-                {
-                    Code = USE.data.Result4.code,
-                    Description = USE.data.Result4.description,
-                    crdate = USE.data.Result4.crdate,
-                    filecount = USE.data.Result4.filecount,
-                    ID = USE.data.Result4.id,
-                    IsUsed = USE.data.Result4.isUsed,
-                    Name = USE.data.Result4.name,
-                    secret = USE.data.Result4.secret,
-                    space = USE.data.Result4.space,
-                    updatetime = USE.data.Result4.updatetime,
-                    yyspace = USE.data.Result4.yyspace
-                };
+                //Contract.UserInfo = new UserInfo()
+                //{
+                //    id = USE.data.Result.id,
+                //    pasd = USE.data.Result.pasd,
+                //    role = USE.data.Result.role,
+                //    space = USE.data.Result.space,
+                //    username = USE.data.Result.username,
+                //    userRealName = USE.data.Result.userRealName
+                //};
+                //Contract.Title = USE.data.Result1;
+                //Contract.Company = USE.data.Result2;
+                //Contract.qycodeDto = new QycodeDto()
+                //{
+                //    Code = USE.data.Result4.code,
+                //    Description = USE.data.Result4.description,
+                //    crdate = USE.data.Result4.crdate,
+                //    filecount = USE.data.Result4.filecount,
+                //    ID = USE.data.Result4.id,
+                //    IsUsed = USE.data.Result4.isUsed,
+                //    Name = USE.data.Result4.name,
+                //    secret = USE.data.Result4.secret,
+                //    space = USE.data.Result4.space,
+                //    updatetime = USE.data.Result4.updatetime,
+                //    yyspace = USE.data.Result4.yyspace
+                //};
 
                 await Task.Delay(1000);
                 WeakReferenceMessenger.Default.Send("", "NavigationPage");
