@@ -1,6 +1,8 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
+using SysAdmin.Dialogs;
+using SysAdmin.ViewModels;
 using SysAdmin.Views;
 
 namespace SysAdmin
@@ -28,6 +30,8 @@ namespace SysAdmin
             containerRegistry.RegisterForNavigation<Key>(typeof(Key).Name + "View");
             //系统设置       
             containerRegistry.RegisterForNavigation<SysSetting>(typeof(SysSetting).Name + "View");
+
+            containerRegistry.RegisterDialog<AddDepartment,AddDepartmentViewModel>();
 
             containerRegistry.Register<DepartmentService>();
 

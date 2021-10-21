@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock FontWeight="Black" Foreground="White" FontSize="24" Margin="5,10">组织机构</TextBlock>
         <StackPanel Grid.Column="1" Orientation="Horizontal">
-            <Button  Margin="5,0"   Style="{StaticResource MaterialDesignFlatDarkBgButton}" Foreground="White" Background="#1b315e" >添加</Button>
+            <Button  Margin="5,0"   Style="{StaticResource MaterialDesignFlatDarkBgButton}" Foreground="White" Command="{Binding OpenAddDepartmentCommnad}" Background="#1b315e" >添加</Button>
             <Button  Margin="5,0"   Style="{StaticResource MaterialDesignFlatDarkBgButton}" Foreground="White" Background="#2585a6" >删除</Button>
         </StackPanel>
         <Border Background="LightGray" Grid.Column="0" Grid.Row="1" CornerRadius="5" Opacity="1" Margin="5,5,0,5"></Border>

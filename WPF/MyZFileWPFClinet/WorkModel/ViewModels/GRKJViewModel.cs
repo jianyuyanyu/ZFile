@@ -108,6 +108,7 @@ namespace WorkModel.ViewModels
         {
             var content = new AddFloder(_provider, CurrnetFolder);
             DialogBox.Show(SystemResource.Nav_MainContent, content, "创建文件夹", null, DialogClose);
+            
         }
 
 
