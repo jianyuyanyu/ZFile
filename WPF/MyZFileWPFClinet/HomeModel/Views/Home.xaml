@@ -9,7 +9,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:zt="clr-namespace:ZFileComponent.Themes.ControlHelper;assembly=ZFileComponent"
-    xmlns:vm="clr-namespace:HomeModel" xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+    xmlns:vm="clr-namespace:HomeModel" 
+    xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
     av:DesignHeight="768"
     av:DesignWidth="1024"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -61,7 +62,7 @@
                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}" />
             </StackPanel>
         </Grid>-->
-        <Grid Background="BlueViolet">
+        <Grid Background="#FF4E4E67">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100" />
                 <RowDefinition />
@@ -84,12 +85,12 @@
                        ItemsSource="{Binding MenuItems}" 
                        Foreground="WhiteSmoke" 
                        FontWeight="Black"
-                       Background="Transparent"
-                       zt:TreeViewHelper.SelectedBackground="#7D0708F8"
+                       Background="#FF4E4E67"
+                       zt:TreeViewHelper.SelectedBackground="#FF56A4ED"
                        zt:TreeViewHelper.SelectedForeground="White"
                        zt:TreeViewHelper.SelectMode="ChildOnly"
                        zt:TreeViewHelper.ExpandMode="SingleClick"
-                      
+                       
                        >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectedItemChanged">

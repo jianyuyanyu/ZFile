@@ -5,6 +5,7 @@ using HomeModel;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
+using SysAdmin;
 using System.Windows;
 using WorkModel;
 using ZFileWPFClient.ViewModels;
@@ -46,6 +47,7 @@ namespace ZFileWPFClient
         {
             moduleCatalog.AddModule<HomeModule>();
             moduleCatalog.AddModule<WorkModule>();
+            moduleCatalog.AddModule<SysAdminModule>();
             moduleCatalog.AddModule<TranmissionModel.TranmissionModelModule>();
             base.ConfigureModuleCatalog(moduleCatalog);
         }
