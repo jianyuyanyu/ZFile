@@ -22,51 +22,13 @@
     </i:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="140" />
+            <ColumnDefinition Width="160" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-
-        <!--<Grid Grid.ColumnSpan="2" Background="{StaticResource MahApps.Brushes.WindowTitle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20" />
-                <ColumnDefinition Width="0.5*" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
-            <StackPanel
-                Grid.Column="2"
-                Margin="20,0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Orientation="Horizontal">
-                <Button Style="{StaticResource MaterialDesignIconButton}">
-                    关于
-                </Button>
-                <Ellipse
-                    Width="40"
-                    Height="40"
-                    Margin="5,0"
-                    Fill="Bisque" />
-                <TextBlock VerticalAlignment="Center" Text="{Binding UserName}" />
-                <TextBlock
-                    VerticalAlignment="Center"
-                    FontFamily="{StaticResource IconFont}"
-                    FontSize="24"
-                    Text="&#xe60c;" />
-                <Button
-                    Background="{StaticResource MahApps.Brushes.WindowTitle}"
-                    Content="&#xe63d;"
-                    FontFamily="{StaticResource IconFont}"
-                    FontSize="24"
-                    Foreground="White"
-                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" />
-            </StackPanel>
-        </Grid>-->
-        <Grid Background="#FF4E4E67">
+        <Grid Background="#6950a1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100" />
                 <RowDefinition />
-
             </Grid.RowDefinitions>
             <StackPanel >
                 <Ellipse
@@ -85,7 +47,7 @@
                        ItemsSource="{Binding MenuItems}" 
                        Foreground="WhiteSmoke" 
                        FontWeight="Black"
-                       Background="#FF4E4E67"
+                       Background="Transparent"
                        zt:TreeViewHelper.SelectedBackground="#FF56A4ED"
                        zt:TreeViewHelper.SelectedForeground="White"
                        zt:TreeViewHelper.SelectMode="ChildOnly"

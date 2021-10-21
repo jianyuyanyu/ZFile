@@ -60,7 +60,7 @@ namespace ZFileApiServer
                         ValidateAudience = true,//是否验证Audience
                         ValidateIssuerSigningKey = true,//是否验证SecurityKey
                         ValidateLifetime = true,//是否验证超时  当设置exp和nbf时有效 同时启用ClockSkew 
-                        ClockSkew = TimeSpan.Zero,//注意这是缓冲过期时间，总的有效时间等于这个时间加上jwt的过期时间，如果不配置，默认是5分钟
+                        ClockSkew = TimeSpan.FromSeconds(30),//注意这是缓冲过期时间，总的有效时间等于这个时间加上jwt的过期时间，如果不配置，默认是5分钟
                         ValidAudience = jwtConfig.Audience,//Audience
                         ValidIssuer = jwtConfig.Issuer,//Issuer，这两项和前面签发jwt的设置一致
                         RequireExpirationTime = true,///否要求Token的Claims中必须包含Expires

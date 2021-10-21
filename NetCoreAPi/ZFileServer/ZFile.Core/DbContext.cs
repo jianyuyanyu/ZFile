@@ -454,7 +454,6 @@ namespace ZFile.Core
             }).ExecuteCommand();
             #endregion
 
-
             #region 关联 
             Db.Insertable<SysPermissions>(new SysPermissions() { 
             RoleGuid= "4d98e862-af34-4e11-a585-658014333bbc",

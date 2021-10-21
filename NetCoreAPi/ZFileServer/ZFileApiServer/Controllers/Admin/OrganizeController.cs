@@ -8,8 +8,7 @@ using ZFile.Core.Model.User;
 using ZFile.Extensions.Authorize;
 using ZFile.Service.DtoModel;
 using ZFile.Service.Implements;
-
-
+using ZFile.Service.Interfaces.Sys;
 
 namespace ZFileApiServer.Controllers.Admin
 {
@@ -18,8 +17,8 @@ namespace ZFileApiServer.Controllers.Admin
     [JwtAuthorize(Roles = "Admin")]
     public class OrganizeController : ControllerBase
     {
-        private readonly SysOrganizeService _sysOrganizeService;
-        public OrganizeController(SysOrganizeService sysOrganizeService)
+        private readonly ISysOrganizeService _sysOrganizeService;
+        public OrganizeController(ISysOrganizeService sysOrganizeService)
         {
             _sysOrganizeService = sysOrganizeService;
         }
@@ -27,10 +26,10 @@ namespace ZFileApiServer.Controllers.Admin
         /// 获得组织结构Tree列表
         /// </summary>
         /// <returns></returns>
-        [HttpPost("gettree")]
-        public List<SysOrganizeTree> GetListPage()
+        [HttpPost("gettree"), ApiAuthorize(Modules = "Department", Methods = "Add", LogType = LogEnum.RETRIEVE)]
+        public async Task<IActionResult> GetListPage()
         {
-            return _sysOrganizeService.GetListTreeAsync().Result.data;
+            return Ok(await _sysOrganizeService.GetListTreeAsync());
         }
 
         /// <summary>

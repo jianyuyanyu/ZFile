@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace ZFile.Service.DtoModel
+namespace SysAdmin
 {
-    /// <summary>
-    /// 组织机构DTO
-    /// </summary>
-    public class SysOrganizeDto
-    {
-
-    }
 
     public class SysOrganizeTree
     {

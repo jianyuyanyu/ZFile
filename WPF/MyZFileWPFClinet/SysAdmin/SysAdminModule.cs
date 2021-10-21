@@ -29,6 +29,8 @@ namespace SysAdmin
             //系统设置       
             containerRegistry.RegisterForNavigation<SysSetting>(typeof(SysSetting).Name + "View");
 
+            containerRegistry.Register<DepartmentService>();
+
 
         }
     }

@@ -10,13 +10,14 @@ using ZFile.Common.LogHelper;
 using ZFile.Core.Model.User;
 using ZFile.Service.DtoModel;
 using ZFile.Service.Extensions;
+using ZFile.Service.Interfaces.Sys;
 using ZFile.Service.Repository;
 
 namespace ZFile.Service.Implements
 { /// <summary>
   /// 部门实现
   /// </summary>
-    public class SysOrganizeService : BaseService<SysOrganize>
+    public class SysOrganizeService : BaseService<SysOrganize>, ISysOrganizeService
     {
         /// <summary>
         /// 添加部门信息

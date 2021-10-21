@@ -28,6 +28,10 @@ namespace Component.Api
 
             if (br.IsJson)
             {
+                if (br.parameters==null)
+                {
+                    return await RestSharpCertificateMethod.RequestBehavior<Response>(br.apiUrl, request, IsAuto);
+                }
                 foreach (var item in br.parameters)
                     request.AddJsonBody(JsonConvert.SerializeObject(item.Value));
 

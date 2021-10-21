@@ -55,6 +55,7 @@ namespace ZFile.Extensions.JWT
                 issuer: jwtConfig.Issuer,
                 audience: jwtConfig.Audience,
                 claims: claims,
+                 expires: dateTime.AddMinutes(exp),
                 signingCredentials: creds);
             var jwtHandler = new JwtSecurityTokenHandler();
             var encodedJwt = jwtHandler.WriteToken(jwt);
