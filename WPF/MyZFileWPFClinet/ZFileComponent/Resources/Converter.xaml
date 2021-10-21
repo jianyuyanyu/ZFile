@@ -22,7 +22,7 @@
     <local:ProgressBarPercentConverter x:Key="ProgressBarPercentConverter" />
     <local:ProgressBarOffset1Converter x:Key="ProgressBarOffset1Converter" />
     <local:ProgressBarOffset2Converter x:Key="ProgressBarOffset2Converter" />
-
+    <local:TreeViewVerticalChainConverter x:Key="TreeViewVerticalChainConverter"></local:TreeViewVerticalChainConverter>
 
     <local:DoubleToCornerRadiusConverter x:Key="DoubleToCornerRadiusConverter" />
     <local:CornerRadiusToDoubleConverter x:Key="CornerRadiusToDoubleConverter" />

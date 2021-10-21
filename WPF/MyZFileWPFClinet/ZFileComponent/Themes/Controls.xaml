@@ -14,6 +14,7 @@
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/ProgressBarStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/DialogBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/NoticeCardStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/TreeView.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style BasedOn="{StaticResource ZtDialogBox}" TargetType="{x:Type local:DialogBox}" />
 </ResourceDictionary>

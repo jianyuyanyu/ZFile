@@ -1,13 +1,13 @@
 ﻿using System.Windows.Controls;
 
-namespace WorkModel.Views
+namespace SysAdmin.Views
 {
     /// <summary>
-    /// Interaction logic for GRKJ
+    /// Interaction logic for Admin
     /// </summary>
-    public partial class GRKJ : UserControl
+    public partial class Admin : UserControl
     {
-        public GRKJ()
+        public Admin()
         {
             InitializeComponent();
         }

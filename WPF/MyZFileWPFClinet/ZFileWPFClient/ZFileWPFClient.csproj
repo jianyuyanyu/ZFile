@@ -19,6 +19,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\Home\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Prism.DryIoc" Version="8.1.97" />

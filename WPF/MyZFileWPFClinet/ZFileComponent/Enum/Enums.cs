@@ -86,4 +86,33 @@ namespace Component
         Sink,
     }
     #endregion
+
+    #region TreeView
+    public enum TreeViewStyle
+    {
+        Standard,
+        Classic,
+        Modern,
+        Chain,
+    }
+
+    public enum SelectMode
+    {
+        Any,
+        ChildOnly,
+        Disabled
+    }
+
+    public enum ExpandMode
+    {
+        DoubleClick,
+        SingleClick
+    }
+
+    public enum ExpandBehaviour
+    {
+        Any,
+        OnlyOne,
+    }
+    #endregion
 }

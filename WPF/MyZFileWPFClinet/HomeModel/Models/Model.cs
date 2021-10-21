@@ -5,13 +5,13 @@ using System.Text;
 
 namespace HomeModel
 {
-    public class Menu
+    public class Menu: SysMenuDto
     {
         public Menu()
         {
             ChilderList = new ObservableCollection<SysMenuDto>();
         }
-        public SysMenuDto Head { get; set; }
+        //public SysMenuDto Head { get; set; }
 
         public ObservableCollection<SysMenuDto> ChilderList  { get; set; }
     }

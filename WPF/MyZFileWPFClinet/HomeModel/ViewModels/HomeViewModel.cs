@@ -18,20 +18,20 @@ namespace HomeModel.ViewModels
         private readonly MenuService Service;
 
         private ObservableCollection<Menu> _MenuItems;
-        public ObservableCollection<Menu>  MenuItems
+        public ObservableCollection<Menu> MenuItems
         {
             get { return _MenuItems; }
             set { SetProperty(ref _MenuItems, value); }
         }
 
-        private Menu _Seleitem;
-        public Menu Seleitem
+        private SysMenuDto _Seleitem;
+        public SysMenuDto Seleitem
         {
             get { return _Seleitem; }
             set
             {
                 if (SetProperty(ref _Seleitem, value))
-                    NvChangagePage(SystemResource.Nav_HomeContent,  "View");
+                    NvChangagePage(SystemResource.Nav_HomeContent, _Seleitem.nameCode+"View");
             }
         }
         private string _UserName;
@@ -41,6 +41,16 @@ namespace HomeModel.ViewModels
             set { SetProperty(ref _UserName, value); }
         }
 
+
+        public DelegateCommand<object> SelectItemChangeCommand => new DelegateCommand<object>(SelectItemChange);
+        private void SelectItemChange(object obj)
+        {
+            if (obj == null ) return;
+            var Menu = obj as SysMenuDto;
+            if (Menu.layer == 2) return;
+            Seleitem = Menu;
+
+        }
 
         public HomeViewModel(IContainerProvider provider, IRegionManager regionManager) : base(provider, regionManager)
         {
@@ -56,16 +66,30 @@ namespace HomeModel.ViewModels
                 model.data.ForEach(o =>
                 {
                     if (o.layer == 2)
-                        MenuItems.Add(new Menu() { Head=o});
+                        MenuItems.Add(new Menu() {
+                            btnFun = o.btnFun, 
+                            btnJson=o.btnJson,
+                            isChecked=o.isChecked,
+                            nameCode=o.nameCode,
+                            guid=o.guid,
+                            icon=o.icon,
+                            layer=o.layer,
+                            name=o.name,
+                            parentGuid=o.parentGuid,
+                            parentGuidList=o.parentGuidList,
+                            parentName=o.parentName,
+                            sort=o.sort,
+                            urls=o.urls
+                        });
                     if (o.layer == 3)
                     {
-                        var AddVar = MenuItems.Where(c => c.Head.guid == o.parentGuid).FirstOrDefault();
+                        var AddVar = MenuItems.Where(c => c.guid == o.parentGuid).FirstOrDefault();
                         if (AddVar != null)
                             AddVar.ChilderList.Add(o);
                     }
                 });
             }
-
+            MenuItems.Add(new Menu() { name = "上传" });
 
             //MenuItems.AddRange(model.data.Where(o => o.PModelCode == "WORK").ToArray()) ;
             //MenuItems.Add(new Menu() { IsSys = 1, PModelCode = "WORK", ModelName = "上传", ModelCode = "Upload" });
