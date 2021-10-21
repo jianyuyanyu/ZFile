@@ -89,8 +89,17 @@ namespace HomeModel.ViewModels
                     }
                 });
             }
-            MenuItems.Add(new Menu() { name = "上传" });
 
+            Menu FileMenu = new Menu() { name = "文件管理" };
+            FileMenu.ChilderList.Add(new SysMenuDto() { name = "个人空间", nameCode = "GRKJ" });
+            FileMenu.ChilderList.Add(new SysMenuDto() { name="上传",nameCode= "Upload" });
+            FileMenu.ChilderList.Add(new SysMenuDto() { name = "下载", nameCode = "Down" });
+
+            MenuItems.Add(FileMenu);
+
+            //MenuItems.Add(new Menu() { name = "上传", nameCode = "Upload" });
+            //MenuItems.Add(new Menu() { name = "上传",nameCode= "Upload" });
+            //MenuItems.Add(new Menu() { name = "下载", nameCode = "Down" });
             //MenuItems.AddRange(model.data.Where(o => o.PModelCode == "WORK").ToArray()) ;
             //MenuItems.Add(new Menu() { IsSys = 1, PModelCode = "WORK", ModelName = "上传", ModelCode = "Upload" });
             //MenuItems.Add(new Menu() { IsSys = 1, PModelCode = "WORK", ModelName = "下载",ModelCode="Down" });

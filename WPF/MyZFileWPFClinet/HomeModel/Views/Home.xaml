@@ -9,7 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:zt="clr-namespace:ZFileComponent.Themes.ControlHelper;assembly=ZFileComponent"
-    xmlns:vm="clr-namespace:HomeModel"
+    xmlns:vm="clr-namespace:HomeModel" xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
     av:DesignHeight="768"
     av:DesignWidth="1024"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -61,13 +61,13 @@
                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}" />
             </StackPanel>
         </Grid>-->
-        <Grid Background="{StaticResource MahApps.Brushes.WindowTitle}">
+        <Grid Background="BlueViolet">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100" />
                 <RowDefinition />
 
             </Grid.RowDefinitions>
-            <StackPanel>
+            <StackPanel >
                 <Ellipse
                     Width="40"
                     Height="40"
@@ -79,8 +79,18 @@
                     Foreground="White"
                     Text="{Binding UserName}" />
             </StackPanel>
-            <TreeView x:Name="treeView" zt:TreeViewHelper.TreeViewStyle="Classic" Grid.Row="1" Background="Transparent" ItemsSource="{Binding MenuItems}"   zt:TreeViewHelper.SelectMode="ChildOnly" zt:TreeViewHelper.ExpandMode="SingleClick" zt:TreeViewHelper.SelectedBackground="{StaticResource MahApps.Brushes.Accent}"
-                      zt:TreeViewHelper.SelectedForeground="White" >
+            <TreeView  Margin="5,0" x:Name="treeView" zt:TreeViewHelper.TreeViewStyle="Classic"
+                       Grid.Row="1" 
+                       ItemsSource="{Binding MenuItems}" 
+                       Foreground="WhiteSmoke" 
+                       FontWeight="Black"
+                       Background="Transparent"
+                       zt:TreeViewHelper.SelectedBackground="#7D0708F8"
+                       zt:TreeViewHelper.SelectedForeground="White"
+                       zt:TreeViewHelper.SelectMode="ChildOnly"
+                       zt:TreeViewHelper.ExpandMode="SingleClick"
+                      
+                       >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectedItemChanged">
                         <i:InvokeCommandAction Command="{Binding SelectItemChangeCommand}"
@@ -89,10 +99,10 @@
                 </i:Interaction.Triggers>
                 <TreeView.Resources>
                     <HierarchicalDataTemplate DataType="{x:Type vm:Menu}" ItemsSource="{Binding ChilderList}">
-                        <TextBlock Margin="10,0" Text="{Binding name}"   />
+                        <TextBlock Text="{Binding name}"  />
                     </HierarchicalDataTemplate>
-                    <DataTemplate DataType="{x:Type vm:SysMenuDto}" >
-                        <TextBlock Margin="20,0" Text="{Binding name}"  HorizontalAlignment="Left"  ></TextBlock>
+                    <DataTemplate DataType="{x:Type vm:SysMenuDto}"  >
+                        <TextBlock  HorizontalAlignment="Left" Text="{Binding name}"     ></TextBlock>
                     </DataTemplate>
                 </TreeView.Resources>
             </TreeView>
