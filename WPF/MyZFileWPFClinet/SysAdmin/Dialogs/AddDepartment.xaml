@@ -2,10 +2,72 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"     
-             Height="400"
-             Width="400"
-             prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid>
+            xmlns:vm="clr-namespace:SysAdmin"
+                
             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+   
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen" />
+            <Setter Property="ShowInTaskbar" Value="False"/>
+            <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+            <Setter Property="Width" Value="340"/>
+            <Setter Property="Height" Value="300"/>
+            <Setter Property="MaxWidth" Value="340"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MinWidth" Value="340"/>
+            <Setter Property="MinHeight" Value="300"/>
+            <Setter Property="ResizeMode" Value="CanResize"></Setter>
+            <Setter Property="WindowStyle" Value="ToolWindow"></Setter>
+        </Style>
+    </prism:Dialog.WindowStyle>
+
+
+
+    <Grid Background="#5473e8">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel  Margin="10">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock VerticalAlignment="Center">所属部门:</TextBlock>
+                <ComboBox Width="200" x:Name="combobomtree"  DropDownClosed="combobomtree_DropDownClosed"   SelectedItem="{Binding SelectItem}"  DisplayMemberPath="title"  Style="{StaticResource MahApps.Styles.ComboBox}">
+                    <ComboBoxItem Visibility="Collapsed"></ComboBoxItem>
+                    <ComboBoxItem >
+                        <ComboBoxItem.Template>
+                            <ControlTemplate>
+                                <TreeView   x:Name="treeView" 
+                                SelectedItemChanged="treeView_SelectedItemChanged"
+                       ItemsSource="{Binding sysOrganizeTrees}">
+                                    <TreeView.Resources>
+                                        <HierarchicalDataTemplate DataType="{x:Type vm:SysOrganizeTree}" ItemsSource="{Binding children,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding title}"  />
+                                            </StackPanel>
+                                        </HierarchicalDataTemplate>
+                                    </TreeView.Resources>
+                                </TreeView>
+                            </ControlTemplate>
+                        </ComboBoxItem.Template>
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock VerticalAlignment="Center">部门名称:</TextBlock>
+                <TextBox Width="200"  Text="{Binding DepartmentName}" Style="{StaticResource MahApps.Styles.TextBox}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock VerticalAlignment="Center">排&#12288;&#12288;序:</TextBlock>
+                <TextBox Width="200" Text="{Binding DepartmentSort}"  Style="{StaticResource MahApps.Styles.TextBox}" ></TextBox>
+            </StackPanel>
+            <CheckBox IsChecked="{Binding IsActivation}" Style="{StaticResource MahApps.Styles.CheckBox.Win10}" Background="BlueViolet" Content="是否有效" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Background="LightGreen" Foreground="Black" Command="{Binding CloseDialogCommand}" CommandParameter="true" Width="80"  Height="30"   Margin="20,0">确定</Button>
+            <Button Background="Yellow" Foreground="Black" Width="80"  Height="30"  Command="{Binding CloseDialogCommand}" CommandParameter="false" Margin="20,0">取消</Button>
+        </StackPanel>
     </Grid>
 </UserControl>

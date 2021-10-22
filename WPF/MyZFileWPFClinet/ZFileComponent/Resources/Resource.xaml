@@ -17,6 +17,12 @@
     <SolidColorBrush x:Key="DefaultForeground" Color="{DynamicResource LightForegroundColor}" />
     <SolidColorBrush x:Key="DefaultBackground" Color="{DynamicResource LightBackgroundColor}" />
 
+    
+  
+   
+  
+
+    
     <!--  Effect  -->
     <DropShadowEffect
         x:Key="AllDirectionEffect"
@@ -110,4 +116,15 @@
         Opacity="0.4"
         ShadowDepth="2"
         Color="#9e9e9e" />
+    <LinearGradientBrush x:Key="titleBrush" StartPoint="0,0" EndPoint="1,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Offset="0" Color="#57A1E8"></GradientStop>
+                <GradientStop Offset="1" Color="#1C69CB"></GradientStop>
+                
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+
 </ResourceDictionary>

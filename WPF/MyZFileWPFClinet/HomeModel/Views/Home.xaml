@@ -3,14 +3,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Nv="clr-namespace:Component.Common;assembly=ZFileComponent"
-    xmlns:User="clr-namespace:Component;assembly=ZFileComponent"
     xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:zt="clr-namespace:ZFileComponent.Themes.ControlHelper;assembly=ZFileComponent"
-    xmlns:vm="clr-namespace:HomeModel" 
-    xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+    xmlns:vm="clr-namespace:HomeModel"
     av:DesignHeight="768"
     av:DesignWidth="1024"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -25,7 +23,7 @@
             <ColumnDefinition Width="160" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid Background="#6950a1">
+        <Grid Background="BlueViolet">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100" />
                 <RowDefinition />
@@ -70,6 +68,7 @@
                 </TreeView.Resources>
             </TreeView>
         </Grid>
+        
         <ContentControl
             Grid.Row="1"
             Grid.Column="1"

@@ -59,7 +59,7 @@
                     FontFamily="{StaticResource IconFont}"
                     FontSize="22"
                     Foreground="#90C1FF"
-                    Style="{StaticResource MaterialDesignIconButton}" />
+                    />
                 <Button
                     Width="40"
                     Height="40"
@@ -68,7 +68,7 @@
                     FontFamily="{StaticResource IconFont}"
                     FontSize="32"
                     Foreground="#90C1FF"
-                    Style="{StaticResource MaterialDesignIconButton}" />
+                     />
             </StackPanel>
         </Grid>
         <ItemsControl

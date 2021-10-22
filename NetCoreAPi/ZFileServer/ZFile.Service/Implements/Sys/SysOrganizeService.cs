@@ -33,6 +33,8 @@ namespace ZFile.Service.Implements
             };
             parm.Guid = Guid.NewGuid().ToString();
             parm.EditTime = DateTime.Now;
+            parm.ParentGuidList = parm.ParentGuid;
+            parm.SiteGuid = "";
             await Db.Insertable(parm).ExecuteCommandAsync();
             if (!string.IsNullOrEmpty(parm.ParentGuid))
             {

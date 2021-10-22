@@ -23,6 +23,16 @@ namespace Component.Api
         public object data { get; set; }
     }
 
+
+    public class PagesResponse<T>
+    {
+       
+        public int code { get; set; }
+        public string msg { get; set; }
+        public int count { get; set; }
+
+        public T data { get; set; }
+    }
     public class BaseResponse<T>
     {
         /// <summary>

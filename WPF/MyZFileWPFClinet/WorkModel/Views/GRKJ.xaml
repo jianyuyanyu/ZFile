@@ -30,11 +30,7 @@
     </UserControl.Resources>
 
 
-    <!--<i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
-        </i:EventTrigger>
-    </i:Interaction.Triggers>-->
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -63,14 +59,14 @@
                     Command="{Binding AddFileInfoCommand}"
                     Content="上传"
                     Foreground="White"
-                    Style="{StaticResource MaterialDesignRaisedButton}" />
+                    />
                 <Button
                     Background="BlueViolet"
                     Command="{Binding AddFolderCommand}"
                     Content="新建文件夹"
                     FontSize="14"
                     Foreground="White"
-                    Style="{StaticResource MaterialDesignRaisedButton}" />
+                    />
                 <Button
                     Grid.Column="1"
                     Margin="1,0"
@@ -79,7 +75,7 @@
                     Content="移动"
                     FontSize="14"
                     Foreground="White"
-                    Style="{StaticResource MaterialDesignRaisedButton}" />
+                     />
 
             </UniformGrid>
 
@@ -98,7 +94,7 @@
                     Height="30"
                     Margin="5"
                     Content="搜索"
-                    Style="{StaticResource MaterialDesignRaisedButton}" />
+                   />
 
             </StackPanel>
         </Grid>

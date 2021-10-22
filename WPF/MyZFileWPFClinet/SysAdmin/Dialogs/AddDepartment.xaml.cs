@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace SysAdmin.Dialogs
 {
@@ -10,6 +11,21 @@ namespace SysAdmin.Dialogs
         public AddDepartment()
         {
             InitializeComponent();
+        }
+
+        private void treeView_SelectedItemChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<object> e)
+        {
+            var a = e.NewValue as SysOrganizeTree;
+            if (a?.id != (combobomtree.Items[0] as SysOrganizeTree)?.id)
+            {
+               combobomtree.Items[0] = a;
+            }
+
+        }
+
+        private void combobomtree_DropDownClosed(object sender, EventArgs e)
+        {         
+            combobomtree.SelectedItem = combobomtree.Items[0];
         }
     }
 }

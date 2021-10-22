@@ -13,6 +13,23 @@ namespace SysAdmin
         {
             return await new BaseServiceRequest().GetRequest<BaseResponse<List<SysOrganizeTree>>>(new GettreeRequest() );
         }
+
+        public async Task<BaseResponse> Add(AddSysOrganize parm)
+        {
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new AddReqest() {
+                parameters=new Dictionary<string, object>() { {"",parm } }
+            });
+        }
+
+        public async Task<PagesResponse<List<SysOrganize>>> Getpages(int page,int limit)
+        {
+            return await new BaseServiceRequest().GetRequest<PagesResponse<List<SysOrganize>>>(new Getpages() { parameters=new Dictionary<string, object>() 
+            {
+                { "page", page},
+                { "limit",limit}
+            } 
+            });
+        }
     }
 
     public class GettreeRequest: BaseRequest
@@ -21,7 +38,21 @@ namespace SysAdmin
 
         public override Method Method { get => Method = Method.POST; }
 
+    }
 
+
+    public class AddReqest : BaseRequest
+    {
+        public override string route { get => "api/Organize/add"; }
+
+        public override Method Method { get => Method = Method.POST; }
+    }
+
+    public class Getpages : BaseRequest
+    {
+        public override string route { get => "api/organize/getpages"; }
+        public override Method Method { get => Method = Method.GET; }
+        public override bool IsJson { get => false; }
     }
 
 }

@@ -41,6 +41,7 @@ namespace ZFileApiServer.Controllers.Admin
         public async Task<IActionResult> GetPages([FromQuery] PageParm parm)
         {
             var res = await _sysOrganizeService.GetPagesAsync(parm);
+            
             return Ok(new { code = 0, msg = "success", count = res.data.TotalItems, data = res.data.Items });
         }
 
