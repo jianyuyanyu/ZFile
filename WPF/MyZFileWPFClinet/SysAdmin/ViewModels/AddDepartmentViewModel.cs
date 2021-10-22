@@ -119,12 +119,20 @@ namespace SysAdmin.ViewModels
             set { SetProperty(ref _SelectItem, value); }
         }
 
+        
+
         public void OnDialogOpened(IDialogParameters parameters)
         {
             sysOrganizeTrees = new ObservableCollection<SysOrganizeTree>();
             sysOrganizeTrees = parameters.GetValue<ObservableCollection<SysOrganizeTree>>("tree");
             Title = parameters.GetValue<string>("Titel");
             ActType = parameters.GetValue<string>("Type");
+            var data= parameters.GetValue<SysOrganize>("Data");
+            if (data == null) return;
+            DepartmentName = data.Name;
+            DepartmentSort = data.Sort;
+            IsActivation = data.Status;
+
         }
 
        

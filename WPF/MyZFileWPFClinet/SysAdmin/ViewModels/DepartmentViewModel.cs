@@ -20,6 +20,28 @@ namespace SysAdmin.ViewModels
 
         public DelegateCommand OpenAddDepartmentCommnad => new DelegateCommand(OpenAddDepartment);
 
+        public DelegateCommand<SysOrganize> OpenEditDepartmentCommnad => new DelegateCommand<SysOrganize>(OpenEditDepartment);
+
+        private void OpenEditDepartment(SysOrganize organize)
+        {
+            DialogParameters param = new DialogParameters();
+            param.Add("tree", SysOrganizesTrees);
+            param.Add("Data", organize);
+            param.Add("Titel", "修改组织机构");
+            param.Add("Type", "Edit");
+            _dialogService.ShowDialog("AddDepartment", param,
+
+                  (result) =>
+                  {
+                      if (result.Result == ButtonResult.Yes)
+                      {
+                          System.Windows.MessageBox.Show("修改成功");
+                          Loaded();
+                      }
+
+                  });
+        }
+
         private void OpenAddDepartment()
         {
             DialogParameters param = new DialogParameters();

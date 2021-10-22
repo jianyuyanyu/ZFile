@@ -33,7 +33,7 @@
         <StackPanel  Margin="10">
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock VerticalAlignment="Center">所属部门:</TextBlock>
-                <ComboBox Width="200" x:Name="combobomtree"  DropDownClosed="combobomtree_DropDownClosed"   SelectedItem="{Binding SelectItem}"  DisplayMemberPath="title"  Style="{StaticResource MahApps.Styles.ComboBox}">
+                <ComboBox Width="200" x:Name="combobomtree"  DropDownClosed="combobomtree_DropDownClosed"   SelectedItem="{Binding SelectItem}"  DisplayMemberPath="title" SelectedValuePath="id"  Style="{StaticResource MahApps.Styles.ComboBox}">
                     <ComboBoxItem Visibility="Collapsed"></ComboBoxItem>
                     <ComboBoxItem >
                         <ComboBoxItem.Template>
