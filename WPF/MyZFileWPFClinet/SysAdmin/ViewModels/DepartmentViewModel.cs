@@ -31,6 +31,36 @@ namespace SysAdmin.ViewModels
         public DelegateCommand DataGridCheckCommand => new DelegateCommand(DataGridCheck);
         public DelegateCommand DataGridUncheckedCommand => new DelegateCommand(DataGridUnchecked);
 
+        public DelegateCommand DelDataGridCommand => new DelegateCommand(DelDataGrid);
+
+        private async void DelDataGrid()
+        {
+
+            var resut = System.Windows.MessageBox.Show("确定要批量删除吗", "提示", System.Windows.MessageBoxButton.OKCancel);
+            if (resut== System.Windows.MessageBoxResult.OK)
+            {
+                string str = "";
+                foreach (var item in SysOrganizes)
+                {
+                    if (item.IsCheck)
+                    {
+                        str += item.Guid + ",";
+                    }
+                   
+                }
+                var parm = new { parm = str };
+
+                var ApiResquest = await Service.Del(parm);
+                if (ApiResquest.success && ApiResquest.statusCode == 200)
+                {
+                    System.Windows.MessageBox.Show("删除成功");
+                    Loaded();
+                }
+            }
+           
+           
+        }
+
         private void DataGridUnchecked() {
             IsUpdateChilderCheck = false;
             IsSelectAllCheck = false;

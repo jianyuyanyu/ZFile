@@ -42,6 +42,14 @@ namespace SysAdmin
                 parameters = new Dictionary<string, object>() { { "", parm } }
             });
         }
+
+        public async Task<BaseResponse> Del(object parm)
+        {
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new DelStatusRequest()
+            {
+                parameters = new Dictionary<string, object>() { { "", parm } }
+            });
+        }
     }
 
     public class GettreeRequest : BaseRequest
@@ -71,6 +79,12 @@ namespace SysAdmin
         public override string route { get => "api/Organize/edit"; }
         public override Method Method { get => Method = Method.POST; }
 
+    }
+
+    public class DelStatusRequest : BaseRequest
+    {
+        public override string route { get => "api/Organize/delete"; }
+        public override Method Method { get => Method = Method.POST; }
     }
 
 }

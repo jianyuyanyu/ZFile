@@ -24,7 +24,7 @@
     <Grid Background="#5473e8">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel  Margin="10">
             <StackPanel Orientation="Horizontal" Margin="10">
@@ -65,7 +65,11 @@
                 <TextBlock VerticalAlignment="Center">排&#12288;&#12288;序:</TextBlock>
                 <TextBox Width="200" Text="{Binding DepartmentSort}"  Style="{StaticResource MahApps.Styles.TextBox}" ></TextBox>
             </StackPanel>
-            <CheckBox IsChecked="{Binding IsActivation}" Style="{StaticResource MahApps.Styles.CheckBox.Win10}" Background="BlueViolet" Content="是否有效" />
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock   Text="是否有效:" />
+                <CheckBox Margin="10,0" IsChecked="{Binding IsActivation}" Background="Gray"     />
+            </StackPanel>
+           
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">

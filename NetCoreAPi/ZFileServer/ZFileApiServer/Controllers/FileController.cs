@@ -138,7 +138,6 @@ namespace ZFileApiServer.Controllers
                     //找到所有需要更新得，然后批量更新
                     var ALLFolders = await _sysFileFolder.GetListAsync(o=>o.Remark.Contains(Folder2Resut.data.Remark),o=>o.ID,DbOrderEnum.Asc);
                     if (ALLFolders.statusCode != 200) return Ok(apiRes);
-
                     string strOldRemark = Folder2Resut.data.Remark;
                     string strNewRemark = FolderResut.data.Remark + "-" + Folder2Resut.data.ID;
                     foreach (var FolderItem in ALLFolders.data)
