@@ -154,6 +154,7 @@ namespace ZFile.Service.Implements
             {
                 parm.ParentGuidList = "," + parm.Guid + ",";
             }
+            parm.SiteGuid= parm.SiteGuid == null ? "" : parm.SiteGuid;
             var dbres = await Db.Updateable(parm).ExecuteCommandAsync();
             var res = new ApiResult<string>
             {

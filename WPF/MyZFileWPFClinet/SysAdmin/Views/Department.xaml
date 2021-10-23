@@ -47,15 +47,30 @@
         </TreeView>
 
 
-        <DataGrid Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding SysOrganizes}" AutoGenerateColumns="False" CanUserAddRows="False"  >
+        <DataGrid Grid.Row="1" Grid.Column="1" Margin="5"  ItemsSource="{Binding SysOrganizes}" AutoGenerateColumns="False" CanUserAddRows="False"  >
             <DataGrid.Columns >
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock>组织名称</TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox zt:CheckBoxHelper.CheckBoxStyle="Selector"  
+                                      IsChecked="{Binding RelativeSource={RelativeSource AncestorType=DataGrid,Mode=FindAncestor},Path=DataContext.IsSelectAllCheck}"  >
+                            </CheckBox>
+                            <TextBlock>组织名称</TextBlock>
+                        </StackPanel>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox  HorizontalAlignment="Left" Content="{Binding Name}"  zt:CheckBoxHelper.CheckBoxStyle="Selector" zt:CheckBoxHelper.CheckedGlyphBrush="red"></CheckBox>
+                            <CheckBox  IsChecked="{Binding IsCheck,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Content="{Binding Name}" zt:CheckBoxHelper.CheckBoxStyle="Selector" zt:CheckBoxHelper.CheckedGlyphBrush="red"  >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}, Path=DataContext.DataGridCheckCommand}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding  RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}, Path=DataContext.DataGridUncheckedCommand}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -95,7 +110,12 @@
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="修改"  Command="{Binding RelativeSource={RelativeSource AncestorType=DataGrid},Path=DataContext.OpenEditDepartmentCommnad}" CommandParameter="{Binding}"></Button>
+                            <Button
+                             zt:ButtonHelper.ButtonStyle="Hollow"
+                             HorizontalAlignment="Left"
+                             Width="40"
+                             FontWeight="Black" Content="修改"  
+                             Command="{Binding RelativeSource={RelativeSource AncestorType=DataGrid},Path=DataContext.OpenEditDepartmentCommnad}" CommandParameter="{Binding}"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

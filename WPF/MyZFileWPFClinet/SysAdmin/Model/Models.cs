@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -27,8 +28,15 @@ namespace SysAdmin
         public bool Status { get; set; }
     }
 
-    public  class SysOrganize
+    public  class SysOrganize: BindableBase
     {
+        private bool _IsCheck;
+        public bool IsCheck
+        {
+            get { return _IsCheck; }
+            set { SetProperty(ref _IsCheck, value); }
+        }
+
         /// <summary>
         /// 唯一编码主键 
         /// </summary>

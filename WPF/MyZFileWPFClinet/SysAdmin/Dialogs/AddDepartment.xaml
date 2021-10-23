@@ -2,11 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"     
-            xmlns:vm="clr-namespace:SysAdmin"
-                
-            
+            xmlns:vm="clr-namespace:SysAdmin" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              prism:ViewModelLocator.AutoWireViewModel="True">
-   
+
     <prism:Dialog.WindowStyle>
         <Style TargetType="Window">
             <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen" />
@@ -23,8 +21,6 @@
         </Style>
     </prism:Dialog.WindowStyle>
 
-
-
     <Grid Background="#5473e8">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -33,26 +29,33 @@
         <StackPanel  Margin="10">
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock VerticalAlignment="Center">所属部门:</TextBlock>
-                <ComboBox Width="200" x:Name="combobomtree"  DropDownClosed="combobomtree_DropDownClosed"   SelectedItem="{Binding SelectItem}"  DisplayMemberPath="title" SelectedValuePath="id"  Style="{StaticResource MahApps.Styles.ComboBox}">
-                    <ComboBoxItem Visibility="Collapsed"></ComboBoxItem>
-                    <ComboBoxItem >
-                        <ComboBoxItem.Template>
-                            <ControlTemplate>
-                                <TreeView   x:Name="treeView" 
-                                SelectedItemChanged="treeView_SelectedItemChanged"
+                <Grid>
+                    <Popup  StaysOpen="{Binding ElementName=ComboboxTree,Mode=OneWay,Path=IsMouseOver}" AllowsTransparency="True" PopupAnimation="Slide" IsOpen="{Binding IsOpenPopup,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="Comboboxpopup"  Width="{Binding ElementName=ComboboxTree,Path=ActualWidth}" >
+                        <TreeView    x:Name="treeView"
                        ItemsSource="{Binding sysOrganizeTrees}">
-                                    <TreeView.Resources>
-                                        <HierarchicalDataTemplate DataType="{x:Type vm:SysOrganizeTree}" ItemsSource="{Binding children,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding title}"  />
-                                            </StackPanel>
-                                        </HierarchicalDataTemplate>
-                                    </TreeView.Resources>
-                                </TreeView>
-                            </ControlTemplate>
-                        </ComboBoxItem.Template>
-                    </ComboBoxItem>
-                </ComboBox>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedItemChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TreeView},Path=SelectedItem}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <TreeView.Resources>
+                                <HierarchicalDataTemplate DataType="{x:Type vm:SysOrganizeTree}" ItemsSource="{Binding children,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding title}"  />
+                                    </StackPanel>
+                                </HierarchicalDataTemplate>
+                            </TreeView.Resources>
+                        </TreeView>
+                    </Popup>
+                    <TextBox Width="200"  Text="{Binding DepartmentParentName,Mode=TwoWay}" IsReadOnly="True"    x:Name="ComboboxTree">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding TextboxPrMouseDownCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </Grid>
+              
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock VerticalAlignment="Center">部门名称:</TextBlock>

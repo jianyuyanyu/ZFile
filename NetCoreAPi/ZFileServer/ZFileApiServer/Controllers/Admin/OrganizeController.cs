@@ -69,7 +69,7 @@ namespace ZFileApiServer.Controllers.Admin
         /// 修改
         /// </summary>
         /// <returns></returns>
-        [HttpPost("edit"), ApiAuthorize(Modules = "Department", Methods = "Update", LogType = LogEnum.UPDATE)]
+        [HttpPost("edit"), ApiAuthorize(Modules = "Department", Methods = "edit", LogType = LogEnum.UPDATE)]
         public async Task<IActionResult> EditOrganize([FromBody] SysOrganize parm)
         {
             return Ok(await _sysOrganizeService.ModifyAsync(parm));
