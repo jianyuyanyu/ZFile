@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZFile.Common;
 using ZFile.Common.ApiClient;
 using ZFile.Common.EnumHelper;
 using ZFile.Common.LogHelper;
@@ -161,6 +162,31 @@ namespace ZFile.Service.Implements
                 statusCode = 200,
                 data = dbres > 0 ? "1" : "0"
             };
+            return res;
+        }
+
+        public async Task<ApiResult<string>> DeleOrgnizeAsync(string parm, bool Async = true)
+        {
+            var res = new ApiResult<string>() { statusCode = (int)ApiEnum.Error };
+            try
+            {
+                var list = Utils.StrToListString(parm);
+                foreach (var item in SysOrganizeDb.GetListAsync().Result)
+                {
+                    if (list.Contains(item.ParentGuid))
+                    {
+                        list.Add(item.Guid);
+                    }
+                }
+                var dbres = Async ? await Db.Deleteable<SysOrganize>().In(list.ToArray()).ExecuteCommandAsync() : Db.Deleteable<SysOrganize>().In(list.ToArray()).ExecuteCommand();
+                res.data = dbres.ToString();
+                res.statusCode = (int)ApiEnum.Status;
+            }
+            catch (Exception ex)
+            {
+                res.message = ApiEnum.Error.GetEnumText() + ex.Message;
+                Logger.Default.ProcessError((int)ApiEnum.Error, ex.Message);
+            }
             return res;
         }
     }

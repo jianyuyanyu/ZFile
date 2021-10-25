@@ -62,7 +62,7 @@ namespace ZFileApiServer.Controllers.Admin
         [HttpPost("delete"), ApiAuthorize(Modules = "Department", Methods = "Delete", LogType = LogEnum.DELETE)]
         public async Task<IActionResult> DeleteOrganize([FromBody] ParmString parm)
         {
-            return Ok(await _sysOrganizeService.DeleteAsync(parm.parm));
+            return Ok(await _sysOrganizeService.DeleOrgnizeAsync(parm.parm));
         }
 
         /// <summary>

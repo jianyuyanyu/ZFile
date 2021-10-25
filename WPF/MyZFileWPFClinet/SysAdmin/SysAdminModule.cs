@@ -33,6 +33,9 @@ namespace SysAdmin
 
             containerRegistry.RegisterDialog<AddDepartment,AddDepartmentViewModel>();
 
+
+            //注册服务
+            containerRegistry.Register<DepartmentService>();
             containerRegistry.Register<DepartmentService>();
 
 

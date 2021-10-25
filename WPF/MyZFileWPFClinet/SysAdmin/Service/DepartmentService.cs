@@ -59,7 +59,6 @@ namespace SysAdmin
 
     }
 
-
     public class AddReqest : BaseRequest
     {
         public override string route { get => "api/Organize/add"; }

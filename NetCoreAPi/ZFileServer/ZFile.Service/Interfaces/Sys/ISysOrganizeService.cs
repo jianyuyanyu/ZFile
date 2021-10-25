@@ -45,5 +45,8 @@ namespace ZFile.Service.Interfaces.Sys
         /// </summary>
         /// <returns></returns>
         Task<ApiResult<string>> ModifyAsync(SysOrganize parm);
+
+        Task<ApiResult<string>> DeleOrgnizeAsync(string parm, bool Async = true);
+        
     }
 }
