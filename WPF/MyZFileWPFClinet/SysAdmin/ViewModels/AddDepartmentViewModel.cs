@@ -116,9 +116,6 @@ namespace SysAdmin.ViewModels
                     if (!await EditSysOrganizeAct())
                         return;
                 }
-
-
-
             }
             else if (parameter?.ToLower() == "false")
                 result = ButtonResult.No;

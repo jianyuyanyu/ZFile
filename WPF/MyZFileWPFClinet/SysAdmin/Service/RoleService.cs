@@ -25,6 +25,21 @@ namespace SysAdmin
             }
             });
         }
+
+        public async Task<BaseResponse> Add(SysRole parm)
+        {
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new AddRoleGroup()
+            {
+                parameters = new Dictionary<string, object>() { { "", parm } }
+            });
+        }
+
+    }
+
+    public class AddRoleGroup : BaseRequest
+    {
+         public override string route { get => "api/role/add"; }
+        public override Method Method { get => Method = Method.POST; }
     }
     public class GetRolepages : BaseRequest
     {

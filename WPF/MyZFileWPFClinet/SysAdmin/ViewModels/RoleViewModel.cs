@@ -27,7 +27,7 @@ namespace SysAdmin.ViewModels
         private ObservableCollection<SysRole> _sysRoles;
         public ObservableCollection<SysRole> SysRoles
         {
-            get { return _sysRoles;; }
+            get { return _sysRoles; ; }
             set { SetProperty(ref _sysRoles, value); }
         }
         public RoleViewModel(IContainerProvider provider, IRegionManager regionManager, IDialogService dialogService) : base(provider, regionManager)
@@ -37,6 +37,31 @@ namespace SysAdmin.ViewModels
         }
 
         public DelegateCommand LoadedCommand => new DelegateCommand(Loaded);
+
+        public DelegateCommand OpenAddRoleGroupDialogCommand => new DelegateCommand(OpenAddRoleGroupDialog);
+
+        public DelegateCommand OpenAddRoleDialogCommand => new DelegateCommand(OpenAddRoleDialog);
+
+        void OpenAddRoleDialog()
+        {
+
+        }
+
+        void OpenAddRoleGroupDialog()
+        {
+            DialogParameters param = new DialogParameters();
+            param.Add("Titel", "添加角色组");
+            param.Add("Type", "Add");
+            _dialogService.ShowDialog("AddRoleGroup", param,
+                  (result) =>
+                  {
+                      if (result.Result == ButtonResult.Yes)
+                      {
+                          System.Windows.MessageBox.Show("添加成功");
+                          Loaded();
+                      }
+                  });
+        }
 
         private async void Loaded()
         {
@@ -54,5 +79,8 @@ namespace SysAdmin.ViewModels
                 SysRoles.AddRange(pagesRequset.data);
             }
         }
+
+
+
     }
 }

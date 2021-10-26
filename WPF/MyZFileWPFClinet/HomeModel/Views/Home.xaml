@@ -23,7 +23,8 @@
             <ColumnDefinition Width="160" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid Background="BlueViolet">
+        <Border Background="#151933" Opacity="0.9"></Border>
+        <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="100" />
                 <RowDefinition />

@@ -31,12 +31,17 @@ namespace SysAdmin
             //系统设置       
             containerRegistry.RegisterForNavigation<SysSetting>(typeof(SysSetting).Name + "View");
 
+
+
+            containerRegistry.RegisterDialog<AddRoleGroupDialog, AddRoleGroupViewModel>("AddRoleGroup");
             containerRegistry.RegisterDialog<AddDepartment,AddDepartmentViewModel>();
 
+          
+            
 
             //注册服务
             containerRegistry.Register<DepartmentService>();
-            containerRegistry.Register<DepartmentService>();
+            containerRegistry.Register<RoleService>();
 
 
         }

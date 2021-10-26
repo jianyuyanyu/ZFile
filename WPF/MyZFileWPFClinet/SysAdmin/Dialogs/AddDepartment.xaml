@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"     
-            xmlns:vm="clr-namespace:SysAdmin" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:vm="clr-namespace:SysAdmin"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              prism:ViewModelLocator.AutoWireViewModel="True">
 
     <prism:Dialog.WindowStyle>
@@ -55,7 +56,7 @@
                         </i:Interaction.Triggers>
                     </TextBox>
                 </Grid>
-              
+
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock VerticalAlignment="Center">部门名称:</TextBlock>
@@ -69,7 +70,7 @@
                 <TextBlock   Text="是否有效:" />
                 <CheckBox Margin="10,0" IsChecked="{Binding IsActivation}" Background="Gray"     />
             </StackPanel>
-           
+
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
