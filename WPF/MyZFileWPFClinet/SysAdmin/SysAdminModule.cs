@@ -3,6 +3,7 @@ using Prism.Modularity;
 using Prism.Regions;
 using SysAdmin.Dialogs;
 using SysAdmin.ViewModels;
+using SysAdmin.ViewModels.DialogViewModel;
 using SysAdmin.Views;
 
 namespace SysAdmin
@@ -34,6 +35,8 @@ namespace SysAdmin
 
 
             containerRegistry.RegisterDialog<AddRoleGroupDialog, AddRoleGroupViewModel>("AddRoleGroup");
+            containerRegistry.RegisterDialog<AddRole, AddRoleViewModel>();
+
             containerRegistry.RegisterDialog<AddDepartment,AddDepartmentViewModel>();
 
           

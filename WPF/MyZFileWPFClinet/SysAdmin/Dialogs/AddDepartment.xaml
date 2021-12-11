@@ -56,15 +56,14 @@
                         </i:Interaction.Triggers>
                     </TextBox>
                 </Grid>
-
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock VerticalAlignment="Center">部门名称:</TextBlock>
-                <TextBox Width="200"  Text="{Binding DepartmentName}" Style="{StaticResource MahApps.Styles.TextBox}"></TextBox>
+                <TextBox Width="200"  Text="{Binding DepartmentName}" ></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock VerticalAlignment="Center">排&#12288;&#12288;序:</TextBlock>
-                <TextBox Width="200" Text="{Binding DepartmentSort}"  Style="{StaticResource MahApps.Styles.TextBox}" ></TextBox>
+                <TextBox Width="200" Text="{Binding DepartmentSort}"   ></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock   Text="是否有效:" />

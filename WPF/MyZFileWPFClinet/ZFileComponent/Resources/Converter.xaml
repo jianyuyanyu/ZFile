@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Component">
+    xmlns:local="clr-namespace:Component"
+    xmlns:local1="clr-namespace:ZFileComponent.Converters">
     <local:HalfConverter x:Key="HalfConverter" />
     <local:LoadingLineYConverter x:Key="LoadingLineYConverter" />
     <local:LoadingBackgroundThicknessConverter x:Key="LoadingBackgroundThicknessConverter" />
@@ -22,8 +23,9 @@
     <local:ProgressBarPercentConverter x:Key="ProgressBarPercentConverter" />
     <local:ProgressBarOffset1Converter x:Key="ProgressBarOffset1Converter" />
     <local:ProgressBarOffset2Converter x:Key="ProgressBarOffset2Converter" />
-    <local:TreeViewVerticalChainConverter x:Key="TreeViewVerticalChainConverter"></local:TreeViewVerticalChainConverter>
+    <local:TreeViewVerticalChainConverter x:Key="TreeViewVerticalChainConverter" />
 
     <local:DoubleToCornerRadiusConverter x:Key="DoubleToCornerRadiusConverter" />
     <local:CornerRadiusToDoubleConverter x:Key="CornerRadiusToDoubleConverter" />
+    <local1:SysRoleConverter x:Key="SysRoleConverter" />
 </ResourceDictionary>

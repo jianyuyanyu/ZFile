@@ -30,6 +30,25 @@ namespace SysAdmin.ViewModels
             get { return _sysRoles; ; }
             set { SetProperty(ref _sysRoles, value); }
         }
+
+        private bool _IsSelectAllCheck;
+        public bool IsSelectAllCheck
+        {
+            get { return _IsSelectAllCheck; }
+            set
+            {
+
+                if (SetProperty(ref _IsSelectAllCheck, value) && IsUpdateChilderCheck)
+                {
+                    foreach (var item in SysRoles)
+                        item.IsCheck = value;
+                }
+                IsUpdateChilderCheck = true;
+            }
+        }
+        public bool IsUpdateChilderCheck { get; set; } = true;
+
+
         public RoleViewModel(IContainerProvider provider, IRegionManager regionManager, IDialogService dialogService) : base(provider, regionManager)
         {
             this.Service = provider.Resolve<RoleService>();
@@ -42,9 +61,73 @@ namespace SysAdmin.ViewModels
 
         public DelegateCommand OpenAddRoleDialogCommand => new DelegateCommand(OpenAddRoleDialog);
 
+        public DelegateCommand<SysRole> OpenEditDepartmentCommnad => new DelegateCommand<SysRole>(OpenEditRole);
+
+        public DelegateCommand DataGridCheckCommand => new DelegateCommand(DataGridCheck);
+        public DelegateCommand DelDataGridCommand => new DelegateCommand(DelDataGrid);
+        public DelegateCommand DataGridUncheckedCommand => new DelegateCommand(DataGridUnchecked);
+
+        private void OpenEditRole(SysRole obj)
+        {
+           
+        }
+        private async void DelDataGrid()
+        {
+            var resut = System.Windows.MessageBox.Show("确定要批量删除吗", "提示", System.Windows.MessageBoxButton.OKCancel);
+            if (resut == System.Windows.MessageBoxResult.OK)
+            {
+                string str = "";
+                foreach (var item in SysRoles)
+                {
+                    if (item.IsCheck)
+                    {
+                        str += item.Guid + ",";
+                    }
+
+                }
+                var parm = new { parm = str };
+
+                var ApiResquest = await Service.Del(parm);
+                if (ApiResquest.success && ApiResquest.statusCode == 200)
+                {
+                    System.Windows.MessageBox.Show("删除成功");
+                    Loaded();
+                }
+            }
+        }
+
+        private void DataGridUnchecked()
+        {
+            IsUpdateChilderCheck = false;
+            IsSelectAllCheck = false;
+        }
+
+        private void DataGridCheck()
+        {
+            if (!SysRoles.Any(o => o.IsCheck == false))
+            {
+                IsUpdateChilderCheck = false;
+                IsSelectAllCheck = true;
+
+            }
+        }
+
+
+
         void OpenAddRoleDialog()
         {
-
+            DialogParameters param = new DialogParameters();
+            param.Add("Titel", "添加角色");
+            param.Add("Type", "Add");
+            _dialogService.ShowDialog("AddRole", param,
+                (result) =>
+                {
+                    if (result.Result == ButtonResult.Yes)
+                    {
+                        System.Windows.MessageBox.Show("添加成功");
+                        Loaded();
+                    }
+                });
         }
 
         void OpenAddRoleGroupDialog()

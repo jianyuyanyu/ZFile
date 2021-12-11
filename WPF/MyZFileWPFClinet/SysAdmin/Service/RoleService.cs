@@ -34,6 +34,13 @@ namespace SysAdmin
             });
         }
 
+        public async  Task<BaseResponse>  Del(object parm)
+        {
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new DelRole()
+            {
+                parameters = new Dictionary<string, object>() { { "", parm } }
+            });
+        }
     }
 
     public class AddRoleGroup : BaseRequest
@@ -46,6 +53,12 @@ namespace SysAdmin
         public override string route { get => "api/role/getpages"; }
         public override Method Method { get => Method = Method.GET; }
         public override bool IsJson { get => false; }
+    }
+
+    public class DelRole : BaseRequest
+    {
+        public override string route { get => "api/role/delete"; }
+        public override Method Method { get => Method = Method.POST; }
     }
 
 
