@@ -62,7 +62,6 @@
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <Setter Property="Background" Value="Transparent"></Setter>
-                
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.Columns >
@@ -91,7 +90,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock><Run Text="是否系统管理员" FontSize="16" Foreground="#4285f4" /></TextBlock>
+                        <TextBlock><Run Text="是否系统管理员"  Foreground="#4285f4" /></TextBlock>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -102,7 +101,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock><Run Text="排序"  FontSize="16" Foreground="#4285f4"/></TextBlock>
+                        <TextBlock><Run Text="排序"   Foreground="#4285f4"/></TextBlock>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -112,7 +111,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock><Run Text="描述" FontSize="16" Foreground="#4285f4" /></TextBlock>
+                        <TextBlock><Run Text="描述" Foreground="#4285f4" /></TextBlock>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

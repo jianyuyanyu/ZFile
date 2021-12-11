@@ -15,10 +15,7 @@
     TextElement.FontSize="14"
     TextElement.FontWeight="Medium"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}">
-    <Grid>
-    
-        
-        
+    <Grid >
         <ContentControl prism:RegionManager.RegionName="{x:Static Nv:SystemResource.Nav_MainContent}" />
         <zt:DialogBox Identifier="{x:Static Nv:SystemResource.Nav_MainContent}" />
     </Grid>

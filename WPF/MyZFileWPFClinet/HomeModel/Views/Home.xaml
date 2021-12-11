@@ -24,6 +24,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Border Background="#151933" Opacity="0.9"></Border>
+        <Border Background="#151933" Grid.Column="1"></Border>
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="100" />
@@ -34,7 +35,7 @@
                     Width="40"
                     Height="40"
                     Margin="10"
-                    Fill="{StaticResource DataGridRow.BorderBrush}" />
+                    Fill="Gray" />
                 <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
@@ -69,7 +70,7 @@
                 </TreeView.Resources>
             </TreeView>
         </Grid>
-        
+       
         <ContentControl
             Grid.Row="1"
             Grid.Column="1"

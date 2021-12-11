@@ -35,6 +35,8 @@ namespace SysAdmin.ViewModels
 
         public DelegateCommand<string> CloseDialogCommand => new DelegateCommand<string>(ExecuteCloseDialogCommand);
 
+     
+
         public RoleService Service { get; }
 
         public AddRoleGroupViewModel(IContainerProvider provider, IRegionManager regionManager, IDialogService dialogService) : base(provider, regionManager)

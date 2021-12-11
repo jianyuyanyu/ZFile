@@ -22,7 +22,7 @@
             <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid  Background="{StaticResource titleBrush}">
+    <Grid  >
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
@@ -37,7 +37,7 @@
             <Button  Margin="5,0"   Style="{StaticResource MahApps.Styles.Button}" Foreground="White" Command="{Binding OpenAddDepartmentCommnad}" Background="#1b315e" Height="40"  Width="100" Content="添加"/>
             <Button  Margin="5,0"   Style="{StaticResource MahApps.Styles.Button}" Height="40"  Command="{Binding DelDataGridCommand}" Width="100" Foreground="White" Background="#2585a6" Content="删除" />
         </StackPanel>
-        <Border Background="LightGray" Grid.Column="0" Grid.Row="1" CornerRadius="5" Opacity="0.8" Margin="5,5,0,5"/>
+        <Border Background="LightGray" Grid.Column="0" Grid.Row="1" CornerRadius="5" Opacity="0.2" Margin="5,5,0,5"/>   
         <TreeView   Margin="5,5,0,5"  x:Name="treeView" 
                        Grid.Row="1" 
                         zt:TreeViewHelper.SelectedBackground="#FF56A4ED"
@@ -57,20 +57,41 @@
             </TreeView.Resources>
         </TreeView>
 
-
-        <DataGrid Grid.Row="1" Grid.Column="1" Margin="5"  ItemsSource="{Binding SysOrganizes}" AutoGenerateColumns="False" CanUserAddRows="False"  >
+        <Border Background="#2585a6" Grid.Column="1" Grid.Row="1" CornerRadius="5" Opacity="0.15" Margin="5"/>
+        <DataGrid Grid.Row="1" Grid.Column="1" Margin="5" Background="Transparent"  ItemsSource="{Binding SysOrganizes}"  AutoGenerateColumns="False" CanUserAddRows="False"  >
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Foreground" Value="White"></Setter>
+                </Style>
+                <Style TargetType="{x:Type CheckBox}">
+                    <Setter Property="Foreground" Value="White"></Setter>
+                </Style>
+                
+            </DataGrid.Resources>
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="Background" Value="Transparent"></Setter>
+                    <Setter Property="BorderBrush" Value="#2585a6"></Setter>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="Background" Value="Transparent"></Setter>
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns >
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.Header>
                         <StackPanel Orientation="Horizontal">
                             <CheckBox zt:CheckBoxHelper.CheckBoxStyle="Selector"  
                                       HorizontalAlignment="Left"
-                                      IsChecked="{Binding DataContext.IsSelectAllCheck, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}, Mode=FindAncestor}}" Content="组织名称"  />
+                                      IsChecked="{Binding DataContext.IsSelectAllCheck, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}, Mode=FindAncestor}}" Content="组织名称"  Foreground="#4285f4"  />
                         </StackPanel>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox  Margin="3,0" IsChecked="{Binding IsCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Content="{Binding Name}" zt:CheckBoxHelper.CheckBoxStyle="Selector" zt:CheckBoxHelper.CheckedGlyphBrush="red"  >
+                            <CheckBox VerticalAlignment="Center"  Margin="3,0" IsChecked="{Binding IsCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Content="{Binding Name}" zt:CheckBoxHelper.CheckBoxStyle="Selector" zt:CheckBoxHelper.CheckedGlyphBrush="red"   Foreground="White" >
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Checked">
                                         <i:InvokeCommandAction Command="{Binding DataContext.DataGridCheckCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}, Mode=FindAncestor}}"/>
@@ -85,7 +106,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock><Run Text="父节点名称"/></TextBlock>
+                        <TextBlock><Run Text="父节点名称" Foreground="#4285f4" /></TextBlock>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -95,7 +116,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock><Run Text="排序"/></TextBlock>
+                        <TextBlock><Run Text="排序" Foreground="#4285f4" /></TextBlock>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -105,7 +126,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.Header>
-                        <TextBlock><Run Text="状态"/></TextBlock>
+                        <TextBlock><Run Text="状态" Foreground="#4285f4" /></TextBlock>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -115,7 +136,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="*"  >
                     <DataGridTemplateColumn.Header>
-                        <TextBlock HorizontalAlignment="Center" ><Run Text="操作"/></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" ><Run Text="操作" Foreground="#4285f4" /></TextBlock>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -123,6 +144,8 @@
                              zt:ButtonHelper.ButtonStyle="Hollow"
                              HorizontalAlignment="Left"
                              Width="40"
+                                     Background="#4285F4"
+                                Foreground="White"
                              FontWeight="Black" Content="修改"  
                              Command="{Binding DataContext.OpenEditDepartmentCommnad, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}"/>
                         </DataTemplate>

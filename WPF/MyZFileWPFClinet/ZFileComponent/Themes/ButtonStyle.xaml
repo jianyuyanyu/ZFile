@@ -8,7 +8,9 @@
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Resources/Converter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZFileComponent;component/Themes/ScrollViewer.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    
     <Style TargetType="{x:Type Button}">
+        
         <Setter Property="SnapsToDevicePixels" Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize" Value="{StaticResource Default_FontSize}" />
         <Setter Property="local:ButtonHelper.WaitingContent" Value="等待。。" />

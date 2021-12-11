@@ -99,12 +99,11 @@ namespace ZFileApiServer
                 c.IncludeXmlComments(xmlPath, true);
                 c.IncludeXmlComments(entityXmlPath);
 
-
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "JWT-Test: \"Authorization: Bearer {token}\"",
                     Name = "Authorization",
-                    //这两个参数均有修改
+                    //这两个参数均有修改  
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey
                 });
