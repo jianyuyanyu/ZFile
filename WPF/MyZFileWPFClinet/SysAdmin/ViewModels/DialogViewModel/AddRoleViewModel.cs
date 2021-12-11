@@ -174,12 +174,7 @@ namespace SysAdmin.ViewModels.DialogViewModel
             RaiseRequestClose(new DialogResult(result));
         }
 
-        private async Task<bool> EditRoleGroupAct()
-        {
-
-
-            return false;
-        }
+       
 
         private async Task<bool> AddSysRoleAct()
         {

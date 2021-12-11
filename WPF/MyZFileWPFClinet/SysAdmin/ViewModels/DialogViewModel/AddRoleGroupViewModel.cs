@@ -35,8 +35,8 @@ namespace SysAdmin.ViewModels
 
         public DelegateCommand<string> CloseDialogCommand => new DelegateCommand<string>(ExecuteCloseDialogCommand);
 
-     
 
+        SysRole Model;
         public RoleService Service { get; }
 
         public AddRoleGroupViewModel(IContainerProvider provider, IRegionManager regionManager, IDialogService dialogService) : base(provider, regionManager)
@@ -71,14 +71,19 @@ namespace SysAdmin.ViewModels
 
         async Task<bool> EditRoleGroupAct()
         {
-            await Task.Delay(100);
-
+           Model.Name = RoleGroupName;
+            Model.Sort = RoleGroupSort;
+            var Request = await Service.Edit(Model);
+            if (Request.success && Request.statusCode == 200)
+            {
+                return true;
+            }
             return false;
         }
-
+      
         async Task<bool> AddSysRoleAct()  
         {
-            SysRole Model = new SysRole();
+            Model = new SysRole();
             Model.Codes = "";
             Model.DepartmentGroup = "";
             Model.DepartmentGuid = "";
@@ -109,8 +114,14 @@ namespace SysAdmin.ViewModels
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
+            Model = null;
             Title = parameters.GetValue<string>("Titel");
             ActType = parameters.GetValue<string>("Type");
+            var data = parameters.GetValue<SysRole>("Data");
+            if (data == null) return;
+            RoleGroupName = data.Name;
+            RoleGroupSort = data.Sort;
+            Model = data;
         }
 
 

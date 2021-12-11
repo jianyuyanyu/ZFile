@@ -41,6 +41,14 @@ namespace SysAdmin
                 parameters = new Dictionary<string, object>() { { "", parm } }
             });
         }
+
+        public async Task<BaseResponse> Edit(SysRole parm)
+        {
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new EditRoleGroup()
+            {
+                parameters = new Dictionary<string, object>() { { "", parm } }
+            });
+        }
     }
 
     public class AddRoleGroup : BaseRequest
@@ -58,6 +66,12 @@ namespace SysAdmin
     public class DelRole : BaseRequest
     {
         public override string route { get => "api/role/delete"; }
+        public override Method Method { get => Method = Method.POST; }
+    }
+
+    public class EditRoleGroup : BaseRequest
+    {
+        public override string route { get => "api/role/edit"; }
         public override Method Method { get => Method = Method.POST; }
     }
 

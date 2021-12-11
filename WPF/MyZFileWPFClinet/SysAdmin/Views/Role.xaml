@@ -198,7 +198,7 @@
                                 HorizontalAlignment="Left"
                                 zt:ButtonHelper.ButtonStyle="Hollow"
                                 Background="#4285F4"
-                                Command="{Binding DataContext.OpenEditDepartmentCommnad, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                Command="{Binding DataContext.OpenEditRoleGroupCommnad, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                 CommandParameter="{Binding}"
                                 Content="修改"
                                 FontWeight="Black"

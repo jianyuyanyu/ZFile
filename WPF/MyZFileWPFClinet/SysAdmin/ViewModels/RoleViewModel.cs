@@ -58,19 +58,19 @@ namespace SysAdmin.ViewModels
         public DelegateCommand LoadedCommand => new DelegateCommand(Loaded);
 
         public DelegateCommand OpenAddRoleGroupDialogCommand => new DelegateCommand(OpenAddRoleGroupDialog);
+        public DelegateCommand<SysRole> OpenEditRoleGroupCommnad => new DelegateCommand<SysRole>(OpenEditRoleGroup);
+
+      
 
         public DelegateCommand OpenAddRoleDialogCommand => new DelegateCommand(OpenAddRoleDialog);
 
-        public DelegateCommand<SysRole> OpenEditDepartmentCommnad => new DelegateCommand<SysRole>(OpenEditRole);
+      
 
         public DelegateCommand DataGridCheckCommand => new DelegateCommand(DataGridCheck);
         public DelegateCommand DelDataGridCommand => new DelegateCommand(DelDataGrid);
         public DelegateCommand DataGridUncheckedCommand => new DelegateCommand(DataGridUnchecked);
 
-        private void OpenEditRole(SysRole obj)
-        {
-           
-        }
+      
         private async void DelDataGrid()
         {
             var resut = System.Windows.MessageBox.Show("确定要批量删除吗", "提示", System.Windows.MessageBoxButton.OKCancel);
@@ -143,6 +143,25 @@ namespace SysAdmin.ViewModels
                           System.Windows.MessageBox.Show("添加成功");
                           Loaded();
                       }
+                  });
+        }
+
+        private void OpenEditRoleGroup(SysRole parm)
+        {
+            DialogParameters param = new DialogParameters();
+            param.Add("Data", parm);
+            param.Add("Titel", "修改角色组机");
+            param.Add("Type", "Edit");
+            _dialogService.ShowDialog("AddRoleGroup", param,
+
+                  (result) =>
+                  {
+                      if (result.Result == ButtonResult.Yes)
+                      {
+                          System.Windows.MessageBox.Show("修改成功");
+                          Loaded();
+                      }
+
                   });
         }
 
