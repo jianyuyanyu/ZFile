@@ -2,6 +2,7 @@
 using Prism.Modularity;
 using Prism.Regions;
 using SysAdmin.Dialogs;
+using SysAdmin.Service;
 using SysAdmin.ViewModels;
 using SysAdmin.ViewModels.DialogViewModel;
 using SysAdmin.Views;
@@ -45,6 +46,7 @@ namespace SysAdmin
             //注册服务
             containerRegistry.Register<DepartmentService>();
             containerRegistry.Register<RoleService>();
+            containerRegistry.Register<AdminService>();
 
 
         }

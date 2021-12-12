@@ -7,6 +7,11 @@
     xmlns:vm="clr-namespace:SysAdmin"
     xmlns:zt="clr-namespace:ZFileComponent.Themes.ControlHelper;assembly=ZFileComponent"
     prism:ViewModelLocator.AutoWireViewModel="True">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -66,7 +71,7 @@
             AutoGenerateColumns="False"
             Background="Transparent"
             CanUserAddRows="False"
-            ItemsSource="{Binding SysRoles}">
+            ItemsSource="{Binding AdminList}">
             <DataGrid.CellStyle>
                 <Style TargetType="{x:Type DataGridCell}">
                     <Setter Property="Background" Value="Transparent" />
@@ -100,7 +105,7 @@
                                 HorizontalAlignment="Left"
                                 zt:CheckBoxHelper.CheckBoxStyle="Selector"
                                 zt:CheckBoxHelper.CheckedGlyphBrush="red"
-                                Content="{Binding Name}"
+                                Content="{Binding LoginName}"
                                 Foreground="White"
                                 IsChecked="{Binding IsCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 <i:Interaction.Triggers>
@@ -137,7 +142,7 @@
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Sort}" />
+                            <TextBlock Text="{Binding TrueName}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -147,7 +152,7 @@
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Summary}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding DepartmentName}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -157,7 +162,7 @@
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Summary}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Sex}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -167,7 +172,7 @@
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Summary}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding UpLoginDate}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
