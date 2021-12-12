@@ -157,7 +157,34 @@ namespace ZFileApiServer.Controllers
         }
 
 
-       
+        /// <summary>
+        /// 查询列表
+        /// </summary>
+        /// <param name="parm"></param>
+        /// <returns></returns>
+        [HttpGet("getpages")]
+        public async Task<IActionResult> GetPages([FromQuery] PageParm parm)
+        {
+            var res = await _sysAdmin.GetPagesAsync(parm);
+            return Ok(new { code = 0, msg = "success", count = res.data.TotalItems, data = res.data.Items });
+        }
+
+        /// <summary>
+        /// 根据编号，查询用户信息
+        /// </summary>
+        /// <param name="parm"></param>
+        /// <returns></returns>
+        [HttpPost("bymodel")]
+        public async Task<IActionResult> GetModelByGuid([FromBody] ParmString parm)
+        {
+            var res = await _sysAdmin.GetModelAsync(m => m.Guid == parm.parm);
+            if (!string.IsNullOrEmpty(res.data.Guid))
+            {
+                res.data.LoginPwd = Utils.GetMD5(res.data.LoginPwd) ;
+            }
+            return Ok(res);
+        }
+
         [HttpPost("add"), ApiAuthorize(Modules = "Admin", Methods = "Add", LogType = LogEnum.ADD)]
         public async Task<IActionResult> AddUserInfo([FromBody] SysAdmin parm)
         {
