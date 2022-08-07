@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31112.23
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32104.313
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZFileServer", "NetCoreAPi\ZFileServer\ZFileServer\ZFileServer.csproj", "{190BF261-926F-480A-A32C-5B7F1347EAF8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZFile.Core", "NetCoreAPi\ZFileServer\ZFile.Core\ZFile.Core.csproj", "{795A0791-D7A1-4CE1-96B7-B322DDBE5D05}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "应用公共", "应用公共", "{33194845-24DA-4DE7-B931-5C779FBDBB7D}"
@@ -51,6 +49,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamarinCommom", "Xamarin\ZF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SysAdmin", "WPF\MyZFileWPFClinet\SysAdmin\SysAdmin.csproj", "{990DB875-0930-4694-85D4-487F73A46F33}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MpWeiXinCore", "C:\Users\Administrator\Downloads\MpWeiXinCore-master\MpWeiXinCore-master\src\MpWeiXinCore\MpWeiXinCore.csproj", "{1D18FA51-05FE-4988-9E56-B6826F9410B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,18 +61,6 @@ Global
 		Release|iPhoneSimulator = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Release|iPhone.Build.0 = Release|Any CPU
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{190BF261-926F-480A-A32C-5B7F1347EAF8}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{795A0791-D7A1-4CE1-96B7-B322DDBE5D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{795A0791-D7A1-4CE1-96B7-B322DDBE5D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{795A0791-D7A1-4CE1-96B7-B322DDBE5D05}.Debug|iPhone.ActiveCfg = Debug|Any CPU
@@ -247,12 +235,23 @@ Global
 		{990DB875-0930-4694-85D4-487F73A46F33}.Release|iPhone.Build.0 = Release|Any CPU
 		{990DB875-0930-4694-85D4-487F73A46F33}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{990DB875-0930-4694-85D4-487F73A46F33}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Release|iPhone.Build.0 = Release|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{1D18FA51-05FE-4988-9E56-B6826F9410B9}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{190BF261-926F-480A-A32C-5B7F1347EAF8} = {56C973F0-D59D-4364-82C5-89128776786E}
 		{795A0791-D7A1-4CE1-96B7-B322DDBE5D05} = {FFDDE889-311B-4EC1-AB73-8110A94B2BCA}
 		{33194845-24DA-4DE7-B931-5C779FBDBB7D} = {56C973F0-D59D-4364-82C5-89128776786E}
 		{B0A2BA5D-A828-46FA-B104-FB17D0A1B93A} = {33194845-24DA-4DE7-B931-5C779FBDBB7D}

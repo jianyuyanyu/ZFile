@@ -16,8 +16,8 @@ namespace ZFileApp.ViewModels
         private readonly INavigationService _navigationService;
         private readonly ILoginService _loginService;
         private readonly IPageDialogService _pageDialogService;
-        private string _username="admin";
-        private string _password="abc123";
+        private string _username= "demo888";
+        private string _password= "demo888";
         public LoginPageViewModel(INavigationService navigationService,ILoginService loginService, IPageDialogService pageDialogService)
         {
             _navigationService = navigationService;

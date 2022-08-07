@@ -16,10 +16,8 @@
                         Grid.Column="1"
                         Command="{Binding NavigateCommand}"
                         CommandParameter="NetDisListkPage"
-                        
                         Text="网盘" />
                 </Grid>
-
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
