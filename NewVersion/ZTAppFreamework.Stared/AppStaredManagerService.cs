@@ -8,6 +8,10 @@ using ZTAppFreamework.Stared.Service;
 
 namespace ZTAppFreamework.Stared
 {
+
+    /// <summary>
+    /// 注册扩展
+    /// </summary>
     public static class AppStaredManagerService
     {
         public static void RegisterStaredManager(this IContainerRegistry services)

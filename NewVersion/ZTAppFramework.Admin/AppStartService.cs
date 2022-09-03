@@ -13,13 +13,11 @@ namespace ZTAppFramework.Admin
 {
     public class AppStartService
     {
-
         Application app;
         public void Exit()
         {
             Environment.Exit(0);
         }
-
 
         public async Task<Window> CreateShell(Application application)
         {
@@ -40,14 +38,12 @@ namespace ZTAppFramework.Admin
             }
             return null;
         }
-
         public static bool Authorization()
         {
             var dialogService = ContainerLocator.Container.Resolve<IHostDialogService>();
             return dialogService.ShowWindow(AppView.LoginName).Result==Prism.Services.Dialogs.ButtonResult.OK;
           //  return false;
         }
-
         public static void ExitApplication() => Environment.Exit(0);
     }
 }

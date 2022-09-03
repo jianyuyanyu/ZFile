@@ -4,6 +4,7 @@ using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZTAppFramework.Admin.Model.Users;
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
@@ -11,6 +12,12 @@ namespace ZTAppFramework.Admin.ViewModels
     public class LoginViewModel : DialogViewModel
     {
 
+        private UserLoginModel _Login=new UserLoginModel();
+        public UserLoginModel Login
+        {
+            get { return _Login; }
+            set { SetProperty(ref _Login, value); }
+        }
         public DelegateCommand<string> ExecuteCommand { get; }
         public LoginViewModel()
         {

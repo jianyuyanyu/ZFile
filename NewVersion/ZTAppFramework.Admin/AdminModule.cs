@@ -21,6 +21,8 @@ namespace ZTAppFramework.Admin
         /// <param name="services"></param>
         public void RegisterTypes(IContainerRegistry services)
         {
+            //验证器
+            services.RegisterValidator();
             //服务
             services.RegisterSingleton<AppStartService>();
             services.RegisterStaredManager();
