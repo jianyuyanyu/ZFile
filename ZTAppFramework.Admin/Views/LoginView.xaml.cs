@@ -1,4 +1,6 @@
 ﻿using Prism.Services.Dialogs;
+using System;
+using System.Printing;
 using System.Windows;
 
 namespace ZTAppFramework.Admin.Views
@@ -11,7 +13,18 @@ namespace ZTAppFramework.Admin.Views
         public LoginView()
         {
             InitializeComponent();
+            this.MouseMove += (s, e) =>
+            {
+                if (e.LeftButton==System.Windows.Input.MouseButtonState.Pressed)
+                {
+                    this.DragMove();
+                }
+            };
+
+            this.BackBtn.Click += (s, e) => { Environment.Exit(0); };
         }
+
+     
 
         public IDialogResult Result { get; set; }
     }
