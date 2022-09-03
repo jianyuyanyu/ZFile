@@ -8,26 +8,8 @@
     Height="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
     ResizeMode="NoResize"
-    WindowStyle="SingleBorderWindow">
-    <!--<Window.Resources>
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Validation.ErrorTemplate">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <AdornedElementPlaceholder />
-                            <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
-                        </StackPanel>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>-->
+    WindowStyle="ThreeDBorderWindow">
+
     <Grid x:Name="Mianss" Background="BlueViolet">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -43,15 +25,6 @@
             BorderBrush="Black"
             BorderThickness="1" />
 
-        <!--<Button
-            x:Name="BackBtn"
-            Grid.Column="1"
-            Width="20"
-            Height="20"
-            Margin="20,2"
-            HorizontalAlignment="Right"
-            Background="Transparent"
-            Content="X" />-->
         <Grid
             Grid.Row="1"
             Grid.Column="1"
@@ -66,6 +39,7 @@
                     FontWeight="Black"
                     Text="登录" />
                 <ui:ZTComboBox
+                    Margin="0,20,0,0"
                     IsEditable="True"
                     Text="{Binding Login.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Watermark="请输入账号">
@@ -80,6 +54,17 @@
                     <ui:ZTComboBoxItem Content="123" />
                     <ui:ZTComboBoxItem Content="123" />
                     <ui:ZTComboBoxItem Content="123" />
+                    <ui:ZTComboBoxItem Content="4123" />
+                    <ui:ZTComboBoxItem Content="5123" />
+                    <ui:ZTComboBoxItem Content="6123" />
+                    <ui:ZTComboBoxItem Content="123" />
+                    <ui:ZTComboBoxItem Content="123" />
+                    <ui:ZTComboBoxItem Content="4123" />
+                    <ui:ZTComboBoxItem Content="5123" />
+                    <ui:ZTComboBoxItem Content="123" />
+                    <ui:ZTComboBoxItem Content="123" />
+                    <ui:ZTComboBoxItem Content="4123" />
+                    <ui:ZTComboBoxItem Content="5123" />
                 </ui:ZTComboBox>
 
                 <TextBox

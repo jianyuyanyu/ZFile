@@ -17,14 +17,10 @@ namespace ZTAppFreamework.Stared.ViewModels
         }
 
         protected readonly GlobalValidator validator;
-
         public  string VerifyTostring<T>(T model,string columnName = "")
         {
           return Verify(model)?.Errors?.FirstOrDefault(x => x.PropertyName == columnName)?.ErrorMessage;
-        }
-           
-
-
+        }       
         /// <summary>
         /// 实体验证器方法
         /// </summary>
@@ -33,7 +29,6 @@ namespace ZTAppFreamework.Stared.ViewModels
         /// <returns></returns>
         public  virtual ValidationResult Verify<T>(T model, bool ShowError = true)
         {
-            if (validator == null) return new ValidationResult();
             var validationResult = validator.Validate<T>(model);
             if (!validationResult.IsValid && ShowError)
             {
@@ -46,9 +41,8 @@ namespace ZTAppFreamework.Stared.ViewModels
             }
             return validationResult;
         }
-
         public  string Error { get; set; }
-        public virtual string this[string columnName] { get => ""; }
+        public virtual string this[string columnName] { get=>""; }
 
     
     

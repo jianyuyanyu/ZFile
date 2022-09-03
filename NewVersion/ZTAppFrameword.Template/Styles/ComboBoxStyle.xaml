@@ -179,6 +179,7 @@
                                     AllowsTransparency="true"
                                     IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                     Placement="Bottom"
+                                    Height="200"
                                     PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
                                     <Grid>
                                         <Border
