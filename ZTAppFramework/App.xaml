@@ -5,5 +5,11 @@
     xmlns:local="clr-namespace:ZTAppFramework"
     xmlns:prism="http://prismlibrary.com/"
     ShutdownMode="OnExplicitShutdown">
-    <Application.Resources />
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Themes/DefaultStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </prism:PrismApplication>
