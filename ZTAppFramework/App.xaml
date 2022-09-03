@@ -1,0 +1,9 @@
+﻿<prism:PrismApplication
+    x:Class="ZTAppFramework.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ZTAppFramework"
+    xmlns:prism="http://prismlibrary.com/"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources />
+</prism:PrismApplication>

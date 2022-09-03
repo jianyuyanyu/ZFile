@@ -9,10 +9,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using ZFile.Common;
 using ZFile.Common.ApiClient;
+using ZFile.Common.Cache;
 using ZFile.Common.ConfigHelper;
 using ZFile.Common.EnumHelper;
 using ZFile.Common.LogHelper;
 using ZFile.Extensions.JWT;
+using ZFile.Service.DtoModel;
 
 namespace ZFileApiServer
 {
