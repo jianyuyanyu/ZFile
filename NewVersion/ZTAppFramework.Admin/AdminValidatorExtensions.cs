@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Admin.Validations.Users;
+using ZTAppFreamework.Stared.Validations;
 
 namespace ZTAppFramework.Admin
 {
@@ -25,7 +26,9 @@ namespace ZTAppFramework.Admin
         /// <param name="services"></param>
         public static void RegisterValidator(this IContainerRegistry services)
         {
-            services.RegisterScoped<IValidator<UserLoginModel>, LoginValidator>();
+            services.RegisterSingleton<GlobalValidator>();
+
+            services.RegisterScoped<IValidator<UserLoginModel>, UserLoginValidator>();
         }
 
     }

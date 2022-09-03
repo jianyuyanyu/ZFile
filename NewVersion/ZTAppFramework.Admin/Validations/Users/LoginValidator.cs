@@ -16,12 +16,20 @@ namespace ZTAppFramework.Admin.Validations.Users
     /// Description   ：  
     ///********************************************/
     /// </summary>
-    public class LoginValidator : AbstractValidator<UserLoginModel>
+    public class UserLoginValidator : AbstractValidator<UserLoginModel>
     {
-        public LoginValidator()
+        public UserLoginValidator()
         {
-            RuleFor(x => x.UserName).IsRequired("账号不能为空").MaxLength(256);
-            RuleFor(x => x.Password).IsRequired("密码不能为空").MaxLength(256);
+            RuleFor(x => x.UserName)
+                .NotEmpty()
+                .WithMessage("用户长度不能为空！")
+                .Length(5, 30)
+                .WithMessage("用户长度限制在5到30个字符之间！");
+            RuleFor(x => x.Password)
+                .NotEmpty()
+                .WithMessage("密码长度不能为空！")
+                .Length(5, 30)
+                .WithMessage("密码长度限制在5到30个字符之间！");
         }
     }
 }

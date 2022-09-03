@@ -240,6 +240,7 @@
                                                 Foreground="{TemplateBinding WatermarkColor}"
                                                 Text="{TemplateBinding Watermark}"
                                                 Visibility="Collapsed" />
+
                                         </Border>
                                         <Grid
                                             Grid.Column="1"

@@ -2,47 +2,28 @@
 using Prism.Ioc;
 using Prism.Mvvm;
 using System;
+using System.ComponentModel;
 using System.Text;
 using ZTAppFreamework.Stared.Validations;
 
 namespace ZTAppFreamework.Stared.ViewModels
 {
-    public class ViewModelBase : BindableBase
+    public class PropertyViewModel : BindableBase, IDataErrorInfo
     {
-
-        public ViewModelBase()
+  
+        public PropertyViewModel()
         {
-            validator = Prism.Ioc.ContainerLocator.Container.Resolve<GlobalValidator>();
+            validator = ContainerLocator.Container.Resolve<GlobalValidator>();
         }
-        private bool isBusy;
 
         protected readonly GlobalValidator validator;
 
-        public bool IsNotBusy => !IsBusy;
-
-        public bool IsBusy
+        public  string VerifyTostring<T>(T model,string columnName = "")
         {
-            get => isBusy;
-            set
-            {
-                isBusy = value;
-                RaisePropertyChanged();
-                RaisePropertyChanged(nameof(IsNotBusy));
-            }
+          return Verify(model)?.Errors?.FirstOrDefault(x => x.PropertyName == columnName)?.ErrorMessage;
         }
+           
 
-        public virtual async Task SetBusyAsync(Func<Task> func, string loadingMessage = null)
-        {
-            IsBusy = true;
-            try
-            {
-                await func();
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
 
         /// <summary>
         /// 实体验证器方法
@@ -50,10 +31,10 @@ namespace ZTAppFreamework.Stared.ViewModels
         /// <typeparam name="T">验证结果</typeparam>
         /// <param name="model">验证实体</param>
         /// <returns></returns>
-        public virtual ValidationResult Verify<T>(T model, bool ShowError = true)
+        public  virtual ValidationResult Verify<T>(T model, bool ShowError = true)
         {
-            var validationResult = validator.Validate(model);
-
+            if (validator == null) return new ValidationResult();
+            var validationResult = validator.Validate<T>(model);
             if (!validationResult.IsValid && ShowError)
             {
                 StringBuilder stringBuilder = new StringBuilder();
@@ -65,5 +46,13 @@ namespace ZTAppFreamework.Stared.ViewModels
             }
             return validationResult;
         }
+
+        public  string Error { get; set; }
+        public virtual string this[string columnName] { get => ""; }
+
+    
+    
+     
     }
 }
+

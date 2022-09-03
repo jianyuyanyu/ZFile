@@ -12,15 +12,17 @@ namespace ZTAppFrameword.Template.Control
 {
     /// <summary>
     ///********************************************
-    /// 创建人      ：  Zt
-    /// 创建时间    ：  2022/9/3 15:32:27 
+    /// 创建人       ：  Zt
+    /// 创建时间     :  2022/9/3 15:32:27 
     /// Description ：  自定义ComboBox控件
     ///********************************************/
     /// </summary>
-    public class ZTComboBox:ComboBox
+    public class ZTComboBox : ComboBox
     {
         private TextBox EditableTextBox;
+
         private Popup DropDownPopup;
+
         /// <summary>
         /// 这是水印
         /// </summary>
@@ -60,6 +62,7 @@ namespace ZTAppFrameword.Template.Control
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(ZTComboBox));
+
         /// <summary>
         /// 分割线宽度(只有IsEditable开启才生效)
         /// </summary>
@@ -110,6 +113,7 @@ namespace ZTAppFrameword.Template.Control
         {
             return item is ZTComboBoxItem;
         }
+
         /// <summary>
         /// 抓取指定项控件并返回定制项控件
         /// </summary>
@@ -118,10 +122,12 @@ namespace ZTAppFrameword.Template.Control
         {
             return new ZTComboBoxItem();
         }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             EditableTextBox = GetTemplateChild("PART_EditableTextBox") as TextBox;
+
             DropDownPopup = GetTemplateChild("PART_Popup") as Popup;
             if (EditableTextBox != null)
             {
@@ -129,9 +135,34 @@ namespace ZTAppFrameword.Template.Control
                 EditableTextBox.TextChanged += OnEditableTextBoxTextChanged;
             }
         }
+
         private void OnEditableTextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
-            IsDropDownOpen = true;
+            if (string.IsNullOrEmpty(Text))
+            {
+                IsDropDownOpen = false;
+                return;
+            }
+
+            bool IsOpenDrop = false;
+
+            foreach (var item in Items)
+            {
+                if (item is ComboBoxItem item1)
+                {
+                    if (item1.Content==null) continue;
+                    if (item1.Content.ToString().StartsWith(Text))
+                    {
+                        IsOpenDrop = true;
+                        break;
+                    }
+                }
+            }
+
+            if (IsOpenDrop)
+                IsDropDownOpen = true;
+            else
+                IsDropDownOpen = false;
         }
 
     }

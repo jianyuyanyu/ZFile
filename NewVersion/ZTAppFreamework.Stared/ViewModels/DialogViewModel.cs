@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ZTAppFreamework.Stared.ViewModels
 {
-    public abstract class DialogViewModel : BindableBase, IDialogAware
+    public abstract class DialogViewModel : ViewModelBase, IDialogAware
     {
 
         public DelegateCommand SaveCommand { get; set; }

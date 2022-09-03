@@ -1,10 +1,13 @@
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using ZTAppFramework.Admin.Validations.Users;
+using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.Model.Users
 {
@@ -15,21 +18,29 @@ namespace ZTAppFramework.Admin.Model.Users
     /// Description   ：  
     ///********************************************/
     /// </summary>
-    public class UserLoginModel : BindableBase
+    public class UserLoginModel : PropertyViewModel
     {
         private string _UserName;//用户
         private string _Password;//密码
 
+        public UserLoginModel()
+        {
+            UserName = "";
+            Password = "";
+        }
+
         public string UserName
         {
             get { return _UserName; }
-            set { SetProperty(ref _UserName, value); }
+            set { _UserName = value; RaisePropertyChanged("UserName"); }
         }
 
         public string Password
         {
             get { return _Password; }
-            set { SetProperty(ref _Password, value); }
+            set { _Password = value; RaisePropertyChanged("Password"); }
         }
+
+        public override string this[string columnName] { get => VerifyTostring(this,columnName); }
     }
 }
