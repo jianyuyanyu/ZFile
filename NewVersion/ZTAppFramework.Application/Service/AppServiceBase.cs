@@ -27,12 +27,12 @@ namespace ZTAppFramework.Application.Service
             string EventStr="";
             try
             {
-                var st = (new StackTrace()).GetFrame(1).GetMethod().DeclaringType.FullName; ;
-                EventStr = GetType().GetMethod(SubstringSingle(st, "<", ">")).GetCustomAttribute<ApiUrlAttribute>().Value;
+                string st = (new StackTrace()).GetFrame(1).GetMethod().DeclaringType.FullName; ;
+                string MethodNmae = SubstringSingle(st, "<", ">");
+                EventStr = GetType().GetMethod(MethodNmae).GetCustomAttribute<ApiUrlAttribute>().Value;
             }
             catch (Exception)
             {
-
 
             }
             if (string.IsNullOrEmpty(EventStr)) throw new Exception(GetType().Name + "Not Full ApiUrlAttribute");
