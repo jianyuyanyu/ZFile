@@ -3,6 +3,7 @@ using Prism.Modularity;
 using Prism.Regions;
 using ZTAppFramework.Admin.ViewModels;
 using ZTAppFramework.Admin.Views;
+using ZTAppFramewrok.Application.Stared.HttpManager;
 using ZTAppFreamework.Stared;
 using ZTAppFreamework.Stared.Service;
 
@@ -26,6 +27,8 @@ namespace ZTAppFramework.Admin
             services.RegisterValidator();
             //服务
             services.RegisterSingleton<AppStartService>();
+            services.RegisterSingleton<AccessTokenManager>();
+            services.RegisterSingleton<ApiClinetRepository>();
             services.RegisterStaredManager();
 
             //dialog窗口

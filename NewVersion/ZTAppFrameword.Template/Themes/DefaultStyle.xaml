@@ -3,5 +3,7 @@
 
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ComboBoxItemStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ComboBoxStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/TextBoxStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ButtonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

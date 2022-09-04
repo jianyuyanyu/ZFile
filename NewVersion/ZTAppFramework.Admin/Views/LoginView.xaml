@@ -42,7 +42,7 @@
                     Margin="0,20,0,0"
                     IsEditable="True"
                     Text="{Binding Login.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                    Watermark="请输入账号">
+                    Watermark="请输入账号" Cursor="Hand">
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
                             <StackPanel Orientation="Vertical">
@@ -57,8 +57,6 @@
                     <ui:ZTComboBoxItem Content="4123" />
                     <ui:ZTComboBoxItem Content="5123" />
                     <ui:ZTComboBoxItem Content="6123" />
-                    <ui:ZTComboBoxItem Content="123" />
-                    <ui:ZTComboBoxItem Content="123" />
                     <ui:ZTComboBoxItem Content="4123" />
                     <ui:ZTComboBoxItem Content="5123" />
                     <ui:ZTComboBoxItem Content="123" />
@@ -66,12 +64,16 @@
                     <ui:ZTComboBoxItem Content="4123" />
                     <ui:ZTComboBoxItem Content="5123" />
                 </ui:ZTComboBox>
-
-                <TextBox
-                    Height="40"
+                <ui:ZTTextBox
+                    Width="auto"
+                    Height="35"
                     Margin="0,20,0,0"
                     VerticalContentAlignment="Center"
-                    Text="{Binding Login.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                    BorderBrush="Gray"
+                    BorderThickness="1"
+                    Text="{Binding Login.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    Watermark="请输入密码"
+                    WatermarkColor="Gray">
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
                             <StackPanel>
@@ -80,7 +82,8 @@
                             </StackPanel>
                         </ControlTemplate>
                     </Validation.ErrorTemplate>
-                </TextBox>
+                </ui:ZTTextBox>
+
 
                 <Button
                     Height="40"

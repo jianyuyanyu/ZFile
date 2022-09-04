@@ -21,6 +21,7 @@ namespace ZTAppFramework.Admin.Model.Users
     public class UserLoginModel : PropertyViewModel
     {
         private string _UserName;//用户
+
         private string _Password;//密码
 
         public UserLoginModel()
