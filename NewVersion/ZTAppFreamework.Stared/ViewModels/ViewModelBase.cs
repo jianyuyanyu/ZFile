@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using AutoMapper;
+using FluentValidation.Results;
 using Prism.Ioc;
 using Prism.Mvvm;
 using System;
@@ -12,10 +13,11 @@ namespace ZTAppFreamework.Stared.ViewModels
 
         public ViewModelBase()
         {
+            mapper = ContainerLocator.Container.Resolve<IMapper>();
             validator = Prism.Ioc.ContainerLocator.Container.Resolve<GlobalValidator>();
         }
         private bool isBusy;
-
+        private readonly IMapper mapper;
         protected readonly GlobalValidator validator;
 
         public bool IsNotBusy => !IsBusy;
@@ -30,8 +32,15 @@ namespace ZTAppFreamework.Stared.ViewModels
                 RaisePropertyChanged(nameof(IsNotBusy));
             }
         }
+        private string _LodingMessage;
 
-        public virtual async Task SetBusyAsync(Func<Task> func, string loadingMessage = null)
+        public string LodingMessage
+        {
+            get { return _LodingMessage; }
+            set { SetProperty(ref _LodingMessage, value); }
+        }
+
+        public virtual async Task SetBusyAsync(Func<Task> func)
         {
             IsBusy = true;
             try
@@ -65,5 +74,14 @@ namespace ZTAppFreamework.Stared.ViewModels
             }
             return validationResult;
         }
+
+
+        /// <summary>
+        /// 实体映射方法
+        /// </summary>
+        /// <typeparam name="T">最终类型</typeparam>
+        /// <param name="model">映射实体</param>
+        /// <returns></returns>
+        public T Map<T>(object model) => mapper.Map<T>(model);
     }
 }

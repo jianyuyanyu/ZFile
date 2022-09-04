@@ -1,13 +1,11 @@
-﻿using Prism.DryIoc;
+﻿using DryIoc;
+using DryIoc.Microsoft.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+
 using System.Windows;
 using ZTAppFramework.Admin;
 
@@ -25,18 +23,25 @@ namespace ZTAppFramework
         {
 
         }
-
-
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule<AdminModule>();
             base.ConfigureModuleCatalog(moduleCatalog);
         }
-        protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
+
+
+        protected override IContainerExtension CreateContainerExtension()
         {
-            base.ConfigureRegionAdapterMappings(regionAdapterMappings);
-            //regionAdapterMappings.ConfigurationAdapters(Container);
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddAutoMapper(config =>
+            {
+                config.AddProfile<AdminMapper>();
+            });
+            return new DryIocContainerExtension(new Container(CreateContainerRules()).WithDependencyInjectionAdapter(serviceCollection));
+
         }
+
+
         protected override async void OnInitialized()
         {
             var appStart = ContainerLocator.Container.Resolve<AppStartService>();

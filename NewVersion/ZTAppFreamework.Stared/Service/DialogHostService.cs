@@ -20,21 +20,6 @@ namespace ZTAppFreamework.Stared.Service
             _containerExtension = containerExtension;
         }
 
-        /// <summary>
-        /// 异步弹窗
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="parameters"></param>
-        /// <param name="IdentifierName"></param>
-        /// <returns></returns>
-        public Task<IDialogResult> ShowDialogAsync(string name, IDialogParameters parameters = null, string IdentifierName = "Root")
-        {
-            IDialogResult dialogResult = new DialogResult(ButtonResult.None);
-
-
-            return (Task<IDialogResult>)(IDialogResult)dialogResult;
-        }
-       
 
         /// <summary>
         /// 弹窗

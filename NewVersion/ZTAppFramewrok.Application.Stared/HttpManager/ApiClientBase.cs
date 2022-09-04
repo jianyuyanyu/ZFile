@@ -52,12 +52,12 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
         }
 
 
-        public static async Task<T> ValidateAbpResponse<T>(Task<IFlurlResponse> httpResponse,
+        public static async Task<ApiResult<T>> ValidateAbpResponse<T>(Task<IFlurlResponse> httpResponse,
          bool stripAjaxResponseWrapper)
         {
             if (!stripAjaxResponseWrapper)
             {
-                return await httpResponse.ReceiveJson<T>();
+                return await httpResponse.ReceiveJson<ApiResult<T>>();
             }
 
             ApiResult<T> response;
@@ -77,10 +77,8 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
 
             if (response.Success)
             {
-                return response.data;
+                return response;
             }
-
-
             throw new Exception(response.Message);
         }
         public void Dispose()

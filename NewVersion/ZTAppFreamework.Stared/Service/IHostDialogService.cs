@@ -12,10 +12,7 @@ namespace ZTAppFreamework.Stared.Service
     /// </summary>
     public interface IHostDialogService :IDialogService
     {
-        Task<IDialogResult> ShowDialogAsync(
-           string name,
-           IDialogParameters parameters = null,
-           string IdentifierName = "Root");
+
 
         IDialogResult ShowWindow(string name);
     }

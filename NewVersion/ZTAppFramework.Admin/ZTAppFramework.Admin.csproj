@@ -4,6 +4,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ZTAppFramework.Application\ZTAppFramework.Application.csproj" />
   </ItemGroup>
 </Project>

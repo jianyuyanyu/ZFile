@@ -6,6 +6,23 @@ using System.Threading.Tasks;
 
 namespace ZTAppFramewrok.Application.Stared.HttpManager
 {
+
+    public class AppliResult<T>
+    {
+        /// <summary>
+        /// 是否成功
+        /// </summary>
+        public bool Success { get; set; } = true;
+        /// <summary>
+        /// 信息
+        /// </summary>
+        public string Message { get; set; }
+
+        /// <summary>
+        /// 数据集
+        /// </summary>
+        public T data { get; set; }
+    }
     public class ApiResult<T> 
     {
 

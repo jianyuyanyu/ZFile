@@ -127,7 +127,7 @@
             </Trigger>
             <Trigger Property="Type" Value="Warm">
                 <Setter Property="Background" Value="Orange" />
-                <Setter Property="HoverBackground" Value="LightOrange" />
+                <Setter Property="HoverBackground" Value="OrangeRed" />
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
             </Trigger>
@@ -135,7 +135,7 @@
                 <Setter Property="Background" Value="Red" />
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
-                <Setter Property="HoverBackground" Value="LightRed" />
+                <Setter Property="HoverBackground" Value="LightBlue" />
             </Trigger>
         </Style.Triggers>
     </Style>

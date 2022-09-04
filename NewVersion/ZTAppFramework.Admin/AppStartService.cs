@@ -13,13 +13,13 @@ namespace ZTAppFramework.Admin
 {
     public class AppStartService
     {
-        Application app;
+      System.Windows.Application app;
         public void Exit()
         {
             Environment.Exit(0);
         }
 
-        public async Task<Window> CreateShell(Application application)
+        public async Task<Window> CreateShell(System.Windows.Application application)
         {
             this.app = application;
             var container= ContainerLocator.Container;

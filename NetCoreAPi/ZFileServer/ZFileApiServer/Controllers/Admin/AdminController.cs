@@ -82,7 +82,7 @@ namespace ZFileApiServer.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost("Login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] UserModelDto model)
         {

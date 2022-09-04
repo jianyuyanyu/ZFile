@@ -9,6 +9,6 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
     public static class ApiConfig
     {
 
-        public const string ApiUrl = "https://localhost:44301/";
+        public const string ApiUrl = "https://localhost:5001/";
     }
 }

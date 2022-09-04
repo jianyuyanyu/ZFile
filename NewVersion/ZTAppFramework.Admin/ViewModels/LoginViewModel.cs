@@ -5,7 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Users;
+using ZTAppFramework.Application.Service;
+using ZTAppFramewrok.Application.Stared.DTO;
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
@@ -14,6 +17,8 @@ namespace ZTAppFramework.Admin.ViewModels
     {
 
         private UserLoginModel _Login;
+        private readonly UserService _userLoginService;
+
         public UserLoginModel Login
         {
             get { return _Login; }
@@ -30,40 +35,55 @@ namespace ZTAppFramework.Admin.ViewModels
 
 
         public DelegateCommand<string> ExecuteCommand { get; }
-      
 
-        public LoginViewModel()
+
+        public LoginViewModel(UserService  userLoginService)
         {
-            Login=new UserLoginModel();
+            _userLoginService = userLoginService;
+            Login = new UserLoginModel();
             ExecuteCommand = new DelegateCommand<string>(Execute);
         }
 
-        private  void Execute(string parm)
+        private async void Execute(string parm)
         {
             switch (parm)
             {
                 case "LoginUser":
-                     LoginUserAsync();
+                    await LoginUserAsync();
                     break;
                 default:
                     break;
             }
         }
 
-        private void  LoginUserAsync()
+        private async Task LoginUserAsync()
         {
             if (!Verify(Login).IsValid) return;
+
+            LodingMessage = "登入中";
+            await SetBusyAsync(async () =>
+              {
+                  await _userLoginService.LoginServer(Map<UserInfoDto>(Login));
+                  await Task.Delay(3000);
+                  LodingMessage = "导入台账中";
+                  await Task.Delay(3000);
+                  LodingMessage = "导入界面中";
+                  await Task.Delay(3000);
+              });
             OnDialogClosed();
+
         }
+
+
 
         public override void Cancel()
         {
-           
+
         }
 
         public override void OnSave()
         {
-           
+
         }
     }
 }

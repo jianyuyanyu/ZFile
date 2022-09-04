@@ -15,6 +15,7 @@ namespace ZTAppFramewrok.Application.Stared.DTO
     /// </summary>
     public class UserInfoDto
     {
-
+        public string User { get; set; }
+        public string Password { get; set; }
     }
 }
