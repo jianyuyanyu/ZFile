@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ZTAppFramewrok.Application.Stared.HttpManager;
 using ZTAppFreamework.Stared.Attributes;
@@ -22,18 +24,26 @@ namespace ZTAppFramework.Application.Service
 
         protected string GetEndpoint()
         {
-            string EventStr = "";
-            foreach (var Properties in GetType().GetMembers())
+            string EventStr="";
+            try
             {
-                var info = Properties.GetCustomAttribute<ApiUrlAttribute>();
-                if (info != null)
-                {
-                    EventStr = info.Value;
-                    break;
-                }
+                var st = (new StackTrace()).GetFrame(1).GetMethod().DeclaringType.FullName; ;
+                EventStr = GetType().GetMethod(SubstringSingle(st, "<", ">")).GetCustomAttribute<ApiUrlAttribute>().Value;
             }
-            if (string.IsNullOrEmpty(EventStr)) throw new Exception(GetType().Name+ "Not Full ApiUrlAttribute");
+            catch (Exception)
+            {
+
+
+            }
+            if (string.IsNullOrEmpty(EventStr)) throw new Exception(GetType().Name + "Not Full ApiUrlAttribute");
             return ApiServiceUrl + "/" + EventStr;
+        }
+
+
+        public string SubstringSingle(string source, string startStr, string endStr)
+        {
+            Regex rg = new Regex("(?<=(" + startStr + "))[.\\s\\S]*?(?=(" + endStr + "))", RegexOptions.Multiline | RegexOptions.Singleline);
+            return rg.Match(source).Value;
         }
     }
 }

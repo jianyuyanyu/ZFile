@@ -30,9 +30,10 @@ namespace ZTAppFramework.Admin
             services.RegisterSingleton<AppStartService>();
             services.RegisterSingleton<AccessTokenManager>();
             services.RegisterSingleton<ApiClinetRepository>();
-
+            //应用逻辑
             services.RegisterScoped<UserService>();
 
+            ///
             services.RegisterStaredManager();
 
             //dialog窗口

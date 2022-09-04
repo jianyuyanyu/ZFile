@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZTAppFramewrok.Application.Stared.HttpManager
 {
-    public class ApiClientBase:IDisposable
+    public class ApiClientBase : IDisposable
     {
 
         static FlurlClient _client;
@@ -51,7 +51,6 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
             }
         }
 
-
         public static async Task<ApiResult<T>> ValidateAbpResponse<T>(Task<IFlurlResponse> httpResponse,
          bool stripAjaxResponseWrapper)
         {
@@ -67,20 +66,15 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
             }
             catch (FlurlHttpException e)
             {
-                response = await e.GetResponseJsonAsync<ApiResult<T>>();
+                response = new ApiResult<T>() { Success = false, Message = e.Message, statusCode = 500 };
+                //response = await e.GetResponseJsonAsync<ApiResult<T>>();
             }
-
             if (response == null)
-            {
                 return default;
-            }
 
-            if (response.Success)
-            {
-                return response;
-            }
-            throw new Exception(response.Message);
+            return response;
         }
+
         public void Dispose()
         {
             _client?.Dispose();

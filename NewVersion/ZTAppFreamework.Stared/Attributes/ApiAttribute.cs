@@ -16,5 +16,7 @@ namespace ZTAppFreamework.Stared.Attributes
         }
 
         public string Value { get; set; }
+
+        public string Method { get => System.Reflection.MethodBase.GetCurrentMethod().Name; }
     }
 }
