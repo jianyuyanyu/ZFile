@@ -16,7 +16,7 @@ namespace ZTAppFramework.Admin
         {
             CreateMap<UserLoginModel, UserInfoDto>()
                 .ForMember(X => X.User, opt => opt.MapFrom(str => str.UserName))
-               
+                .ForMember(X => X.Password, opt => opt.MapFrom(str => str.Password))
                 .ReverseMap();
         }
     }

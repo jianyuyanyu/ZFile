@@ -71,8 +71,6 @@
                     Height="35"
                     Margin="0,20,0,0"
                     VerticalContentAlignment="Center"
-                    BorderBrush="Gray"
-                    BorderThickness="1"
                     IsEnabled="{Binding IsBusy, Converter={StaticResource BoolInverseConverter}}"
                     Text="{Binding Login.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Watermark="请输入密码"

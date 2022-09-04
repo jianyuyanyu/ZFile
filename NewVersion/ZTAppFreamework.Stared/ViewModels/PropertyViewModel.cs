@@ -37,7 +37,6 @@ namespace ZTAppFreamework.Stared.ViewModels
                 {
                     stringBuilder.AppendLine(item.ErrorMessage);
                 }
-                //AppDialogHelper.Warn(stringBuilder.ToString());
             }
             return validationResult;
         }

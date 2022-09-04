@@ -37,7 +37,7 @@ namespace ZTAppFramework.Admin.ViewModels
         public DelegateCommand<string> ExecuteCommand { get; }
 
 
-        public LoginViewModel(UserService  userLoginService)
+        public LoginViewModel(UserService userLoginService)
         {
             _userLoginService = userLoginService;
             Login = new UserLoginModel();
@@ -61,16 +61,15 @@ namespace ZTAppFramework.Admin.ViewModels
             if (!Verify(Login).IsValid) return;
 
             LodingMessage = "登入中";
+
             await SetBusyAsync(async () =>
-              {
-                  await _userLoginService.LoginServer(Map<UserInfoDto>(Login));
-                  await Task.Delay(3000);
-                  LodingMessage = "导入台账中";
-                  await Task.Delay(3000);
-                  LodingMessage = "导入界面中";
-                  await Task.Delay(3000);
+            {
+                await Task.Delay(1000);
+                var res = await _userLoginService.LoginServer(Map<UserInfoDto>(Login));
+                  if (!res.Success) return;
+                OnDialogClosed();
               });
-            OnDialogClosed();
+
 
         }
 
