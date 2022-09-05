@@ -11,7 +11,7 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
     {
         public AccessTokenManager()
         {
-
+            AuthenticateResult = new AuthenticateResultModel();
         }
 
         public AuthenticateResultModel AuthenticateResult { get; set; }

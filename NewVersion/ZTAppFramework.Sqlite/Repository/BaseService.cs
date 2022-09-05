@@ -55,6 +55,31 @@ namespace ZTAppFramework.SqliteCore.Repository
             return res;
         }
 
+
+        /// <summary>
+        /// 修改一条数据
+        /// </summary>
+        /// <param name="parm">T</param>
+        /// <returns></returns>
+        public async Task<SqlResult<string>> UpdateAsync(T parm, bool Async = true)
+        {
+            var res = new SqlResult<string>() ;
+            try
+            {
+                var dbres = Async ? await freeSql.GetRepository<T>().UpdateAsync(parm) : freeSql.GetRepository<T>().Update(parm);
+                if (dbres <=0)
+                    res.success = false;
+                res.data = dbres.ToString();
+                
+            }
+            catch (Exception ex)
+            {
+                res.success = false;
+                res.message=ex.Message;
+            }
+            return res;
+        }
+
         /// <summary>
         /// 获得列表，不需要任何条件
         /// </summary>

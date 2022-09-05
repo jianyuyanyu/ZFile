@@ -17,20 +17,20 @@ namespace ZTAppFramework.Admin.ViewModels
     public class LoginViewModel : DialogViewModel
     {
 
-        private UserLoginModel _Login;
+
         private readonly UserService _userLoginService;
 
-
+        #region UI
 
 
         private ObservableCollection<UserLoginModel> _AccountList;
-
+        private UserLoginModel _Login;
+        private bool _IsSavePwd;
         public ObservableCollection<UserLoginModel> AccountList
         {
             get { return _AccountList; }
             set { SetProperty(ref _AccountList, value); }
         }
-
 
         public UserLoginModel Login
         {
@@ -38,17 +38,17 @@ namespace ZTAppFramework.Admin.ViewModels
             set { SetProperty(ref _Login, value); }
         }
 
-        private string _Name;
-
-        public string NameUser
+        public bool IsSavePwd
         {
-            get { return _Name; }
-            set { SetProperty(ref _Name, value); }
+            get { return _IsSavePwd; }
+            set { SetProperty(ref _IsSavePwd, value); }
         }
 
+        #endregion
 
+        #region Command
         public DelegateCommand<string> ExecuteCommand { get; }
-
+        #endregion
 
         public LoginViewModel(UserService userLoginService)
         {
@@ -58,6 +58,10 @@ namespace ZTAppFramework.Admin.ViewModels
             ExecuteCommand = new DelegateCommand<string>(Execute);
         }
 
+        /// <summary>
+        /// Cmmand 处理逻辑
+        /// </summary>
+        /// <param name="parm"></param>
         private async void Execute(string parm)
         {
             switch (parm)
@@ -70,17 +74,20 @@ namespace ZTAppFramework.Admin.ViewModels
             }
         }
 
+        /// <summary>
+        /// 登入
+        /// </summary>
+        /// <returns></returns>
         private async Task LoginUserAsync()
         {
             if (!Verify(Login).IsValid) return;
-
             LodingMessage = "登入中";
-
             await SetBusyAsync(async () =>
             {
                 await Task.Delay(1000);
                 var res = await _userLoginService.LoginServer(Map<UserInfoDto>(Login));
                 if (!res.Success) return;
+                await _userLoginService.SaveLocalAccountInfo(IsSavePwd, Map<UserInfoDto>(Login));
                 OnDialogClosed();
             });
         }
@@ -91,7 +98,19 @@ namespace ZTAppFramework.Admin.ViewModels
             var result = await _userLoginService.GetLocalAccountList();
             if (result.Success)
                 AccountList.AddRange(Map<List<UserLoginModel>>(result.data));
+            var r = await _userLoginService.GetLocalAccountInfo();
+            if (r.Success)
+            {
+                IsSavePwd = r.data.Check;
+                if (string.IsNullOrEmpty(r.data.Values)) return;
+                var mod = AccountList.FirstOrDefault(x => x.UserName == r.data.Values);
+                Login.UserName = mod.UserName;
+                if (IsSavePwd)
+                    Login.Password = mod.Password;
+
+            }
         }
+
         public override void Cancel()
         {
 
