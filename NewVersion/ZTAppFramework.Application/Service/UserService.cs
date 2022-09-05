@@ -16,7 +16,15 @@ namespace ZTAppFramework.Application.Service
         public override string ApiServiceUrl => "/api/Admin";
         public UserService(ApiClinetRepository apiClinet) : base(apiClinet)
         {
+            
+        }
 
+
+        public async Task<AppliResult<List<UserInfoDto>>> GetLocalAccountList()
+        {
+            AppliResult<List<UserInfoDto>> result = new AppliResult<List<UserInfoDto>>() { Success = false };
+
+            return result;
         }
 
         /// <summary>
@@ -26,32 +34,6 @@ namespace ZTAppFramework.Application.Service
         /// <returns></returns>
         [ApiUrl("Login")]
         public async Task<AppliResult<string>> LoginServer(UserInfoDto user)
-        {
-            AppliResult<string> res = new AppliResult<string>() { Success = false, Message = "未知异常" };
-
-           
-            var api = await _apiClinet.PostAnonymousAsync<AppliResult<string>>(GetEndpoint(), user);
-            if (api.Success)
-            {
-                if (api.statusCode == 200)
-                {
-                    res.Success = true;
-                }
-                else
-                {
-                    res.Message = api.Message;
-                }
-            }
-            return res;
-        }
-
-        /// <summary>
-        /// 登入
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        [ApiUrl("Edit")]
-        public async Task<AppliResult<string>> EditServer(UserInfoDto user)
         {
             AppliResult<string> res = new AppliResult<string>() { Success = false, Message = "未知异常" };
             var api = await _apiClinet.PostAnonymousAsync<AppliResult<string>>(GetEndpoint(), user);

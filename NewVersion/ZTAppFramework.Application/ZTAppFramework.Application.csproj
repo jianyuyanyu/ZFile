@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ZTAppFramewrok.Application.Stared\ZTAppFramewrok.Application.Stared.csproj" />
-    <ProjectReference Include="..\ZTAppFreamework.Stared\ZTAppFreamework.Stared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,9 +4,11 @@ using Prism.Regions;
 using ZTAppFramework.Admin.ViewModels;
 using ZTAppFramework.Admin.Views;
 using ZTAppFramework.Application.Service;
+using ZTAppFramework.SqliteCore;
 using ZTAppFramewrok.Application.Stared.HttpManager;
 using ZTAppFreamework.Stared;
 using ZTAppFreamework.Stared.Service;
+
 
 namespace ZTAppFramework.Admin
 {
@@ -26,16 +28,17 @@ namespace ZTAppFramework.Admin
 
             //验证器
             services.RegisterValidator();
+    
             //服务
             services.RegisterSingleton<AppStartService>();
             services.RegisterSingleton<AccessTokenManager>();
             services.RegisterSingleton<ApiClinetRepository>();
             //应用逻辑
             services.RegisterScoped<UserService>();
-
+            
             ///
             services.RegisterStaredManager();
-
+            services.RegisterStaredSqliteManager();
             //dialog窗口
             services.RegisterDialog<LoginView, LoginViewModel>(AppView.LoginName);
             //页面

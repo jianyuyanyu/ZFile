@@ -38,6 +38,7 @@ namespace ZTAppFramework.Admin
             }
             return null;
         }
+
         public static bool Authorization()
         {
             var dialogService = ContainerLocator.Container.Resolve<IHostDialogService>();
