@@ -25,9 +25,18 @@ namespace ZTAppFramework.Application.Service
 
         public async Task<AppliResult<List<UserInfoDto>>> GetLocalAccountList()
         {
-            AppliResult<List<UserInfoDto>> result = new AppliResult<List<UserInfoDto>>() { Success = false };
+            AppliResult<List<UserInfoDto>> result = new AppliResult<List<UserInfoDto>>();
               var Csql= await _userLocalSerivce.GetListAsync();
-
+            if (Csql.success)
+            {
+                result.data = new List<UserInfoDto>();
+                Csql.data.ForEach(x => result.data.Add(new UserInfoDto() { User = x.Name, Password = x.Password }));
+            }
+            else
+            {
+                result.Success = false;
+            }
+           
             return result;
         }
 

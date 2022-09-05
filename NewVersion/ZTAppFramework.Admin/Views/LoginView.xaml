@@ -41,8 +41,10 @@
                 <ui:ZTComboBox
                     Margin="0,20,0,0"
                     Cursor="Hand"
+                    DisplayMemberPath="UserName"
                     IsEditable="True"
                     IsEnabled="{Binding IsBusy, Converter={StaticResource BoolInverseConverter}}"
+                    ItemsSource="{Binding AccountList}"
                     Text="{Binding Login.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Watermark="请输入账号">
                     <Validation.ErrorTemplate>
@@ -53,18 +55,6 @@
                             </StackPanel>
                         </ControlTemplate>
                     </Validation.ErrorTemplate>
-                    <ui:ZTComboBoxItem Content="123" />
-                    <ui:ZTComboBoxItem Content="123" />
-                    <ui:ZTComboBoxItem Content="123" />
-                    <ui:ZTComboBoxItem Content="4123" />
-                    <ui:ZTComboBoxItem Content="5123" />
-                    <ui:ZTComboBoxItem Content="6123" />
-                    <ui:ZTComboBoxItem Content="4123" />
-                    <ui:ZTComboBoxItem Content="5123" />
-                    <ui:ZTComboBoxItem Content="123" />
-                    <ui:ZTComboBoxItem Content="123" />
-                    <ui:ZTComboBoxItem Content="4123" />
-                    <ui:ZTComboBoxItem Content="5123" />
                 </ui:ZTComboBox>
                 <ui:ZTTextBox
                     Width="auto"

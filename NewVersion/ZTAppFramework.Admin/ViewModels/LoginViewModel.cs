@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,6 +19,18 @@ namespace ZTAppFramework.Admin.ViewModels
 
         private UserLoginModel _Login;
         private readonly UserService _userLoginService;
+
+
+
+
+        private ObservableCollection<UserLoginModel> _AccountList;
+
+        public ObservableCollection<UserLoginModel> AccountList
+        {
+            get { return _AccountList; }
+            set { SetProperty(ref _AccountList, value); }
+        }
+
 
         public UserLoginModel Login
         {
@@ -39,6 +52,7 @@ namespace ZTAppFramework.Admin.ViewModels
 
         public LoginViewModel(UserService userLoginService)
         {
+            AccountList = new ObservableCollection<UserLoginModel>();
             _userLoginService = userLoginService;
             Login = new UserLoginModel();
             ExecuteCommand = new DelegateCommand<string>(Execute);
@@ -66,17 +80,17 @@ namespace ZTAppFramework.Admin.ViewModels
             {
                 await Task.Delay(1000);
                 var res = await _userLoginService.LoginServer(Map<UserInfoDto>(Login));
-                  if (!res.Success) return;
+                if (!res.Success) return;
                 OnDialogClosed();
-              });
-
-
+            });
         }
 
 
-        public override void OnDialogOpened(IDialogParameters parameters)
+        public override async void OnDialogOpened(IDialogParameters parameters)
         {
-           var aa= _userLoginService. GetLocalAccountList();
+            var result = await _userLoginService.GetLocalAccountList();
+            if (result.Success)
+                AccountList.AddRange(Map<List<UserLoginModel>>(result.data));
         }
         public override void Cancel()
         {

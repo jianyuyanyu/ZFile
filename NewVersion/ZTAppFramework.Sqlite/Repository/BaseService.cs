@@ -25,16 +25,17 @@ namespace ZTAppFramework.SqliteCore.Repository
         /// <returns></returns>
         public async Task<SqlResult<long>> AddAsync(T parm, bool Async = true)
         {
-            SqlResult<long>? res = new SqlResult<long>() {success=false };
+            SqlResult<long>? res = new SqlResult<long>();
             try
             {
-                var result = Async ? await freeSql.Insert<T>(parm).AppendData(parm).ExecuteIdentityAsync() : freeSql.Insert<T>(parm).AppendData(parm).ExecuteIdentity();
+                var result = Async ? await freeSql.Insert<T>(parm).ExecuteIdentityAsync() : freeSql.Insert<T>(parm).ExecuteIdentity();
                 res.data = result;
-                res.success = true;
+ 
             }
             catch (Exception ex)
             {
-
+                res.message = ex.Message;
+                res.success = false;
             }
             return res;
         }

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ZTAppFramework.Sqlite\ZTAppFramework.SqliteCore.csproj" />
+    <ProjectReference Include="..\ZTAppFramework.Sqlite\ZTAppFramework.SqliteCore.csproj" />
   </ItemGroup>
 
 </Project>

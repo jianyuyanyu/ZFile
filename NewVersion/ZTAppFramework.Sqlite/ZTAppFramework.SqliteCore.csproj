@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NewVersion\ZTAppFreamework.Stared\ZTAppFreamework.Stared.csproj" />
+    <ProjectReference Include="..\ZTAppFreamework.Stared\ZTAppFreamework.Stared.csproj" />
   </ItemGroup>
 
 </Project>
