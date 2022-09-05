@@ -30,6 +30,7 @@ namespace ZTAppFramework.Admin
                 var regionManager = container.Resolve<IRegionManager>();
                 RegionManager.SetRegionManager(view, regionManager);
                 RegionManager.UpdateRegions();
+                regionManager.Regions[AppView.MainName].RequestNavigate(AppView.HomeName);
                 if (view.DataContext is INavigationAware navigationAware)
                 {
                     navigationAware.OnNavigatedTo(null);

@@ -94,6 +94,7 @@ namespace ZTAppFramework.Application.Service
                     {
                         var CSql = await _userLocalSerivce.AddAsync(new SqliteCore.Models.Account() { Name = user.User, Password = user.Password });
                     }
+                    _apiClinet.SetToken(api.data.ToString());
                 }
                 else
                 {

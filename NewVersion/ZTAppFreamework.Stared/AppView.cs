@@ -9,5 +9,7 @@
         public const string LoginName = "LoginView";//登入Dialog页面
 
         public const string MainName = "MainView";//主页面
+
+        public const string HomeName = "HomeName";//菜单管理页面
     }
 }

@@ -44,6 +44,8 @@ namespace ZTAppFramework.Admin
             //页面
             services.RegisterForNavigation<MainView, MainViewModel>(AppView.MainName);
 
+            services.RegisterForNavigation<HomeView, HomeViewModel>(AppView.HomeName);
+
         }
     }
 }

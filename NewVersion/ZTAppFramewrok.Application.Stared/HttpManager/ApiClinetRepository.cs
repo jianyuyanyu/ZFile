@@ -17,6 +17,11 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
             _accessTokenManager = accessTokenManager;
         }
 
+        public void SetToken(string Token)
+        {
+            _accessTokenManager.AuthenticateResult.AccessToken = Token;
+        }
+
         #region PostAsync<T>
 
         public async Task<ApiResult<T>> PostAsync<T>(string endpoint)
