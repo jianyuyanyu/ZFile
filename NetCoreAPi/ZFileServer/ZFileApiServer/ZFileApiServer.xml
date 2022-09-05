@@ -59,6 +59,20 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:ZFileApiServer.Controllers.AdminController.GetPages(ZFile.Service.DtoModel.PageParm)">
+            <summary>
+            查询列表
+            </summary>
+            <param name="parm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZFileApiServer.Controllers.AdminController.GetModelByGuid(ZFile.Service.DtoModel.ParmString)">
+            <summary>
+            根据编号，查询用户信息
+            </summary>
+            <param name="parm"></param>
+            <returns></returns>
+        </member>
         <member name="M:ZFileApiServer.Controllers.CodeTypeController.GetListPage">
             <summary>
             获得字典栏目Tree列表

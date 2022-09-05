@@ -59,14 +59,15 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
                 return await httpResponse.ReceiveJson<ApiResult<T>>();
             }
 
-            ApiResult<T> response;
+            ApiResult<T> response = new ApiResult<T>() { success = true };
             try
             {
                 response = await httpResponse.ReceiveJson<ApiResult<T>>();
+        
             }
             catch (FlurlHttpException e)
             {
-                response = new ApiResult<T>() { Success = false, Message = e.Message, statusCode = 500 };
+                response = new ApiResult<T>() { success = false, message = e.Message, statusCode = 500 };
                 //response = await e.GetResponseJsonAsync<ApiResult<T>>();
             }
             if (response == null)

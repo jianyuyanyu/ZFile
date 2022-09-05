@@ -74,7 +74,10 @@ namespace ZTAppFramework.Admin.ViewModels
         }
 
 
-
+        public override void OnDialogOpened(IDialogParameters parameters)
+        {
+           var aa= _userLoginService. GetLocalAccountList();
+        }
         public override void Cancel()
         {
 
