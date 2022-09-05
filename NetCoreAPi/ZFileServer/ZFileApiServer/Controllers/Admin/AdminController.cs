@@ -86,7 +86,7 @@ namespace ZFileApiServer.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] UserModelDto model)
         {
-            var apiRes = new ApiResult<string>() { statusCode = (int)ApiEnum.HttpRequestError };
+            ApiResult<AuthenticateDto> apiRes = new ApiResult<AuthenticateDto>() { statusCode = (int)ApiEnum.HttpRequestError };
             var token = "";
             try
             {
@@ -100,10 +100,10 @@ namespace ZFileApiServer.Controllers
                 {
                     apiRes.message = "账号密码错误！！";
                     return Ok(apiRes);
-                }
-                
+                }          
                 var user = dbres.data;
                 MemoryCacheService.Default.SetCache(KeyHelper.ADMINMENU + "_" + dbres.data.admin.Guid, dbres.data.menu, 600);
+
                 #region 废弃
 
 
@@ -146,7 +146,14 @@ namespace ZFileApiServer.Controllers
                     TokenType = "Web"
                 });
                 apiRes.statusCode = (int)ApiEnum.Status;
-                apiRes.data = token;
+                AuthenticateDto dto = new AuthenticateDto()
+                {
+                    Token = token,
+                    Role = "管理员",
+                    TokenExpiration = DateTime.Now.AddMinutes(10).Minute,
+                    RefreshToken = ""
+                };
+                apiRes.data = dto;
             }
             catch (Exception )
             {
