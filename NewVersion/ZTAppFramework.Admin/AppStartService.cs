@@ -34,7 +34,6 @@ namespace ZTAppFramework.Admin
                 regionManager.Regions[AppView.MainName].RequestNavigate(AppView.HomeName);
                 if (view.DataContext is INavigationAware navigationAware)
                 {
-
                     navigationAware.OnNavigatedTo(null);
                     return (Window)shell;
                 }
