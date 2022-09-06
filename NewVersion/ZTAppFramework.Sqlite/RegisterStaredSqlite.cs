@@ -17,7 +17,7 @@ namespace ZTAppFramework.SqliteCore
     /// </summary>
     public static class RegisterStaredSqlite
     {
-        public static void RegisterStaredSqliteManager(this IContainerRegistry services)
+        public static void RegisterSqliteManager(this IContainerRegistry services)
         {
             services.RegisterScoped<UserLocalSerivce>();
             services.RegisterScoped<KeyConfigLocalService>();

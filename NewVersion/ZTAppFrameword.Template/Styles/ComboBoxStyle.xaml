@@ -6,7 +6,7 @@
         <Setter Property="Height" Value="38" />
         <Setter Property="Padding" Value="10,0,10,0" />
         <Setter Property="BorderBrush" Value="#eee" />
-        <Setter Property="HoverBorderBrush" Value="#eee" />
+        <Setter Property="HoverBorderBrush" Value="Gray" />
         <Setter Property="FocusedBorderBrush" Value="#eee" />
         <Setter Property="Watermark" Value="请选择" />
         <Setter Property="WatermarkColor" Value="Gray" />

@@ -2,6 +2,7 @@
     x:Class="ZTAppFramework.Admin.Views.HomeView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Selector="clr-namespace:ZTAppFramework.Admin.Selector"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:region="clr-namespace:ZTAppFreamework.Stared;assembly=ZTAppFreamework.Stared"
     prism:ViewModelLocator.AutoWireViewModel="True">
@@ -14,7 +15,90 @@
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <ListBox Width="126" Background="White" />
+            <ListBox
+                Width="126"
+                Background="Transparent"
+                ItemTemplateSelector="{DynamicResource MenuItemSelector}"
+                ItemsSource="{Binding MenuList}">
+                <ListBox.Resources>
+                    <Selector:MenuItemDataTemplateSelector x:Key="MenuItemSelector" />
+                    <DataTemplate x:Key="MenuItemsDataTemplate">
+                        <Expander Header="{Binding name}">
+                            <ItemsControl ItemTemplateSelector="{DynamicResource MenuItemSelector}" ItemsSource="{Binding Childer}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </Expander>
+                    </DataTemplate>
+                    <DataTemplate x:Key="MenuItemDataTemplate">
+                        <RadioButton
+                            Height="40"
+                            Padding="20,0"
+                            CommandParameter="{Binding}"
+                            Content="{Binding name}"
+                            FocusVisualStyle="{x:Null}"
+                            Foreground="White"
+                            GroupName="Item"
+                            IsChecked="{Binding C}">
+                            <RadioButton.Template>
+                                <ControlTemplate TargetType="RadioButton">
+                                    <Grid>
+                                        <Border x:Name="bg" Background="Transparent" />
+                                        <Grid
+                                            x:Name="line"
+                                            Width="5"
+                                            HorizontalAlignment="Left"
+                                            Background="Green"
+                                            Opacity="0" />
+                                        <ContentPresenter
+                                            x:Name="dataContent"
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            IsHitTestVisible="True"
+                                            Opacity="0.7" />
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetName="line"
+                                                            Storyboard.TargetProperty="Opacity"
+                                                            To="1"
+                                                            Duration="0:0:0.3" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetName="line"
+                                                            Storyboard.TargetProperty="Opacity"
+                                                            To="0"
+                                                            Duration="0:0:0.3" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                        <Trigger Property="IsChecked" Value="true">
+                                            <Setter TargetName="bg" Property="Background" Value="Green" />
+                                            <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                            <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </RadioButton.Template>
+                        </RadioButton>
+                    </DataTemplate>
+                </ListBox.Resources>
+            </ListBox>
         </Grid>
 
         <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static region:AppView.HomeName}" />

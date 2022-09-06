@@ -18,7 +18,5 @@ namespace ZTAppFreamework.Stared
         {
             services.RegisterSingleton<IHostDialogService, DialogHostService>();
         }
-
-
     }
 }

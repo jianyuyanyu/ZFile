@@ -11,10 +11,10 @@ using ZTAppFreamework.Stared.Attributes;
 
 namespace ZTAppFramework.Application.Service
 {
-
     public class AppServiceBase
     {
         protected ApiClinetRepository _apiClinet;
+
         public virtual string ApiServiceUrl { get => ""; }
 
         public AppServiceBase(ApiClinetRepository apiClinet)
@@ -39,11 +39,11 @@ namespace ZTAppFramework.Application.Service
             return ApiServiceUrl + "/" + EventStr;
         }
 
-
         public string SubstringSingle(string source, string startStr, string endStr)
         {
             Regex rg = new Regex("(?<=(" + startStr + "))[.\\s\\S]*?(?=(" + endStr + "))", RegexOptions.Multiline | RegexOptions.Singleline);
             return rg.Match(source).Value;
         }
+
     }
 }

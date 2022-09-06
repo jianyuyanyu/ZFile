@@ -3,4 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Converter="clr-namespace:ZTAppFrameword.Template.Converters">
     <Converter:BoolInverseConverter x:Key="BoolInverseConverter" />
+    <Converter:Add3Converter x:Key="Add3Converter" />
+    <Converter:GridLengthConverter x:Key="GridLengthConverter" />
+    <Converter:BoolToInvisibleConverter x:Key="BoolToInvisibleConverter" />
+    <Converter:BoolToVisibleConverter x:Key="BoolToVisibleConverter" />
+    <Converter:IsNullOrEmptyConverter x:Key="IsNullOrEmptyConverter" />
+    <Converter:IsNullConverter x:Key="IsNullConverter" />
+    <Converter:IsNotNullConverter x:Key="IsNotNullConverter" />
+    <Converter:NullableColorToColoConverter x:Key="NullableColorToColoConverter" />
 </ResourceDictionary>
