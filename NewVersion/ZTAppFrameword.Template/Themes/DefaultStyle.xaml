@@ -7,7 +7,7 @@
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ButtonStyle.xaml" />
 
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/PasswordBoxStyle.xaml" />
-
+        <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ExpanderStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/PathDataStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -22,6 +22,12 @@ namespace ZTAppFramework.Admin.Model.Menus
             Childer = new List<MenuModel>();
         }
 
+        private bool _IsSelected;
+        public bool IsSelected
+        {
+            get { return _IsSelected; }
+            set { SetProperty(ref _IsSelected, value); }
+        }
         /// <summary>
         /// Desc:唯一标识Guid
         /// Default:

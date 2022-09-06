@@ -21,8 +21,6 @@ namespace ZTAppFramework.Admin.ViewModels
         private readonly UserService _userLoginService;
 
         #region UI
-
-
         private ObservableCollection<UserLoginModel> _AccountList;
         private UserLoginModel _Login;
         private bool _IsSavePwd;

@@ -10,6 +10,10 @@
 
         public const string MainName = "MainView";//主页面
 
-        public const string HomeName = "HomeName";//菜单管理页面
+        public const string HomeName = "HomeView";//菜单管理页面
+
+        public const string HomeItemName = "HomeItemPageView";//菜单管理页面
+
+        public const string OrganizeName = "OrganizeView";
     }
 }

@@ -13,7 +13,7 @@ namespace ZTAppFramework.Admin
 {
     public class AppStartService
     {
-      System.Windows.Application app;
+        System.Windows.Application app;
         public void Exit()
         {
             Environment.Exit(0);
@@ -22,9 +22,10 @@ namespace ZTAppFramework.Admin
         public async Task<Window> CreateShell(System.Windows.Application application)
         {
             this.app = application;
-            var container= ContainerLocator.Container;
+            var container = ContainerLocator.Container;
             if (!Authorization()) ExitApplication();
             var shell = container.Resolve<object>(AppView.MainName);
+
             if (shell is Window view)
             {
                 var regionManager = container.Resolve<IRegionManager>();
@@ -33,6 +34,7 @@ namespace ZTAppFramework.Admin
                 regionManager.Regions[AppView.MainName].RequestNavigate(AppView.HomeName);
                 if (view.DataContext is INavigationAware navigationAware)
                 {
+
                     navigationAware.OnNavigatedTo(null);
                     return (Window)shell;
                 }
@@ -43,8 +45,8 @@ namespace ZTAppFramework.Admin
         public static bool Authorization()
         {
             var dialogService = ContainerLocator.Container.Resolve<IHostDialogService>();
-            return dialogService.ShowWindow(AppView.LoginName).Result==Prism.Services.Dialogs.ButtonResult.OK;
-          //  return false;
+            return dialogService.ShowWindow(AppView.LoginName).Result == Prism.Services.Dialogs.ButtonResult.OK;
+            //  return false;
         }
         public static void ExitApplication() => Environment.Exit(0);
     }
