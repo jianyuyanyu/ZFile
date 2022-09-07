@@ -1,7 +1,13 @@
+using Microsoft.Extensions.FileProviders;
 using System.Text.Json.Serialization;
 using ZT.ApiService.Configure.Filters;
+using ZT.ApiService.Configure.Middleware;
+using ZT.ApiService.Hubs;
+using ZT.ApiService.Swagger;
+using ZT.Application.Mapper;
 using ZT.Common.Extensions;
 using ZT.Common.Utils;
+using ZT.CrossCutting;
 using ZT.Sugar.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,23 +48,39 @@ builder.Services.AddControllers(options =>
     options.JsonSerializerOptions.Converters.Add(new LongJsonConverter());
 });
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerConfiguration();
+
+// Register DI
+builder.Services.RegisterServices();
+
+// Mapper
+builder.Services.AddMapperProfile();
+
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    //app.UseSwagger();
+    //app.UseSwaggerUI();
 }
+app.UseSwaggerSetup();
 
-app.UseHttpsRedirection();
+app.UseStaticFiles();
 
-app.UseAuthorization();
 
-app.MapControllers();
+app.UseFileServer(new FileServerOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "upload")),
+    RequestPath = "/upload",
+});
+
+app.UseSetup();
+
+app.MapControllers().RequireAuthorization();
+app.MapHub<ChatHub>("/chathub");
 
 app.Run();
