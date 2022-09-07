@@ -21,6 +21,7 @@ namespace ZTAppFramework.Application
         {
             services.RegisterScoped<UserService>();
             services.RegisterScoped<MenuService>();
+            services.RegisterScoped<OrganizeService>();
         }
       
     }
