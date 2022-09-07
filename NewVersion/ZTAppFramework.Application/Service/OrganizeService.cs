@@ -28,7 +28,7 @@ namespace ZTAppFramework.Application.Service
         [ApiUrl("")]
         public async Task<AppliResult<List<SysOrganizeDTo>>> GetOrganizeList(PageParm Parm)
         {
-            AppliResult<SysOrganizeDTo> result = new AppliResult<SysOrganizeDTo>();
+            AppliResult<List<SysOrganizeDTo>> result = new AppliResult<List<SysOrganizeDTo>>();
 
             await Task.CompletedTask;
             return result;

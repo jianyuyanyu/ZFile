@@ -108,7 +108,7 @@
                 </ItemsControl.Resources>
             </ItemsControl>
         </Grid>
-
+        
         <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static region:AppView.HomeName}" />
     </Grid>
 </UserControl>

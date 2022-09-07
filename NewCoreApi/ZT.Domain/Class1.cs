@@ -1,4 +1,4 @@
-﻿namespace ZT.Common
+﻿namespace ZT.Domain
 {
     public class Class1
     {

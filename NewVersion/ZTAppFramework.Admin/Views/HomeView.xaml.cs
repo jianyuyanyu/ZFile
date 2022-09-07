@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ZTAppFramework.Admin.Views
 {
@@ -13,5 +14,7 @@ namespace ZTAppFramework.Admin.Views
         {
             InitializeComponent();
         }
+
+
     }
 }
