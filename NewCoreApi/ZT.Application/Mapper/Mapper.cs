@@ -57,7 +57,7 @@ namespace ZT.Application.Mapper
             // 获取全局映射配置
             var config = TypeAdapterConfig.GlobalSettings;
 
-            var assemblyService = Assembly.Load("FytSoa.Application");
+            var assemblyService = Assembly.Load("ZT.Application");
             // 扫描所有继承  IRegister 接口的对象映射配置
             config.Scan(assemblyService);
 

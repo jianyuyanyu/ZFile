@@ -71,12 +71,12 @@ app.UseSwaggerSetup();
 app.UseStaticFiles();
 
 
-app.UseFileServer(new FileServerOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "upload")),
-    RequestPath = "/upload",
-});
+//app.UseFileServer(new FileServerOptions
+//{
+//    FileProvider = new PhysicalFileProvider(
+//        Path.Combine(Directory.GetCurrentDirectory(), "upload")),
+//    RequestPath = "/upload",
+//});
 
 app.UseSetup();
 

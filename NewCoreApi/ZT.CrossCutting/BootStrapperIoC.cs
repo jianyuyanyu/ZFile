@@ -17,7 +17,7 @@ namespace ZT.CrossCutting
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // application services
-            var assemblyService = Assembly.Load("FytSoa.Application");
+            var assemblyService = Assembly.Load("ZT.Application");
             var serviceType = assemblyService.GetTypes().Where(u => u.IsClass && !u.IsAbstract && !u.IsGenericType && u.Name.EndsWith("Service")).ToList();
             foreach (var item in serviceType.Where(s => !s.IsInterface))
             {
