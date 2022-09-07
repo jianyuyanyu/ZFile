@@ -15,31 +15,31 @@ namespace ZT.ApiService.Swagger
                 s.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "FytSoa Project",
+                    Title = "ZT Project",
                 });
 
                 s.SwaggerDoc("v2", new OpenApiInfo
                 {
                     Version = "v2",
-                    Title = "FytSoa Project",
+                    Title = "ZT Project",
                 });
 
                 s.SwaggerDoc("v3", new OpenApiInfo
                 {
                     Version = "v3",
-                    Title = "FytSoa Project",
+                    Title = "ZT Project",
                 });
 
                 s.SwaggerDoc("v4", new OpenApiInfo
                 {
                     Version = "v4",
-                    Title = "FytSoa Project",
+                    Title = "ZT Project",
                 });
 
                 s.SwaggerDoc("v5", new OpenApiInfo
                 {
                     Version = "v5",
-                    Title = "FytSoa App",
+                    Title = "ZT App",
                 });
                 s.OrderActionsBy(o => o.RelativePath);
 

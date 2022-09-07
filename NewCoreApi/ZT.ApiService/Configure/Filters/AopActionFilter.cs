@@ -12,6 +12,7 @@ using ZT.Common.Utils;
 using ZT.Domain.Core.Cache;
 using ZT.Domain.Core.Result;
 using System.Text.Json;
+using Masuit.Tools.Security;
 
 namespace ZT.ApiService.Configure.Filters
 {
@@ -70,12 +71,12 @@ namespace ZT.ApiService.Configure.Filters
             {
                 Console.WriteLine("=======判断权限========");
                 var redisStr = RedisService.cli.Get(KeyUtils.AUTHORIZZATIONAPI + ":" + user.Id);
-                var apiList = !string.IsNullOrEmpty(redisStr) ? null : null;//  JsonSerializer.Deserialize<List<SysMenuApiUrl>>(redisStr) : null;
-                if (apiList != null && !apiList.Exists(api => api.method == context.HttpContext.Request.Method && urls.Contains(api.url.ToLower())))
-                {
-                    context.Result = new JsonResult(JResult<int>.Error("您无权限访问当前资源"));
-                    return;
-                }
+                //var apiList = null; ///!string.IsNullOrEmpty(redisStr) ? "" : null;//  JsonSerializer.Deserialize<List<SysMenuApiUrl>>(redisStr) : null;
+                //if (apiList != null && !apiList.Exists(api => api.method == context.HttpContext.Request.Method && urls.Contains(api.url.ToLower())))
+                //{
+                //    context.Result = new JsonResult(JResult<int>.Error("您无权限访问当前资源"));
+                //    return;
+                //}
             }
             #endregion
 
