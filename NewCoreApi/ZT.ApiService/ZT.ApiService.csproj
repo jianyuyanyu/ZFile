@@ -16,13 +16,16 @@
 		<NoWarn>1701;1702;CS1591;CS8601;CS8618</NoWarn>
 	</PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="FytApi.MUI" Version="1.1.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	  <PackageReference Include="FytApi.MUI" Version="1.1.0" />
+	  <PackageReference Include="FytSoa.DynamicApi" Version="1.0.2-preview-03" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ZT.Application\ZT.Application.csproj" />
     <ProjectReference Include="..\ZT.CrossCutting\ZT.CrossCutting.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZT.Application.AppService
+namespace ZT.Application
 {
     /// <summary>
     ///********************************************

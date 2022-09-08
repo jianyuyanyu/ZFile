@@ -30,7 +30,7 @@ namespace ZT.CrossCutting
             services.AddScoped<ICacheService, MemoryService>();
 
             // code generator
-            services.AddScoped<IGeneratorService, GeneratorService>();
+           // services.AddScoped<IGeneratorService, GeneratorService>();
 
             services.SqlSugarSetup();
 
@@ -41,8 +41,8 @@ namespace ZT.CrossCutting
             Unique.GetInstance();
 
             // Quartz
-            services.AddQuartz();
-            services.AddQuartzClassJobs();
+           // services.AddQuartz();
+          //  services.AddQuartzClassJobs();
 
             // dynamic webapi
             services.AddDynamicWebApi();

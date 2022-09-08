@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZT.Application.AppService;
+
 
 using ZT.Common.Utils;
 using ZT.Common.Utils.Config;
@@ -164,8 +164,8 @@ namespace ZT.Application.Sys
         [NonDynamicMethod]
         public async Task<SysAdminDto> LoginAsync(LoginParam loginParam)
         {
-            var code = MemoryService.Default.GetCache<string>(KeyUtils.CAPTCHACODE + loginParam.CodeKey);
-            if (!string.Equals(code, loginParam.Code, StringComparison.CurrentCultureIgnoreCase)) throw new ArgumentException("验证码输入错误！~");
+            //var code = MemoryService.Default.GetCache<string>(KeyUtils.CAPTCHACODE + loginParam.CodeKey);
+            //if (!string.Equals(code, loginParam.Code, StringComparison.CurrentCultureIgnoreCase)) throw new ArgumentException("验证码输入错误！~");
 
             var model = await _thisRepository.GetSingleAsync(m => !m.IsDel && m.LoginAccount == loginParam.Account);
             if (model == null) throw new ArgumentException("账号输入错误！~");

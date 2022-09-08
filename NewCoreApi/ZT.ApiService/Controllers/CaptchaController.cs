@@ -26,5 +26,13 @@ namespace ZT.ApiService.Controllers
 
             return Ok(new ApiResult<string>() { Data=code });
         }
+
+
+        [Authorize]
+        [HttpGet("Get123")]
+        public ActionResult<string> SayHello()
+        {
+            return "Hello World";
+        }
     }
 }

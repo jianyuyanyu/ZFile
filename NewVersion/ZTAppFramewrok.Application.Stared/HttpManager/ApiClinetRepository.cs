@@ -10,16 +10,17 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
 {
     public class ApiClinetRepository : ApiClientBase
     {
-        private readonly AccessTokenManager _accessTokenManager;
+        public readonly AccessTokenManager _accessTokenManager;
 
         public ApiClinetRepository(AccessTokenManager accessTokenManager )
         {
             _accessTokenManager = accessTokenManager;
         }
 
-        public void SetToken(string Token)
+        public void SetToken(LoginTokenDto loginToken)
         {
-            _accessTokenManager.AuthenticateResult.AccessToken = Token;
+            _accessTokenManager.AuthenticateResult.AccessToken = loginToken.accessToken;
+            _accessTokenManager.userInfo=loginToken.userInfo;
         }
 
         #region PostAsync<T>

@@ -17,6 +17,8 @@ namespace ZTAppFramework.Application.Service
 
         public virtual string ApiServiceUrl { get => ""; }
 
+  
+
         public AppServiceBase(ApiClinetRepository apiClinet)
         {
             _apiClinet = apiClinet;

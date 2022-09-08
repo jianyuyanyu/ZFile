@@ -36,12 +36,22 @@ namespace ZT.CrossCutting
                 {
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(token.Security)),
                     ValidateLifetime = true,
-                    ValidateAudience = true,
-                    ValidateIssuer = true,
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
                     ValidateIssuerSigningKey = true,
                     RequireExpirationTime = true,
                     ValidIssuer = token.Issuer,
                     ValidAudience = token.Audience,
+
+                    //ValidateIssuer = true,//是否验证Issuer
+                    //ValidateAudience = true,//是否验证Audience
+                    //ValidateIssuerSigningKey = true,//是否验证SecurityKey
+                    //ValidateLifetime = true,//是否验证超时  当设置exp和nbf时有效 同时启用ClockSkew 
+                   // ClockSkew = TimeSpan.FromSeconds(30),//注意这是缓冲过期时间，总的有效时间等于这个时间加上jwt的过期时间，如果不配置，默认是5分钟
+                    //ValidAudience = jwtConfig.Audience,//Audience
+                    //ValidIssuer = jwtConfig.Issuer,//Issuer，这两项和前面签发jwt的设置一致
+                    //RequireExpirationTime = true,///否要求Token的Claims中必须包含Expires
+                    //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtAuth:SecurityKey"]))//拿到SecurityKey
                     /*AudienceValidator = (m, n, z) => 
                         m != null && m.FirstOrDefault()!.Equals(JwtConst.ValidAudience),*/
                 };
@@ -52,6 +62,15 @@ namespace ZT.CrossCutting
                         context.Token = values.FirstOrDefault();
                         return Task.CompletedTask;
                     },
+                    OnAuthenticationFailed = context =>
+                    {
+                        // 如果过期，则把<是否过期>添加到，返回头信息中
+                        if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+                        {
+                            context.Response.Headers.Add("Token-Expired", "true");
+                        }
+                        return Task.CompletedTask;
+                    }
                 };
             });
 

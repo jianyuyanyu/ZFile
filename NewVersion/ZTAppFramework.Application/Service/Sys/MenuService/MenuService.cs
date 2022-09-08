@@ -19,7 +19,7 @@ namespace ZTAppFramework.Application.Service
     public class MenuService : AppServiceBase
     {
 
-        public override string ApiServiceUrl => "api/Menu";
+        public override string ApiServiceUrl => "api/SysMenu";
         public MenuService(ApiClinetRepository apiClinet) : base(apiClinet)
         {
 
@@ -29,12 +29,12 @@ namespace ZTAppFramework.Application.Service
         /// 获取菜单信息
         /// </summary>
         /// <returns></returns>
-        [ApiUrl("authmenu")]
+        [ApiUrl("authoritymenu")]
         public async Task<AppliResult<List<SysMenuDto>>> GetMenuList()
         {
             AppliResult<List<SysMenuDto>> res = new AppliResult<List<SysMenuDto>>() { Success = false, Message = "未知异常",data=new List<SysMenuDto>() };
 
-            var api = await _apiClinet.GetAsync<List<SysMenuDto>>(GetEndpoint());
+            var api = await _apiClinet.GetAsync<List<SysMenuDto>>(GetEndpoint(),_apiClinet._accessTokenManager.userInfo.Id);
             if (api.success)
             {
                 foreach (var item in api.data)

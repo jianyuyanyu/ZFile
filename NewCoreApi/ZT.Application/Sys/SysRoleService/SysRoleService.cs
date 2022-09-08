@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZT.Application.AppService;
+
 using ZT.Common.Utils.Config;
 using ZT.Domain.Core.Param;
 using ZT.Domain.Core.Result;

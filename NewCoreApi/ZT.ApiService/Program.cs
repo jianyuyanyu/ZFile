@@ -1,5 +1,5 @@
-using Microsoft.Extensions.FileProviders;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.FileProviders;
 using ZT.ApiService.Configure.Filters;
 using ZT.ApiService.Configure.Middleware;
 using ZT.ApiService.Hubs;
@@ -11,22 +11,20 @@ using ZT.CrossCutting;
 using ZT.Sugar.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
+// SignalR
 builder.Services.AddSignalR();
-
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("ZTCors", policy =>
-    {
-        policy.WithOrigins("any")
-                     .AllowAnyHeader()
-                     .AllowAnyMethod()
-                     .AllowCredentials()
-                     .WithExposedHeaders("X-Refresh-Token");
-    });
+    options.AddPolicy(name: "FytSoaCors",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:2800")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+                .WithExposedHeaders("X-Refresh-Token");
+        });
 });
-
 
 // Add services to the container.
 AppUtils.InitConfig(builder.Configuration);
@@ -54,25 +52,22 @@ builder.Services.RegisterServices();
 // Mapper
 builder.Services.AddMapperProfile();
 
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    //app.UseSwagger();
-    //app.UseSwaggerUI();
+    //app.UseSwaggerSetup();
 }
 app.UseSwaggerSetup();
-
 app.UseStaticFiles();
 
-
-//app.UseFileServer(new FileServerOptions
-//{
-//    FileProvider = new PhysicalFileProvider(
-//        Path.Combine(Directory.GetCurrentDirectory(), "upload")),
-//    RequestPath = "/upload",
-//});
+app.UseFileServer(new FileServerOptions
+{
+    //FileProvider = new PhysicalFileProvider(
+       /// Path.Combine(Directory.GetCurrentDirectory(), "upload")),
+   // RequestPath = "/upload",
+});
 
 app.UseSetup();
 

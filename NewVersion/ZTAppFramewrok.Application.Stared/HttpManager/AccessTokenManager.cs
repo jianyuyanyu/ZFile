@@ -13,7 +13,7 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
         {
             AuthenticateResult = new AuthenticateResultModel();
         }
-
+        public OperatorUser userInfo { get; set; }
         public AuthenticateResultModel AuthenticateResult { get; set; }
         public string GetAccessToken()
         {

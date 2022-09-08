@@ -18,7 +18,7 @@ namespace ZTAppFramework.Application.Service
         public async Task<AppliResult<string>> GetCaptchaAsync(string CodeKey="123123")
         {
             AppliResult<string> result = new AppliResult<string>() { Success = false };
-            var api = await _apiClinet.GetAnonymousAsync<string>(GetEndpoint()+ $"\\{CodeKey}");
+            var api = await _apiClinet.GetAnonymousAsync<string>(GetEndpoint()+ $"{CodeKey}");
             if (api.success)
             {
                 result.Success = true;

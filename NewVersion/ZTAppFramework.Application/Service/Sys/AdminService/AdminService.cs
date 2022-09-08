@@ -79,11 +79,10 @@ namespace ZTAppFramework.Application.Service
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [ApiUrl("Login")]
         public async Task<AppliResult<string>> LoginServer(LoginParam user)
         {
             AppliResult<string> res = new AppliResult<string>() { Success = false, Message = "未知异常" };
-            ApiResult<object> api = await _apiClinet.PostAnonymousAsync<object>(GetEndpoint(), user);
+            ApiResult<LoginTokenDto> api = await _apiClinet.PostAnonymousAsync<LoginTokenDto>("/api/Operator/Login", user);
             if (api.success)
             {
                 if (api.Code == 200)
@@ -94,7 +93,7 @@ namespace ZTAppFramework.Application.Service
                     {
                         var CSql = await _userLocalSerivce.AddAsync(new SqliteCore.Models.Account() { Name = user.Account, Password = user.Password });
                     }
-                    _apiClinet.SetToken(api.data.ToString());
+                    _apiClinet.SetToken(api.data);
                 }
                 else
                 {
