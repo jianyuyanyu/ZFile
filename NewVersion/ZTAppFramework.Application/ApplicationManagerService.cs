@@ -19,9 +19,10 @@ namespace ZTAppFramework.Application
     {
         public static void RegisterApplicationManager(this IContainerRegistry services)
         {
-            services.RegisterScoped<UserService>();
+            services.RegisterScoped<AdminService>();
             services.RegisterScoped<MenuService>();
             services.RegisterScoped<OrganizeService>();
+            services.RegisterScoped<CaptchaService>();
         }
       
     }

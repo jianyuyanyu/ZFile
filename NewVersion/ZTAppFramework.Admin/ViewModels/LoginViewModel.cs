@@ -19,7 +19,8 @@ namespace ZTAppFramework.Admin.ViewModels
     {
 
 
-        private readonly UserService _userLoginService;
+        private readonly AdminService _userLoginService;
+        private readonly CaptchaService _captchaService;
 
         #region UI
         private ObservableCollection<UserLoginModel> _AccountList;
@@ -49,10 +50,11 @@ namespace ZTAppFramework.Admin.ViewModels
         public DelegateCommand<string> ExecuteCommand { get; }
         #endregion
 
-        public LoginViewModel(UserService userLoginService)
+        public LoginViewModel(AdminService userLoginService, CaptchaService captchaService)
         {
             AccountList = new ObservableCollection<UserLoginModel>();
             _userLoginService = userLoginService;
+            _captchaService = captchaService;
             Login = new UserLoginModel();
             ExecuteCommand = new DelegateCommand<string>(Execute);
         }
@@ -98,16 +100,19 @@ namespace ZTAppFramework.Admin.ViewModels
             if (result.Success)
                 AccountList.AddRange(Map<List<UserLoginModel>>(result.data));
             var r = await _userLoginService.GetLocalAccountInfo();
-            if (r.Success)
+            if (r.Success && !string.IsNullOrEmpty(r.data.Values))
             {
                 IsSavePwd = r.data.Check;
-                if (string.IsNullOrEmpty(r.data.Values)) return;
                 var mod = AccountList.FirstOrDefault(x => x.UserName == r.data.Values);
                 Login.UserName = mod.UserName;
                 if (IsSavePwd)
                     Login.Password = mod.Password;
-
             }
+
+            var res = await _captchaService.GetCaptchaAsync(Login.CodeKey);
+            if (res.Success)
+                Login.Code = res.data;
+
         }
 
         public override void Cancel()

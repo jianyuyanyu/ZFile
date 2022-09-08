@@ -56,7 +56,7 @@ namespace ZTAppFramework.Admin.Model.Users
         /// 验证码Key
         /// </summary>
 
-        private string _CodeKey;
+        private string _CodeKey="12312312";
 
         public string CodeKey
         {

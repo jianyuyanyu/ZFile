@@ -29,13 +29,13 @@ namespace ZTAppFramework.Application.Service
             {
                 string st = (new StackTrace()).GetFrame(1).GetMethod().DeclaringType.FullName; ;
                 string MethodNmae = SubstringSingle(st, "<", ">");
-                EventStr = GetType().GetMethod(MethodNmae).GetCustomAttribute<ApiUrlAttribute>().Value;
+                EventStr = GetType().GetMethod(MethodNmae).GetCustomAttribute<ApiUrlAttribute>()?.Value;
             }
             catch (Exception)
             {
 
             }
-            if (string.IsNullOrEmpty(EventStr)) throw new Exception(GetType().Name + "Not Full ApiUrlAttribute");
+            
             return ApiServiceUrl + "/" + EventStr;
         }
 

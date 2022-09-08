@@ -15,13 +15,13 @@ using ZTAppFreamework.Stared.Attributes;
 
 namespace ZTAppFramework.Application.Service
 {
-    public class UserService : AppServiceBase
+    public class AdminService : AppServiceBase
     {
         private readonly UserLocalSerivce _userLocalSerivce;
         private readonly KeyConfigLocalService _keyConfigLocalService;
 
         public override string ApiServiceUrl => "/api/Admin";
-        public UserService(ApiClinetRepository apiClinet, UserLocalSerivce userLocalSerivce, KeyConfigLocalService keyConfigLocalService) : base(apiClinet)
+        public AdminService(ApiClinetRepository apiClinet, UserLocalSerivce userLocalSerivce, KeyConfigLocalService keyConfigLocalService) : base(apiClinet)
         {
             _userLocalSerivce = userLocalSerivce;
             _keyConfigLocalService = keyConfigLocalService;
@@ -86,7 +86,7 @@ namespace ZTAppFramework.Application.Service
             ApiResult<object> api = await _apiClinet.PostAnonymousAsync<object>(GetEndpoint(), user);
             if (api.success)
             {
-                if (api.statusCode == 200)
+                if (api.Code == 200)
                 {
                     res.Success = true;
                     var info = await _userLocalSerivce.GetModelAsync(x => x.Name == user.Account);

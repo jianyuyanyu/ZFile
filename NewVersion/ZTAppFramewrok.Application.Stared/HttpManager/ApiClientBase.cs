@@ -67,7 +67,7 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
             }
             catch (FlurlHttpException e)
             {
-                response = new ApiResult<T>() { success = false, message = e.Message, statusCode = 500 };
+                response = new ApiResult<T>() { success = false, message = e.Message, Code = 500 };
                 //response = await e.GetResponseJsonAsync<ApiResult<T>>();
             }
             if (response == null)

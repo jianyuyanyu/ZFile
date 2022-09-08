@@ -38,7 +38,7 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
         /// <summary>
         /// 状态码
         /// </summary>
-        public int statusCode { get; set; } = 200;
+        public int Code { get; set; } = 200;
         /// <summary>
         /// 数据集
         /// </summary>
