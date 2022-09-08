@@ -5,7 +5,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+	
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DocumentationFile>bin\Debug\ZT.Application.xml</DocumentationFile>
+	</PropertyGroup>
 
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<DocumentationFile>bin\Release\ZT.Application.xml</DocumentationFile>
+	</PropertyGroup>
   <ItemGroup>
 	<PackageReference Include="FytSoa.DynamicApi" Version="1.0.2-preview-03" />
     <PackageReference Include="FytSoa.Quartz" Version="1.0.1" />

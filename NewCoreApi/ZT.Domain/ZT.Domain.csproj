@@ -6,7 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DocumentationFile>bin\Debug\ZT.Domain.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<DocumentationFile>bin\Release\ZT.Domain.xml</DocumentationFile>
+	</PropertyGroup>
+ 
+ <ItemGroup>
     <PackageReference Include="SqlSugarCore" Version="5.1.2.7" />
   </ItemGroup>
 

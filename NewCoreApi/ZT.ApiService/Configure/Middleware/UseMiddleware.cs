@@ -9,7 +9,7 @@ namespace ZT.ApiService.Configure.Middleware
         {
             app.UseRouting();
             // 跨域设置
-            app.UseCors("FytSoaCors");
+            app.UseCors("ZTCors");
 
             // DI
             AppUtils.ServiceProvider = app.ApplicationServices;

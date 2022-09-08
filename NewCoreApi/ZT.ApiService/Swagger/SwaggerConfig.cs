@@ -46,8 +46,8 @@ namespace ZT.ApiService.Swagger
                 //Add Xml
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 s.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFile), true);
-            //    s.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "ZT.Application.xml"), true);
-             //   s.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "ZT.Domain.xml"), true);
+                s.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "ZT.Application.xml"), true);
+                s.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "ZT.Domain.xml"), true);
 
                 s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {

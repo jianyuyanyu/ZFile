@@ -1,3 +1,5 @@
+using FytSoa.DynamicApi;
+using FytSoa.DynamicApi.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +15,8 @@ namespace ZT.Application.AppService
     /// Description   ：  
     ///********************************************/
     /// </summary>
-
-    public interface IApplicationService 
+    [DynamicWebApi]
+    public interface IApplicationService : IDynamicWebApi
     {
 
     }
