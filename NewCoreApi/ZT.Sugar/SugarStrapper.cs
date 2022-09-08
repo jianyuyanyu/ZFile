@@ -37,6 +37,8 @@ namespace ZT.Sugar
             });
             //注册仓储
             services.AddScoped(typeof(SugarRepository<>));
+
+           
         }
     }
 }
