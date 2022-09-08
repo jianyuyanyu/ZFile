@@ -10,6 +10,7 @@ namespace ZT.ApiService.Controllers
     /// <summary>
     /// 验证码
     /// </summary>
+   
     public class CaptchaController : ApiController
     {
         [HttpGet("{identify}"), AllowAnonymous, NoJsonResult, NoAuditLog]
@@ -28,7 +29,7 @@ namespace ZT.ApiService.Controllers
         }
 
 
-        [Authorize]
+
         [HttpGet("Get123")]
         public ActionResult<string> SayHello()
         {

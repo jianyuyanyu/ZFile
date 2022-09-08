@@ -12,6 +12,7 @@ namespace ZT.ApiService.Swagger
 
             services.AddSwaggerGen(s =>
             {
+              
                 s.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",

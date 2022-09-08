@@ -1,4 +1,6 @@
+using System.Text.Encodings.Web;
 using System.Text.Json.Serialization;
+using System.Text.Unicode;
 using Microsoft.Extensions.FileProviders;
 using ZT.ApiService.Configure.Filters;
 using ZT.ApiService.Configure.Middleware;
@@ -12,19 +14,21 @@ using ZT.Sugar.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 // SignalR
+builder.Services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSignalR();
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: "FytSoaCors",
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:2800")
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials()
-                .WithExposedHeaders("X-Refresh-Token");
-        });
-});
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy(name: "FytSoaCors",
+//        policy =>
+//        {
+//            policy.WithOrigins("http://localhost:2800")
+//                .AllowAnyHeader()
+//                .AllowAnyMethod()
+//                .AllowCredentials()
+//                .WithExposedHeaders("X-Refresh-Token");
+//        });
+//});
 
 // Add services to the container.
 AppUtils.InitConfig(builder.Configuration);
@@ -51,7 +55,16 @@ builder.Services.RegisterServices();
 
 // Mapper
 builder.Services.AddMapperProfile();
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ZTCors", policy =>
+    {
+        policy.WithOrigins("*:*")
+          .AllowAnyHeader()
+           .AllowAnyMethod()
+           .AllowCredentials();
+    });
+});
 
 var app = builder.Build();
 
