@@ -31,9 +31,6 @@ builder.Services.AddCors(options =>
 // Add services to the container.
 AppUtils.InitConfig(builder.Configuration);
 
-
-
-
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<AopActionFilter>();
@@ -56,7 +53,6 @@ builder.Services.RegisterServices();
 
 // Mapper
 builder.Services.AddMapperProfile();
-
 
 var app = builder.Build();
 
