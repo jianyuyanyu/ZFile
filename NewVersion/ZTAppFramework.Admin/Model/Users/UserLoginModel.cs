@@ -42,6 +42,29 @@ namespace ZTAppFramework.Admin.Model.Users
             set { _Password = value; RaisePropertyChanged("Password"); }
         }
 
+        /// <summary>
+        /// 验证码
+        /// </summary>
+        private string _Code;
+
+        public string Code
+        {
+            get { return _Code; }
+            set { _Code = value;RaisePropertyChanged(); }
+        }
+        /// <summary>
+        /// 验证码Key
+        /// </summary>
+
+        private string _CodeKey;
+
+        public string CodeKey
+        {
+            get { return _CodeKey; }
+            set { _CodeKey = value;RaisePropertyChanged(); }
+        }
+
+
         public override string this[string columnName] { get => VerifyTostring(this,columnName); }
     }
 }

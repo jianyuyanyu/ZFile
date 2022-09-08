@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Menus;
 using ZTAppFramework.Admin.Model.Users;
-using ZTAppFramewrok.Application.Stared.DTO;
+using ZTAppFramewrok.Application.Stared;
 
 namespace ZTAppFramework.Admin
 {
@@ -15,8 +15,8 @@ namespace ZTAppFramework.Admin
 
         public AdminMapper()
         {
-            CreateMap<UserLoginModel, UserInfoDto>()
-                .ForMember(X => X.User, opt => opt.MapFrom(str => str.UserName))
+            CreateMap<UserLoginModel, LoginParam>()
+                .ForMember(X => X.Account, opt => opt.MapFrom(str => str.UserName))
                 .ForMember(X => X.Password, opt => opt.MapFrom(str => str.Password))
                 .ReverseMap();
             CreateMap<MenuModel, SysMenuDto>().ReverseMap();

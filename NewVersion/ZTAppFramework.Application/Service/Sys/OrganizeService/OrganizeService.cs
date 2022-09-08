@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZTAppFramewrok.Application.Stared.DTO;
+
 using ZTAppFramewrok.Application.Stared.HttpManager;
 using ZTAppFramewrok.Application.Stared.HttpManager.Model;
 using ZTAppFreamework.Stared.Attributes;
@@ -25,14 +25,14 @@ namespace ZTAppFramework.Application.Service
 
         }
 
-        [ApiUrl("")]
-        public async Task<AppliResult<List<SysOrganizeDTo>>> GetOrganizeList(PageParm Parm)
-        {
-            AppliResult<List<SysOrganizeDTo>> result = new AppliResult<List<SysOrganizeDTo>>();
+        //[ApiUrl("")]
+        //public async Task<AppliResult<List<SysOrganizeDTo>>> GetOrganizeList(PageParm Parm)
+        //{
+        //    AppliResult<List<SysOrganizeDTo>> result = new AppliResult<List<SysOrganizeDTo>>();
 
-            await Task.CompletedTask;
-            return result;
-        }
+        //    await Task.CompletedTask;
+        //    return result;
+        //}
 
     }
 }

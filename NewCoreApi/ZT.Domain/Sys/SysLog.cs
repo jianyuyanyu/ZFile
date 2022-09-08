@@ -1,3 +1,4 @@
+using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,6 +16,7 @@ namespace ZT.Domain.Sys
     /// Description   ：  
     ///********************************************/
     /// </summary>
+    [SugarTable("sys_log")]
     public class SysLog : Entity
     {
         /// <summary>

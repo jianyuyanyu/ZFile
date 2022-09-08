@@ -9,7 +9,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Application.Service;
-using ZTAppFramewrok.Application.Stared.DTO;
+using ZTAppFramewrok.Application.Stared;
+
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
@@ -83,9 +84,9 @@ namespace ZTAppFramework.Admin.ViewModels
             await SetBusyAsync(async () =>
             {
                 await Task.Delay(1000);
-                var res = await _userLoginService.LoginServer(Map<UserInfoDto>(Login));
+                var res = await _userLoginService.LoginServer(Map<LoginParam>(Login));
                 if (!res.Success) return;
-                await _userLoginService.SaveLocalAccountInfo(IsSavePwd, Map<UserInfoDto>(Login));
+                await _userLoginService.SaveLocalAccountInfo(IsSavePwd, Map<LoginParam>(Login));
                 OnDialogClosed();
             });
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZTAppFramewrok.Application.Stared.DTO;
+using ZTAppFramewrok.Application.Stared;
 using ZTAppFramewrok.Application.Stared.HttpManager;
 using ZTAppFreamework.Stared.Attributes;
 
@@ -39,9 +39,12 @@ namespace ZTAppFramework.Application.Service
             {
                 foreach (var item in api.data)
                 {
-                    var info= res.data.FirstOrDefault(x => x.name == item.parentName);
+                    var info= res.data.FirstOrDefault(x => x.Id == item.ParentId);
                     if (info != null)
+                    {
+                        if (info.Childer == null) info.Childer = new List<SysMenuDto>();
                         info.Childer.Add(item);
+                    }
                     else
                         res.data.Add(item);
                 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Media.Animation;
 using ZTAppFramework.SqliteCore.Implements;
 using ZTAppFramework.SqliteCore.Models;
-using ZTAppFramewrok.Application.Stared.DTO;
+using ZTAppFramewrok.Application.Stared;
 using ZTAppFramewrok.Application.Stared.HttpManager;
 using ZTAppFreamework.Stared;
 using ZTAppFreamework.Stared.Attributes;
@@ -41,14 +41,14 @@ namespace ZTAppFramework.Application.Service
         /// 获取账号记录
         /// </summary>
         /// <returns></returns>
-        public async Task<AppliResult<List<UserInfoDto>>> GetLocalAccountList()
+        public async Task<AppliResult<List<LoginParam>>> GetLocalAccountList()
         {
-            AppliResult<List<UserInfoDto>> result = new AppliResult<List<UserInfoDto>>();
+            AppliResult<List<LoginParam>> result = new AppliResult<List<LoginParam>>();
             var Csql = await _userLocalSerivce.GetListAsync();
             if (Csql.success)
             {
-                result.data = new List<UserInfoDto>();
-                Csql.data.ForEach(x => result.data.Add(new UserInfoDto() { User = x.Name, Password = x.Password }));
+                result.data = new List<LoginParam>();
+                Csql.data.ForEach(x => result.data.Add(new LoginParam() { Account = x.Name, Password = x.Password }));
             }
             else
             {
@@ -58,14 +58,14 @@ namespace ZTAppFramework.Application.Service
             return result;
         }
 
-        public async Task<AppliResult<string>> SaveLocalAccountInfo(bool Save, UserInfoDto user)
+        public async Task<AppliResult<string>> SaveLocalAccountInfo(bool Save, LoginParam user)
         {
             AppliResult<string> result = new AppliResult<string>();
 
             var d = await _keyConfigLocalService.GetModelAsync(x => x.Key == AppKeys.SaveUserInfoKey);
             if (d.data!=null)
             {
-                d.data.Values = user.User;
+                d.data.Values = user.Account;
                 d.data.Check = Save;
                 var r = await _keyConfigLocalService.UpdateAsync(d.data);
                 if (r.success)
@@ -80,7 +80,7 @@ namespace ZTAppFramework.Application.Service
         /// <param name="user"></param>
         /// <returns></returns>
         [ApiUrl("Login")]
-        public async Task<AppliResult<string>> LoginServer(UserInfoDto user)
+        public async Task<AppliResult<string>> LoginServer(LoginParam user)
         {
             AppliResult<string> res = new AppliResult<string>() { Success = false, Message = "未知异常" };
             ApiResult<object> api = await _apiClinet.PostAnonymousAsync<object>(GetEndpoint(), user);
@@ -89,10 +89,10 @@ namespace ZTAppFramework.Application.Service
                 if (api.statusCode == 200)
                 {
                     res.Success = true;
-                    var info = await _userLocalSerivce.GetModelAsync(x => x.Name == user.User);
+                    var info = await _userLocalSerivce.GetModelAsync(x => x.Name == user.Account);
                     if (info.data == null)
                     {
-                        var CSql = await _userLocalSerivce.AddAsync(new SqliteCore.Models.Account() { Name = user.User, Password = user.Password });
+                        var CSql = await _userLocalSerivce.AddAsync(new SqliteCore.Models.Account() { Name = user.Account, Password = user.Password });
                     }
                     _apiClinet.SetToken(api.data.ToString());
                 }
