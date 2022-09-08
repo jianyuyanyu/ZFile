@@ -8,9 +8,9 @@ namespace ZT.Application.Operator
 {
     /// <summary>
     ///********************************************
-    /// 创建人        ：  ZT
-    /// 创建时间    ：  2022/9/7 14:13:01 
-    /// Description   ：  操作人信息
+    /// 创建人        ：  WeiXiaolei
+    /// 创建时间    ：  2022/9/8 14:21:47 
+    /// Description   ：  
     ///********************************************/
     /// </summary>
     public class OperatorUser

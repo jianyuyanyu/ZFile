@@ -10,9 +10,13 @@ using System.Threading.Tasks;
 using ZT.Application.AppService;
 
 using ZT.Common.Utils;
+using ZT.Common.Utils.Config;
 using ZT.Domain.Core.Cache;
+using ZT.Domain.Core.Param;
+using ZT.Domain.Core.Result;
 using ZT.Domain.Sys;
 using ZT.Sugar;
+using ZT.Sugar.Extensions;
 
 namespace ZT.Application.Sys
 {
@@ -31,6 +35,130 @@ namespace ZT.Application.Sys
         public SysAdminService(SugarRepository<SysAdmin> thisRepository)
         {
             _thisRepository = thisRepository;
+        }
+
+
+        /// <summary>
+        /// 查询所有——分页
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public async Task<PageResult<SysAdminDto>> GetPagesAsync(PageParam param)
+        {
+            var query = await _thisRepository.AsQueryable()
+                .WhereIF(!string.IsNullOrEmpty(param.Key), m => m.FullName.Contains(param.Key) || m.Mobile.Contains(param.Key) || m.Email.Contains(param.Key) ||
+                                                               m.LoginAccount.Contains(param.Key))
+                .WhereIF(!string.IsNullOrEmpty(param.Status), m => m.Status == (param.Status == "1"))
+                .WhereIF(param.Id != 1 && param.Id != 0, m => m.RoleGroupParent.ToString()!.Contains(param.Id.ToString()))
+                .ToPageAsync(param.Page, param.Limit);
+            var result = query.Adapt<PageResult<SysAdminDto>>();
+            if (result.Items.Count == 0)
+            {
+                return result;
+            }
+            var groupDb = _thisRepository.ChangeRepository<SugarRepository<SysRole>>();
+            var groupList = await groupDb.GetListAsync();
+            foreach (var item in result.Items)
+            {
+                var group = groupList.Where(m => item.RoleGroup.Contains(m.Id.ToString()));
+                item.RoleGroupName = string.Join(",", group.Select(m => m.Name).ToArray()); ;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 根据主键查询
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public async Task<SysAdminDto> GetAsync(long id)
+        {
+            var model = await _thisRepository.GetByIdAsync(id);
+            model.LoginPassWord = model.LoginPassWord.AESDecrypt();
+            return model.Adapt<SysAdminDto>();
+        }
+
+
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task AddAsync(SysAdminDto model)
+        {
+            model.LoginPassWord = model.LoginPassWord.AESEncrypt();
+            model.RoleGroup = new List<string>();
+            foreach (var item in model.RoleGroupParent)
+            {
+                model.RoleGroup.Add(item.Last());
+            }
+            if (model.OrganizeIdList.Count > 0)
+            {
+                model.OrganizeId = long.Parse(model.OrganizeIdList.Last());
+            }
+            await _thisRepository.InsertAsync(model.Adapt<SysAdmin>());
+        }
+
+        /// <summary>
+        /// 修改个人基本信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task ModifyBasicAsync(BasicParam model)
+        {
+            await _thisRepository.UpdateAsync(m => new SysAdmin()
+            {
+                FullName = model.FullName,
+                Sex = model.Sex,
+                Summary = model.Summary
+            }, m => m.Id == model.Id);
+        }
+
+
+        /// <summary>
+        /// 密码重置
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut]
+        public async Task PassResetAsync(List<long> id)
+        {
+            var newPwd = "123456a!".AESEncrypt();
+            await _thisRepository.UpdateAsync(m => new SysAdmin()
+            {
+                LoginPassWord = newPwd
+            }, m => id.Contains(m.Id));
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task ModifyAsync(SysAdminDto model)
+        {
+            model.LoginPassWord = model.LoginPassWord.AESEncrypt();
+            model.RoleGroup = new List<string>();
+            foreach (var item in model.RoleGroupParent)
+            {
+                model.RoleGroup.Add(item.Last());
+            }
+            if (model.OrganizeIdList.Count > 0)
+            {
+                model.OrganizeId = long.Parse(model.OrganizeIdList.Last());
+            }
+            await _thisRepository.UpdateAsync(model.Adapt<SysAdmin>());
+        }
+
+        /// <summary>
+        /// 删除,支持多个
+        /// </summary>
+        /// <param name="ids">逗号分隔</param>
+        /// <returns></returns>
+        [HttpDelete]
+        public async Task DeleteAsync(string ids)
+        {
+            await _thisRepository.DeleteAsync(m => ids.StrToListLong().Contains(m.Id));
         }
 
         [NonDynamicMethod]
@@ -52,17 +180,6 @@ namespace ZT.Application.Sys
             return model.Adapt<SysAdminDto>();
         }
 
-        /// <summary>
-        /// 根据主键查询
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet("{id}")]
-        public async Task<SysAdminDto> GetAsync(long id)
-        {
-            var model = await _thisRepository.GetByIdAsync(id);
-            model.LoginPassWord = model.LoginPassWord.AESDecrypt();
-            return model.Adapt<SysAdminDto>();
-        }
+   
     }
 }

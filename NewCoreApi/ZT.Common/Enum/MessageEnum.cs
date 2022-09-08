@@ -4,20 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZT.Application.Operator
+namespace ZT.Common.Enum
 {
     /// <summary>
     ///********************************************
     /// 创建人        ：  ZT
-    /// 创建时间    ：  2022/9/8 10:15:11 
-    /// Description   ：  
+    /// 创建时间    ：  2022/9/8 14:23:45 
+    /// Description   ：  消息类型
     ///********************************************/
     /// </summary>
-
-    public class LoginTokenDto
+    public enum MessageEnum
     {
-        public string accessToken { get; set; }
-
-        public OperatorUser userInfo { get; set; }
+        System = 1,
+        App = 2
     }
 }

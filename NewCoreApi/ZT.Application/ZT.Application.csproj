@@ -25,8 +25,4 @@
     <ProjectReference Include="..\ZT.Sugar\ZT.Sugar.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Operator\Dto\" />
-  </ItemGroup>
-
 </Project>
