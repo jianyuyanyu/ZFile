@@ -51,7 +51,7 @@ namespace ZT.Application.Operator
 
 
         public OperatorUser User => GetTokenUser();
-
+        [HttpGet]
         private OperatorUser GetTokenUser()
         {
             var paramToken = _httpContextAccessor.HttpContext?.Request.Headers["accessToken"].ToString();

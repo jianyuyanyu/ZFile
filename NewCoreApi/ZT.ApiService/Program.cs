@@ -59,7 +59,8 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("ZTCors", policy =>
     {
-        policy.WithOrigins("*:*")
+        policy.WithOrigins("http://localhost:2800")
+                .AllowAnyHeader()
           .AllowAnyHeader()
            .AllowAnyMethod()
            .AllowCredentials();

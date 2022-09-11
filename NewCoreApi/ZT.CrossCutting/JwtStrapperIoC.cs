@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +53,7 @@ namespace ZT.CrossCutting
                         var values = context.Request.Headers["accessToken"];
                         context.Token = values.FirstOrDefault();
                         return Task.CompletedTask;
-                    },
+                    }
                 };
             });
 

@@ -161,11 +161,17 @@ namespace ZT.Application.Sys
             await _thisRepository.DeleteAsync(m => ids.StrToListLong().Contains(m.Id));
         }
 
+        /// <summary>
+        /// 登入
+        /// </summary>
+        /// <param name="loginParam"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         [NonDynamicMethod]
         public async Task<SysAdminDto> LoginAsync(LoginParam loginParam)
         {
-            //var code = MemoryService.Default.GetCache<string>(KeyUtils.CAPTCHACODE + loginParam.CodeKey);
-            //if (!string.Equals(code, loginParam.Code, StringComparison.CurrentCultureIgnoreCase)) throw new ArgumentException("验证码输入错误！~");
+            var code = MemoryService.Default.GetCache<string>(KeyUtils.CAPTCHACODE + loginParam.CodeKey);
+            if (!string.Equals(code, loginParam.Code, StringComparison.CurrentCultureIgnoreCase)) throw new ArgumentException("验证码输入错误！~");
 
             var model = await _thisRepository.GetSingleAsync(m => !m.IsDel && m.LoginAccount == loginParam.Account);
             if (model == null) throw new ArgumentException("账号输入错误！~");

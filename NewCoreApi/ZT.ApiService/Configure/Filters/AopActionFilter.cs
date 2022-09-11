@@ -58,7 +58,6 @@ namespace ZT.ApiService.Configure.Filters
             return isIgnore;
         }
 
-
         public async  Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             var user = _operatorService.User;

@@ -19,11 +19,11 @@ namespace ZT.Domain.Core.Jwt.Model
 
         public long TenantId { get; set; } = 0;
 
-        public string? RoleArray { get; set; }
+        public string RoleArray { get; set; }
 
-        public string? FullName { get; set; }
+        public string FullName { get; set; }
 
-        public string? Role { get; set; }
+        public string Role { get; set; }
 
         public DateTime Time { get; set; } = new();
     }

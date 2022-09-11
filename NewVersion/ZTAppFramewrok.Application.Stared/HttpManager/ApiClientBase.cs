@@ -44,10 +44,10 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
             _client.HttpClient.DefaultRequestHeaders.Clear();
 
             _client.WithHeader("Accept", "application/json");
-            _client.WithHeader("Accept", "text/plain");
+          //  _client.WithHeader("Accept", "text/plain");
             if (accessToken != null)
             {
-                _client.WithOAuthBearerToken(accessToken);
+                _client.WithHeader("accessToken", accessToken);
             }
         }
 

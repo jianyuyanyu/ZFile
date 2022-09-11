@@ -29,7 +29,7 @@ namespace ZTAppFramework.Application.Service
         /// 获取菜单信息
         /// </summary>
         /// <returns></returns>
-        [ApiUrl("authoritymenu")]
+        [ApiUrl("List")]
         public async Task<AppliResult<List<SysMenuDto>>> GetMenuList()
         {
             AppliResult<List<SysMenuDto>> res = new AppliResult<List<SysMenuDto>>() { Success = false, Message = "未知异常",data=new List<SysMenuDto>() };
