@@ -13,13 +13,35 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Background="#141A30" />
+
+        <Border
+            Width="60"
+            Height="60"
+            Background="BlueViolet"
+            BorderBrush="White"
+            BorderThickness="0.1"
+            CornerRadius="40">
+            <TextBlock
+                FontSize="18"
+                FontWeight="Black"
+                Foreground="White"
+                Text="- Z F -">
+                <TextBlock.RenderTransform>
+                    <RotateTransform Angle="-30" CenterX="60" CenterY="15" />
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Border>
+
+
+        <Grid Grid.Row="1">
             <ItemsControl
                 Width="126"
-                Background="#282B33"
+                Background="#141A30"
                 ItemTemplateSelector="{DynamicResource MenuItemSelector}"
                 ItemsSource="{Binding MenuList}">
                 <ItemsControl.Resources>
@@ -27,9 +49,8 @@
                     <DataTemplate x:Key="MenuItemsDataTemplate">
                         <ui:ZTNavExpander
                             Padding="10,0"
-                            Background="#282B33"
                             Header="{Binding name}"
-                            HeaderBackground="#393D49"
+                            HeaderBackground="#141A30"
                             IsExpanded="{Binding IsSelected}">
                             <ItemsControl ItemTemplateSelector="{DynamicResource MenuItemSelector}" ItemsSource="{Binding Childer}">
                                 <ItemsControl.ItemsPanel>
@@ -59,8 +80,9 @@
                                             x:Name="line"
                                             Width="5"
                                             HorizontalAlignment="Left"
-                                            Background="Green"
+                                            Background="#4173F9"
                                             Opacity="0" />
+
                                         <ContentPresenter
                                             x:Name="dataContent"
                                             Margin="{TemplateBinding Padding}"
@@ -96,7 +118,7 @@
                                             </Trigger.ExitActions>
                                         </Trigger>
                                         <Trigger Property="IsChecked" Value="true">
-                                            <Setter TargetName="bg" Property="Background" Value="Green" />
+                                            <Setter TargetName="bg" Property="Background" Value="#3E6FF8" />
                                             <Setter TargetName="dataContent" Property="Opacity" Value="1" />
                                             <Setter TargetName="dataContent" Property="Opacity" Value="1" />
                                         </Trigger>
@@ -108,7 +130,10 @@
                 </ItemsControl.Resources>
             </ItemsControl>
         </Grid>
-        
-        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static region:AppView.HomeName}" />
+
+        <ContentControl
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            prism:RegionManager.RegionName="{x:Static region:AppView.HomeName}" />
     </Grid>
 </UserControl>

@@ -39,9 +39,13 @@ namespace ZTAppFramework.Admin.ViewModels
                     {
                         case "组织机构":
                             _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.OrganizeName); break;
+                        case "工作台":
+                            _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.WorkbenchName); break;
                         default:
                             break;
                     }
+
+                   
                 }
             }
         }
@@ -59,7 +63,8 @@ namespace ZTAppFramework.Admin.ViewModels
 
         private void GoPage(MenuModel Parm)
         {
-          
+            SelectPage = Parm;// MenuList.First().Childer.First();
+            SelectPage.IsSelected = true;
         }
 
         public override async Task OnNavigatedToAsync(NavigationContext navigationContext = null)

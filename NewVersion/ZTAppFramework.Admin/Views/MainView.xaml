@@ -7,6 +7,6 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     WindowStartupLocation="CenterScreen">
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="{x:Static region:AppView.MainName}" />
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static region:AppView.MainName}" />
     </Grid>
 </Window>

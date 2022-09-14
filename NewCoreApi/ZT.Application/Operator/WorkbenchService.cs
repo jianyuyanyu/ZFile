@@ -10,6 +10,7 @@ using ZT.Common.Utils;
 namespace ZT.Application.Operator
 {
     /// <summary>
+    /// 
     /// </summary>
     [ApiExplorerSettings(GroupName = "v1")]
     public class WorkbenchService : IApplicationService

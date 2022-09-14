@@ -7,7 +7,7 @@
         <Setter Property="HeaderHeight" Value="50" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="HeaderBackground" Value="#393D49" />
-        <Setter Property="Background" Value="#282B33" />
+        <Setter Property="Background" Value="#393D50" />
         <Setter Property="HeaderHorizontalAlignment" Value="Left" />
         <Setter Property="HeaderVerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />

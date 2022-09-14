@@ -15,5 +15,7 @@
         public const string HomeItemName = "HomeItemPageView";//菜单管理页面
 
         public const string OrganizeName = "OrganizeView";
+
+        public const string WorkbenchName = "WorkbenchView";//工作台
     }
 }

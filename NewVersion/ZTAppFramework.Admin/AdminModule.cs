@@ -45,6 +45,7 @@ namespace ZTAppFramework.Admin
             services.RegisterForNavigation<MainView, MainViewModel>(AppView.MainName);
             services.RegisterForNavigation<HomeView, HomeViewModel>(AppView.HomeName);
             services.RegisterForNavigation<OrganizeView, OrganizeViewModel>(AppView.OrganizeName);
+            services.RegisterForNavigation<WorkbenchView, WorkbenchViewModel>(AppView.WorkbenchName);
 
         }
     }

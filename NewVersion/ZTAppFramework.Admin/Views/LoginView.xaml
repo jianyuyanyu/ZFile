@@ -12,7 +12,7 @@
     WindowStartupLocation="CenterScreen"
     WindowStyle="ThreeDBorderWindow">
 
-    <Grid x:Name="Mianss" Background="BlueViolet">
+    <Grid x:Name="Mianss" Background="#6200EE">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="auto" />
