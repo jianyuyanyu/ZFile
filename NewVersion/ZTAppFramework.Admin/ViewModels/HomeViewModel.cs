@@ -68,7 +68,7 @@ namespace ZTAppFramework.Admin.ViewModels
             if (Ar.Success)
             {
                 MenuList = Map<List<MenuModel>>(Ar.data);
-                MenuList.First().Childer.Sort((x, y) => y.sort.CompareTo(x.sort));
+                //MenuList.First().Childer.Sort((x, y) => y.sort.CompareTo(x.sort));
                 SelectPage = MenuList.First().Childer.First();
                 MenuList.First().IsSelected = true;
                 SelectPage.IsSelected = true;
