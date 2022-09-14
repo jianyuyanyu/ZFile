@@ -11,6 +11,178 @@ using System.Threading.Tasks;
 
 namespace ZT.Common.Utils
 {
+    /// <summary>
+    ///********************************************
+    /// 创建人        ：  ZT
+    /// 创建时间    ：  2022/9/12 13:59:30 
+    /// Description   ：  终端帮助类
+    ///********************************************/
+    /// </summary>
+
+    public class DeviceUtils
+    {
+        private static readonly DeviceUtils Instance = new DeviceUtils();
+        private DeviceUtils() { }
+        public static DeviceUtils GetInstance()
+        {
+            return Instance;
+        }
+
+        /// <summary>
+        /// 是否Linux
+        /// </summary>
+        /// <returns></returns>
+        private static bool IsUnix()
+        {
+            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+        }
+
+        #region 判断是否Mac，并支持其他类型判断
+        private enum Platform
+        {
+            Windows,
+            Linux,
+            Mac
+        }
+        private Platform RunningPlatform()
+        {
+            switch (Environment.OSVersion.Platform)
+            {
+                case PlatformID.Unix:
+                    // Well, there are chances MacOSX is reported as Unix instead of MacOSX.
+                    // Instead of platform check, we'll do a feature checks (Mac specific root folders)
+                    if (Directory.Exists("/Applications")
+                        & Directory.Exists("/System")
+                        & Directory.Exists("/Users")
+                        & Directory.Exists("/Volumes"))
+                        return Platform.Mac;
+                    else
+                        return Platform.Linux;
+
+                case PlatformID.MacOSX:
+                    return Platform.Mac;
+
+                default:
+                    return Platform.Windows;
+            }
+        }
+        #endregion
+
+        /// <summary>
+        /// 获取资源使用信息
+        /// </summary>
+        /// <returns></returns>
+        public DeviceUse GetMachineUseInfo()
+        {
+            var ramInfo = GetRamInfo();
+            var diskInfo = GetDiskRate();
+            IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
+            IPGlobalStatistics ipstat = properties.GetIPv4GlobalStatistics();
+            return new DeviceUse()
+            {
+                TotalRam = Math.Ceiling(ramInfo.Total / 1024).ToString() + " GB", // 总内存
+                RamRate = Math.Ceiling(100 * ramInfo.Used / ramInfo.Total), // 内存使用率
+                CpuRate = Math.Ceiling(double.Parse(GetCpuRate())), // cpu使用率
+                DiskRate = Math.Ceiling(double.Parse(diskInfo)), //硬盘使用率
+                RunTime = GetRunTime(),
+                NetWorkUp = ipstat.ReceivedPackets,
+                NetWorkDown = ipstat.ReceivedPacketsDelivered
+            };
+        }
+
+        /// <summary>
+        /// 获取基本参数
+        /// </summary>
+        /// <returns></returns>
+        public dynamic GetMachineBaseInfo()
+        {
+            //var networkInfo = NetworkInfo.GetNetworkInfo();
+            //var (Received, Send) = networkInfo.GetInternetSpeed(1000);
+            var ramInfo = GetRamInfo();
+            var list = new List<dynamic>
+        {
+            new {key = "HostName", value = Environment.MachineName},
+            new {key = "MemTotal", value = ramInfo.Total},
+            new {key = "SystemOs", value = RuntimeInformation.OSDescription},
+            new {key="OsArchitecture",value=Environment.OSVersion.Platform + " " + RuntimeInformation.OSArchitecture},
+            new {key="ProcessorCount",value=Environment.ProcessorCount + "核"},
+            new {key="Is64BitProcess",value=Environment.Is64BitProcess}
+        };
+            return list;
+            /*return new
+            {
+                //WanIp = await GetWanIpFromPCOnline(), // 外网IP
+                SendAndReceived = "",// "上行" + Math.Round(networkInfo.SendLength / 1024.0 / 1024 / 1024, 2) + "GB 下行" + Math.Round(networkInfo.ReceivedLength / 1024.0 / 1024 / 1024, 2) + "GB", // 上下行流量统计
+                LanIp = "",//networkInfo.AddressIpv4.ToString(), // 局域网IP
+                IpMac = "",//networkInfo.Mac, // Mac地址
+                HostName = Environment.MachineName, // HostName
+                SystemOs = RuntimeInformation.OSDescription, // 系统名称
+                OsArchitecture = Environment.OSVersion.Platform + " " + RuntimeInformation.OSArchitecture, // 系统架构
+                ProcessorCount = Environment.ProcessorCount + "核", // CPU核心数
+                NetworkSpeed = ""//"上行" + Send / 1024 + "kb/s 下行" + Received / 1024 + "kb/s" // 网络速度
+            };*/
+        }
+
+        /// <summary>
+        /// 获取CPU使用率
+        /// </summary>
+        /// <returns></returns>
+        public string GetCpuRate()
+        {
+            string cpuRate;
+            if (RunningPlatform() == Platform.Mac)
+            {
+                var output = ShellUtil.Bash("top -l 1 | head -n 10");
+                var lines = output.Split("\n");
+                var cpus = lines[3].Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                var n1 = cpus[2].Replace("%", "");
+                var n2 = cpus[4].Replace("%", "");
+                return (double.Parse(n1) + double.Parse(n2)).ToString(CultureInfo.InvariantCulture);
+            }
+            if (IsUnix())
+            {
+                var output = ShellUtil.Bash("top -b -n1 | grep \"Cpu(s)\" | awk '{print $2 + $4}'");
+                cpuRate = output.Trim();
+            }
+            else
+            {
+                var output = ShellUtil.Cmd("wmic", "cpu get LoadPercentage");
+                cpuRate = output.Replace("LoadPercentage", string.Empty).Trim();
+            }
+            return cpuRate;
+        }
+
+        /// <summary>
+        /// 获得硬盘使用率
+        /// </summary>
+        /// <returns></returns>
+        public string GetDiskRate()
+        {
+            if (IsUnix())
+            {
+                var output = ShellUtil.Bash("df -lh");
+                var lines = output.Split("\n");
+                double diskUse = 0;
+                for (var i = 1; i < lines.Length - 1; i++)
+                {
+                    var disk = lines[i].Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                    diskUse += double.Parse(disk[4].Replace("%", ""));
+                }
+                return diskUse.ToString(CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                return "0";
+            }
+        }
+
+        /// <summary>
+        /// 获取内存信息
+        /// </summary>
+        /// <returns></returns>
+        public MemoryInfo GetRamInfo()
+        {
+            if (RunningPlatform() == Platform.Mac)
             {
                 var output = ShellUtil.Bash("top -l 1 | head -n 10");
                 var lines = output.Split("\n");
