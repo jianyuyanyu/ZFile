@@ -7,6 +7,10 @@ using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
 {
+
+    /// <summary>
+    /// 组织页面
+    /// </summary>
     public class OrganizeViewModel : NavigationViewModel
     {
         public OrganizeViewModel()

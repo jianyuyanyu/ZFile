@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ZTAppFramework.SqliteCore.Implements;
+using ZTAppFramework.SqliteCore.Models;
+using ZTAppFramewrok.Application.Stared;
+using ZTAppFramewrok.Application.Stared.HttpManager;
+using ZTAppFreamework.Stared.Attributes;
+
+namespace ZTAppFramework.Application.Service
+{
+    /// <summary>
+    ///********************************************
+    /// 创建人        ：  ZT
+    /// 创建时间    ：  2022/9/15 16:46:09 
+    /// Description   ：  
+    ///********************************************/
+    /// </summary>
+    public class WorkbenchService : AppServiceBase
+    {
+
+        public override string ApiServiceUrl => "/api/Workbench";
+        public WorkbenchService(ApiClinetRepository apiClinet) : base(apiClinet)
+        {
+
+        }
+
+        /// <summary>
+        /// 获取CPU信息
+        /// </summary>
+        /// <returns></returns>
+        [ApiUrl("Cpu")]
+        public async Task<AppliResult<DeviceUseDto>> GetWorkBnchCpuInfo()
+        {
+            AppliResult<DeviceUseDto> result = new AppliResult<DeviceUseDto>();
+            var r = await _apiClinet.GetAsync<DeviceUseDto>(GetEndpoint());
+            if (r.success)
+            {
+                result.Success = true;
+                result.data = r.data;
+                result.Message = r.message;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = r.message;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 获取内存信息
+        /// </summary>
+        /// <returns></returns>
+        [ApiUrl("Memory")]
+        public async  Task<AppliResult<MemoryInfoDto>> GetWorkBnchMemoryIno()
+        {
+            AppliResult<MemoryInfoDto> result = new AppliResult<MemoryInfoDto>();
+            var r=await _apiClinet.GetAsync<MemoryInfoDto>(GetEndpoint());
+            if (r.success)
+            {
+                result.Success = true;
+                result.data = r.data;
+                result.Message = r.message;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = r.message;
+            }
+            return result;
+        }
+
+
+
+
+    }
+}

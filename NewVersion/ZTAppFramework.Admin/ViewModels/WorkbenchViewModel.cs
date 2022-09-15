@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace ZTAppFramework.Admin.ViewModels
 {
+    /// <summary>
+    /// 工作台页面
+    /// </summary>
     public class WorkbenchViewModel : BindableBase
     {
         public WorkbenchViewModel()

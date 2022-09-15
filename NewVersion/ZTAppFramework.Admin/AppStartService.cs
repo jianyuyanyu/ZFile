@@ -11,6 +11,10 @@ using Prism.Regions;
 
 namespace ZTAppFramework.Admin
 {
+
+    /// <summary>
+    /// 应用关系管理
+    /// </summary>
     public class AppStartService
     {
         System.Windows.Application app;

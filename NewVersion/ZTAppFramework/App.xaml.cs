@@ -41,7 +41,6 @@ namespace ZTAppFramework
 
         }
 
-
         protected override async void OnInitialized()
         {
             var appStart = ContainerLocator.Container.Resolve<AppStartService>();
