@@ -52,5 +52,14 @@ namespace ZTAppFrameword.Template.Enums
         Danger,
 
     }
+
+
+    public enum ButtonType
+    {
+        Standard,
+        Link,
+    }
+
+
     #endregion
 }

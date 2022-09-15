@@ -27,7 +27,7 @@ namespace ZTAppFramework.Admin.Views
                 }
             };
 
-            ///this.BackBtn.Click += (s, e) => { Environment.Exit(0); };
+            this.BackBtn.Click += (s, e) => { Environment.Exit(0); };
         }
 
 

@@ -61,6 +61,21 @@ namespace ZTAppFrameword.Template.Control
             DependencyProperty.Register("Type", typeof(ButtonStyle), typeof(ZTButton), new PropertyMetadata(ButtonStyle.Default));
 
 
+
+
+        public ButtonType ButtonType
+        {
+            get { return (ButtonType)GetValue(ButtonTypeProperty); }
+            set { SetValue(ButtonTypeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ButtonType.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ButtonTypeProperty =
+            DependencyProperty.Register("ButtonType", typeof(ButtonType), typeof(ZTButton), new PropertyMetadata(ButtonType.Standard));
+
+
+
+
         public Brush HoverBackground
         {
             get { return (Brush)GetValue(HoverBackgroundProperty); }

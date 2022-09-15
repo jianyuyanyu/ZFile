@@ -26,26 +26,44 @@
         <Border
             Grid.RowSpan="2"
             Grid.ColumnSpan="2"
-            Background="#001d55"
+            Background="#ffffff"
             BorderBrush="LightGray"
             BorderThickness="0.5"
-            CornerRadius="5" />
+            CornerRadius="5"
+            Opacity="1" />
+        <Image
+            Grid.RowSpan="2"
+            Height="260"
+            Source="{StaticResource Loginlogo2}"
+            Stretch="Uniform" />
+
+        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Right">
+            <ui:ZTButton
+                x:Name="BackBtn"
+                Width="40"
+                BorderThickness="0"
+                ButtonType="Link"
+                Content="&#xe620;"
+                Cursor="Hand"
+                FontFamily="{StaticResource FontAwesome}"
+                Foreground="Red"
+                ToolTip="关闭" />
+        </StackPanel>
         <Grid
             Grid.Row="1"
             Grid.Column="1"
             Width="350"
             Height="260"
-            Margin="50,0">
+            Margin="0,0,50,0">
             <Border
-                Background="#1595f2"
+                Background="LightGray"
                 CornerRadius="5"
-                Opacity="0.1" />
+                Opacity="0.2" />
             <StackPanel Margin="20">
                 <TextBlock
                     FontFamily="方正"
                     FontSize="24"
                     FontWeight="Black"
-                    Foreground="White"
                     Text="登录" />
                 <ui:ZTComboBox
                     Margin="0,10,0,0"
@@ -71,6 +89,7 @@
                     Margin="0,20,0,0"
                     Helper:PasswordBoxHelper.Password="{Binding Login.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Helper:PasswordBoxHelper.Watermark="请输入密码"
+                    Cursor="IBeam"
                     IsEnabled="{Binding IsBusy, Converter={StaticResource BoolInverseConverter}}"
                     Style="{StaticResource ZTPasswordBox}">
                     <Validation.ErrorTemplate>
@@ -89,6 +108,7 @@
                     Margin="0,20,0,0"
                     VerticalAlignment="Bottom"
                     Background="BlueViolet"
+                    ButtonType="Standard"
                     Command="{Binding ExecuteCommand}"
                     CommandParameter="LoginUser"
                     Content="登录"
@@ -99,7 +119,6 @@
                 <CheckBox
                     Margin="0,10,0,0"
                     Content="记住密码"
-                    Foreground="White"
                     IsChecked="{Binding IsSavePwd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     IsEnabled="{Binding IsBusy, Converter={StaticResource BoolInverseConverter}}" />
             </StackPanel>

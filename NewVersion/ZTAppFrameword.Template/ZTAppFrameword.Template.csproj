@@ -5,4 +5,16 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Iconfonts\iconfont.ttf" />
+    <None Remove="Img\Background_login.png" />
+    <None Remove="Img\Background_login2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Iconfonts\iconfont.ttf" />
+    <Resource Include="Img\Background_login.png" />
+    <Resource Include="Img\Background_login2.png" />
+  </ItemGroup>
 </Project>
