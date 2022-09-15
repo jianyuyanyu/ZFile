@@ -6,6 +6,8 @@
     /// </summary>
     public static class AppView
     {
+        
+
         public const string LoginName = "LoginView";//登入Dialog页面
 
         public const string MainName = "MainView";//主页面
@@ -17,5 +19,7 @@
         public const string OrganizeName = "OrganizeView";
 
         public const string WorkbenchName = "WorkbenchView";//工作台
+
+        public const string DialogMessageName = "DialogMessageView";//消息弹窗
     }
 }

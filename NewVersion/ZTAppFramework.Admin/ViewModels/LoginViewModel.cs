@@ -7,10 +7,11 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using ZTAppFrameword.Template.Global;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Application.Service;
 using ZTAppFramewrok.Application.Stared;
-
+using ZTAppFreamework.Stared;
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
@@ -87,7 +88,11 @@ namespace ZTAppFramework.Admin.ViewModels
             {
                 await Task.Delay(1000);
                 var res = await _userLoginService.LoginServer(Map<LoginParam>(Login));
-                if (!res.Success) return;
+                if (!res.Success)
+                {
+                    ShowDialog("消息", res.Message);
+                    return;
+                }
                 await _userLoginService.SaveLocalAccountInfo(IsSavePwd, Map<LoginParam>(Login));
                 OnDialogClosed();
             });

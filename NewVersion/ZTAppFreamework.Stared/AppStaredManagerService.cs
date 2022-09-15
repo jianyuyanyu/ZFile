@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZTAppFrameword.Template.Global;
+
 using ZTAppFreamework.Stared.Service;
 
 namespace ZTAppFreamework.Stared
@@ -17,6 +19,7 @@ namespace ZTAppFreamework.Stared
         public static void RegisterStaredManager(this IContainerRegistry services)
         {
             services.RegisterSingleton<IHostDialogService, DialogHostService>();
+           
         }
     }
 }

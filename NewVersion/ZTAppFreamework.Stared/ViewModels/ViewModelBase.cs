@@ -4,6 +4,7 @@ using Prism.Ioc;
 using Prism.Mvvm;
 using System;
 using System.Text;
+using ZTAppFrameword.Template.Global;
 using ZTAppFreamework.Stared.Validations;
 
 namespace ZTAppFreamework.Stared.ViewModels
@@ -83,5 +84,25 @@ namespace ZTAppFreamework.Stared.ViewModels
         /// <param name="model">映射实体</param>
         /// <returns></returns>
         public T Map<T>(object model) => mapper.Map<T>(model);
+
+
+        #region 消息方法
+
+        public void ShowDialog(string Title, string Message)
+        {
+            ZTDialogParameter dialogParameter = new ZTDialogParameter();
+            dialogParameter.Add("Title", "消息");
+            dialogParameter.Add("Messgae", Message);
+            ZTDialog.ShowDialogWindow(AppView.DialogMessageName, dialogParameter, "window");
+        }
+
+        public void Show(string Title, string Message)
+        {
+            ZTDialogParameter dialogParameter = new ZTDialogParameter();
+            dialogParameter.Add("Title", "消息");
+            dialogParameter.Add("Messgae", Message);
+            ZTDialog.ShowWindow(AppView.DialogMessageName, dialogParameter, "window");
+        }
+        #endregion
     }
 }

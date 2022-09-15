@@ -100,6 +100,10 @@ namespace ZTAppFramework.Application.Service
                     res.Message = api.message;
                 }
             }
+            else
+            {
+                res.Message = api.message;
+            }
             return res;
         }
     }

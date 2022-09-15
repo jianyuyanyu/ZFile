@@ -1,6 +1,8 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
+using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Admin.Dialog;
 using ZTAppFramework.Admin.ViewModels;
 using ZTAppFramework.Admin.Views;
 using ZTAppFramework.Application;
@@ -39,6 +41,9 @@ namespace ZTAppFramework.Admin
             services.RegisterStaredManager();
             services.RegisterSqliteManager ();
 
+            #region 注册消息窗口
+
+            #endregion
             //dialog窗口
             services.RegisterDialog<LoginView, LoginViewModel>(AppView.LoginName);
             //页面
@@ -47,6 +52,8 @@ namespace ZTAppFramework.Admin
             services.RegisterForNavigation<OrganizeView, OrganizeViewModel>(AppView.OrganizeName);
             services.RegisterForNavigation<WorkbenchView, WorkbenchViewModel>(AppView.WorkbenchName);
 
+            ZTDialog.RegisterDialogWindow<DialogWindowBase>("window");
+            ZTDialog.RegisterDialog<DialogMessageView>(AppView.DialogMessageName);
         }
     }
 }

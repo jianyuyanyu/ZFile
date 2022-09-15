@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZTAppFrameword.Template.Global;
 
 namespace ZTAppFreamework.Stared.ViewModels
 {
@@ -23,6 +24,11 @@ namespace ZTAppFreamework.Stared.ViewModels
             SaveCommand = new DelegateCommand(OnSave);
             CancelCommand = new DelegateCommand(Cancel);
         }
+
+       
+
+        #region 基础抽象
+
 
         public event Action<IDialogResult> RequestClose;
 
@@ -44,9 +50,13 @@ namespace ZTAppFreamework.Stared.ViewModels
 
         public void OnDialogClosed() => OnDialogClosed(ButtonResult.OK);
 
+        
+
         public virtual void OnDialogOpened(IDialogParameters parameters)
         {
            
         }
+
+        #endregion
     }
 }
