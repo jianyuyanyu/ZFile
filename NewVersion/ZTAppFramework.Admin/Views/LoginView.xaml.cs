@@ -13,19 +13,19 @@ namespace ZTAppFramework.Admin.Views
         public LoginView()
         {
             InitializeComponent();
-            //Mianss.MouseMove += (s, e) =>
-            //{
-            //    if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
-            //    {
-            //        try
-            //        {
-            //            //    this.DragMove();
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //        }
-            //    }
-            //};
+            this.MouseLeftButtonDown += (s, e) =>
+            {
+                if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+                {
+                    try
+                    {
+                         this.DragMove();
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+            };
 
             ///this.BackBtn.Click += (s, e) => { Environment.Exit(0); };
         }
