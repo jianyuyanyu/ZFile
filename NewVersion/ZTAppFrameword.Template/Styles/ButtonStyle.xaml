@@ -152,8 +152,13 @@
                     </Grid>
                 </Border>
                 <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Trigger.EnterActions>
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding Path=(local:ZTButton.IsMouseOver), RelativeSource={RelativeSource Mode=Self}, Mode=OneWay}" Value="True" />
+                            <Condition Binding="{Binding Path=(local:ZTButton.IsAnimantion), RelativeSource={RelativeSource Mode=Self}, Mode=OneWay}" Value="True" />
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.EnterActions>
+
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation
@@ -162,8 +167,9 @@
                                         Duration="0:0:0.200" />
                                 </Storyboard>
                             </BeginStoryboard>
-                        </Trigger.EnterActions>
-                        <Trigger.ExitActions>
+
+                        </MultiDataTrigger.EnterActions>
+                        <MultiDataTrigger.ExitActions>
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation
@@ -172,8 +178,10 @@
                                         Duration="0:0:0.200" />
                                 </Storyboard>
                             </BeginStoryboard>
-                        </Trigger.ExitActions>
-                    </Trigger>
+                        </MultiDataTrigger.ExitActions>
+                    </MultiDataTrigger>
+
+
 
                     <Trigger Property="IsPressed" Value="True">
                         <!--<Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" />-->

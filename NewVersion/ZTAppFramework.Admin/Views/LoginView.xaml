@@ -49,22 +49,52 @@
                 Foreground="Red"
                 ToolTip="关闭" />
         </StackPanel>
+
+
         <Grid
             Grid.Row="1"
             Grid.Column="1"
             Width="350"
-            Height="260"
+            Height="300"
             Margin="0,0,50,0">
+
             <Border
                 Background="LightGray"
                 CornerRadius="5"
                 Opacity="0.2" />
             <StackPanel Margin="20">
-                <TextBlock
-                    FontFamily="方正"
-                    FontSize="24"
-                    FontWeight="Black"
-                    Text="登录" />
+                <StackPanel Orientation="Horizontal">
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="60"
+                        Height="60"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="BlueViolet"
+                        BorderBrush="White"
+                        BorderThickness="0.1"
+                        CornerRadius="40">
+                        <TextBlock
+                            FontSize="18"
+                            FontWeight="Black"
+                            Foreground="White"
+                            Text="- Z F -">
+                            <TextBlock.RenderTransform>
+                                <RotateTransform Angle="-30" CenterX="60" CenterY="15" />
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Border>
+                    <TextBlock
+                        Margin="20,0"
+                        VerticalAlignment="Center"
+                        FontFamily="楷体"
+                        FontSize="24"
+                        FontWeight="Black"
+                        Foreground="Black"
+                        Text="登  录" />
+                </StackPanel>
+
                 <ui:ZTComboBox
                     Margin="0,10,0,0"
                     Cursor="Hand"
@@ -87,6 +117,7 @@
                     Width="auto"
                     Height="35"
                     Margin="0,20,0,0"
+                    Helper:PasswordBoxHelper.IsShowPwdButtonVisible="True"
                     Helper:PasswordBoxHelper.Password="{Binding Login.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     Helper:PasswordBoxHelper.Watermark="请输入密码"
                     Cursor="IBeam"
@@ -113,6 +144,7 @@
                     CommandParameter="LoginUser"
                     Content="登录"
                     Cursor="Hand"
+                  
                     IsLoading="{Binding IsBusy}"
                     LoadingContent="{Binding LodingMessage}"
                     Type="Default" />

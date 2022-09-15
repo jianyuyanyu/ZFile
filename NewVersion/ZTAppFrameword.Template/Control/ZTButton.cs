@@ -76,6 +76,18 @@ namespace ZTAppFrameword.Template.Control
 
 
 
+        public bool IsAnimantion
+        {
+            get { return (bool)GetValue(IsAnimantionProperty); }
+            set { SetValue(IsAnimantionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsAnimantion.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsAnimantionProperty =
+            DependencyProperty.Register("IsAnimantion", typeof(bool), typeof(ZTButton), new PropertyMetadata(true));
+
+
+
         public Brush HoverBackground
         {
             get { return (Brush)GetValue(HoverBackgroundProperty); }
