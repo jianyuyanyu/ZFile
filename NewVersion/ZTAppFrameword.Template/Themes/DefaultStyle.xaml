@@ -2,6 +2,9 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Resources/ConverterStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Resources/ImageStyle.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ColorStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/CardStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ComboBoxItemStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ComboBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/TextBoxStyle.xaml" />

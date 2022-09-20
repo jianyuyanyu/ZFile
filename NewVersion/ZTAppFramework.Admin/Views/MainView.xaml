@@ -4,6 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:region="clr-namespace:ZTAppFreamework.Stared;assembly=ZTAppFreamework.Stared"
+    Width="1024"
+    MinWidth="1024"
+    MinHeight="600"
     prism:ViewModelLocator.AutoWireViewModel="True"
     WindowStartupLocation="CenterScreen">
     <Grid>

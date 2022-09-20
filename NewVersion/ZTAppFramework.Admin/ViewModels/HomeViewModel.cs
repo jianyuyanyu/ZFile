@@ -37,7 +37,7 @@ namespace ZTAppFramework.Admin.ViewModels
                 {
                     switch (value.name)
                     {
-                        case "组织机构":
+                        case "个人信息":
                             _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.OrganizeName); break;
                         case "工作台":
                             _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.WorkbenchName); break;

@@ -8,7 +8,7 @@
     xmlns:region="clr-namespace:ZTAppFreamework.Stared;assembly=ZTAppFreamework.Stared"
     xmlns:ui="clr-namespace:ZTAppFrameword.Template.Control;assembly=ZTAppFrameword.Template"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid>
+    <Grid Background="#F6F8F9">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition />
@@ -17,7 +17,7 @@
             <RowDefinition Height="80" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Border Background="White" />
+
 
         <Border
             Width="60"
@@ -41,7 +41,7 @@
         <Grid Grid.Row="1">
             <ItemsControl
                 Width="126"
-                Background="#141A30"
+                Background="#F6F8F9"
                 ItemTemplateSelector="{DynamicResource MenuItemSelector}"
                 ItemsSource="{Binding MenuList}">
                 <ItemsControl.Resources>
@@ -49,8 +49,9 @@
                     <DataTemplate x:Key="MenuItemsDataTemplate">
                         <ui:ZTNavExpander
                             Padding="10,0"
+                            Foreground="Black"
                             Header="{Binding name}"
-                            HeaderBackground="#141A30"
+                            HeaderBackground="#F6F8F9"
                             IsExpanded="{Binding IsSelected}">
                             <ItemsControl ItemTemplateSelector="{DynamicResource MenuItemSelector}" ItemsSource="{Binding Childer}">
                                 <ItemsControl.ItemsPanel>
@@ -69,7 +70,7 @@
                             CommandParameter="{Binding}"
                             Content="{Binding name}"
                             FocusVisualStyle="{x:Null}"
-                            Foreground="White"
+                            Foreground="Black"
                             GroupName="Item"
                             IsChecked="{Binding IsSelected}">
                             <RadioButton.Template>
@@ -130,7 +131,14 @@
                 </ItemsControl.Resources>
             </ItemsControl>
         </Grid>
-
+        <Border
+            Grid.RowSpan="2"
+            BorderBrush="LightGray"
+            BorderThickness="0.5" />
+        <Border
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Background="#F6F8F9" />
         <ContentControl
             Grid.RowSpan="2"
             Grid.Column="1"

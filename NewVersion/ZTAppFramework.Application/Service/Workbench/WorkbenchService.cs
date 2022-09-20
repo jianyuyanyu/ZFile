@@ -28,11 +28,11 @@ namespace ZTAppFramework.Application.Service
         }
 
         /// <summary>
-        /// 获取CPU信息
+        /// 获得资源使情况
         /// </summary>
         /// <returns></returns>
-        [ApiUrl("Cpu")]
-        public async Task<AppliResult<DeviceUseDto>> GetWorkBnchCpuInfo()
+        [ApiUrl("MachineUse")]
+        public async Task<AppliResult<DeviceUseDto>> GetMachineUse()
         {
             AppliResult<DeviceUseDto> result = new AppliResult<DeviceUseDto>();
             var r = await _apiClinet.GetAsync<DeviceUseDto>(GetEndpoint());
