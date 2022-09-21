@@ -26,7 +26,7 @@
                 <WrapPanel Margin="10,0">
                     <UI:ZTCard
                         Margin="5,0,0,5"
-                        Background="#1862DD"
+                        Background="#409EFF"
                         CornerRadius="2"
                         Line="0">
                         <UI:ZTCard.Header>
@@ -54,7 +54,7 @@
                     </UI:ZTCard>
                     <UI:ZTCard
                         Margin="5,0,0,5"
-                        Background="#1862DD"
+                        Background="#409EFF"
                         CornerRadius="2"
                         Line="0">
                         <UI:ZTCard.Header>
@@ -77,7 +77,7 @@
                     </UI:ZTCard>
                     <UI:ZTCard
                         Margin="5,0,0,5"
-                        Background="#2BAAEC"
+                        Background="#409EFF"
                         CornerRadius="2"
                         Line="0">
                         <UI:ZTCard.Header>
@@ -103,7 +103,7 @@
                     </UI:ZTCard>
                     <UI:ZTCard
                         Margin="5,0,0,5"
-                        Background="#2BAAEC"
+                        Background="#409EFF"
                         CornerRadius="2"
                         Line="0">
                         <UI:ZTCard.Header>
@@ -131,7 +131,7 @@
 
                     <UI:ZTCard
                         Margin="5,0,0,5"
-                        Background="#2BAAEC"
+                        Background="#409EFF"
                         CornerRadius="2"
                         Line="0">
                         <UI:ZTCard.Header>
@@ -147,9 +147,7 @@
                                         FontSize="18"
                                         Foreground="White"
                                         Text="{Binding DeviceUseModel.TotalRam}" />
-
                                 </StackPanel>
-
                             </Grid>
                         </UI:ZTCard.Header>
                         <UniformGrid Columns="2">
@@ -179,7 +177,6 @@
                     Columns="2">
                     <UI:ZTCard
                         Margin="15"
-                        Background="#1862DD"
                         CornerRadius="2"
                         Line="0">
                         <UI:ZTCard.Header>
@@ -187,7 +184,6 @@
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     FontSize="18"
-                                    Foreground="White"
                                     Text="设备信息" />
                             </Grid>
                         </UI:ZTCard.Header>
@@ -206,20 +202,20 @@
                                                 HorizontalAlignment="Left"
                                                 VerticalAlignment="Center"
                                                 FontSize="16"
-                                                Foreground="#f0f0f0f0"
+                                                Foreground="Gray"
                                                 Text="名称:" />
                                             <TextBlock
                                                 Width="140"
                                                 HorizontalAlignment="Left"
                                                 VerticalAlignment="Center"
                                                 FontSize="16"
-                                                Foreground="#f0f0f0f0"
+                                                Foreground="Gray"
                                                 Text="{Binding Key}" />
                                             <TextBlock
                                                 HorizontalAlignment="Left"
                                                 VerticalAlignment="Center"
                                                 FontSize="16"
-                                                Foreground="#f0f0f0f0"
+                                                Foreground="Gray"
                                                 Text="{Binding Value}"
                                                 TextWrapping="Wrap" />
                                         </WrapPanel>
@@ -227,7 +223,7 @@
                                             Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type UI:ZTCard}, Mode=FindAncestor, AncestorLevel=1}, Path=ActualWidth, Mode=OneWay}"
                                             Margin="0,5"
                                             VerticalAlignment="Bottom"
-                                            Background="White" />
+                                            Background="Gray" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -235,7 +231,7 @@
                     </UI:ZTCard>
                     <UI:ZTCard
                         Margin="15"
-                        Background="#1862DD"
+                        Background="#ffffff"
                         CornerRadius="2"
                         Line="0">
                         <UI:ZTCard.Header>
@@ -243,7 +239,6 @@
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     FontSize="18"
-                                    Foreground="White"
                                     Text="欢迎" />
                             </Grid>
                         </UI:ZTCard.Header>
@@ -252,12 +247,12 @@
                                 Height="40"
                                 FontSize="24"
                                 FontWeight="Black"
-                                Foreground="White"
+                                Foreground="#191919"
                                 Text="欢迎使用ZTAdmin" />
                             <TextBlock
                                 Grid.Row="1"
                                 FontSize="16"
-                                Foreground="#f0f0f0f0"
+                                Foreground="#191919"
                                 Text="更新日志" />
                             <Separator
                                 Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type UI:ZTCard}, Mode=FindAncestor, AncestorLevel=1}, Path=ActualWidth, Mode=OneWay}"

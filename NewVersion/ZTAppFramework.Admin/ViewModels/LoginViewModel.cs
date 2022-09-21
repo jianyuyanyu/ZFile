@@ -18,8 +18,6 @@ namespace ZTAppFramework.Admin.ViewModels
 {
     public class LoginViewModel : DialogViewModel
     {
-
-
         private readonly AdminService _userLoginService;
         private readonly CaptchaService _captchaService;
 
