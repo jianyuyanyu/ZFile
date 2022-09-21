@@ -80,20 +80,21 @@ namespace ZTAppFramework.Admin.ViewModels
         /// <returns></returns>
         private async Task LoginUserAsync()
         {
-            var res = await _captchaService.GetCaptchaAsync(Login.CodeKey);
-            if (res.Success)
-                Login.Code = res.data;
-            else
-            {
-                ShowDialog("消息", res.Message);
-                return;
-            }
-            if (!Verify(Login).IsValid) return;
+
             LodingMessage = "登入中";
             await SetBusyAsync(async () =>
             {
-                await Task.Delay(1000);
-                var res = await _userLoginService.LoginServer(Map<LoginParam>(Login));
+                var res = await _captchaService.GetCaptchaAsync(Login.CodeKey);
+                if (res.Success)
+                    Login.Code = res.data;
+                else
+                {
+                    ShowDialog("消息", res.Message);
+                    return;
+                }
+                if (!Verify(Login).IsValid) return;
+
+                res = await _userLoginService.LoginServer(Map<LoginParam>(Login));
                 if (!res.Success)
                 {
                     ShowDialog("消息", res.Message);
@@ -120,7 +121,7 @@ namespace ZTAppFramework.Admin.ViewModels
                     Login.Password = mod.Password;
             }
 
-          
+
 
         }
 

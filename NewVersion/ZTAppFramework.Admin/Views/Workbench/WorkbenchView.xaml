@@ -6,18 +6,7 @@
     xmlns:prism="http://prismlibrary.com/"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <TextBlock
-            Margin="10,0"
-            VerticalAlignment="Center"
-            FontFamily="方正"
-            FontSize="18"
-            FontWeight="Black"
-            Text="控制台" />
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="AUTO" />

@@ -21,7 +21,8 @@
             WindowChrome.IsHitTestVisibleInChrome="True">
             <ui:ZTButton
                 x:Name="BackBtn"
-                Width="30"
+                Width="40"
+                Height="50"
                 Margin="5,0"
                 BorderThickness="0"
                 ButtonType="Link"

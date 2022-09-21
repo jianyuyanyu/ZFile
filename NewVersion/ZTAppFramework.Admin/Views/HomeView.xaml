@@ -13,28 +13,47 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Border
-            Width="50"
-            Height="50"
-            Background="BlueViolet"
-            BorderBrush="White"
-            CornerRadius="40">
-            <TextBlock
-                FontSize="12"
-                FontWeight="Black"
-                Foreground="White"
-                Text="- Z F -">
-                <TextBlock.RenderTransform>
-                    <RotateTransform Angle="-25" CenterX="60" CenterY="0" />
-                </TextBlock.RenderTransform>
-            </TextBlock>
-        </Border>
-        <ScrollViewer Grid.Row="1">
-            <ItemsControl Width="60" ItemsSource="{Binding MenuList}">
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Border
+                Width="40"
+                Height="40"
+                Background="BlueViolet"
+                BorderBrush="White"
+                CornerRadius="40">
+                <TextBlock
+                    FontSize="10"
+                    FontWeight="Black"
+                    Foreground="White"
+                    Text="- Z F -">
+                    <TextBlock.RenderTransform>
+                        <RotateTransform Angle="-25" CenterX="50" CenterY="0" />
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Border>
+            <Border
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Background="#F2F2F2F2"
+                BorderBrush="#f2f2f2"
+                BorderThickness="1" />
+            <Border
+                Grid.Column="1"
+                Height="50"
+                VerticalAlignment="Top"
+                BorderBrush="Gray"
+                BorderThickness="0,0,0,0.5" />
+            <ItemsControl
+                Grid.Row="1"
+                Width="60"
+                ItemsSource="{Binding MenuList}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel />
@@ -44,7 +63,7 @@
                     <DataTemplate>
                         <RadioButton
                             Height="60"
-                            Command="{Binding DataContext.GoPageCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=1}}"
+                            Command="{Binding DataContext.GoMenuCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=1}}"
                             CommandParameter="{Binding}"
                             Cursor="Hand"
                             FocusVisualStyle="{x:Null}"
@@ -117,40 +136,35 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <!--<ItemsControl
-                Width="80"
-                Background="Transparent"
-                ItemTemplateSelector="{DynamicResource MenuItemSelector}"
-                ItemsSource="{Binding MenuList}">
-                <ItemsControl.Resources>
-                    <Selector:MenuItemDataTemplateSelector x:Key="MenuItemSelector" />
-                    <DataTemplate x:Key="MenuItemsDataTemplate">
-                        <ui:ZTNavExpander
-                            Padding="10,0"
-                            Foreground="Black"
-                            Header="{Binding name}"
-                            HeaderBackground="Transparent"
-                            IsExpanded="{Binding IsSelected}">
-                            <ItemsControl ItemTemplateSelector="{DynamicResource MenuItemSelector}" ItemsSource="{Binding Childer}">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel />
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                            </ItemsControl>
-                        </ui:ZTNavExpander>
-                    </DataTemplate>
-                    <DataTemplate x:Key="MenuItemDataTemplate">
+            <TextBlock
+                Grid.Column="1"
+                Margin="10,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="18"
+                Text="{Binding SelectMenu.name}" />
+            <ItemsControl
+                Grid.Row="1"
+                Grid.Column="1"
+                ItemsSource="{Binding PageList}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
                         <RadioButton
-                            Height="40"
-                            Padding="20,0"
+                            Width="60"
+                            Height="60"
                             Command="{Binding DataContext.GoPageCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=1}}"
                             CommandParameter="{Binding}"
-                            Content="{Binding name}"
+                            Cursor="Hand"
                             FocusVisualStyle="{x:Null}"
-                            Foreground="Black"
-                            GroupName="Item"
-                            IsChecked="{Binding IsSelected}">
+                            GroupName="ItemChilder"
+                            IsChecked="{Binding IsSelected}"
+                            ToolTip="{Binding name}"
+                            ToolTipService.ShowDuration="1000">
                             <RadioButton.Template>
                                 <ControlTemplate TargetType="RadioButton">
                                     <Grid>
@@ -159,12 +173,12 @@
                                             x:Name="line"
                                             Width="5"
                                             HorizontalAlignment="Left"
-                                            Background="#4173F9"
+                                            Background="#2e2e2e2e"
                                             Opacity="0" />
                                         <ContentPresenter
                                             x:Name="dataContent"
                                             Margin="{TemplateBinding Padding}"
-                                            HorizontalAlignment="Left"
+                                            HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             IsHitTestVisible="True"
                                             Opacity="0.7" />
@@ -196,26 +210,51 @@
                                             </Trigger.ExitActions>
                                         </Trigger>
                                         <Trigger Property="IsChecked" Value="true">
-                                            <Setter TargetName="bg" Property="Background" Value="#3E6FF8" />
+                                            <Setter TargetName="bg" Property="Background" Value="#2e2e2e2e" />
                                             <Setter TargetName="dataContent" Property="Opacity" Value="1" />
                                             <Setter TargetName="dataContent" Property="Opacity" Value="1" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </RadioButton.Template>
+                            <RadioButton.Content>
+                                <StackPanel>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontFamily="{StaticResource FontAwesome}"
+                                        FontSize="18"
+                                        Text="&#xe620;" />
+
+                                </StackPanel>
+                            </RadioButton.Content>
                         </RadioButton>
                     </DataTemplate>
-                </ItemsControl.Resources>
-            </ItemsControl>-->
-        </ScrollViewer>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <ToggleButton
+                Grid.Row="1"
+                Grid.Column="1"
+                Height="40"
+                VerticalAlignment="Bottom" />
+        </Grid>
+
         <Border
             Grid.RowSpan="2"
             Grid.Column="1"
             Background="#F2F2F2F2" />
+
+        <Border
+            Grid.Row="1"
+            Grid.Column="1"
+            Height="50"
+            VerticalAlignment="Top"
+            BorderBrush="Gray"
+            BorderThickness="0,0,0,0.5" />
+
         <ContentControl
             Grid.RowSpan="2"
             Grid.Column="1"
-            Margin="0,40,0,0"
+            Margin="0,52,0,0"
             prism:RegionManager.RegionName="{x:Static region:AppView.HomeName}" />
     </Grid>
 </UserControl>

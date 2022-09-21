@@ -25,7 +25,35 @@ namespace ZTAppFramework.Admin.ViewModels
             get { return _MenuList; }
             set { SetProperty(ref _MenuList, value); }
         }
+        private List<MenuModel> _PageList;
+        public List<MenuModel> PageList
+        {
+            get { return _PageList; }
+            set { SetProperty(ref _PageList, value); }
+        }
 
+        private MenuModel _SelectMenu;
+        public MenuModel SelectMenu
+        {
+            get { return _SelectMenu; }
+            set
+            {
+                if (SetProperty(ref _SelectMenu, value))
+                {
+                    PageList = value.Childer;
+                    PageList.ForEach(x =>
+                    {
+                        if (SelectPage!= null)
+                            if (x.name == SelectPage.name)
+                                x.IsSelected = true;
+                            else
+                                x.IsSelected = false;
+
+                    });
+                }
+
+            }
+        }
 
         private MenuModel _SelectPage;
         public MenuModel SelectPage
@@ -45,13 +73,15 @@ namespace ZTAppFramework.Admin.ViewModels
                             break;
                     }
 
-                   
+
                 }
             }
         }
         #endregion
 
         #region Command
+
+        public DelegateCommand<MenuModel> GoMenuCommand { get; set; }
         public DelegateCommand<MenuModel> GoPageCommand { get; set; }
         #endregion
         public HomeViewModel(MenuService menuService, IRegionManager regionManager)
@@ -59,12 +89,21 @@ namespace ZTAppFramework.Admin.ViewModels
             _menuService = menuService;
             _RegionManager = regionManager;
             GoPageCommand = new DelegateCommand<MenuModel>(GoPage);
+            GoMenuCommand = new DelegateCommand<MenuModel>(Gomenu);
+        }
+
+        private void Gomenu(MenuModel Parm)
+        {
+            SelectMenu = Parm;// MenuList.First().Childer.First();
+            SelectMenu.IsSelected = true;
         }
 
         private void GoPage(MenuModel Parm)
         {
+
             SelectPage = Parm;// MenuList.First().Childer.First();
             SelectPage.IsSelected = true;
+
         }
 
         public override async Task OnNavigatedToAsync(NavigationContext navigationContext = null)
@@ -73,11 +112,11 @@ namespace ZTAppFramework.Admin.ViewModels
             if (Ar.Success)
             {
                 MenuList = Map<List<MenuModel>>(Ar.data);
-                //MenuList.First().Childer.Sort((x, y) => y.sort.CompareTo(x.sort));
+                SelectMenu = MenuList.First();
                 SelectPage = MenuList.First().Childer.First();
                 MenuList.First().IsSelected = true;
                 SelectPage.IsSelected = true;
-            
+
             }
 
         }
