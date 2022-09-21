@@ -9,9 +9,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition />
-
         </Grid.RowDefinitions>
-
         <TextBlock
             Margin="10,0"
             VerticalAlignment="Center"
@@ -19,14 +17,16 @@
             FontSize="18"
             FontWeight="Black"
             Text="控制台" />
-        <Grid Grid.Row="1">
-
-            <ScrollViewer>
-                <WrapPanel Orientation="Horizontal">
+        <ScrollViewer Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <WrapPanel Margin="10,0">
                     <UI:ZTCard
-                        Width="400"
-                        Height="400"
-                        Margin="10,20,10,10"
+                        Margin="5,0,0,5"
+                        Background="#1862DD"
                         CornerRadius="2"
                         Line="0">
                         <UI:ZTCard.Header>
@@ -34,92 +34,152 @@
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     FontSize="18"
-                                    Text="欢迎" />
+                                    Foreground="White"
+                                    Text="时钟" />
                             </Grid>
                         </UI:ZTCard.Header>
-                        <TextBlock Text="欢迎进入ZFAdmin" />
+                        <StackPanel>
+                            <TextBlock
+                                Height="60"
+                                FontSize="32"
+                                FontWeight="Black"
+                                Foreground="White"
+                                Text="{Binding CurrentTime, StringFormat={}{0:HH : mm : ss}}" />
+                            <TextBlock
+                                Grid.Row="1"
+                                FontSize="14"
+                                Foreground="LightGray"
+                                Text="{Binding CurrentTime, StringFormat={}{0:yyyy 年 MM 月 dd 日}}" />
+                        </StackPanel>
+                    </UI:ZTCard>
+                    <UI:ZTCard
+                        Margin="5,0,0,5"
+                        Background="#1862DD"
+                        CornerRadius="2"
+                        Line="0">
+                        <UI:ZTCard.Header>
+                            <Grid MinHeight="20">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="White"
+                                    Text="服务器运行时间" />
+                            </Grid>
+                        </UI:ZTCard.Header>
+                        <Grid Height="80">
+                            <TextBlock
+                                VerticalAlignment="Bottom"
+                                FontSize="28"
+                                Foreground="White"
+                                Text="{Binding DeviceUseModel.RunTime}"
+                                TextWrapping="Wrap" />
+                        </Grid>
+                    </UI:ZTCard>
+                    <UI:ZTCard
+                        Margin="5,0,0,5"
+                        Background="#2BAAEC"
+                        CornerRadius="2"
+                        Line="0">
+                        <UI:ZTCard.Header>
+                            <Grid MinHeight="20">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="White"
+                                    Text="Cpu使用率" />
+                            </Grid>
+                        </UI:ZTCard.Header>
+                        <UI:ZTProgressBar
+                            Width="100"
+                            Height="100"
+                            AnimateTo="{Binding DeviceUseModel.CpuRate}"
+                            Background="Transparent"
+                            BorderBrush="#2e2e2e2e"
+                            BorderThickness="15"
+                            Foreground="White"
+                            IsPercentVisible="True"
+                            ProgressBarStyle="Ring"
+                            ProgressBrush="#1862DD" />
+                    </UI:ZTCard>
+                    <UI:ZTCard
+                        Margin="5,0,0,5"
+                        Background="#2BAAEC"
+                        CornerRadius="2"
+                        Line="0">
+                        <UI:ZTCard.Header>
+                            <Grid MinHeight="20">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="White"
+                                    Text="硬盘使用率" />
+                            </Grid>
+                        </UI:ZTCard.Header>
+                        <UI:ZTProgressBar
+                            Width="100"
+                            Height="100"
+                            HorizontalAlignment="Right"
+                            AnimateTo="{Binding DeviceUseModel.DiskRate}"
+                            Background="Transparent"
+                            BorderBrush="#2e2e2e2e"
+                            BorderThickness="15"
+                            Foreground="White"
+                            IsPercentVisible="True"
+                            ProgressBarStyle="Ring"
+                            ProgressBrush="#1862DD" />
                     </UI:ZTCard>
 
-                    <StackPanel>
-                        <UI:ZTCard
-                            Width="300"
-                            Height="150"
-                            Margin="0,20,0,5"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Background="BlueViolet"
-                            CornerRadius="2"
-                            Line="0">
-                            <UI:ZTCard.Header>
-                                <Grid MinHeight="20">
+                    <UI:ZTCard
+                        Margin="5,0,0,5"
+                        Background="#2BAAEC"
+                        CornerRadius="2"
+                        Line="0">
+                        <UI:ZTCard.Header>
+                            <Grid MinHeight="20">
+                                <StackPanel Orientation="Horizontal">
                                     <TextBlock
                                         VerticalAlignment="Center"
                                         FontSize="18"
                                         Foreground="White"
-                                        Text="时钟" />
-                                </Grid>
-                            </UI:ZTCard.Header>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="60" />
-                                    <RowDefinition Height="40" />
-                                </Grid.RowDefinitions>
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    FontSize="32"
-                                    FontWeight="Black"
-                                    Foreground="White"
-                                    Text="{Binding CurrentTime, StringFormat={}{0:HH : mm : ss}}" />
-
-                                <TextBlock
-                                    Grid.Row="1"
-                                    VerticalAlignment="Bottom"
-                                    FontSize="14"
-                                    Foreground="LightGray"
-                                    Text="{Binding CurrentTime, StringFormat={}{0:yyyy 年 MM 月 dd 日}}" />
-                            </Grid>
-                        </UI:ZTCard>
-                        <UI:ZTCard
-                            Width="400"
-                            Height="244"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            CornerRadius="2"
-                            Line="0">
-                            <UI:ZTCard.Header>
-                                <Grid MinHeight="20">
+                                        Text="内存大小:" />
                                     <TextBlock
                                         VerticalAlignment="Center"
                                         FontSize="18"
-                                        Text="版本信息" />
-                                </Grid>
-                            </UI:ZTCard.Header>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="60" />
-                                    <RowDefinition Height="40" />
-                                </Grid.RowDefinitions>
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    FontSize="32"
-                                    FontWeight="Black"
-                                    Text="{Binding CurrentTime, StringFormat={}{0:HH : mm : ss}}" />
+                                        Foreground="White"
+                                        Text="{Binding DeviceUseModel.TotalRam}" />
 
-                                <TextBlock
-                                    Grid.Row="1"
-                                    VerticalAlignment="Bottom"
-                                    FontSize="14"
-                                    Text="{Binding CurrentTime, StringFormat={}{0:yyyy 年 MM 月 dd 日}}" />
+                                </StackPanel>
+
                             </Grid>
-                        </UI:ZTCard>
-                    </StackPanel>
-
+                        </UI:ZTCard.Header>
+                        <UniformGrid Columns="2">
+                            <TextBlock
+                                FontSize="18"
+                                Foreground="White"
+                                Text="使用率:" />
+                            <UI:ZTProgressBar
+                                Width="100"
+                                Height="100"
+                                HorizontalAlignment="Right"
+                                AnimateTo="{Binding DeviceUseModel.RamRate}"
+                                Background="Transparent"
+                                BorderBrush="#2e2e2e2e"
+                                BorderThickness="15"
+                                Foreground="White"
+                                IsPercentVisible="True"
+                                ProgressBarStyle="Ring"
+                                ProgressBrush="#1862DD" />
+                        </UniformGrid>
+                    </UI:ZTCard>
+                </WrapPanel>
+                <UniformGrid
+                    Grid.Row="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Columns="2">
                     <UI:ZTCard
-                        Width="300"
-                        Height="244"
-                        Margin="10,20,0,10"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
+                        Margin="15"
+                        Background="#1862DD"
                         CornerRadius="2"
                         Line="0">
                         <UI:ZTCard.Header>
@@ -127,30 +187,88 @@
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     FontSize="18"
-                                    Text="资源使用情况" />
+                                    Foreground="White"
+                                    Text="设备信息" />
                             </Grid>
                         </UI:ZTCard.Header>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="60" />
-                                <RowDefinition Height="40" />
-                            </Grid.RowDefinitions>
+                        <ItemsControl ItemsSource="{Binding Machines}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <WrapPanel Width="auto" Orientation="Horizontal">
+                                            <TextBlock
+                                                Width="40"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                Foreground="#f0f0f0f0"
+                                                Text="名称:" />
+                                            <TextBlock
+                                                Width="140"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                Foreground="#f0f0f0f0"
+                                                Text="{Binding Key}" />
+                                            <TextBlock
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                Foreground="#f0f0f0f0"
+                                                Text="{Binding Value}"
+                                                TextWrapping="Wrap" />
+                                        </WrapPanel>
+                                        <Separator
+                                            Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type UI:ZTCard}, Mode=FindAncestor, AncestorLevel=1}, Path=ActualWidth, Mode=OneWay}"
+                                            Margin="0,5"
+                                            VerticalAlignment="Bottom"
+                                            Background="White" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </UI:ZTCard>
+                    <UI:ZTCard
+                        Margin="15"
+                        Background="#1862DD"
+                        CornerRadius="2"
+                        Line="0">
+                        <UI:ZTCard.Header>
+                            <Grid MinHeight="20">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="White"
+                                    Text="欢迎" />
+                            </Grid>
+                        </UI:ZTCard.Header>
+                        <StackPanel>
                             <TextBlock
-                                VerticalAlignment="Center"
-                                FontSize="32"
+                                Height="40"
+                                FontSize="24"
                                 FontWeight="Black"
-                                Text="{Binding CurrentTime, StringFormat={}{0:HH : mm : ss}}" />
+                                Foreground="White"
+                                Text="欢迎使用ZTAdmin" />
                             <TextBlock
                                 Grid.Row="1"
+                                FontSize="16"
+                                Foreground="#f0f0f0f0"
+                                Text="更新日志" />
+                            <Separator
+                                Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type UI:ZTCard}, Mode=FindAncestor, AncestorLevel=1}, Path=ActualWidth, Mode=OneWay}"
+                                Margin="0,5"
                                 VerticalAlignment="Bottom"
-                                FontSize="14"
-                                Text="{Binding CurrentTime, StringFormat={}{0:yyyy 年 MM 月 dd 日}}" />
-                        </Grid>
+                                Background="White" />
+                        </StackPanel>
                     </UI:ZTCard>
-                </WrapPanel>
-            </ScrollViewer>
+                </UniformGrid>
+            </Grid>
+        </ScrollViewer>
 
-
-        </Grid>
     </Grid>
 </UserControl>

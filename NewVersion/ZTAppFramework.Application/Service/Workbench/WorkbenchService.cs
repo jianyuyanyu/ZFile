@@ -73,8 +73,24 @@ namespace ZTAppFramework.Application.Service
             return result;
         }
 
-
-
+        [ApiUrl("Machine")]
+        public async Task<AppliResult<List<MachineInfoDto>>> GetMachineInfo()
+        {
+            AppliResult<List<MachineInfoDto>> result = new AppliResult<List<MachineInfoDto>>();
+            var r = await _apiClinet.GetAsync<List<MachineInfoDto>>(GetEndpoint());
+            if (r.success)
+            {
+                result.Success = true;
+                result.data = r.data;
+                result.Message = r.message;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = r.message;
+            }
+            return result;
+        }
 
     }
 }

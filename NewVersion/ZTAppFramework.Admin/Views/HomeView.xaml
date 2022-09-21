@@ -8,7 +8,7 @@
     xmlns:region="clr-namespace:ZTAppFreamework.Stared;assembly=ZTAppFreamework.Stared"
     xmlns:ui="clr-namespace:ZTAppFrameword.Template.Control;assembly=ZTAppFrameword.Template"
     prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid Background="#F6F8F9">
+    <Grid Background="#F2F2F2F2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition />
@@ -20,28 +20,26 @@
 
 
         <Border
-            Width="60"
-            Height="60"
+            Width="50"
+            Height="50"
             Background="BlueViolet"
             BorderBrush="White"
             BorderThickness="0.1"
             CornerRadius="40">
             <TextBlock
-                FontSize="18"
+                FontSize="12"
                 FontWeight="Black"
                 Foreground="White"
                 Text="- Z F -">
                 <TextBlock.RenderTransform>
-                    <RotateTransform Angle="-30" CenterX="60" CenterY="15" />
+                    <RotateTransform Angle="-25" CenterX="60" CenterY="0" />
                 </TextBlock.RenderTransform>
             </TextBlock>
         </Border>
-
-
-        <Grid Grid.Row="1">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl
                 Width="126"
-                Background="#F6F8F9"
+                Background="Transparent"
                 ItemTemplateSelector="{DynamicResource MenuItemSelector}"
                 ItemsSource="{Binding MenuList}">
                 <ItemsControl.Resources>
@@ -51,7 +49,7 @@
                             Padding="10,0"
                             Foreground="Black"
                             Header="{Binding name}"
-                            HeaderBackground="#F6F8F9"
+                            HeaderBackground="Transparent"
                             IsExpanded="{Binding IsSelected}">
                             <ItemsControl ItemTemplateSelector="{DynamicResource MenuItemSelector}" ItemsSource="{Binding Childer}">
                                 <ItemsControl.ItemsPanel>
@@ -83,7 +81,6 @@
                                             HorizontalAlignment="Left"
                                             Background="#4173F9"
                                             Opacity="0" />
-
                                         <ContentPresenter
                                             x:Name="dataContent"
                                             Margin="{TemplateBinding Padding}"
@@ -130,15 +127,19 @@
                     </DataTemplate>
                 </ItemsControl.Resources>
             </ItemsControl>
-        </Grid>
+        </ScrollViewer>
+
+
         <Border
             Grid.RowSpan="2"
-            BorderBrush="LightGray"
-            BorderThickness="0.5" />
+            BorderBrush="Gray"
+            BorderThickness="0.5,0,0,0" />
         <Border
             Grid.RowSpan="2"
             Grid.Column="1"
-            Background="#F6F8F9" />
+            Background="#F2F2F2F2"
+            BorderBrush="Gray"
+            BorderThickness="0.5" />
         <ContentControl
             Grid.RowSpan="2"
             Grid.Column="1"

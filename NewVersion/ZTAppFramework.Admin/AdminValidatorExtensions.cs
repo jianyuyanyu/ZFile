@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZTAppFramework.Admin.Model.Device;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Admin.Validations.Users;
+
 using ZTAppFreamework.Stared.Validations;
 
 namespace ZTAppFramework.Admin
@@ -29,6 +31,8 @@ namespace ZTAppFramework.Admin
             services.RegisterSingleton<GlobalValidator>();
 
             services.RegisterScoped<IValidator<UserLoginModel>, UserLoginValidator>();
+          
+            
         }
 
     }

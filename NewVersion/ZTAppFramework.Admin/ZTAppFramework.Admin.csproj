@@ -9,4 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ZTAppFramework.Application\ZTAppFramework.Application.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Validations\Workbench\" />
+  </ItemGroup>
 </Project>

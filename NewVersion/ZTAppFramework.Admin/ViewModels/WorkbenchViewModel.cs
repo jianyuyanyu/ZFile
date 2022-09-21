@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using ZTAppFramework.Admin.Model.Device;
 using ZTAppFramework.Application.Service;
 using ZTAppFreamework.Stared.ViewModels;
 
@@ -18,17 +19,26 @@ namespace ZTAppFramework.Admin.ViewModels
     {
         #region UI
         private DateTime _CurrentTime;//当前时间
-        private double _CpuValues;//CPU使用率
+
         public DateTime CurrentTime
         {
             get { return _CurrentTime; }
             set { SetProperty(ref _CurrentTime, value); }
         }
 
-        public double CpuValues
+        private DeviceUseModel _DeviceUseModel;
+        public DeviceUseModel DeviceUseModel
         {
-            get { return _CpuValues; }
-            set { SetProperty(ref _CpuValues, value); }
+            get { return _DeviceUseModel; }
+            set { SetProperty(ref _DeviceUseModel, value); }
+        }
+
+        private List<MachineInfoModel> _Machines;
+
+        public List<MachineInfoModel> Machines
+        {
+            get { return _Machines; }
+            set { SetProperty(ref _Machines, value); }
         }
         #endregion
 
@@ -42,7 +52,7 @@ namespace ZTAppFramework.Admin.ViewModels
 
         #region 属性
         DispatcherTimer Timer = new DispatcherTimer();
-      
+
         #endregion
 
         public WorkbenchViewModel(WorkbenchService workbenchService)
@@ -55,6 +65,17 @@ namespace ZTAppFramework.Admin.ViewModels
         private void Timer_Tick(object sender, EventArgs e)
         {
             CurrentTime = DateTime.Now;
+
+            UpdateDeviceInfo();
+        }
+
+        async void UpdateDeviceInfo()
+        {
+            var r = await _workbenchService.GetMachineUse();
+            if (r.Success)
+            {
+                DeviceUseModel = Map<DeviceUseModel>(r.data);
+            }
         }
 
         public override void OnNavigatedFrom(NavigationContext navigationContext)
@@ -66,11 +87,10 @@ namespace ZTAppFramework.Admin.ViewModels
         {
             Timer.Start();
             CurrentTime = DateTime.Now;
-            var r = await _workbenchService.GetMachineUse();
+            UpdateDeviceInfo();
+            var r = await _workbenchService.GetMachineInfo();
             if (r.Success)
-            {
-             //   CpuValues = r.data;
-            }       
+                Machines = Map<List<MachineInfoModel>>(r.data);
         }
     }
 }

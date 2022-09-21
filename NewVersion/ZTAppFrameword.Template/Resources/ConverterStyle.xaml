@@ -11,4 +11,11 @@
     <Converter:IsNullConverter x:Key="IsNullConverter" />
     <Converter:IsNotNullConverter x:Key="IsNotNullConverter" />
     <Converter:NullableColorToColoConverter x:Key="NullableColorToColoConverter" />
+    <Converter:ProgressBarCornerRadiusConverter x:Key="ProgressBarCornerRadiusConverter" />
+    <Converter:DoubleToCornerRadiusConverter x:Key="DoubleToCornerRadiusConverter" />
+    <Converter:ProgressBarPercentConverter x:Key="ProgressBarPercentConverter" />
+    <Converter:ProgressBarOffset1Converter x:Key="ProgressBarOffset1Converter" />
+    <Converter:ProgressBarOffset2Converter x:Key="ProgressBarOffset2Converter" />
+    <Converter:RingProgressBarConverter x:Key="RingProgressBarConverter" />
+    <Converter:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter" />
 </ResourceDictionary>

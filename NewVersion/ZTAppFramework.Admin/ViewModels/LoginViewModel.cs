@@ -82,6 +82,14 @@ namespace ZTAppFramework.Admin.ViewModels
         /// <returns></returns>
         private async Task LoginUserAsync()
         {
+            var res = await _captchaService.GetCaptchaAsync(Login.CodeKey);
+            if (res.Success)
+                Login.Code = res.data;
+            else
+            {
+                ShowDialog("消息", res.Message);
+                return;
+            }
             if (!Verify(Login).IsValid) return;
             LodingMessage = "登入中";
             await SetBusyAsync(async () =>
@@ -114,9 +122,7 @@ namespace ZTAppFramework.Admin.ViewModels
                     Login.Password = mod.Password;
             }
 
-            var res = await _captchaService.GetCaptchaAsync(Login.CodeKey);
-            if (res.Success)
-                Login.Code = res.data;
+          
 
         }
 
