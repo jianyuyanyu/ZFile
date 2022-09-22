@@ -8,11 +8,13 @@
     {
         
 
-        public const string LoginName = "LoginView";//登入Dialog页面
+        public const string LoginName = "LoginMnagerView";//登入Dialog页面
 
-        public const string MainName = "MainView";//主页面
+        public const string MainName = "MainMnagerView";//主页管理页面
 
-        public const string HomeName = "HomeView";//菜单管理页面
+        public const string HomeName = "HomeMnagerView";//菜单管理页面
+
+        public const string UserCenterMnagerName = "UserCenterMnagerView";//用户中心管理页面
 
         public const string HomeItemName = "HomeItemPageView";//菜单管理页面
 
@@ -23,5 +25,7 @@
         public const string UserCenterName = "UserCenterView";//用户中心
 
         public const string DialogMessageName = "DialogMessageView";//消息弹窗
+
+        public const string PersonalInfoName = "PersonalInfoView";//个人信息
     }
 }

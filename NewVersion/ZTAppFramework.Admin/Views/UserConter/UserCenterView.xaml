@@ -4,13 +4,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:UI="clr-namespace:ZTAppFrameword.Template.Control;assembly=ZTAppFrameword.Template"
     xmlns:prism="http://prismlibrary.com/"
+    xmlns:region="clr-namespace:ZTAppFreamework.Stared;assembly=ZTAppFreamework.Stared"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid Width="250">
+        <Grid Width="210">
+            <Grid.Resources>
+                <Style BasedOn="{StaticResource ZTRadioButtonStyle}" TargetType="{x:Type UI:ZTRadioButton}">
+                    <Setter Property="CornerRadius" Value="0" />
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    <Setter Property="RadioButtonStyle" Value="Button" />
+                    <Setter Property="CheckedBackground" Value="#409EFF" />
+                </Style>
+            </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="150" />
                 <RowDefinition Height="auto" />
@@ -26,7 +36,7 @@
                     <Border
                         Width="60"
                         Height="60"
-                        Background="Red">
+                        Background="Green">
                         <Border.Clip>
                             <EllipseGeometry
                                 Center="30,30"
@@ -64,9 +74,12 @@
                     </ItemsControl>
                 </StackPanel>
             </Grid>
-            <UI:ZTCard Grid.Row="1" Line="0">
+            <UI:ZTCard
+                Grid.Row="1"
+                Padding="0"
+                Line="0">
                 <UI:ZTCard.Header>
-                    <Grid MinHeight="20">
+                    <Grid MinHeight="40">
                         <TextBlock
                             VerticalAlignment="Center"
                             FontSize="14"
@@ -74,32 +87,24 @@
                             Text="基本设置" />
                     </Grid>
                 </UI:ZTCard.Header>
-                <UniformGrid
-                    Width="{Binding RelativeSource={RelativeSource AncestorType=UI:ZTCard, Mode=FindAncestor, AncestorLevel=1}, Mode=OneWay, Path=ActualHeight}"
-                    Height="{Binding RelativeSource={RelativeSource AncestorType=UI:ZTCard, Mode=FindAncestor, AncestorLevel=1}, Mode=OneWay, Path=ActualWidth}"
-                    Columns="1">
-                    <UI:ZTRadioButton
-                        VerticalContentAlignment="Center"
-                        Content="账号信息"
-                        GroupName="Item" />
-                    <UI:ZTRadioButton
-                        VerticalContentAlignment="Center"
-                        Content="个人设置"
-                        GroupName="Item" />
-                    <UI:ZTRadioButton
-                        VerticalContentAlignment="Center"
-                        Content="修改密码"
-                        GroupName="Item" />
-                    <UI:ZTRadioButton
-                        VerticalContentAlignment="Center"
-                        Content="通知设置"
-                        GroupName="Item" />
-                </UniformGrid>
+                <ItemsControl Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UI:ZTCard, AncestorLevel=1}, Mode=OneWay, Path=ActualWidth}" ItemsSource="{Binding BasicInfoMenu}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <UI:ZTRadioButton
+                                Content="{Binding Name}"
+                                Cursor="Hand"
+                                GroupName="UserItem"
+                                IsChecked="{Binding IsSelected}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </UI:ZTCard>
-
-            <UI:ZTCard Grid.Row="2" Line="0">
+            <UI:ZTCard
+                Grid.Row="2"
+                Padding="0"
+                Line="0">
                 <UI:ZTCard.Header>
-                    <Grid MinHeight="20">
+                    <Grid MinHeight="40">
                         <TextBlock
                             VerticalAlignment="Center"
                             FontSize="14"
@@ -107,22 +112,19 @@
                             Text="数据管理" />
                     </Grid>
                 </UI:ZTCard.Header>
-                <UniformGrid
-                    Width="{Binding RelativeSource={RelativeSource AncestorType=UI:ZTCard, Mode=FindAncestor, AncestorLevel=1}, Mode=OneWay, Path=ActualHeight}"
-                    VerticalAlignment="Top"
-                    Columns="1">
-                    <UI:ZTRadioButton
-                        Height="40"
-                        VerticalContentAlignment="Center"
-                        Content="存储空间信息"
-                        GroupName="Item" />
-                    <UI:ZTRadioButton
-                        Height="40"
-                        VerticalContentAlignment="Center"
-                        Content="操作日志"
-                        GroupName="Item" />
-                </UniformGrid>
+                <ItemsControl Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UI:ZTCard, AncestorLevel=1}, Mode=OneWay, Path=ActualWidth}" ItemsSource="{Binding DataMangerMenu}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <UI:ZTRadioButton
+                                Content="{Binding Name}"
+                                Cursor="Hand"
+                                GroupName="UserItem"
+                                IsChecked="{Binding IsSelected}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </UI:ZTCard>
         </Grid>
+        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static region:AppView.UserCenterMnagerName}" />
     </Grid>
 </UserControl>
