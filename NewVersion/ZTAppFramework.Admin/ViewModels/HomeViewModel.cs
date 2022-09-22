@@ -18,7 +18,17 @@ namespace ZTAppFramework.Admin.ViewModels
         private readonly MenuService _menuService;
         public IRegionManager _RegionManager { get; set; }
         public NavigationService NavigationService { get; set; }
+
         #region UI
+        private DisplayMenuModel _DisplayMenus;
+        public DisplayMenuModel DisplayMenus
+        {
+            get { return _DisplayMenus; }
+            set { SetProperty(ref _DisplayMenus, value); }
+        }
+
+
+
         private List<MenuModel> _MenuList;
         public List<MenuModel> MenuList
         {
@@ -43,7 +53,7 @@ namespace ZTAppFramework.Admin.ViewModels
                     PageList = value.Childer;
                     PageList.ForEach(x =>
                     {
-                        if (SelectPage!= null)
+                        if (SelectPage != null)
                             if (x.name == SelectPage.name)
                                 x.IsSelected = true;
                             else
@@ -72,8 +82,11 @@ namespace ZTAppFramework.Admin.ViewModels
                         default:
                             break;
                     }
+                    if (DisplayMenus == null)
+                        DisplayMenus = new DisplayMenuModel();
 
-
+                    DisplayMenus.MenuName = SelectMenu.name;
+                    DisplayMenus.PageName = SelectPage.name;
                 }
             }
         }

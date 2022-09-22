@@ -18,4 +18,8 @@
     <Converter:ProgressBarOffset2Converter x:Key="ProgressBarOffset2Converter" />
     <Converter:RingProgressBarConverter x:Key="RingProgressBarConverter" />
     <Converter:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter" />
+    <Converter:CheckBoxGlyphPathConverter x:Key="CheckBoxGlyphPathConverter" />
+    <Converter:SwitchToggleMarginConverter x:Key="SwitchToggleMarginConverter" />
+    <Converter:HalfConverter x:Key="HalfConverter" />
+    <Converter:Minus2Converter x:Key="Minus2Converter" />
 </ResourceDictionary>

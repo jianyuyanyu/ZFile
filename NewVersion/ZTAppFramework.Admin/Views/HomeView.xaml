@@ -49,7 +49,8 @@
                 Height="50"
                 VerticalAlignment="Top"
                 BorderBrush="Gray"
-                BorderThickness="0,0,0,0.5" />
+                BorderThickness="0,0,0,0.5"
+                Visibility="{Binding ElementName=IsCheckBoxVis, Path=IsChecked, Converter={StaticResource BoolToInvisibleConverter}, Mode=OneWay}" />
             <ItemsControl
                 Grid.Row="1"
                 Width="60"
@@ -142,115 +143,149 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 FontSize="18"
-                Text="{Binding SelectMenu.name}" />
-            <ItemsControl
-                Grid.Row="1"
+                Text="{Binding SelectMenu.name}"
+                Visibility="{Binding ElementName=IsCheckBoxVis, Path=IsChecked, Converter={StaticResource BoolToInvisibleConverter}, Mode=OneWay}" />
+            <Grid
+                x:Name="PageGrid"
+                Grid.RowSpan="2"
                 Grid.Column="1"
-                ItemsSource="{Binding PageList}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <RadioButton
-                            Width="60"
-                            Height="60"
-                            Command="{Binding DataContext.GoPageCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=1}}"
-                            CommandParameter="{Binding}"
-                            Cursor="Hand"
-                            FocusVisualStyle="{x:Null}"
-                            GroupName="ItemChilder"
-                            IsChecked="{Binding IsSelected}"
-                            ToolTip="{Binding name}"
-                            ToolTipService.ShowDuration="1000">
-                            <RadioButton.Template>
-                                <ControlTemplate TargetType="RadioButton">
-                                    <Grid>
-                                        <Border x:Name="bg" Background="Transparent" />
-                                        <Grid
-                                            x:Name="line"
-                                            Width="5"
-                                            HorizontalAlignment="Left"
-                                            Background="#2e2e2e2e"
-                                            Opacity="0" />
-                                        <ContentPresenter
-                                            x:Name="dataContent"
-                                            Margin="{TemplateBinding Padding}"
+                WindowChrome.IsHitTestVisibleInChrome="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="PageGridLine" Width="*" />
+                </Grid.ColumnDefinitions>
+                <ItemsControl
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    ItemsSource="{Binding PageList}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton
+                                Height="60"
+                                Command="{Binding DataContext.GoPageCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=1}}"
+                                CommandParameter="{Binding}"
+                                Cursor="Hand"
+                                FocusVisualStyle="{x:Null}"
+                                GroupName="ItemChilder"
+                                IsChecked="{Binding IsSelected}"
+                                ToolTip="{Binding name}">
+                                <RadioButton.Template>
+                                    <ControlTemplate TargetType="RadioButton">
+                                        <Grid>
+                                            <Border x:Name="bg" Background="Transparent" />
+                                            <Grid
+                                                x:Name="line"
+                                                Width="5"
+                                                HorizontalAlignment="Left"
+                                                Background="#2e2e2e2e"
+                                                Opacity="0" />
+                                            <ContentPresenter
+                                                x:Name="dataContent"
+                                                Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                IsHitTestVisible="True"
+                                                Opacity="0.7" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetName="line"
+                                                                Storyboard.TargetProperty="Opacity"
+                                                                To="1"
+                                                                Duration="0:0:0.3" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetName="line"
+                                                                Storyboard.TargetProperty="Opacity"
+                                                                To="0"
+                                                                Duration="0:0:0.3" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                            <Trigger Property="IsChecked" Value="true">
+                                                <Setter TargetName="bg" Property="Background" Value="#2e2e2e2e" />
+                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </RadioButton.Template>
+                                <RadioButton.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="5,0"
                                             HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            IsHitTestVisible="True"
-                                            Opacity="0.7" />
-                                    </Grid>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="true">
-                                            <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                            <Trigger.EnterActions>
-                                                <BeginStoryboard>
-                                                    <Storyboard>
-                                                        <DoubleAnimation
-                                                            Storyboard.TargetName="line"
-                                                            Storyboard.TargetProperty="Opacity"
-                                                            To="1"
-                                                            Duration="0:0:0.3" />
-                                                    </Storyboard>
-                                                </BeginStoryboard>
-                                            </Trigger.EnterActions>
-                                            <Trigger.ExitActions>
-                                                <BeginStoryboard>
-                                                    <Storyboard>
-                                                        <DoubleAnimation
-                                                            Storyboard.TargetName="line"
-                                                            Storyboard.TargetProperty="Opacity"
-                                                            To="0"
-                                                            Duration="0:0:0.3" />
-                                                    </Storyboard>
-                                                </BeginStoryboard>
-                                            </Trigger.ExitActions>
-                                        </Trigger>
-                                        <Trigger Property="IsChecked" Value="true">
-                                            <Setter TargetName="bg" Property="Background" Value="#2e2e2e2e" />
-                                            <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                            <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </RadioButton.Template>
-                            <RadioButton.Content>
-                                <StackPanel>
-                                    <TextBlock
-                                        HorizontalAlignment="Center"
-                                        FontFamily="{StaticResource FontAwesome}"
-                                        FontSize="18"
-                                        Text="&#xe620;" />
-
-                                </StackPanel>
-                            </RadioButton.Content>
-                        </RadioButton>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-            <ToggleButton
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            FontSize="18"
+                                            Text="&#xe620;" />
+                                        <TextBlock
+                                            Width="100"
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            FontSize="16"
+                                            Text="{Binding name}"
+                                            Visibility="{Binding ElementName=IsCheckBoxVis, Path=IsChecked, Converter={StaticResource BoolToInvisibleConverter}, Mode=OneWay}" />
+                                    </StackPanel>
+                                </RadioButton.Content>
+                            </RadioButton>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+            <ui:ZTCheckBox
+                x:Name="IsCheckBoxVis"
                 Grid.Row="1"
                 Grid.Column="1"
                 Height="40"
-                VerticalAlignment="Bottom" />
+                VerticalAlignment="Bottom"
+                HorizontalContentAlignment="Center"
+                Background="Transparent"
+                BorderThickness="0,1,0,0"
+                CheckBoxStyle="Button"
+                Checked="ZTCheckBox_Checked"
+                CheckedBackground="Transparent"
+                CheckedContent="关闭"
+                Content="打开"
+                Cursor="Hand"
+                Foreground="Black"
+                Unchecked="ZTCheckBox_Unchecked" />
         </Grid>
-
         <Border
             Grid.RowSpan="2"
             Grid.Column="1"
             Background="#F2F2F2F2" />
-
         <Border
             Grid.Row="1"
             Grid.Column="1"
             Height="50"
             VerticalAlignment="Top"
             BorderBrush="Gray"
-            BorderThickness="0,0,0,0.5" />
-
+            BorderThickness="0,0,0,0.5">
+            <StackPanel
+                Margin="10,0"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <TextBlock FontSize="16" Text="{Binding DisplayMenus.MenuName, StringFormat={}{0} >}" />
+                <TextBlock
+                    Margin="5,0,0,0"
+                    FontSize="16"
+                    Text="{Binding DisplayMenus.PageName, StringFormat={}{0}}" />
+            </StackPanel>
+        </Border>
         <ContentControl
             Grid.RowSpan="2"
             Grid.Column="1"
