@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ZTAppFramewrok.Application.Stared;
+using ZTAppFramewrok.Application.Stared.HttpManager;
+using ZTAppFreamework.Stared.Attributes;
+
+namespace ZTAppFramework.Application.Service
+{
+    /// <summary>
+    ///********************************************
+    /// 创建人        ：  ZT
+    /// 创建时间    ：  2022/9/22 13:49:23 
+    /// Description   ：  用户信息服务
+    ///********************************************/
+    /// </summary>
+    public class OperatorService : AppServiceBase
+    {
+        public override string ApiServiceUrl => "/api/Operator";
+        public OperatorService(ApiClinetRepository apiClinet) : base(apiClinet)
+        {
+
+        }
+    
+        [ApiUrl("UserWord")]
+        public async Task<AppliResult<OperatorWordDto>> GetUserWordInfo()
+        {
+            AppliResult<OperatorWordDto> res = new AppliResult<OperatorWordDto>() {  Message = "未知异常" };
+            var api = await _apiClinet.GetAsync<OperatorWordDto>(GetEndpoint());
+            if (api.success)
+            {
+                res.data = api.data;
+                res.Success = true;
+            }
+            else
+            {
+                res.Success = false;
+            }
+
+            return res;
+        }
+    }
+}

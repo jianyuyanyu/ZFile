@@ -51,7 +51,8 @@ namespace ZTAppFramework.Admin
             services.RegisterForNavigation<HomeView, HomeViewModel>(AppView.HomeName);
             services.RegisterForNavigation<OrganizeView, OrganizeViewModel>(AppView.OrganizeName);
             services.RegisterForNavigation<WorkbenchView, WorkbenchViewModel>(AppView.WorkbenchName);
-
+            services.RegisterForNavigation<UserCenterView, UserCenterViewModel>(AppView.UserCenterName);
+            
             ZTDialog.RegisterDialogWindow<DialogWindowBase>("window");
             ZTDialog.RegisterDialog<DialogMessageView>(AppView.DialogMessageName);
         }

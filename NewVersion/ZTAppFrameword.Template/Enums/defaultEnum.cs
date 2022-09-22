@@ -83,6 +83,16 @@ namespace ZTAppFrameword.Template.Enums
     }
     #endregion
 
+    #region RadioButton
+    public enum RadioButtonStyle
+    {
+        Standard,
+        Switch,
+        Switch2,
+        Button,
+        Selector,
+    }
+    #endregion
 
     #region Windows
     /// <summary>

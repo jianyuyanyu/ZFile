@@ -23,6 +23,8 @@ namespace ZTAppFramework.Application
             services.RegisterScoped<MenuService>();
             services.RegisterScoped<OrganizeService>();
             services.RegisterScoped<CaptchaService>();
+            services.RegisterScoped<OperatorService>();
+            
         }
       
     }

@@ -20,6 +20,8 @@
 
         public const string WorkbenchName = "WorkbenchView";//工作台
 
+        public const string UserCenterName = "UserCenterView";//用户中心
+
         public const string DialogMessageName = "DialogMessageView";//消息弹窗
     }
 }

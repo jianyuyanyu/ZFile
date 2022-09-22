@@ -24,7 +24,7 @@ namespace ZTAppFramework.Admin
             CreateMap<MenuModel, SysMenuDto>().ReverseMap();
             CreateMap<DeviceUseModel, DeviceUseDto>().ReverseMap();
             CreateMap<MachineInfoModel, MachineInfoDto>().ReverseMap();
-            
+            CreateMap<OperatorWorkModel, OperatorWordDto>().ReverseMap();
         }
     }
 }

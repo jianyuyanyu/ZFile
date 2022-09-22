@@ -1,0 +1,143 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ZTAppFrameword.Template.Control">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Resources/ConverterStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="ZTRadioButtonStyle" TargetType="{x:Type local:ZTRadioButton}" >
+        <Style.Resources>
+            <ControlTemplate x:Key="Standard" TargetType="{x:Type local:ZTRadioButton}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding Path=(local:ZTRadioButton.HeaderWidth), RelativeSource={RelativeSource AncestorType=RadioButton}, Converter={StaticResource GridLengthConverter}}" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ContentControl
+                        x:Name="ContentHeader"
+                        VerticalAlignment="Center"
+                        Content="{Binding Path=(local:ZTRadioButton.Header), RelativeSource={RelativeSource AncestorType=local:ZTRadioButton}, Mode=OneWay}" />
+
+                    <Grid Background="Transparent">
+                        <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                x:Name="Grid"
+                                Width="{Binding Path=(local:ZTRadioButton.BoxWidth), RelativeSource={RelativeSource AncestorType=local:ZTRadioButton}, Mode=OneWay}"
+                                Height="{Binding Path=(local:ZTRadioButton.BoxHeight), RelativeSource={RelativeSource AncestorType=local:ZTRadioButton}, Mode=OneWay}">
+                                <Ellipse
+                                    x:Name="Ellipse"
+                                    Fill="{TemplateBinding Background}"
+                                    Stroke="{TemplateBinding BorderBrush}"
+                                    StrokeThickness="{TemplateBinding BorderThickness,
+                                                                      Converter={StaticResource ThicknessToDoubleConverter}}" />
+                                <Ellipse
+                                    x:Name="EllipseInner"
+                                    Width="{Binding Path=(local:ZTRadioButton.BoxWidth), RelativeSource={RelativeSource AncestorType=local:ZTRadioButton}, Mode=OneWay}"
+                                    Height="{Binding Path=(local:ZTRadioButton.BoxHeight), RelativeSource={RelativeSource AncestorType=local:ZTRadioButton}, Mode=OneWay}"
+                                    Fill="{Binding Path=(local:ZTRadioButton.GlyphBrush), RelativeSource={RelativeSource AncestorType=local:ZTRadioButton}, Mode=OneWay}"
+                                    RenderTransformOrigin="0.5,0.5"
+                                    StrokeThickness="0">
+                                    <Ellipse.RenderTransform>
+                                        <ScaleTransform x:Name="Scale" ScaleX="0.4" ScaleY="0.4" />
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+                            </Grid>
+                            <ContentPresenter
+                                x:Name="Presenter"
+                                Grid.Column="1"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                ContentSource="Content" />
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <ControlTemplate.Triggers>
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="True" />
+                            <Condition Binding="{Binding Path=(local:ZTRadioButton.CheckedContent), Converter={StaticResource IsNotNullConverter}, RelativeSource={RelativeSource Self}}" Value="True" />
+                        </MultiDataTrigger.Conditions>
+                        <Setter TargetName="Presenter" Property="Content" Value="{Binding Path=(local:ZTRadioButton.CheckedContent), RelativeSource={RelativeSource AncestorType=local:ZTRadioButton}, Mode=OneWay}" />
+                    </MultiDataTrigger>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter TargetName="Ellipse" Property="Fill" Value="{Binding Path=(local:ZTRadioButton.CheckedBackground), RelativeSource={RelativeSource AncestorType=local:ZTRadioButton}, Mode=OneWay}" />
+                        <Setter TargetName="EllipseInner" Property="Fill" Value="{Binding Path=(local:ZTRadioButton.CheckedGlyphBrush), RelativeSource={RelativeSource AncestorType=local:ZTRadioButton}, Mode=OneWay}" />
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="Scale"
+                                        Storyboard.TargetProperty="ScaleX"
+                                        To="0.5"
+                                        Duration="0:0:0.5">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="Scale"
+                                        Storyboard.TargetProperty="ScaleY"
+                                        To="0.5"
+                                        Duration="0:0:0.5">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="Scale"
+                                        Storyboard.TargetProperty="ScaleX"
+                                        Duration="0:0:0.5">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="Scale"
+                                        Storyboard.TargetProperty="ScaleY"
+                                        Duration="0:0:0.5">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Style.Resources>
+        <Setter Property="SnapsToDevicePixels" Value="False" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="GlyphBrush" Value="#FFFFFF" />
+        <Setter Property="CheckedGlyphBrush" Value="#FFFFFF" />
+        <Setter Property="BoxHeight" Value="16" />
+        <Setter Property="BoxWidth" Value="16" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="CheckedBackground" Value="#3E3E3E" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="#3E3E3E" />
+        <Setter Property="Padding" Value="5,0,0,0" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(local:ZTRadioButton.RadioButtonStyle), RelativeSource={RelativeSource Mode=Self}, Mode=OneWay}" Value="Standard">
+                <Setter Property="Template" Value="{DynamicResource Standard}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style BasedOn="{StaticResource ZTRadioButtonStyle}" TargetType="{x:Type local:ZTRadioButton}" />
+</ResourceDictionary>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZTAppFramewrok.Application.Stared
 {
-    public class OperatorWorkDto
+    public class OperatorWordDto
     {
         /// <summary>
         /// 登录账号

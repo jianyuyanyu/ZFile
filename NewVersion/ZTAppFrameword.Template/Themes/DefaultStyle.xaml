@@ -9,8 +9,8 @@
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ComboBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/TextBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ButtonStyle.xaml" />
-
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/CheckBoxStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/RadioButtonStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/PasswordBoxStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ExpanderStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/PathDataStyle.xaml" />
