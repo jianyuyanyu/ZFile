@@ -9,6 +9,10 @@ namespace ZTAppFramewrok.Application.Stared
     public class OperatorWordDto
     {
         /// <summary>
+        /// 登录人ID
+        /// </summary>
+        public long Id { get; set; }
+        /// <summary>
         /// 登录账号
         /// </summary>
         public string Account { get; set; }

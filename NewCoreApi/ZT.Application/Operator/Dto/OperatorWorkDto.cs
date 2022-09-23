@@ -15,6 +15,8 @@ namespace ZT.Application.Operator
     /// </summary>
     public class OperatorWorkDto
     {
+
+        public long Id { get; set; }
         /// <summary>
         /// 登录账号
         /// </summary>

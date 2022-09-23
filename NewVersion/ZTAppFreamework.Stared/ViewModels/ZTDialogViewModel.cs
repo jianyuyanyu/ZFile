@@ -19,7 +19,7 @@ namespace ZTAppFreamework.Stared.ViewModels
     /// </summary>
     public abstract class ZTDialogViewModel : ViewModelBase, IZTDialogWindowAware
     {
-      
+
         #region UI
         private string _Title;
         public string Title
@@ -33,6 +33,21 @@ namespace ZTAppFreamework.Stared.ViewModels
             get { return _Messgae; }
             set { SetProperty(ref _Messgae, value); }
         }
+
+        private System.Windows.Visibility _OkVisibility;
+        public System.Windows.Visibility OkVisibility
+        {
+            get { return _OkVisibility; }
+            set { SetProperty(ref _OkVisibility, value); }
+        }
+
+        private System.Windows.Visibility _CanceVisibility;
+        public System.Windows.Visibility CanceVisibility
+        {
+            get { return _CanceVisibility; }
+            set { SetProperty(ref _CanceVisibility, value); }
+        }
+
         #endregion
 
         #region Command
@@ -70,7 +85,26 @@ namespace ZTAppFreamework.Stared.ViewModels
         public void OnDialogOpened(IZTDialogParameter parameters)
         {
             Title = parameters.GetValue<string>("Title");
-            Messgae= parameters.GetValue<string>("Messgae");
+            Messgae = parameters.GetValue<string>("Messgae");
+            var MessgaeType = parameters.GetValue<System.Windows.MessageBoxButton>("MessgaeButtonType");
+            switch (MessgaeType)
+            {
+                case System.Windows.MessageBoxButton.OK:
+                    OkVisibility = System.Windows.Visibility.Visible;
+                    CanceVisibility = System.Windows.Visibility.Collapsed;
+                    break;
+                case System.Windows.MessageBoxButton.OKCancel:
+                    OkVisibility = System.Windows.Visibility.Visible;
+                    CanceVisibility = System.Windows.Visibility.Visible;
+                    break;
+                case System.Windows.MessageBoxButton.YesNoCancel:
+                case System.Windows.MessageBoxButton.YesNo:
+                    OkVisibility = System.Windows.Visibility.Visible;
+                    CanceVisibility = System.Windows.Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -16,5 +16,6 @@
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/PathDataStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ProgressBarStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/ScrollViewerStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/MessageStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

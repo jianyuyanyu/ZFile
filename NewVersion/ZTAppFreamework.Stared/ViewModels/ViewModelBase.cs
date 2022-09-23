@@ -88,11 +88,12 @@ namespace ZTAppFreamework.Stared.ViewModels
 
         #region 消息方法
 
-        public void ShowDialog(string Title, string Message)
+        public void ShowDialog(string Title, string Message, System.Windows.MessageBoxButton type= System.Windows.MessageBoxButton.OK)
         {
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "消息");
             dialogParameter.Add("Messgae", Message);
+            dialogParameter.Add("MessgaeButtonType", type);
             ZTDialog.ShowDialogWindow(AppView.DialogMessageName, dialogParameter, "window");
         }
 

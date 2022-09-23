@@ -184,6 +184,74 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
 
         #endregion GetAsync
 
+        #region PutAsync<T>
+        public async Task<ApiResult<T>> PutAsync<T>(string endpoint)
+        {
+            return await PutAsync<T>(endpoint, null, null, _accessTokenManager.GetAccessToken(), true);
+        }
+
+        public async Task<ApiResult<T>> PutAnonymousAsync<T>(string endpoint)
+        {
+            return await PutAsync<T>(endpoint, null, null, null, true);
+        }
+
+        public async Task<ApiResult<T>> PutAsync<T>(string endpoint, object inputDto)
+        {
+            return await PutAsync<T>(endpoint, inputDto, null, _accessTokenManager.GetAccessToken(), true);
+        }
+
+        public async Task<ApiResult<T>> PutAsync<T>(string endpoint, object inputDto, object queryParameters)
+        {
+            return await PutAsync<T>(endpoint, inputDto, queryParameters, _accessTokenManager.GetAccessToken(), true);
+        }
+
+        public async Task<ApiResult<T>> PutAsync<T>(string endpoint, object inputDto, object queryParameters, string accessToken, bool stripAjaxResponseWrapper)
+        {
+            var httpResponse = GetClient(accessToken)
+                .Request(endpoint)
+                .SetQueryParams(queryParameters)
+                .PutJsonAsync(inputDto);
+
+            return await ValidateAbpResponse<T>(httpResponse, stripAjaxResponseWrapper);
+        }
+
+        #endregion
+
+        #region PUTAsync
+
+        public async Task PutAsync(string endpoint)
+        {
+            await PutAsync(endpoint, null, null, _accessTokenManager.GetAccessToken(), true);
+        }
+
+        public async Task PutAsync(string endpoint, object inputDto)
+        {
+            await PutAsync(endpoint, inputDto, null, _accessTokenManager.GetAccessToken(), true);
+        }
+
+        /// <summary>
+        /// Makes POST request without authentication token.
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <param name="inputDto"></param>
+        /// <returns></returns>
+        public async Task PutAnonymousAsync(string endpoint, object inputDto)
+        {
+            await PutAsync(endpoint, inputDto, null, null, true);
+        }
+
+        public async Task PutAsync(string endpoint, object inputDto, object queryParameters)
+        {
+            await PutAsync(endpoint, inputDto, queryParameters, _accessTokenManager.GetAccessToken(), true);
+        }
+
+        public async Task PutAsync(string endpoint, object inputDto, object queryParameters, string accessToken,
+            bool stripAjaxResponseWrapper)
+        {
+            await PutAsync<object>(endpoint, inputDto, queryParameters, accessToken, stripAjaxResponseWrapper);
+        }
+        #endregion
+
         #region GetStringAsync
 
         public async Task GetStringAsync(string endpoint)

@@ -94,6 +94,30 @@ namespace ZTAppFrameword.Template.Enums
     }
     #endregion
 
+    #region Message
+    public enum MessageStyle
+    {
+        /// <summary>
+        /// 默认
+        /// </summary>
+        Default,
+        /// <summary>
+        /// 成功
+        /// </summary>
+        Success,
+        /// <summary>
+        /// 警告
+        /// </summary>
+        Warning,
+        /// <summary>
+        /// 错误
+        /// </summary>
+        Error
+    }
+    #endregion
+
+
+
     #region Windows
     /// <summary>
     /// 过度动画枚举

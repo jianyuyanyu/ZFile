@@ -20,7 +20,7 @@ namespace ZTAppFramework.Application.Service
         private readonly UserLocalSerivce _userLocalSerivce;
         private readonly KeyConfigLocalService _keyConfigLocalService;
 
-        public override string ApiServiceUrl => "/api/Admin";
+        public override string ApiServiceUrl => "/api/SysAdmin";
         public AdminService(ApiClinetRepository apiClinet, UserLocalSerivce userLocalSerivce, KeyConfigLocalService keyConfigLocalService) : base(apiClinet)
         {
             _userLocalSerivce = userLocalSerivce;
@@ -57,13 +57,12 @@ namespace ZTAppFramework.Application.Service
 
             return result;
         }
-
         public async Task<AppliResult<string>> SaveLocalAccountInfo(bool Save, LoginParam user)
         {
             AppliResult<string> result = new AppliResult<string>();
 
             var d = await _keyConfigLocalService.GetModelAsync(x => x.Key == AppKeys.SaveUserInfoKey);
-            if (d.data!=null)
+            if (d.data != null)
             {
                 d.data.Values = user.Account;
                 d.data.Check = Save;
@@ -108,6 +107,31 @@ namespace ZTAppFramework.Application.Service
         }
 
 
-      
+        /// <summary>
+        /// 修改个人信息
+        /// </summary>
+        /// <returns></returns>
+        [ApiUrl("Basic")]
+        public async Task<AppliResult<string>> MoifBasic(OperatorWordDto dto)
+        {
+            AppliResult<string> result = new AppliResult<string>();
+            dto.Id = _apiClinet._accessTokenManager.userInfo.Id;
+            var api = await _apiClinet.PutAsync<string>(GetEndpoint(), dto);
+            if (api.success)
+            {
+                if (api.Code == 200)
+                {
+                    result.Success = true;
+                    result.Message = "修改信息成功";
+                }
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = api.message;
+            }
+            return result;
+        }
+
     }
 }
