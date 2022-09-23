@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ZTAppFramework.Admin.Model.Users;
+using ZTAppFramework.Application.Service;
+using ZTAppFramewrok.Application.Stared.Operator.Parm;
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
@@ -13,6 +15,7 @@ namespace ZTAppFramework.Admin.ViewModels
 
         #region UI
         private UserEditPwdModel _userEditPwd;
+   
 
         public UserEditPwdModel UserEditPwd
         {
@@ -27,20 +30,28 @@ namespace ZTAppFramework.Admin.ViewModels
         #endregion
 
         #region Service
-
+        private readonly OperatorService _OperatorService;
         #endregion
 
 
-        public UserEditPasswordViewModel()
+        public UserEditPasswordViewModel(OperatorService operatorService)
         {
-            UserEditPwd=new UserEditPwdModel();
+
+            _OperatorService = operatorService;
+            UserEditPwd =new UserEditPwdModel();
 
             ModifPasswordCommand = new DelegateCommand(ModifPassword);
         }
 
-        private void ModifPassword()
+        private async void ModifPassword()
         {
-           
+            if (!Verify(UserEditPwd).IsValid) return;
+            var r = await _OperatorService.EditPassword(Map<OperatroPasswordParam>(UserEditPwd));
+            if (r.Success)
+            {
+                ShowDialog("修改密码", r.Message);
+                return;
+            }
         }
     }
 }

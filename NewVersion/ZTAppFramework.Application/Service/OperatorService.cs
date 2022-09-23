@@ -47,10 +47,11 @@ namespace ZTAppFramework.Application.Service
         public async Task<AppliResult<bool>> EditPassword(OperatroPasswordParam param)
         {
             AppliResult<bool> res = new AppliResult<bool>() { Message = "未知异常" };
-            var api = await _apiClinet.PostAsync<bool>(GetEndpoint());
+            var api = await _apiClinet.PostAsync<bool>(GetEndpoint(), param);
             if (api.success)
             {
                 res.data = api.data;
+                res.Message = "密码修改成功";
                 res.Success = true;
             }
             else
