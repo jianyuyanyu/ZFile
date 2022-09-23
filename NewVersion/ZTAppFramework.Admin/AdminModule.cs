@@ -44,15 +44,21 @@ namespace ZTAppFramework.Admin
             #region 注册消息窗口
 
             #endregion
+
             //dialog窗口
             services.RegisterDialog<LoginView, LoginViewModel>(AppView.LoginName);
             //页面
             services.RegisterForNavigation<MainView, MainViewModel>(AppView.MainName);
             services.RegisterForNavigation<HomeView, HomeViewModel>(AppView.HomeName);
+
             services.RegisterForNavigation<OrganizeView, OrganizeViewModel>(AppView.OrganizeName);
             services.RegisterForNavigation<WorkbenchView, WorkbenchViewModel>(AppView.WorkbenchName);
             services.RegisterForNavigation<UserCenterView, UserCenterViewModel>(AppView.UserCenterName);
-            services.RegisterForNavigation<PersonalInfoView, PersonalInfoViewModel>(AppView.PersonalInfoName);         
+            services.RegisterForNavigation<PersonalInfoView, PersonalInfoViewModel>(AppView.PersonalInfoName);
+            services.RegisterForNavigation<UserPererfabView, UserPererfabViewModel>(AppView.UserPerferfabName);
+            services.RegisterForNavigation<UserEditPasswordView, UserEditPasswordViewModel>(AppView.UserEditPasswordName);
+            services.RegisterForNavigation<UserNoticSettingsView, UserNoticSettingsViewModel>(AppView.UserNoticSettingsName);
+            
             ZTDialog.RegisterDialogWindow<DialogWindowBase>("window");
             ZTDialog.RegisterDialog<DialogMessageView>(AppView.DialogMessageName);
         }

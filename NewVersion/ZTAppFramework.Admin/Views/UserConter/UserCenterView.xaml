@@ -91,6 +91,8 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <UI:ZTRadioButton
+                                Command="{Binding DataContext.GoPageCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl, AncestorLevel=1}}"
+                                CommandParameter="{Binding .}"
                                 Content="{Binding Name}"
                                 Cursor="Hand"
                                 GroupName="UserItem"
@@ -116,6 +118,8 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <UI:ZTRadioButton
+                                Command="{Binding DataContext.GoPageCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl, AncestorLevel=1}}"
+                                CommandParameter="{Binding .}"
                                 Content="{Binding Name}"
                                 Cursor="Hand"
                                 GroupName="UserItem"

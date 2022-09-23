@@ -81,7 +81,8 @@ namespace ZTAppFramework.Admin.ViewModels
                         case "工作台":
                             _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.WorkbenchName); break;
                         default:
-                            break;
+                            _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.UserPerferfabName); break;
+                      
                     }
                     if (DisplayMenus == null)
                         DisplayMenus = new DisplayMenuModel();

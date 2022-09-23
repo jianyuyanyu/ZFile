@@ -66,16 +66,17 @@ namespace ZTAppFramework.Admin.ViewModels
                 {
                     ShowDialog("消息", r.Message);
                    // ZTMessage.Error(r.Message, "RootMessageTooken");
-                }
-             
+                }  
             });
-
-          
-
         }
         #endregion
 
+   
 
+        public override void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+           
+        }
         public override Task OnNavigatedToAsync(NavigationContext navigationContext = null)
         {
             OperatorWorkModel = navigationContext.Parameters["OperatorWorkModel"] as OperatorWorkModel;

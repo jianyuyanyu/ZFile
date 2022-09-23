@@ -6,7 +6,7 @@
     /// </summary>
     public static class AppView
     {
-        
+
 
         public const string LoginName = "LoginMnagerView";//登入Dialog页面
 
@@ -27,5 +27,11 @@
         public const string DialogMessageName = "DialogMessageView";//消息弹窗
 
         public const string PersonalInfoName = "PersonalInfoView";//个人信息
+
+        public const string UserPerferfabName = "UserPerferfabPage";//个人设置页面
+
+        public const string UserEditPasswordName = "UserEditPasswordView";//修改密码界面
+
+        public const string UserNoticSettingsName = "UserNoticSettingsView";//通知设置界面
     }
 }

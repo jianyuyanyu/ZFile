@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Application.Service;
 using ZTAppFreamework.Stared;
@@ -42,32 +44,59 @@ namespace ZTAppFramework.Admin.ViewModels
         #endregion
 
         #region Command
-
+        public DelegateCommand<PersonalInfoMenuModel> GoPageCommand { get; }
         #endregion
 
         #region Serivce
         private readonly OperatorService _operatorService;
         private readonly IRegionManager _regionManager;
+     
         #endregion
         public UserCenterViewModel(OperatorService operatorService, IRegionManager regionManager)
         {
             _operatorService = operatorService;
             _regionManager = regionManager;
-
+        
             BasicInfoMenu = new List<PersonalInfoMenuModel>()
             {
                 new PersonalInfoMenuModel(){Name="账号信息",Page=AppView.PersonalInfoName},
-                new PersonalInfoMenuModel(){Name="个人设置",Page=AppView.PersonalInfoName},
-                new PersonalInfoMenuModel(){Name="修改密码",Page=AppView.PersonalInfoName},
-                new PersonalInfoMenuModel(){Name="通知设置",Page=AppView.PersonalInfoName}
+                new PersonalInfoMenuModel(){Name="个人设置",Page=AppView.UserPerferfabName},
+                new PersonalInfoMenuModel(){Name="修改密码",Page=AppView.UserEditPasswordName},
+                new PersonalInfoMenuModel(){Name="通知设置",Page=AppView.UserNoticSettingsName}
             };
             DataMangerMenu = new List<PersonalInfoMenuModel>()
             {
                 new PersonalInfoMenuModel(){Name="存储空间信息",Page=AppView.PersonalInfoName},
                 new PersonalInfoMenuModel(){Name="操作日志",Page=AppView.PersonalInfoName}
             };
-            BasicInfoMenu.First().IsSelected = true;
+          
+
+            GoPageCommand = new DelegateCommand<PersonalInfoMenuModel>(GoPage);
         }
+
+        private void GoPage(PersonalInfoMenuModel Parm)
+        {
+            Parm.IsSelected = true;
+       
+            if (Parm.Page==AppView.PersonalInfoName)
+            {
+                NavigationParameters NavPgaeParm = new NavigationParameters();
+                NavPgaeParm.Add("OperatorWorkModel", OperatorWorkModel);
+                _regionManager.Regions[AppView.UserCenterMnagerName].RequestNavigate(Parm.Page);
+           //     _regionManager.Regions[AppView.UserCenterMnagerName].RequestNavigate( Parm.Page, NavPgaeParm);
+              
+            }
+            else
+            {
+                _regionManager.Regions[AppView.UserCenterMnagerName].RequestNavigate(Parm.Page);
+                return;
+            }
+          
+        }
+
+
+        #region override
+
         public override bool IsNavigationTarget(NavigationContext navigationContext) => true;
 
         public override async Task OnNavigatedToAsync(NavigationContext navigationContext = null)
@@ -75,12 +104,12 @@ namespace ZTAppFramework.Admin.ViewModels
             var r = await _operatorService.GetUserWordInfo();
             if (r.Success)
             {
-                OperatorWorkModel = Map<OperatorWorkModel>(r.data);
-                NavigationParameters Parm = new NavigationParameters();
-                Parm.Add("OperatorWorkModel", OperatorWorkModel);
-                _regionManager.Regions[AppView.UserCenterMnagerName].RequestNavigate(AppView.PersonalInfoName, Parm);
+                OperatorWorkModel = Map<OperatorWorkModel>(r.data);      
+                GoPage(BasicInfoMenu.First());
             }
 
         }
+        #endregion
+
     }
 }
