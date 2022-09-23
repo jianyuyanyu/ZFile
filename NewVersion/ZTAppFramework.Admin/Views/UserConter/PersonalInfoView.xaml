@@ -68,6 +68,8 @@
                         Margin="10,0"
                         VerticalContentAlignment="Center"
                         Cursor="Hand"
+                        IsEditable="True"
+                        IsReadOnly="True"
                         Text="{Binding OperatorWorkModel.Sex}"
                         Watermark="姓名">
                         <UI:ZTComboBoxItem>保密</UI:ZTComboBoxItem>
