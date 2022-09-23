@@ -15,8 +15,4 @@
     <ProjectReference Include="..\ZTAppFramework.Sqlite\ZTAppFramework.SqliteCore.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Operator\Parm\" />
-  </ItemGroup>
-
 </Project>

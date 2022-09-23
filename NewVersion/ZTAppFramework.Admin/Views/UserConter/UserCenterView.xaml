@@ -32,54 +32,60 @@
                 BorderBrush="LightGray"
                 BorderThickness="0,1" />
             <Grid>
-                <StackPanel VerticalAlignment="Center">
-                    <Border
-                        Width="60"
-                        Height="60"
-                        Background="Green">
-                        <Border.Clip>
-                            <EllipseGeometry
-                                Center="30,30"
-                                RadiusX="30"
-                                RadiusY="30" />
-                        </Border.Clip>
-                    </Border>
-                    <TextBlock
-                        Margin="0,10,0,0"
+                <UI:ZTCard Padding="0" Line="0">
+                    <StackPanel
+                        Width="210"
+                        Margin="0,10"
                         HorizontalAlignment="Center"
-                        Text="{Binding OperatorWorkModel.FullName}" />
-                    <ItemsControl
-                        Margin="0,10,0,0"
-                        HorizontalAlignment="Center"
-                        ItemsSource="{Binding OperatorWorkModel.Role}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <UI:ZTButton
-                                    Height="30"
-                                    Background="#E7F2FC"
-                                    BorderBrush="#4173F9"
-                                    BorderThickness="1"
-                                    Content="{Binding}"
-                                    Cursor="Hand"
-                                    Foreground="#4173F9"
-                                    IsEnabled="False"
-                                    Type="Normal" />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </StackPanel>
+                        VerticalAlignment="Center">
+                        <Border
+                            Width="60"
+                            Height="60"
+                            Background="Green">
+                            <Border.Clip>
+                                <EllipseGeometry
+                                    Center="30,30"
+                                    RadiusX="30"
+                                    RadiusY="30" />
+                            </Border.Clip>
+                        </Border>
+                        <TextBlock
+                            Margin="0,10,0,0"
+                            HorizontalAlignment="Center"
+                            Text="{Binding OperatorWorkModel.FullName}" />
+                        <ItemsControl
+                            Margin="0,10,0,0"
+                            HorizontalAlignment="Center"
+                            ItemsSource="{Binding OperatorWorkModel.Role}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <UI:ZTButton
+                                        Height="30"
+                                        Background="#E7F2FC"
+                                        BorderBrush="#4173F9"
+                                        BorderThickness="1"
+                                        Content="{Binding}"
+                                        Cursor="Hand"
+                                        Foreground="#4173F9"
+                                        IsEnabled="False"
+                                        Type="Normal" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </UI:ZTCard>
             </Grid>
             <UI:ZTCard
                 Grid.Row="1"
                 Padding="0"
                 Line="0">
                 <UI:ZTCard.Header>
-                    <Grid MinHeight="40">
+                    <Grid MinHeight="40" Margin="5,0">
                         <TextBlock
                             VerticalAlignment="Center"
                             FontSize="14"
@@ -106,7 +112,7 @@
                 Padding="0"
                 Line="0">
                 <UI:ZTCard.Header>
-                    <Grid MinHeight="40">
+                    <Grid MinHeight="40" Margin="5,0">
                         <TextBlock
                             VerticalAlignment="Center"
                             FontSize="14"

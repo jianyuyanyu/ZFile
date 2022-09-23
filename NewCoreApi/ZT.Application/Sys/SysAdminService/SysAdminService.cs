@@ -134,6 +134,7 @@ namespace ZT.Application.Sys
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
+        [NonDynamicMethod]
         public async Task ModifyAsync(SysAdminDto model)
         {
             model.LoginPassWord = model.LoginPassWord.AESEncrypt();

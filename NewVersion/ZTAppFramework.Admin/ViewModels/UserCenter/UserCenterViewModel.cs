@@ -82,8 +82,7 @@ namespace ZTAppFramework.Admin.ViewModels
             {
                 NavigationParameters NavPgaeParm = new NavigationParameters();
                 NavPgaeParm.Add("OperatorWorkModel", OperatorWorkModel);
-                _regionManager.Regions[AppView.UserCenterMnagerName].RequestNavigate(Parm.Page);
-           //     _regionManager.Regions[AppView.UserCenterMnagerName].RequestNavigate( Parm.Page, NavPgaeParm);
+                _regionManager.Regions[AppView.UserCenterMnagerName].RequestNavigate(Parm.Page, NavPgaeParm);
               
             }
             else

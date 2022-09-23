@@ -10,24 +10,32 @@ namespace ZTAppFreamework.Stared.ViewModels
 {
     public class PropertyViewModel : BindableBase, IDataErrorInfo
     {
-  
+
         public PropertyViewModel()
         {
             validator = ContainerLocator.Container.Resolve<GlobalValidator>();
         }
 
         protected readonly GlobalValidator validator;
-        public  string VerifyTostring<T>(T model,string columnName = "")
+        public string VerifyTostring<T>(T model, string columnName = "")
         {
-          return Verify(model)?.Errors?.FirstOrDefault(x => x.PropertyName == columnName)?.ErrorMessage;
-        }       
+            var va = Verify(model);
+            if (va.Errors != null)
+            {
+                var mod = va.Errors.FirstOrDefault(x => x.PropertyName == columnName);
+                if (mod!=null)
+                    return mod.ErrorMessage;
+            }
+
+            return null;
+        }
         /// <summary>
         /// 实体验证器方法
         /// </summary>
         /// <typeparam name="T">验证结果</typeparam>
         /// <param name="model">验证实体</param>
         /// <returns></returns>
-        public  virtual ValidationResult Verify<T>(T model, bool ShowError = true)
+        public virtual ValidationResult Verify<T>(T model, bool ShowError = true)
         {
             var validationResult = validator.Validate<T>(model);
             if (!validationResult.IsValid && ShowError)
@@ -40,12 +48,12 @@ namespace ZTAppFreamework.Stared.ViewModels
             }
             return validationResult;
         }
-        public  string Error { get; set; }
-        public virtual string this[string columnName] { get=>""; }
+        public string Error { get; set; }
+        public virtual string this[string columnName] { get => ""; }
 
-    
-    
-     
+
+
+
     }
 }
 

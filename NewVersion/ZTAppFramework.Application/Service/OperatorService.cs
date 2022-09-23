@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZTAppFramewrok.Application.Stared;
 using ZTAppFramewrok.Application.Stared.HttpManager;
+using ZTAppFramewrok.Application.Stared.Operator.Parm;
 using ZTAppFreamework.Stared.Attributes;
 
 namespace ZTAppFramework.Application.Service
@@ -29,6 +30,24 @@ namespace ZTAppFramework.Application.Service
         {
             AppliResult<OperatorWordDto> res = new AppliResult<OperatorWordDto>() {  Message = "未知异常" };
             var api = await _apiClinet.GetAsync<OperatorWordDto>(GetEndpoint());
+            if (api.success)
+            {
+                res.data = api.data;
+                res.Success = true;
+            }
+            else
+            {
+                res.Success = false;
+            }
+
+            return res;
+        }
+
+        [ApiUrl("EditPassword")]
+        public async Task<AppliResult<bool>> EditPassword(OperatroPasswordParam param)
+        {
+            AppliResult<bool> res = new AppliResult<bool>() { Message = "未知异常" };
+            var api = await _apiClinet.PostAsync<bool>(GetEndpoint());
             if (api.success)
             {
                 res.data = api.data;

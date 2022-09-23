@@ -8,6 +8,7 @@ using ZTAppFramework.Admin.Model.Device;
 using ZTAppFramework.Admin.Model.Menus;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramewrok.Application.Stared;
+using ZTAppFramewrok.Application.Stared.Operator.Parm;
 
 namespace ZTAppFramework.Admin
 {
@@ -25,6 +26,7 @@ namespace ZTAppFramework.Admin
             CreateMap<DeviceUseModel, DeviceUseDto>().ReverseMap();
             CreateMap<MachineInfoModel, MachineInfoDto>().ReverseMap();
             CreateMap<OperatorWorkModel, OperatorWordDto>().ReverseMap();
+            CreateMap<UserEditPwdModel, OperatroPasswordParam>().ReverseMap();
         }
     }
 }

@@ -77,6 +77,7 @@ namespace ZTAppFramework.Admin.ViewModels
         {
            
         }
+
         public override Task OnNavigatedToAsync(NavigationContext navigationContext = null)
         {
             OperatorWorkModel = navigationContext.Parameters["OperatorWorkModel"] as OperatorWorkModel;

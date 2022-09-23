@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using ZT.Application.Operator.Dto;
 using ZT.Application.Sys;
 using ZT.Common.Enum;
 using ZT.Common.Utils;
@@ -107,6 +108,23 @@ namespace ZT.Application.Operator
                     Avatar = user.HeadPic
                 }
             };
+        }
+
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="ModifPwdParam"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        [HttpPost]
+        public async Task<bool> EditPasswordAsync(OperatroPasswordDto ModifPwdParam)
+        {
+            if (ModifPwdParam.NewPassword != ModifPwdParam.VerifyNewPassword) throw new ArgumentException("两次密码不一致！~");
+            var loginRes =  GetTokenUser();
+            var user = await _adminService.GetAsync(loginRes.Id);
+            user.LoginPassWord = ModifPwdParam.NewPassword;
+            await _adminService.ModifyAsync(user);
+            return true;
         }
 
         /// <summary>

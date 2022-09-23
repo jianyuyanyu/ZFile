@@ -31,7 +31,7 @@ namespace ZTAppFramework.Admin
             services.RegisterSingleton<GlobalValidator>();
 
             services.RegisterScoped<IValidator<UserLoginModel>, UserLoginValidator>();
-          
+            services.RegisterScoped<IValidator<UserEditPwdModel>, UserEditPwdValidator>();
             
         }
 
