@@ -50,9 +50,18 @@ namespace ZTAppFramework.Application.Service
             var api = await _apiClinet.PostAsync<bool>(GetEndpoint(), param);
             if (api.success)
             {
-                res.data = api.data;
-                res.Message = "密码修改成功";
-                res.Success = true;
+                if (api.Code != 200) {
+                    res.data = api.data;
+                    res.Message = api.message;
+                    res.Success = false;
+                }
+                else
+                {
+                    res.data = api.data;
+                    res.Message = "密码修改成功";
+                    res.Success = true;
+                }
+              
             }
             else
             {

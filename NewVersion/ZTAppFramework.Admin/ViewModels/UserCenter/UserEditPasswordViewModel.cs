@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZTAppFrameword.Template.Global;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Application.Service;
 using ZTAppFramewrok.Application.Stared.Operator.Parm;
@@ -15,7 +16,7 @@ namespace ZTAppFramework.Admin.ViewModels
 
         #region UI
         private UserEditPwdModel _userEditPwd;
-   
+
 
         public UserEditPwdModel UserEditPwd
         {
@@ -26,7 +27,7 @@ namespace ZTAppFramework.Admin.ViewModels
 
         #region Command
 
-        public DelegateCommand ModifPasswordCommand { get;  }
+        public DelegateCommand ModifPasswordCommand { get; }
         #endregion
 
         #region Service
@@ -38,19 +39,25 @@ namespace ZTAppFramework.Admin.ViewModels
         {
 
             _OperatorService = operatorService;
-            UserEditPwd =new UserEditPwdModel();
+            UserEditPwd = new UserEditPwdModel();
 
             ModifPasswordCommand = new DelegateCommand(ModifPassword);
         }
 
         private async void ModifPassword()
         {
-            if (!Verify(UserEditPwd).IsValid) return;
+           /// if (!Verify(UserEditPwd).IsValid) return;
             var r = await _OperatorService.EditPassword(Map<OperatroPasswordParam>(UserEditPwd));
             if (r.Success)
             {
-                ShowDialog("修改密码", r.Message);
+                ZTMessage.Success(r.Message, "RootMessageTooken");
+              
+                UserEditPwd.VerifyNewPassword = UserEditPwd.NewPassword = UserEditPwd.CurrnetPassword = "";
                 return;
+            }
+            else
+            {
+                ShowDialog("修改密码", r.Message);
             }
         }
     }

@@ -10,8 +10,4 @@
     <ProjectReference Include="..\ZTAppFramewrok.Application.Stared\ZTAppFramewrok.Application.Stared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Service\Operator\" />
-  </ItemGroup>
-
 </Project>

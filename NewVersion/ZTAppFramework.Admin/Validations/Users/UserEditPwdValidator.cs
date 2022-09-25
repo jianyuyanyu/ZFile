@@ -35,10 +35,13 @@ namespace ZTAppFramework.Admin.Validations.Users
              .NotEmpty()
              .WithMessage("新密码长度不能为空！")
              .Length(5, 30)
-             .WithMessage("新密码长度限制在5到30个字符之间！");
-     
+             .WithMessage("新密码长度限制在5到30个字符之间！").Must(ReEqualsNew).WithMessage("两次密码不一致");
+    
+        }
 
-
+        private bool ReEqualsNew(UserEditPwdModel model, string newPwd)
+        {
+            return model.NewPassword == newPwd;
         }
     }
 }

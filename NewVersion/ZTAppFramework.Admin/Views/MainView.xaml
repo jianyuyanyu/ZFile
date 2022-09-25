@@ -34,5 +34,6 @@
                 ToolTip="关闭" />
         </StackPanel>
         <ui:ZTMessageHost Global:ZTMessage.Tooken="RootMessageTooken" />
+        <ui:ZTDialogHost Global:ZTDialog.DialogTooken="RootDialogTooken" />
     </Grid>
 </ui:ZTWindow>

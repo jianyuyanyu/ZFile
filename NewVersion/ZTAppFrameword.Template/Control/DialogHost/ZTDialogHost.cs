@@ -19,6 +19,10 @@ namespace ZTAppFrameword.Template.Control
     public class ZTDialogHost : ContentControl
     {
 
+        public ZTDialogHost()
+        {
+
+        }
         [Bindable(true)]
         public bool IsOpen
         {

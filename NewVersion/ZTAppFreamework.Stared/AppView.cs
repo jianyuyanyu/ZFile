@@ -20,6 +20,9 @@
 
         public const string OrganizeName = "OrganizeView";
 
+        public const string OrganizeModifyName = "OrganizeModifyDialogView";
+
+
         public const string WorkbenchName = "WorkbenchView";//工作台
 
         public const string UserCenterName = "UserCenterView";//用户中心

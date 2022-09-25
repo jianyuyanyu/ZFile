@@ -40,28 +40,34 @@ namespace ZTAppFrameword.Template.Global
         /// </summary>
         internal static Dictionary<string, ZTDialogHost> DialogHosts { get; set; } = DialogHosts ?? new Dictionary<string, ZTDialogHost>();
 
+        #region Tooken
 
-        /// <summary>
-        /// 设置Tooken
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static void SetTooken(DependencyObject obj, string value)
+
+
+       
+        public static string GetDialogTooken(DependencyObject obj)
         {
-            obj.SetValue(TookenProperty, value);
+            return (string)obj.GetValue(DialogTookenProperty);
         }
 
-        // Using a DependencyProperty as the backing store for Tooken.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TookenProperty =
-            DependencyProperty.RegisterAttached("Tooken", typeof(string), typeof(ZTDialog), new PropertyMetadata(OnTookenChange));
+        public static void SetDialogTooken(DependencyObject obj, string value)
+        {
+            obj.SetValue(DialogTookenProperty, value);
+        }
 
+        // Using a DependencyProperty as the backing store for DialogTooken.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DialogTookenProperty =
+            DependencyProperty.RegisterAttached("DialogTooken", typeof(string), typeof(ZTDialog), new PropertyMetadata(OnTookenChange));
+
+
+        #endregion
         private static void OnTookenChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             try
             {
-                ZTDialogHost host = new ZTDialogHost();
+                ZTDialogHost host = d as ZTDialogHost;
                 if (host == null) return;
-                var tooken = ZTDialog.GetTooken(host);
+                var tooken = ZTDialog.GetDialogTooken(host);
                 if (!ZTDialog.DialogHosts.ContainsKey(tooken)) ZTDialog.DialogHosts.Add(tooken, host); ;
             }
             catch (Exception ex)
@@ -71,15 +77,7 @@ namespace ZTAppFrameword.Template.Global
         }
 
 
-        /// <summary>
-        /// 获取Tooken
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static string GetTooken(DependencyObject obj)
-        {
-            return (string)obj.GetValue(TookenProperty);
-        }
+      
 
 
         /// Identifies the WindowStyle attached property.
@@ -145,6 +143,8 @@ namespace ZTAppFrameword.Template.Global
                 throw ex;
             }
         }
+
+      
 
         /// <summary>
         /// 普通弹窗

@@ -116,7 +116,19 @@ namespace ZTAppFrameword.Template.Enums
     }
     #endregion
 
-
+    #region DataGridStyle
+    public enum DataGridStyle
+    {
+        /// <summary>
+        /// 默认
+        /// </summary>
+        Standard,
+        /// <summary>
+        /// Layui
+        /// </summary>
+        Layui,
+    }
+    #endregion
 
     #region Windows
     /// <summary>
@@ -170,4 +182,31 @@ namespace ZTAppFrameword.Template.Enums
         SlideOutToLeft
     }
     #endregion
+
+    #region LoadingStyle
+    /// <summary>
+    /// 记载动画枚举类型
+    /// </summary>
+    public enum LoadingStyle
+    {
+        /// <summary>
+        /// 谷歌
+        /// </summary>
+        Google,
+        /// <summary>
+        /// 百搭
+        /// </summary>
+        Normal,
+        /// <summary>
+        /// 简约
+        /// </summary>
+        Simple,
+        /// <summary>
+        /// 跳动
+        /// </summary>
+        Beat
+    }
+    #endregion
+
+
 }
