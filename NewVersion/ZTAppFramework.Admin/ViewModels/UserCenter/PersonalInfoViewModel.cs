@@ -64,7 +64,7 @@ namespace ZTAppFramework.Admin.ViewModels
                 }
                 else
                 {
-                    ShowDialog("消息", r.Message);
+                    ShowDialog("消息", r.Message,null);
                    // ZTMessage.Error(r.Message, "RootMessageTooken");
                 }  
             });

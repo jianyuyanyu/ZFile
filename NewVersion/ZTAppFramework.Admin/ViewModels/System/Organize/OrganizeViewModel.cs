@@ -31,6 +31,12 @@ namespace ZTAppFramework.Admin.ViewModels
 
         #region Command
         public DelegateCommand AddCommand { get; }
+
+        public DelegateCommand<SysOrganizeModel> ModifCommand { get; }
+
+        public DelegateCommand<SysOrganizeModel> DeleteSeifCommand { get; }
+
+        public DelegateCommand DeleteSelectCommand { get; }
         #endregion
 
 
@@ -43,6 +49,41 @@ namespace ZTAppFramework.Admin.ViewModels
         {
             _organizeService = organizeService;
             AddCommand = new DelegateCommand(Add);
+            ModifCommand = new DelegateCommand<SysOrganizeModel>(Modif);
+            DeleteSeifCommand = new DelegateCommand<SysOrganizeModel>(DeleteSeif);
+            DeleteSelectCommand = new DelegateCommand(DeleteSelect);
+        }
+        #region Event
+
+
+
+
+        private void DeleteSelect()
+        {
+
+        }
+        private void Modif(SysOrganizeModel Param)
+        {
+            ZTDialogParameter dialogParameter = new ZTDialogParameter();
+            dialogParameter.Add("Title", "编辑");
+            dialogParameter.Add("Param", Param);
+            ZTDialog.ShowDialogWindow(AppView.OrganizeModifyName, dialogParameter, async x =>
+            {
+                if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
+                {
+                    await GetOrganizeInfo();
+                }
+            });
+        }
+        private void DeleteSeif(SysOrganizeModel Param)
+        {
+            ShowDialog("提示", "确定要删除码", async x =>
+            {
+                if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
+                {
+                   await  GetOrganizeInfo();
+                }
+            }, System.Windows.MessageBoxButton.YesNo);
         }
 
         private void Add()
@@ -52,11 +93,22 @@ namespace ZTAppFramework.Admin.ViewModels
             ZTDialog.ShowDialogWindow(AppView.OrganizeModifyName, dialogParameter);
         }
 
-        public override async Task OnNavigatedToAsync(NavigationContext navigationContext = null)
+        async Task GetOrganizeInfo(string Query="")
         {
-            var r = await _organizeService.GetOrganizeList("");
+            var r = await _organizeService.GetOrganizeList(Query);
             if (r.Success)
                 OrganizesList = Map<List<SysOrganizeModel>>(r.data);
         }
+        #endregion
+
+        #region Override
+        public override async Task OnNavigatedToAsync(NavigationContext navigationContext = null)
+        {
+            await GetOrganizeInfo();
+        }
+
+
+        #endregion
+
     }
 }

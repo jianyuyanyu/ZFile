@@ -61,16 +61,13 @@
         <ui:ZTDataGrid
             Grid.Row="1"
             Grid.ColumnSpan="2"
-            Margin="0,0,-449,-231"
             AutoGenerateColumns="False"
             BorderThickness="0,1"
             CanUserAddRows="False"
-            ColumnHeaderHeight="80"
+            ColumnHeaderHeight="40"
             DataGridStyle="Standard"
-            IsActive="False"
             IsReadOnly="True"
             ItemsSource="{Binding OrganizesList}">
-
             <ui:ZTDataGrid.Columns>
                 <DataGridTemplateColumn MinWidth="50" MaxWidth="100">
                     <DataGridTemplateColumn.Header>
@@ -85,7 +82,8 @@
                             <ui:ZTCheckBox
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                CheckedBackground="#79bbff" />
+                                CheckedBackground="#79bbff"
+                                Cursor="Hand" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -165,7 +163,10 @@
                 </DataGridTemplateColumn>
 
 
-                <DataGridTemplateColumn MinWidth="220" MaxWidth="220">
+                <DataGridTemplateColumn
+                    Width="*"
+                    MinWidth="140"
+                    MaxWidth="140">
                     <DataGridTemplateColumn.Header>
                         <TextBlock HorizontalAlignment="Center" Text="操作" />
                     </DataGridTemplateColumn.Header>
@@ -174,7 +175,10 @@
                             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                                 <ui:ZTButton
                                     Width="50"
+                                    Height="30"
                                     Background="#409eff"
+                                    Command="{Binding DataContext.ModifCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid, AncestorLevel=1}}"
+                                    CommandParameter="{Binding .}"
                                     Content="&#xe620;"
                                     Cursor="Hand"
                                     FontFamily="{StaticResource FontAwesome}"
@@ -182,10 +186,13 @@
                                     Type="Normal" />
                                 <ui:ZTButton
                                     Width="50"
+                                    Height="30"
                                     Margin="5,0"
                                     Background="#fef0f0"
                                     BorderBrush="#fab6b6"
                                     BorderThickness="1"
+                                    Command="{Binding DataContext.DeleteSeifCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid, AncestorLevel=1}}"
+                                    CommandParameter="{Binding .}"
                                     Content="&#xe620;"
                                     Cursor="Hand"
                                     FontFamily="{StaticResource FontAwesome}"

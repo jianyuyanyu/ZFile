@@ -52,8 +52,61 @@ namespace ZTAppFramework.Application.Service
                 result.Message = api.message;
             }
             return result;
-        } 
+        }
+        [ApiUrl("")]
+        public async Task<AppliResult<bool>> ModifOrganize(SysOrganizeDto Parmam)
+        {
+            AppliResult<bool> result = new AppliResult<bool>();
 
+            var api = await _apiClinet.PutAsync<bool>(GetEndpoint(), Parmam);
+            if (api.success)
+            {
+                if (api.Code == 200)
+                {
+                    result.Success = true;
+                    result.Message = "修改成功";
+                   
+                }
+                else
+                {
+                    result.Success = false;
+                    result.Message = api.message;
+                }
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = api.message;
+            }
+            return result;
+        }
+
+        public async Task<AppliResult<bool>> AddOrganize(SysOrganizeDto Parmam)
+        {
+            AppliResult<bool> result = new AppliResult<bool>();
+
+            var api = await _apiClinet.PutAsync<bool>(GetEndpoint(), Parmam);
+            if (api.success)
+            {
+                if (api.Code == 200)
+                {
+                    result.Success = true;
+                    result.Message = "添加成功";
+
+                }
+                else
+                {
+                    result.Success = false;
+                    result.Message = api.message;
+                }
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = api.message;
+            }
+            return result;
+        }
 
     }
 }

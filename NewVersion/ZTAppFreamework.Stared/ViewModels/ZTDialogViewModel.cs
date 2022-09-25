@@ -74,15 +74,15 @@ namespace ZTAppFreamework.Stared.ViewModels
             return true;
         }
 
-        public void OnDialogClosed(ZTAppFrameword.Template.Enums.ButtonResult result)
+        public virtual void OnDialogClosed(ZTAppFrameword.Template.Enums.ButtonResult result)
         {
             ZTDialogResult dialogResult = new ZTDialogResult();
             dialogResult.Result = result;
             RequestClose?.Invoke(dialogResult);
         }
 
-        public void OnDialogClosed() => OnDialogClosed(ZTAppFrameword.Template.Enums.ButtonResult.Yes);
-        public void OnDialogOpened(IZTDialogParameter parameters)
+        public virtual void OnDialogClosed() => OnDialogClosed(ZTAppFrameword.Template.Enums.ButtonResult.Yes);
+        public virtual void OnDialogOpened(IZTDialogParameter parameters)
         {
             Title = parameters.GetValue<string>("Title");
             Messgae = parameters.GetValue<string>("Messgae");
