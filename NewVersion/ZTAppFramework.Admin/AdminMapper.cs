@@ -29,6 +29,8 @@ namespace ZTAppFramework.Admin
             CreateMap<OperatorWorkModel, OperatorWordDto>().ReverseMap();
             CreateMap<UserEditPwdModel, OperatroPasswordParam>().ReverseMap();
             CreateMap<SysOrganizeModel, SysOrganizeDto>().ReverseMap();
+            CreateMap<SysOrganizeModel, SysOrganizeParm>().ReverseMap();
+            
         }
     }
 }

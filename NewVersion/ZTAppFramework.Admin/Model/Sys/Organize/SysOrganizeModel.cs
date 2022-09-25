@@ -12,6 +12,14 @@ namespace ZTAppFramework.Admin.Model.Sys
     /// </summary>
     public class SysOrganizeModel:BindableBase
     {
+        private bool _IsSelected;
+
+        public bool IsSelected
+        {
+            get { return _IsSelected; }
+            set { SetProperty(ref _IsSelected, value); }
+        }
+
         /// <summary>
         /// 唯一编号
         /// </summary>

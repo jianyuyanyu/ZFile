@@ -61,8 +61,10 @@
                     <ui:ZTComboBox
                         Width="600"
                         CornerRadius="2"
-                        IsEditable="True"
-                        Watermark="请输入机构名称" />
+                        DisplayMemberPath="Name"
+                        ItemsSource="{Binding OrganizesList}"
+                        SelectedItem="{Binding SelectedItem}"
+                        Watermark="请输入机构名称" Cursor="Hand" />
                 </StackPanel>
                 <StackPanel
                     Width="700"

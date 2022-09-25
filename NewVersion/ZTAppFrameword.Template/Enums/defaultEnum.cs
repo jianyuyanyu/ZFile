@@ -208,5 +208,13 @@ namespace ZTAppFrameword.Template.Enums
     }
     #endregion
 
+    #region ComboBoxStyle
+    public enum ComboBoxStyle
+    {
+        Standard,
+        Editable,
+        Menu
+    }
+    #endregion
 
 }

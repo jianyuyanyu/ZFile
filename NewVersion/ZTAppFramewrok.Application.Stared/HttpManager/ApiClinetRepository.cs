@@ -252,6 +252,14 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
         }
         #endregion
 
+        #region DELETE<T>
+
+        #endregion
+
+        #region DELETE
+
+        #endregion
+
         #region GetStringAsync
 
         public async Task GetStringAsync(string endpoint)

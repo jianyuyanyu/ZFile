@@ -97,9 +97,9 @@
 
                 <ui:ZTComboBox
                     Margin="0,10,0,0"
+                    ComboBoxStyle="Editable"
                     Cursor="Hand"
                     DisplayMemberPath="UserName"
-                    IsEditable="True"
                     IsEnabled="{Binding IsBusy, Converter={StaticResource BoolInverseConverter}}"
                     ItemsSource="{Binding AccountList}"
                     Text="{Binding Login.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -144,7 +144,6 @@
                     CommandParameter="LoginUser"
                     Content="登录"
                     Cursor="Hand"
-                  
                     IsLoading="{Binding IsBusy}"
                     LoadingContent="{Binding LodingMessage}"
                     Type="Default" />

@@ -23,6 +23,39 @@ namespace ZTAppFrameword.Template.Control
 
         private Popup DropDownPopup;
 
+        public Enums.ComboBoxStyle ComboBoxStyle
+        {
+            get { return (Enums.ComboBoxStyle)GetValue(ComboBoxStyleProperty); }
+            set { SetValue(ComboBoxStyleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ComboBoxStyle.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ComboBoxStyleProperty =
+            DependencyProperty.Register("ComboBoxStyle", typeof(Enums.ComboBoxStyle), typeof(ZTComboBox), new PropertyMetadata(Enums.ComboBoxStyle.Standard,UpdateEditStatus));
+
+        private static void UpdateEditStatus(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var type = d as ZTComboBox;
+            try
+            {
+                if (type?.ComboBoxStyle == Enums.ComboBoxStyle.Editable)
+                    type.IsEditable = true;
+                else
+                    type.IsEditable = false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+     
+          
+        }
+
+
+
+
+
         /// <summary>
         /// 这是水印
         /// </summary>

@@ -70,8 +70,8 @@
                         Width="300"
                         Margin="10,0"
                         VerticalContentAlignment="Center"
+                        ComboBoxStyle="Editable"
                         Cursor="Hand"
-                        IsEditable="True"
                         IsReadOnly="True"
                         Text="{Binding OperatorWorkModel.Sex}"
                         Watermark="性别">

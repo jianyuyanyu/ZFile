@@ -81,11 +81,12 @@ namespace ZTAppFramework.Application.Service
             return result;
         }
 
-        public async Task<AppliResult<bool>> AddOrganize(SysOrganizeDto Parmam)
+        [ApiUrl("")]
+        public async Task<AppliResult<bool>> AddOrganize(SysOrganizeParm Parmam)
         {
             AppliResult<bool> result = new AppliResult<bool>();
 
-            var api = await _apiClinet.PutAsync<bool>(GetEndpoint(), Parmam);
+            var api = await _apiClinet.PostAsync<bool>(GetEndpoint(), Parmam);
             if (api.success)
             {
                 if (api.Code == 200)
