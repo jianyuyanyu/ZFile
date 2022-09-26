@@ -16,7 +16,7 @@ namespace ZTAppFramework.Admin.ViewModels
         }
         public override void Cancel()
         {
-            OnDialogClosed();   
+            OnDialogClosed(ZTAppFrameword.Template.Enums.ButtonResult.No);   
         }
 
         public override void OnSave()

@@ -15,7 +15,7 @@ namespace ZTAppFramework.Admin.ViewModels
 {
 
     /// <summary>
-    /// 组织页面
+    /// 组织页面VM
     /// </summary>
     public class OrganizeViewModel : NavigationViewModel
     {
@@ -33,6 +33,14 @@ namespace ZTAppFramework.Admin.ViewModels
             get { return _SelectList; }
             set { SetProperty(ref _SelectList, value); }
         }
+
+        private string _QueryStr;
+
+        public string QueryStr
+        {
+            get { return _QueryStr; }
+            set { SetProperty(ref _QueryStr, value); }
+        }
         #endregion
 
         #region Command
@@ -40,6 +48,8 @@ namespace ZTAppFramework.Admin.ViewModels
         public DelegateCommand DeleteSelectCommand { get; }
         public DelegateCommand CheckedAllCommand { get; }
         public DelegateCommand UnCheckedAllCommand { get; }
+
+        public DelegateCommand QueryCommand { get; }
 
         public DelegateCommand<SysOrganizeModel> ModifCommand { get; }
 
@@ -52,16 +62,13 @@ namespace ZTAppFramework.Admin.ViewModels
 
         #endregion
 
-
         #region Service
         private readonly OrganizeService _organizeService;
         #endregion
 
-
         public OrganizeViewModel(OrganizeService organizeService)
         {
             _organizeService = organizeService;
-
             AddCommand = new(Add);
             ModifCommand = new(Modif);
             DeleteSeifCommand = new(DeleteSeif);
@@ -70,10 +77,19 @@ namespace ZTAppFramework.Admin.ViewModels
             UncheckedCommand = new(Unchecked);
             CheckedAllCommand = new(CheckedAll);
             UnCheckedAllCommand = new(UnCheckedAll);
+            QueryCommand = new(Query);
         }
 
-
         #region Event
+        private async void Query()
+        {
+            await SetBusyAsync(async () =>
+            {
+                await GetOrganizeInfo(QueryStr);
+            });
+
+        }
+
         void UnCheckedAll()
         {
             foreach (var item in OrganizesList)
@@ -82,30 +98,43 @@ namespace ZTAppFramework.Admin.ViewModels
                 SelectList.Remove(item);
             }
         }
-
         void CheckedAll()
         {
             foreach (var item in OrganizesList)
             {
-                
+
                 item.IsSelected = true;
                 SelectList.Add(item);
             }
         }
+        void Unchecked(SysOrganizeModel Param) => SelectList.Remove(Param);
+        void Checked(SysOrganizeModel Param) => SelectList.Add(Param);
 
-        private void Unchecked(SysOrganizeModel Param)=> SelectList.Remove(Param);
-        private void Checked(SysOrganizeModel Param) => SelectList.Add(Param);
-
-        private void DeleteSelect()
+        void DeleteSelect()
         {
-            if(SelectList.Count <= 0)
+            if (SelectList.Count <= 0)
             {
                 Show("消息", "请选择要删除得数据");
                 return;
             }
+
+            ShowDialog("提示", $"确定要删除{SelectList.Count()}个数据吗？", async x =>
+            {
+                if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
+                {
+                    string DelIdStr = string.Join(',', SelectList.Select(x => x.Id));
+                    var r = await _organizeService.DeleteOrganize(DelIdStr);
+                    if (r.Success)
+                    {
+                        Show("消息", "删除成功!");
+                        await GetOrganizeInfo();
+                        return;
+                    }
+                }
+            }, System.Windows.MessageBoxButton.YesNo);
         }
 
-        private void Modif(SysOrganizeModel Param)
+        void Modif(SysOrganizeModel Param)
         {
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "编辑");
@@ -119,29 +148,28 @@ namespace ZTAppFramework.Admin.ViewModels
             });
         }
 
-        private void DeleteSeif(SysOrganizeModel Param)
+        void DeleteSeif(SysOrganizeModel Param)
         {
             ShowDialog("提示", "确定要删除码", async x =>
             {
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {
-                    
+                    var r = await _organizeService.DeleteOrganize(Param.Id.ToString());
                     await GetOrganizeInfo();
                 }
             }, System.Windows.MessageBoxButton.YesNo);
         }
 
-        private void Add()
+        void Add()
         {
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "添加");
             ZTDialog.ShowDialogWindow(AppView.OrganizeModifyName, dialogParameter, async x =>
             {
-
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {
 
-                     await GetOrganizeInfo();
+                    await GetOrganizeInfo();
                 }
             });
         }
@@ -150,9 +178,10 @@ namespace ZTAppFramework.Admin.ViewModels
         {
             var r = await _organizeService.GetOrganizeList(Query);
             if (r.Success)
-                OrganizesList = Map<List<SysOrganizeModel>>(r.data).OrderBy(X=>X.Sort).ToList();
+                OrganizesList = Map<List<SysOrganizeModel>>(r.data).OrderBy(X => X.Sort).ToList();
             SelectList.Clear();
         }
+
         #endregion
 
         #region Override

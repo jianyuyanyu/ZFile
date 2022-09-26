@@ -217,7 +217,7 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
 
         #endregion
 
-        #region PUTAsync
+        #region PutAsync
 
         public async Task PutAsync(string endpoint)
         {
@@ -252,7 +252,7 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
         }
         #endregion
 
-        #region DELETE<T>
+        #region Delete<T>
         public async Task<ApiResult<T>> DeleteAsync<T>(string endpoint)
         {
             return await DeleteAsync<T>(endpoint, null);
@@ -286,7 +286,7 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
 
         #endregion
 
-        #region DELETE
+        #region Delete
         public async Task DeleteAsync(string endpoint)
         {
             await DeleteAsync(endpoint, null);

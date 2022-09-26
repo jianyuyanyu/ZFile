@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using ZTAppFramewrok.Application.Stared;
 using ZTAppFramewrok.Application.Stared.HttpManager;
 using ZTAppFramewrok.Application.Stared.HttpManager.Model;
@@ -109,5 +110,24 @@ namespace ZTAppFramework.Application.Service
             return result;
         }
 
+        [ApiUrl("")]
+        public async Task<AppliResult<bool>> DeleteOrganize(string Id)
+        {
+            AppliResult<bool> result = new AppliResult<bool>();
+            var api = await _apiClinet.DeleteAsync<bool>(GetEndpoint(), new { Ids = Id });
+            if (api.success&&api.Code==200)
+            {
+                result.Success = true;
+                result.data = api.data;
+                result.Message = api.message;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = api.message;
+            }
+
+            return result;
+        }
     }
 }

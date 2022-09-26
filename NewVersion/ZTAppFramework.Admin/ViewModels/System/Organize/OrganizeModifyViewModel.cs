@@ -51,15 +51,16 @@ namespace ZTAppFramework.Admin.ViewModels
         #region Service
         private readonly OrganizeService _organizeService;
         #endregion
-        public OrganizeModifyViewModel(OrganizeService organizeService)
-        {
-            _organizeService = organizeService;
-        }
 
         #region 属性
         public bool IsEdit { get; set; }
 
         #endregion
+
+        public OrganizeModifyViewModel(OrganizeService organizeService)
+        {
+            _organizeService = organizeService;
+        }
 
         #region Event
         async Task GetOrganizeInfo(string Query = "")
@@ -89,6 +90,7 @@ namespace ZTAppFramework.Admin.ViewModels
                 item.Name = Name + item.Name;
             }
 
+            OrganizesList.Insert(0, new SysOrganizeModel() { Name = "组织", ParentId = 0, ParentIdList = new List<string>() { "0" } });
         }
 
         async Task<bool> Add()

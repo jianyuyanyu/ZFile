@@ -48,15 +48,18 @@
                     Width="210"
                     VerticalContentAlignment="Center"
                     FontSize="16"
+                    Text="{Binding QueryStr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Watermark="组织名称" />
                 <ui:ZTButton
                     Width="50"
                     Margin="10,0"
                     Background="#409eff"
+                    Command="{Binding QueryCommand}"
                     Content="&#xe620;"
                     Cursor="Hand"
                     FontFamily="{StaticResource FontAwesome}"
                     HoverBackground="#79bbff"
+                    IsLoading="{Binding IsBusy}"
                     Type="Normal" />
             </StackPanel>
         </Grid>
