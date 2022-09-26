@@ -135,14 +135,22 @@ namespace ZTAppFramework.Admin.ViewModels
         {
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "添加");
-            ZTDialog.ShowDialogWindow(AppView.OrganizeModifyName, dialogParameter);
+            ZTDialog.ShowDialogWindow(AppView.OrganizeModifyName, dialogParameter, async x =>
+            {
+
+                if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
+                {
+
+                     await GetOrganizeInfo();
+                }
+            });
         }
 
         async Task GetOrganizeInfo(string Query = "")
         {
             var r = await _organizeService.GetOrganizeList(Query);
             if (r.Success)
-                OrganizesList = Map<List<SysOrganizeModel>>(r.data);
+                OrganizesList = Map<List<SysOrganizeModel>>(r.data).OrderBy(X=>X.Sort).ToList();
             SelectList.Clear();
         }
         #endregion

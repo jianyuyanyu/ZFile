@@ -253,11 +253,54 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
         #endregion
 
         #region DELETE<T>
+        public async Task<ApiResult<T>> DeleteAsync<T>(string endpoint)
+        {
+            return await DeleteAsync<T>(endpoint, null);
+        }
+
+        /// <summary>
+        /// Makes GET request without authentication token.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="endpoint"></param>
+        /// <returns></returns>
+        public async Task<ApiResult<T>> DeleteAnonymousAsync<T>(string endpoint)
+        {
+            return await DeleteAsync<T>(endpoint, null, null, true);
+        }
+
+        public async Task<ApiResult<T>> DeleteAsync<T>(string endpoint, object queryParameters)
+        {
+            return await DeleteAsync<T>(endpoint, queryParameters, _accessTokenManager.GetAccessToken(), true);
+        }
+
+        public async Task<ApiResult<T>> DeleteAsync<T>(string endpoint, object queryParameters, string accessToken, bool stripAjaxResponseWrapper)
+        {
+            var httpResponse = GetClient(accessToken)
+                .Request(endpoint)
+                .SetQueryParams(queryParameters)
+                .DeleteAsync();
+
+            return await ValidateAbpResponse<T>(httpResponse, stripAjaxResponseWrapper);
+        }
 
         #endregion
 
         #region DELETE
+        public async Task DeleteAsync(string endpoint)
+        {
+            await DeleteAsync(endpoint, null);
+        }
 
+        public async Task DeleteAsync(string endpoint, object queryParameters)
+        {
+            await DeleteAsync(endpoint, queryParameters, _accessTokenManager.GetAccessToken(), true);
+        }
+
+        public async Task DeleteAsync(string endpoint, object queryParameters, string accessToken, bool stripAjaxResponseWrapper)
+        {
+            await DeleteAsync<object>(endpoint, queryParameters, accessToken, stripAjaxResponseWrapper);
+        }
         #endregion
 
         #region GetStringAsync
