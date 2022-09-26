@@ -63,7 +63,6 @@ namespace ZTAppFramewrok.Application.Stared.HttpManager
             try
             {
                 response = await httpResponse.ReceiveJson<ApiResult<T>>();
-        
             }
             catch (FlurlHttpException e)
             {

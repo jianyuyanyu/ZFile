@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Themes/DefaultStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ZTAppFramework.Admin;component/Converter/ViewConverterStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

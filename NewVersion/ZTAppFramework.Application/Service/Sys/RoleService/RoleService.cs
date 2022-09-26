@@ -53,7 +53,7 @@ namespace ZTAppFramework.Application.Service
             return result;
         }
         [ApiUrl("")]
-        public async Task<AppliResult<bool>> Modif(SysRoleDto Parmam)
+        public async Task<AppliResult<bool>> Modif(SysRoleParm Parmam)
         {
             AppliResult<bool> result = new AppliResult<bool>();
 
@@ -81,7 +81,7 @@ namespace ZTAppFramework.Application.Service
         }
 
         [ApiUrl("")]
-        public async Task<AppliResult<bool>> Add(SysOrganizeParm Parmam)
+        public async Task<AppliResult<bool>> Add(SysRoleParm Parmam)
         {
             AppliResult<bool> result = new AppliResult<bool>();
 

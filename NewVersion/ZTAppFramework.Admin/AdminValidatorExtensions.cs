@@ -34,6 +34,7 @@ namespace ZTAppFramework.Admin
             services.RegisterScoped<IValidator<UserLoginModel>, UserLoginValidator>();
             services.RegisterScoped<IValidator<UserEditPwdModel>, UserEditPwdValidator>();
             services.RegisterScoped<IValidator<SysOrganizeParm>, SysOrganizeParmValidator>();
+            services.RegisterScoped<IValidator<SysRoleParm>, SysRoleParmValidator>();
             
 
 

@@ -2,7 +2,6 @@
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,19 +13,18 @@ using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
 {
-    public class RoleViewModel : NavigationViewModel
+    public class SysPostViewModel : NavigationViewModel
     {
-
         #region UI
-        private List<SysRoleModel> _RoleList;
-        public List<SysRoleModel> RoleList
+        private List<SysPostModel> _SysPostList;
+        public List<SysPostModel> SysPostList
         {
-            get { return _RoleList; }
-            set { SetProperty(ref _RoleList, value); }
+            get { return _SysPostList; }
+            set { SetProperty(ref _SysPostList, value); }
         }
 
-        private List<SysRoleModel> _SelectList = new List<SysRoleModel>();
-        public List<SysRoleModel> SelectList
+        private List<SysPostModel> _SelectList = new List<SysPostModel>();
+        public List<SysPostModel> SelectList
         {
             get { return _SelectList; }
             set { SetProperty(ref _SelectList, value); }
@@ -49,25 +47,25 @@ namespace ZTAppFramework.Admin.ViewModels
 
         public DelegateCommand QueryCommand { get; }
 
-        public DelegateCommand<SysRoleModel> ModifCommand { get; }
+        public DelegateCommand<SysPostModel> ModifCommand { get; }
 
-        public DelegateCommand<SysRoleModel> DeleteSeifCommand { get; }
+        public DelegateCommand<SysPostModel> DeleteSeifCommand { get; }
 
-        public DelegateCommand<SysRoleModel> CheckedCommand { get; }
+        public DelegateCommand<SysPostModel> CheckedCommand { get; }
 
-        public DelegateCommand<SysRoleModel> UncheckedCommand { get; }
+        public DelegateCommand<SysPostModel> UncheckedCommand { get; }
 
 
         #endregion
 
         #region Service
-        private readonly RoleService _roleService;
+        private readonly SysPostService _sysPostService;
         #endregion
 
 
-        public RoleViewModel(RoleService roleService)
+        public SysPostViewModel(SysPostService  sysPostService)
         {
-            _roleService=roleService;
+            _sysPostService = sysPostService;
             AddCommand = new(Add);
             ModifCommand = new(Modif);
             DeleteSeifCommand = new(DeleteSeif);
@@ -85,14 +83,14 @@ namespace ZTAppFramework.Admin.ViewModels
         {
             await SetBusyAsync(async () =>
             {
-                await GetRoleInfo(QueryStr);
+                await GetListInfo(QueryStr);
             });
 
         }
 
         void UnCheckedAll()
         {
-            foreach (var item in RoleList)
+            foreach (var item in SysPostList)
             {
                 item.IsSelected = false;
                 SelectList.Remove(item);
@@ -100,15 +98,15 @@ namespace ZTAppFramework.Admin.ViewModels
         }
         void CheckedAll()
         {
-            foreach (var item in RoleList)
+            foreach (var item in SysPostList)
             {
 
                 item.IsSelected = true;
                 SelectList.Add(item);
             }
         }
-        void Unchecked(SysRoleModel Param) => SelectList.Remove(Param);
-        void Checked(SysRoleModel Param) => SelectList.Add(Param);
+        void Unchecked(SysPostModel Param) => SelectList.Remove(Param);
+        void Checked(SysPostModel Param) => SelectList.Add(Param);
         void DeleteSelect()
         {
             if (SelectList.Count <= 0)
@@ -120,32 +118,18 @@ namespace ZTAppFramework.Admin.ViewModels
             {
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {
-                    List<string> strings = new List<string>();
-                    foreach (var item in SelectList)
-                    {
-                        var rd = RoleList.Where(x => x.ParentIdList.Contains(item.Id.ToString()));
-                        if (rd != null)
-                        {
-                            foreach (var Panentitem in rd)
-                            {
-                                strings.Add(Panentitem.Id.ToString());
-                            }
-                        }
-
-                        strings.Add(item.Id.ToString());
-                    }
-                    string DelIdStr = string.Join(',', strings);
-                    var r = await _roleService.Delete(DelIdStr);
+                    string DelIdStr = string.Join(',', SelectList.Select(X => X.Id));
+                    var r = await _sysPostService.Delete(DelIdStr);
                     if (r.Success)
                     {
                         Show("消息", "删除成功!");
-                        await GetRoleInfo();
+                        await GetListInfo();
                         return;
                     }
                 }
             }, System.Windows.MessageBoxButton.YesNo);
         }
-        void Modif(SysRoleModel Param)
+        void Modif(SysPostModel Param)
         {
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "编辑");
@@ -154,31 +138,21 @@ namespace ZTAppFramework.Admin.ViewModels
             {
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {
-                    await GetRoleInfo();
+                    await GetListInfo();
                 }
             });
         }
-        void DeleteSeif(SysRoleModel Param)
+        void DeleteSeif(SysPostModel Param)
         {
             ShowDialog("提示", "确定要删除码", async x =>
             {
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {
-
-                    List<string> strings = new List<string>();
-                    var rd = RoleList.Where(x => x.ParentIdList.Contains(Param.Id.ToString()));
-                    if (rd != null)
-                    {
-                        foreach (var item in rd)
-                            strings.Add(item.Id.ToString());
-                    }
-                    strings.Add(Param.Id.ToString());
-                    string DelIdStr = string.Join(',', strings);
-                    var r = await _roleService.Delete(DelIdStr);
+                    var r = await _sysPostService.Delete(Param.Id.ToString());
                     if (r.Success)
                     {
                         Show("消息", "删除成功!");
-                        await GetRoleInfo();
+                        await GetListInfo();
                         return;
                     }
                 }
@@ -188,22 +162,24 @@ namespace ZTAppFramework.Admin.ViewModels
         {
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "添加");
-            ZTDialog.ShowDialogWindow(AppView.RoleModifyName, dialogParameter, async x =>
+            ZTDialog.ShowDialogWindow(AppView.SysPostModifyName, dialogParameter, async x =>
             {
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {
 
-                    await GetRoleInfo();
+                    await GetListInfo();
                 }
             });
         }
 
-
-        async Task GetRoleInfo(string Query = "")
+        async Task GetListInfo(string Query = "")
         {
-            var r = await _roleService.GetList(Query);
+            var r = await _sysPostService.GetPostList(new ZTAppFramewrok.Application.Stared.PageParam() {Key= Query==""?null:Query });
             if (r.Success)
-                RoleList = Map<List<SysRoleModel>>(r.data).OrderBy(X => X.Sort).ToList();
+            {
+                SysPostList = Map<List<SysPostModel>>(r.data.Items).OrderBy(X => X.Sort).ToList();
+            }
+                
             SelectList.Clear();
         }
         #endregion
@@ -211,7 +187,7 @@ namespace ZTAppFramework.Admin.ViewModels
         #region Override
         public override async Task OnNavigatedToAsync(NavigationContext navigationContext = null)
         {
-            await GetRoleInfo();
+            await GetListInfo();
         }
 
 

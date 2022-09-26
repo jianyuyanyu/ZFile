@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="ZTAppFramework.Admin.Views.RoleModifyView"
+    x:Class="ZTAppFramework.Admin.Views.SysPostModifyView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Global="clr-namespace:ZTAppFrameword.Template.Global;assembly=ZTAppFrameword.Template"
@@ -57,34 +57,13 @@
                         Width="100"
                         VerticalAlignment="Center"
                         FontSize="16"
-                        Text="所属角色" />
-                    <ui:ZTComboBox
-                        Width="600"
-                        CornerRadius="2"
-                        Cursor="Hand"
-                        DisplayMemberPath="Name"
-                        ItemsSource="{Binding RoleList}"
-                        SelectedItem="{Binding SelectedItem}"
-                        Watermark="请选择角色名称" />
-                </StackPanel>
-                <StackPanel
-                    Width="700"
-                    Height=" 40"
-                    Margin="0,10,0,0"
-                    Orientation="Horizontal">
-                    <TextBlock
-                        Width="100"
-                        VerticalAlignment="Center"
-                        FontSize="16"
-                        Text="角色名称" />
+                        Text="岗位编号" />
                     <ui:ZTTextBox
                         Width="600"
                         VerticalContentAlignment="Center"
                         Text="{Binding RoleModel.Name}"
-                        Watermark="请输入角色名称" />
-
+                        Watermark="请输入岗位编号" />
                 </StackPanel>
-
                 <StackPanel
                     Width="700"
                     Height=" 40"
@@ -94,34 +73,16 @@
                         Width="100"
                         VerticalAlignment="Center"
                         FontSize="16"
-                        Text="是否超管" />
-                    <ui:ZTCheckBox
-                        Width="200"
+                        Text="岗位名称" />
+                    <ui:ZTTextBox
+                        Width="600"
                         VerticalContentAlignment="Center"
-                        CheckBoxStyle="Switch2"
-                        CheckedBackground="#409eff"
-                        Content="如果是超管不允许删除"
-                        Foreground="#409eff"
-                        IsChecked="{Binding RoleModel.IsSystem}" />
-                    <TextBlock
-                        Width="100"
-                        Margin="10,0,0,0"
-                        VerticalAlignment="Center"
-                        FontSize="16"
-                        Text="状态" />
-                    <ui:ZTRadioButton
-                        CheckedBackground="#409eff"
-                        Command="{Binding StatusChanageCommand}"
-                        CommandParameter="True"
-                        Content="正常"
-                        IsChecked="True" />
-                    <ui:ZTRadioButton
-                        Margin="20,0,0,0"
-                        CheckedBackground="#409eff"
-                        Command="{Binding StatusChanageCommand}"
-                        CommandParameter="False"
-                        Content="停用" />
+                        Text="{Binding RoleModel.Name}"
+                        Watermark="请输入岗位名称" />
+
                 </StackPanel>
+
+
 
 
 
@@ -151,6 +112,32 @@
                         FontSize="16"
                         Text="{Binding ElementName=SortSlider, Path=Value}" />
                 </StackPanel>
+
+                <StackPanel
+                    Width="700"
+                    Height="40"
+                    Margin="0,10,0,0"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Width="100"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Text="状态" />
+                    <ui:ZTRadioButton
+                        CheckedBackground="#409eff"
+                        Command="{Binding StatusChanageCommand}"
+                        CommandParameter="True"
+                        Content="正常"
+                        IsChecked="True" />
+                    <ui:ZTRadioButton
+                        Margin="20,0,0,0"
+                        CheckedBackground="#409eff"
+                        Command="{Binding StatusChanageCommand}"
+                        CommandParameter="False"
+                        Content="停用" />
+                </StackPanel>
+
+
                 <StackPanel
                     Width="700"
                     Height="80"
@@ -160,7 +147,7 @@
                         Width="100"
                         VerticalAlignment="Center"
                         FontSize="16"
-                        Text="多行文本" />
+                        Text="备注" />
 
                     <ui:ZTTextBox
                         Width="600"

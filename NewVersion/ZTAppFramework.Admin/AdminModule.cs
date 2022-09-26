@@ -59,15 +59,13 @@ namespace ZTAppFramework.Admin
             services.RegisterForNavigation<UserEditPasswordView, UserEditPasswordViewModel>(AppView.UserEditPasswordName);
             services.RegisterForNavigation<UserNoticSettingsView, UserNoticSettingsViewModel>(AppView.UserNoticSettingsName);
             services.RegisterForNavigation<RoleView, RoleViewModel>(AppView.RoleName);
-
-            
-
-
+            services.RegisterForNavigation<SysPostView, SysPostViewModel>(AppView.SysPostName);
 
             ZTDialog.RegisterDialogWindow<DialogWindowBase>("window");
             ZTDialog.RegisterDialog<DialogMessageView>(AppView.DialogMessageName);
             ZTDialog.RegisterDialog<OrganizeModifyView>(AppView.OrganizeModifyName);
             ZTDialog.RegisterDialog<RoleModifyView>(AppView.RoleModifyName);
+            ZTDialog.RegisterDialog<SysPostModifyView>(AppView.SysPostModifyName);
         }
     }
 }

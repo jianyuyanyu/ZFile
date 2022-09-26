@@ -84,7 +84,9 @@ namespace ZTAppFramework.Admin.ViewModels
                             _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.OrganizeName); break;
                         case "角色管理":
                             _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.RoleName); break;
-                            
+                        case "职位管理":
+                            _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.SysPostName); break;
+
                         default:
                             _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.UserPerferfabName); break;
                       

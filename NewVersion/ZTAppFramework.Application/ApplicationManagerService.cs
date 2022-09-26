@@ -25,6 +25,8 @@ namespace ZTAppFramework.Application
             services.RegisterScoped<CaptchaService>();
             services.RegisterScoped<OperatorService>();
             services.RegisterScoped<RoleService>();
+            services.RegisterScoped<SysPostService>();
+            
         }
       
     }

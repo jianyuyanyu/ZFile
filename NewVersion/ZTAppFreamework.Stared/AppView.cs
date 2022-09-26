@@ -1,13 +1,10 @@
 ﻿namespace ZTAppFreamework.Stared
 {
-
     /// <summary>
     /// 页面Name管理
     /// </summary>
     public static class AppView
     {
-
-
         public const string LoginName = "LoginMnagerView";//登入Dialog页面
 
         public const string MainName = "MainMnagerView";//主页管理页面
@@ -25,6 +22,10 @@
         public const string RoleName = "RoleView";//角色管理页面
 
         public const string RoleModifyName = "RoleModifyView";//角色Edit页面
+
+        public const string SysPostName = "SysPostView";//职位管理
+
+        public const string SysPostModifyName = "SysPostModifView";//职位管理Edit页面
 
         public const string WorkbenchName = "WorkbenchView";//工作台
 
