@@ -22,6 +22,9 @@
 
         public const string OrganizeModifyName = "OrganizeModifyDialogView";
 
+        public const string RoleName = "RoleView";//角色管理页面
+
+        public const string RoleModifyName = "RoleModifyView";//角色Edit页面
 
         public const string WorkbenchName = "WorkbenchView";//工作台
 

@@ -2,33 +2,32 @@
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ZTAppFrameword.Template.Global;
 using ZTAppFramework.Admin.Model.Sys;
+using ZTAppFramework.Admin.Model.Sys.Role;
 using ZTAppFramework.Application.Service;
 using ZTAppFreamework.Stared;
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
 {
-
-    /// <summary>
-    /// 组织页面VM
-    /// </summary>
-    public class OrganizeViewModel : NavigationViewModel
+    public class RoleViewModel : NavigationViewModel
     {
+
         #region UI
-        private List<SysOrganizeModel> _OrganizesList;
-        public List<SysOrganizeModel> OrganizesList
+        private List<SysRoleModel> _RoleList;
+        public List<SysRoleModel> RoleList
         {
-            get { return _OrganizesList; }
-            set { SetProperty(ref _OrganizesList, value); }
+            get { return _RoleList; }
+            set { SetProperty(ref _RoleList, value); }
         }
 
-        private List<SysOrganizeModel> _SelectList = new List<SysOrganizeModel>();
-        public List<SysOrganizeModel> SelectList
+        private List<SysRoleModel> _SelectList = new List<SysRoleModel>();
+        public List<SysRoleModel> SelectList
         {
             get { return _SelectList; }
             set { SetProperty(ref _SelectList, value); }
@@ -51,24 +50,25 @@ namespace ZTAppFramework.Admin.ViewModels
 
         public DelegateCommand QueryCommand { get; }
 
-        public DelegateCommand<SysOrganizeModel> ModifCommand { get; }
+        public DelegateCommand<SysRoleModel> ModifCommand { get; }
 
-        public DelegateCommand<SysOrganizeModel> DeleteSeifCommand { get; }
+        public DelegateCommand<SysRoleModel> DeleteSeifCommand { get; }
 
-        public DelegateCommand<SysOrganizeModel> CheckedCommand { get; }
+        public DelegateCommand<SysRoleModel> CheckedCommand { get; }
 
-        public DelegateCommand<SysOrganizeModel> UncheckedCommand { get; }
+        public DelegateCommand<SysRoleModel> UncheckedCommand { get; }
 
 
         #endregion
 
         #region Service
-        private readonly OrganizeService _organizeService;
+        private readonly RoleService _roleService;
         #endregion
 
-        public OrganizeViewModel(OrganizeService organizeService)
+
+        public RoleViewModel(RoleService roleService)
         {
-            _organizeService = organizeService;
+            _roleService=roleService;
             AddCommand = new(Add);
             ModifCommand = new(Modif);
             DeleteSeifCommand = new(DeleteSeif);
@@ -81,18 +81,19 @@ namespace ZTAppFramework.Admin.ViewModels
         }
 
         #region Event
+
         private async void Query()
         {
             await SetBusyAsync(async () =>
             {
-                await GetOrganizeInfo(QueryStr);
+                await GetRoleInfo(QueryStr);
             });
 
         }
 
         void UnCheckedAll()
         {
-            foreach (var item in OrganizesList)
+            foreach (var item in RoleList)
             {
                 item.IsSelected = false;
                 SelectList.Remove(item);
@@ -100,15 +101,15 @@ namespace ZTAppFramework.Admin.ViewModels
         }
         void CheckedAll()
         {
-            foreach (var item in OrganizesList)
+            foreach (var item in RoleList)
             {
 
                 item.IsSelected = true;
                 SelectList.Add(item);
             }
         }
-        void Unchecked(SysOrganizeModel Param) => SelectList.Remove(Param);
-        void Checked(SysOrganizeModel Param) => SelectList.Add(Param);
+        void Unchecked(SysRoleModel Param) => SelectList.Remove(Param);
+        void Checked(SysRoleModel Param) => SelectList.Add(Param);
         void DeleteSelect()
         {
             if (SelectList.Count <= 0)
@@ -123,7 +124,7 @@ namespace ZTAppFramework.Admin.ViewModels
                     List<string> strings = new List<string>();
                     foreach (var item in SelectList)
                     {
-                        var rd = OrganizesList.Where(x => x.ParentIdList.Contains(item.Id.ToString()));
+                        var rd = RoleList.Where(x => x.ParentIdList.Contains(item.Id.ToString()));
                         if (rd != null)
                         {
                             foreach (var Panentitem in rd)
@@ -131,34 +132,34 @@ namespace ZTAppFramework.Admin.ViewModels
                                 strings.Add(Panentitem.Id.ToString());
                             }
                         }
-                          
+
                         strings.Add(item.Id.ToString());
                     }
                     string DelIdStr = string.Join(',', strings);
-                    var r = await _organizeService.Delete(DelIdStr);
+                    var r = await _roleService.Delete(DelIdStr);
                     if (r.Success)
                     {
                         Show("消息", "删除成功!");
-                        await GetOrganizeInfo();
+                        await GetRoleInfo();
                         return;
                     }
                 }
             }, System.Windows.MessageBoxButton.YesNo);
         }
-        void Modif(SysOrganizeModel Param)
+        void Modif(SysRoleModel Param)
         {
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "编辑");
             dialogParameter.Add("Param", Param);
-            ZTDialog.ShowDialogWindow(AppView.OrganizeModifyName, dialogParameter, async x =>
+            ZTDialog.ShowDialogWindow(AppView.RoleModifyName, dialogParameter, async x =>
             {
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {
-                    await GetOrganizeInfo();
+                    await GetRoleInfo();
                 }
             });
         }
-        void DeleteSeif(SysOrganizeModel Param)
+        void DeleteSeif(SysRoleModel Param)
         {
             ShowDialog("提示", "确定要删除码", async x =>
             {
@@ -166,7 +167,7 @@ namespace ZTAppFramework.Admin.ViewModels
                 {
 
                     List<string> strings = new List<string>();
-                    var rd = OrganizesList.Where(x => x.ParentIdList.Contains(Param.Id.ToString()));
+                    var rd = RoleList.Where(x => x.ParentIdList.Contains(Param.Id.ToString()));
                     if (rd != null)
                     {
                         foreach (var item in rd)
@@ -174,11 +175,11 @@ namespace ZTAppFramework.Admin.ViewModels
                     }
                     strings.Add(Param.Id.ToString());
                     string DelIdStr = string.Join(',', strings);
-                    var r = await _organizeService.Delete(DelIdStr);
+                    var r = await _roleService.Delete(DelIdStr);
                     if (r.Success)
                     {
                         Show("消息", "删除成功!");
-                        await GetOrganizeInfo();
+                        await GetRoleInfo();
                         return;
                     }
                 }
@@ -188,33 +189,33 @@ namespace ZTAppFramework.Admin.ViewModels
         {
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "添加");
-            ZTDialog.ShowDialogWindow(AppView.OrganizeModifyName, dialogParameter, async x =>
+            ZTDialog.ShowDialogWindow(AppView.RoleModifyName, dialogParameter, async x =>
             {
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {
 
-                    await GetOrganizeInfo();
+                    await GetRoleInfo();
                 }
             });
         }
-        async Task GetOrganizeInfo(string Query = "")
+
+
+        async Task GetRoleInfo(string Query = "")
         {
-            var r = await _organizeService.GetList(Query);
+            var r = await _roleService.GetList(Query);
             if (r.Success)
-                OrganizesList = Map<List<SysOrganizeModel>>(r.data).OrderBy(X => X.Sort).ToList();
+                RoleList = Map<List<SysRoleModel>>(r.data).OrderBy(X => X.Sort).ToList();
             SelectList.Clear();
         }
-
         #endregion
 
         #region Override
         public override async Task OnNavigatedToAsync(NavigationContext navigationContext = null)
         {
-            await GetOrganizeInfo();
+            await GetRoleInfo();
         }
 
 
         #endregion
-
     }
 }

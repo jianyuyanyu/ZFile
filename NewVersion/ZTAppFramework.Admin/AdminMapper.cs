@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Device;
 using ZTAppFramework.Admin.Model.Menus;
 using ZTAppFramework.Admin.Model.Sys;
+using ZTAppFramework.Admin.Model.Sys.Role;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramewrok.Application.Stared;
 using ZTAppFramewrok.Application.Stared.Operator.Parm;
@@ -30,7 +31,7 @@ namespace ZTAppFramework.Admin
             CreateMap<UserEditPwdModel, OperatroPasswordParam>().ReverseMap();
             CreateMap<SysOrganizeModel, SysOrganizeDto>().ReverseMap();
             CreateMap<SysOrganizeModel, SysOrganizeParm>().ReverseMap();
-            
+            CreateMap<SysRoleModel, SysRoleDto>().ReverseMap();
         }
     }
 }

@@ -28,8 +28,20 @@ namespace ZTAppFramework.Admin.ViewModels
             get { return _SelectedItem; }
             set
             {
-                if (SetProperty(ref _SelectedItem, value))
-                    OrganizeModel.ParentIdList = value.ParentIdList;
+                if (SetProperty(ref _SelectedItem, value) && value != null)
+                {
+                
+                    OrganizeModel.ParentIdList = OrganizeModel.ParentIdList ?? new List<string>();
+                    OrganizeModel.ParentIdList.Clear();
+                    foreach (var item in value.ParentIdList)
+                    {
+                        OrganizeModel.ParentIdList.Add(item);
+                    }
+                    if (!OrganizeModel.ParentIdList.Contains(value.Id.ToString()))
+                        OrganizeModel.ParentIdList.Add(value.Id.ToString());
+                    OrganizeModel.ParentId=value.Id;
+                }
+
             }
         }
 
@@ -65,7 +77,7 @@ namespace ZTAppFramework.Admin.ViewModels
         #region Event
         async Task GetOrganizeInfo(string Query = "")
         {
-            var r = await _organizeService.GetOrganizeList(Query);
+            var r = await _organizeService.GetList(Query);
             if (r.Success)
                 OrganizesList = Map<List<SysOrganizeModel>>(r.data);
             foreach (var item in OrganizesList)
@@ -95,7 +107,8 @@ namespace ZTAppFramework.Admin.ViewModels
 
         async Task<bool> Add()
         {
-
+            if (OrganizeModel.ParentIdList.Count() > 1)
+                OrganizeModel.ParentIdList.Remove("0");
             var Version = Verify(Map<SysOrganizeParm>(OrganizeModel));
             if (!Version.IsValid)
             {
@@ -104,7 +117,7 @@ namespace ZTAppFramework.Admin.ViewModels
             }
 
 
-            var r = await _organizeService.AddOrganize(Map<SysOrganizeParm>(OrganizeModel));
+            var r = await _organizeService.Add(Map<SysOrganizeParm>(OrganizeModel));
             if (r.Success)
             {
                 Show("提示", r.Message);
@@ -114,7 +127,7 @@ namespace ZTAppFramework.Admin.ViewModels
         }
         async Task<bool> Modif()
         {
-            var r = await _organizeService.ModifOrganize(Map<SysOrganizeDto>(OrganizeModel));
+            var r = await _organizeService.Modif(Map<SysOrganizeDto>(OrganizeModel));
             if (r.Success)
             {
                 Show("提示", r.Message);
@@ -166,9 +179,9 @@ namespace ZTAppFramework.Admin.ViewModels
             else
             {
                 OrganizeModel = DeepCopy<SysOrganizeModel>(Model);
-                SelectedItem= OrganizesList.FirstOrDefault(x => x.Id == OrganizeModel.ParentId);
+                SelectedItem = OrganizesList.FirstOrDefault(x => x.Id == OrganizeModel.ParentId);
             }
-           
+
         }
 
         #endregion

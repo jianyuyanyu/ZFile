@@ -12,7 +12,7 @@ namespace ZTAppFramework.Application
     ///********************************************
     /// 创建人        ：  ZT
     /// 创建时间    ：  2022/9/6 10:50:00 
-    /// Description   ：  
+    /// Description   ：  服务管理
     ///********************************************/
     /// </summary>
     public static class ApplicationManagerService
@@ -24,7 +24,7 @@ namespace ZTAppFramework.Application
             services.RegisterScoped<OrganizeService>();
             services.RegisterScoped<CaptchaService>();
             services.RegisterScoped<OperatorService>();
-            
+            services.RegisterScoped<RoleService>();
         }
       
     }
