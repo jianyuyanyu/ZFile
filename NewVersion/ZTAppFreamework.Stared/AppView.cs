@@ -27,6 +27,10 @@
 
         public const string SysPostModifyName = "SysPostModifView";//职位管理Edit页面
 
+        public const string SysAdminName = "SysAdminView";//用户管理
+
+        public const string SysAdminModifyName = "SysAdminModifyView";//用户管理Edit页面
+
         public const string WorkbenchName = "WorkbenchView";//工作台
 
         public const string UserCenterName = "UserCenterView";//用户中心

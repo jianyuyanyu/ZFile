@@ -26,7 +26,10 @@ namespace ZTAppFramework.Application
             services.RegisterScoped<OperatorService>();
             services.RegisterScoped<RoleService>();
             services.RegisterScoped<SysPostService>();
+            services.RegisterScoped<SysAdminService>();
             
+
+
         }
       
     }
