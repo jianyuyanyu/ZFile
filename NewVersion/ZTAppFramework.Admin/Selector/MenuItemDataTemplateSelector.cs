@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using ZTAppFramework.Admin.Model.Menus;
+using ZTAppFramework.Admin.Model.Sys;
 
 namespace ZTAppFramework.Admin.Selector
 {
@@ -24,8 +25,8 @@ namespace ZTAppFramework.Admin.Selector
             if (item != null)
             {
                 var fe = container as FrameworkElement;
-                MenuModel menuItem = item as MenuModel;
-                if (menuItem.Childer.Count()>0)
+                SysRoleModel menuItem = item as SysRoleModel;
+                if (menuItem.Childer!=null)
                     return fe.FindResource("MenuItemsDataTemplate") as DataTemplate;
                 else
                     return fe.FindResource("MenuItemDataTemplate") as DataTemplate;

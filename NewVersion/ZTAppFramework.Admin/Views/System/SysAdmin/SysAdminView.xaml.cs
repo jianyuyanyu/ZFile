@@ -10,6 +10,18 @@ namespace ZTAppFramework.Admin.Views
         public SysAdminView()
         {
             InitializeComponent();
+            
+        }
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+            ScrollViewer scrollviewer = sender as ScrollViewer;
+            if (e.Delta > 0)
+                scrollviewer.LineLeft();
+            else
+                scrollviewer.LineRight();
+            e.Handled = true;
+
         }
     }
 }

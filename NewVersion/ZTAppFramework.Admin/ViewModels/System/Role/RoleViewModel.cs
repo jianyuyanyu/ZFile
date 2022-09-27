@@ -198,7 +198,6 @@ namespace ZTAppFramework.Admin.ViewModels
             });
         }
 
-
         async Task GetRoleInfo(string Query = "")
         {
             var r = await _roleService.GetList(Query);

@@ -1,9 +1,440 @@
-﻿<UserControl x:Class="ZTAppFramework.Admin.Views.SysAdminView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:prism="http://prismlibrary.com/"             
-             prism:ViewModelLocator.AutoWireViewModel="True">
+﻿<UserControl
+    x:Class="ZTAppFramework.Admin.Views.SysAdminView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Selector="clr-namespace:ZTAppFramework.Admin.Selector"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:ZTAppFrameword.Template.Control;assembly=ZTAppFrameword.Template"
+    prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ItemsControl
+            Grid.RowSpan="3"
+            ItemTemplateSelector="{DynamicResource MenuItemSelector}"
+            ItemsSource="{Binding SysRoles}">
+            <ItemsControl.Resources>
+                <Selector:MenuItemDataTemplateSelector x:Key="MenuItemSelector" />
+                <DataTemplate x:Key="MenuItemsDataTemplate">
+                    <ui:ZTNavExpander
+                        Margin="0"
+                        Padding="0,0,10,0"
+                        IsExpanded="True">
+                        <ui:ZTNavExpander.Header>
+                            <RadioButton
+                                Width="200"
+                                Height="40"
+                                Padding="10,0"
+                                Content="{Binding Name}"
+                                FocusVisualStyle="{x:Null}"
+                                Foreground="Black"
+                                GroupName="Item"
+                                IsChecked="{Binding IsSelected}">
+                                <RadioButton.Template>
+                                    <ControlTemplate TargetType="RadioButton">
+                                        <Grid>
+                                            <Border x:Name="bg" Background="Transparent" />
+                                            <Grid
+                                                x:Name="line"
+                                                Width="5"
+                                                HorizontalAlignment="Left"
+                                                Background="{StaticResource Green}"
+                                                Opacity="0" />
+                                            <ContentPresenter
+                                                x:Name="dataContent"
+                                                Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                IsHitTestVisible="True"
+                                                Opacity="0.7" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetName="line"
+                                                                Storyboard.TargetProperty="Opacity"
+                                                                To="1"
+                                                                Duration="0:0:0.3" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetName="line"
+                                                                Storyboard.TargetProperty="Opacity"
+                                                                To="0"
+                                                                Duration="0:0:0.3" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                            <Trigger Property="IsChecked" Value="true">
+                                                <Setter TargetName="bg" Property="Background" Value="{StaticResource Green}" />
+                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </RadioButton.Template>
+                            </RadioButton>
+                        </ui:ZTNavExpander.Header>
+                        <ItemsControl ItemTemplateSelector="{DynamicResource MenuItemSelector}" ItemsSource="{Binding Childer}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ui:ZTNavExpander>
+                </DataTemplate>
+                <DataTemplate x:Key="MenuItemDataTemplate">
+                    <RadioButton
+                        Height="40"
+                        Padding="20,0"
+                        Content="{Binding Name}"
+                        FocusVisualStyle="{x:Null}"
+                        Foreground="Black"
+                        GroupName="Item"
+                        IsChecked="{Binding IsSelected}">
+                        <RadioButton.Template>
+                            <ControlTemplate TargetType="RadioButton">
+                                <Grid>
+                                    <Border x:Name="bg" Background="Transparent" />
+                                    <Grid
+                                        x:Name="line"
+                                        Width="5"
+                                        HorizontalAlignment="Left"
+                                        Background="{StaticResource Green}"
+                                        Opacity="0" />
+                                    <ContentPresenter
+                                        x:Name="dataContent"
+                                        Margin="{TemplateBinding Padding}"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        IsHitTestVisible="True"
+                                        Opacity="0.7" />
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="line"
+                                                        Storyboard.TargetProperty="Opacity"
+                                                        To="1"
+                                                        Duration="0:0:0.3" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="line"
+                                                        Storyboard.TargetProperty="Opacity"
+                                                        To="0"
+                                                        Duration="0:0:0.3" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                    </Trigger>
+                                    <Trigger Property="IsChecked" Value="true">
+                                        <Setter TargetName="bg" Property="Background" Value="{StaticResource Green}" />
+                                        <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                        <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </RadioButton.Template>
+                    </RadioButton>
+                </DataTemplate>
+            </ItemsControl.Resources>
+        </ItemsControl>
+
+        <Border
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            BorderBrush="LightGray"
+            BorderThickness="0.5" />
+        <Grid Grid.Column="1" Grid.ColumnSpan="2">
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <ui:ZTButton
+                    Width="50"
+                    Background="#409eff"
+                    Command="{Binding AddCommand}"
+                    Content="&#xe620;"
+                    Cursor="Hand"
+                    FontFamily="{StaticResource FontAwesome}"
+                    HoverBackground="#79bbff"
+                    Type="Normal" />
+                <ui:ZTButton
+                    Width="50"
+                    Margin="5,0"
+                    Background="#fef0f0"
+                    BorderBrush="#fab6b6"
+                    BorderThickness="1"
+                    Command="{Binding DeleteSelectCommand}"
+                    Content="&#xe620;"
+                    Cursor="Hand"
+                    FontFamily="{StaticResource FontAwesome}"
+                    Foreground="#fab6b6"
+                    HoverBackground="#f56c6c"
+                    Type="Normal" />
+            </StackPanel>
+
+            <StackPanel
+                Margin="0,5,50,5"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <ui:ZTTextBox
+                    Width="210"
+                    VerticalContentAlignment="Center"
+                    FontSize="16"
+                    Text="{Binding QueryStr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Watermark="职位名称" />
+                <ui:ZTButton
+                    Width="50"
+                    Margin="10,0"
+                    Background="#409eff"
+                    Command="{Binding QueryCommand}"
+                    Content="&#xe620;"
+                    Cursor="Hand"
+                    FontFamily="{StaticResource FontAwesome}"
+                    HoverBackground="#79bbff"
+                    IsLoading="{Binding IsBusy}"
+                    Type="Normal" />
+            </StackPanel>
+        </Grid>
+        <ScrollViewer
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <ui:ZTDataGrid
+                AutoGenerateColumns="False"
+                BorderThickness="1"
+                CanUserAddRows="False"
+                ColumnHeaderHeight="40"
+                DataGridStyle="Standard"
+                IsReadOnly="True"
+                ItemsSource="{Binding SysPostList}">
+                <ui:ZTDataGrid.Columns>
+                    <DataGridTemplateColumn MinWidth="50" MaxWidth="100">
+                        <DataGridTemplateColumn.Header>
+                            <ui:ZTCheckBox
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                CheckedBackground="#79bbff"
+                                Cursor="Hand">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.CheckedAllCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid, AncestorLevel=1}}" />
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.UnCheckedAllCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid, AncestorLevel=1}}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </ui:ZTCheckBox>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ui:ZTCheckBox
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    CheckedBackground="#79bbff"
+                                    Cursor="Hand"
+                                    IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Checked">
+                                            <i:InvokeCommandAction Command="{Binding DataContext.CheckedCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid, AncestorLevel=1}}" CommandParameter="{Binding .}" />
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="Unchecked">
+                                            <i:InvokeCommandAction Command="{Binding DataContext.UncheckedCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid, AncestorLevel=1}}" CommandParameter="{Binding .}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ui:ZTCheckBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="头像" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Name}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="姓名" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Number}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn MinWidth="140" MaxWidth="140">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="所属角色" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Margin="15,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Status}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="排序" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Sort}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="性别" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Sort}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn MinWidth="140" MaxWidth="140">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="手机号" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Sort}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="状态" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Sort}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn MinWidth="140" MaxWidth="140">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="创建时间" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding CreateTime, StringFormat=yyyy-MM-dd HH:mm:ss}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTemplateColumn
+                        Width="*"
+                        MinWidth="140"
+                        MaxWidth="140">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="操作" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <ui:ZTButton
+                                        Width="50"
+                                        Height="30"
+                                        Background="#409eff"
+                                        Command="{Binding DataContext.ModifCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid, AncestorLevel=1}}"
+                                        CommandParameter="{Binding .}"
+                                        Content="&#xe620;"
+                                        Cursor="Hand"
+                                        FontFamily="{StaticResource FontAwesome}"
+                                        HoverBackground="#79bbff"
+                                        Type="Normal" />
+                                    <ui:ZTButton
+                                        Width="50"
+                                        Height="30"
+                                        Margin="5,0"
+                                        Background="#fef0f0"
+                                        BorderBrush="#fab6b6"
+                                        BorderThickness="1"
+                                        Command="{Binding DataContext.DeleteSeifCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid, AncestorLevel=1}}"
+                                        CommandParameter="{Binding .}"
+                                        Content="&#xe620;"
+                                        Cursor="Hand"
+                                        FontFamily="{StaticResource FontAwesome}"
+                                        Foreground="#fab6b6"
+                                        HoverBackground="#f56c6c"
+                                        Type="Normal" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                </ui:ZTDataGrid.Columns>
+
+            </ui:ZTDataGrid>
+        </ScrollViewer>
+
     </Grid>
 </UserControl>

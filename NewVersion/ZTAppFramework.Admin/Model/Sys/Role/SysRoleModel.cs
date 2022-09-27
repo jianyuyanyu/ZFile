@@ -162,5 +162,12 @@ namespace ZTAppFramework.Admin.Model.Sys
             get { return _UpdateTime; }
             set { SetProperty(ref _UpdateTime, value); }
         }
+
+        private List<SysRoleModel> _Childer;
+        public List<SysRoleModel> Childer
+        {
+            get { return _Childer; }
+            set { SetProperty(ref _Childer, value); }
+        }
     }
 }
