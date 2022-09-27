@@ -134,7 +134,7 @@ namespace ZTAppFramework.Admin.ViewModels
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "编辑");
             dialogParameter.Add("Param", Param);
-            ZTDialog.ShowDialogWindow(AppView.RoleModifyName, dialogParameter, async x =>
+            ZTDialog.ShowDialogWindow(AppView.SysPostModifyName, dialogParameter, async x =>
             {
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {

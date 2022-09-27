@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ZTAppFramewrok.Application.Stared;
 using ZTAppFramewrok.Application.Stared.Commom;
 using ZTAppFramewrok.Application.Stared.HttpManager;
+using ZTAppFramewrok.Application.Stared.Sys.SysPost.Parm;
 using ZTAppFreamework.Stared.Attributes;
 
 namespace ZTAppFramework.Application.Service
@@ -31,6 +32,42 @@ namespace ZTAppFramework.Application.Service
                 result.Success = true;
                 result.Message = api.message;
                 result.data = api.data;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = api.message;
+            }
+            return result;
+        }
+
+        [ApiUrl("")]
+        public async Task<AppliResult<bool>> Add(SysPostParm Param)
+        {
+            AppliResult<bool> result = new AppliResult<bool>();
+
+            var api = await _apiClinet.PostAsync<bool>(GetEndpoint(), Param);
+            if (api.success&&api.Code==200)
+            {
+                result.Success = true;
+                result.Message = "添加成功";
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = api.message;
+            }
+            return result;
+        }
+
+        public async Task<AppliResult<bool>> Modif(SysPostParm Param)
+        {
+            AppliResult<bool> result = new AppliResult<bool>();
+            var api = await _apiClinet.PutAsync<bool>(GetEndpoint(), Param);
+            if (api.success && api.Code == 200)
+            {
+                result.Success = true;
+                result.Message = "添加成功";
             }
             else
             {

@@ -10,6 +10,7 @@ using ZTAppFramework.Admin.Model.Sys;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramewrok.Application.Stared;
 using ZTAppFramewrok.Application.Stared.Operator.Parm;
+using ZTAppFramewrok.Application.Stared.Sys.SysPost.Parm;
 
 namespace ZTAppFramework.Admin
 {
@@ -33,6 +34,8 @@ namespace ZTAppFramework.Admin
             CreateMap<SysRoleModel, SysRoleDto>().ReverseMap();
             CreateMap<SysRoleModel, SysRoleParm>().ReverseMap();
             CreateMap<SysPostModel, SysPostDto>().ReverseMap();
+            CreateMap<SysPostModel, SysPostParm>().ReverseMap();
+
             
         }
     }

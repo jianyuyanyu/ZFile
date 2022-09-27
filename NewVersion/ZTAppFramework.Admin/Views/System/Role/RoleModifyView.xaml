@@ -114,13 +114,14 @@
                         Command="{Binding StatusChanageCommand}"
                         CommandParameter="True"
                         Content="正常"
-                        IsChecked="True" />
+                        IsChecked="{Binding RoleModel.Status}" />
                     <ui:ZTRadioButton
                         Margin="20,0,0,0"
                         CheckedBackground="#409eff"
                         Command="{Binding StatusChanageCommand}"
                         CommandParameter="False"
-                        Content="停用" />
+                        Content="停用"
+                        IsChecked="{Binding RoleModel.Status, Converter={StaticResource BoolInverseConverter}}" />
                 </StackPanel>
 
 

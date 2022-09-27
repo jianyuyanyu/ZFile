@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Device;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Admin.Validations.Sys;
+using ZTAppFramework.Admin.Validations.Sys.SysPost;
 using ZTAppFramework.Admin.Validations.Users;
 using ZTAppFramewrok.Application.Stared;
+using ZTAppFramewrok.Application.Stared.Sys.SysPost.Parm;
 using ZTAppFreamework.Stared.Validations;
 
 namespace ZTAppFramework.Admin
@@ -35,6 +37,7 @@ namespace ZTAppFramework.Admin
             services.RegisterScoped<IValidator<UserEditPwdModel>, UserEditPwdValidator>();
             services.RegisterScoped<IValidator<SysOrganizeParm>, SysOrganizeParmValidator>();
             services.RegisterScoped<IValidator<SysRoleParm>, SysRoleParmValidator>();
+            services.RegisterScoped<IValidator<SysPostParm>, SysPostParmValidator>();
             
 
 

@@ -53,11 +53,11 @@ namespace ZTAppFramework.Application.Service
             return result;
         }
         [ApiUrl("")]
-        public async Task<AppliResult<bool>> Modif(SysRoleParm Parmam)
+        public async Task<AppliResult<bool>> Modif(SysRoleParm Param)
         {
             AppliResult<bool> result = new AppliResult<bool>();
 
-            var api = await _apiClinet.PutAsync<bool>(GetEndpoint(), Parmam);
+            var api = await _apiClinet.PutAsync<bool>(GetEndpoint(), Param);
             if (api.success)
             {
                 if (api.Code == 200)
@@ -81,11 +81,11 @@ namespace ZTAppFramework.Application.Service
         }
 
         [ApiUrl("")]
-        public async Task<AppliResult<bool>> Add(SysRoleParm Parmam)
+        public async Task<AppliResult<bool>> Add(SysRoleParm Param)
         {
             AppliResult<bool> result = new AppliResult<bool>();
 
-            var api = await _apiClinet.PostAsync<bool>(GetEndpoint(), Parmam);
+            var api = await _apiClinet.PostAsync<bool>(GetEndpoint(), Param);
             if (api.success)
             {
                 if (api.Code == 200)

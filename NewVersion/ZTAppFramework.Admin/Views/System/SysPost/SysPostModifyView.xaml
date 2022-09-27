@@ -61,7 +61,7 @@
                     <ui:ZTTextBox
                         Width="600"
                         VerticalContentAlignment="Center"
-                        Text="{Binding RoleModel.Name}"
+                        Text="{Binding PostModel.Number}"
                         Watermark="请输入岗位编号" />
                 </StackPanel>
                 <StackPanel
@@ -77,7 +77,7 @@
                     <ui:ZTTextBox
                         Width="600"
                         VerticalContentAlignment="Center"
-                        Text="{Binding RoleModel.Name}"
+                        Text="{Binding PostModel.Name}"
                         Watermark="请输入岗位名称" />
 
                 </StackPanel>
@@ -106,7 +106,7 @@
                         Minimum="1"
                         TickFrequency="1"
                         TickPlacement="Both"
-                        Value="{Binding RoleModel.Sort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        Value="{Binding PostModel.Sort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <ui:ZTTextBox
                         VerticalContentAlignment="Center"
                         FontSize="16"
@@ -128,13 +128,14 @@
                         Command="{Binding StatusChanageCommand}"
                         CommandParameter="True"
                         Content="正常"
-                        IsChecked="True" />
+                        IsChecked="{Binding PostModel.Status}" />
                     <ui:ZTRadioButton
                         Margin="20,0,0,0"
                         CheckedBackground="#409eff"
                         Command="{Binding StatusChanageCommand}"
                         CommandParameter="False"
-                        Content="停用" />
+                        Content="停用"
+                        IsChecked="{Binding PostModel.Status, Converter={StaticResource BoolInverseConverter}}" />
                 </StackPanel>
 
 
