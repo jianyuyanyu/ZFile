@@ -10,6 +10,7 @@ namespace ZTAppFramework.Admin.Views
         public SysPostView()
         {
             InitializeComponent();
+            
         }
     }
 }

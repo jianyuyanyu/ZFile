@@ -17,162 +17,179 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <ItemsControl
-            Grid.RowSpan="3"
-            ItemTemplateSelector="{DynamicResource MenuItemSelector}"
-            ItemsSource="{Binding SysRoles}">
-            <ItemsControl.Resources>
-                <Selector:MenuItemDataTemplateSelector x:Key="MenuItemSelector" />
-                <DataTemplate x:Key="MenuItemsDataTemplate">
-                    <ui:ZTNavExpander
-                        Margin="0"
-                        Padding="0,0,10,0"
-                        IsExpanded="True">
-                        <ui:ZTNavExpander.Header>
-                            <RadioButton
-                                Width="200"
-                                Height="40"
-                                Padding="10,0"
-                                Content="{Binding Name}"
-                                FocusVisualStyle="{x:Null}"
-                                Foreground="Black"
-                                GroupName="Item"
-                                IsChecked="{Binding IsSelected}">
-                                <RadioButton.Template>
-                                    <ControlTemplate TargetType="RadioButton">
-                                        <Grid>
-                                            <Border x:Name="bg" Background="Transparent" />
-                                            <Grid
-                                                x:Name="line"
-                                                Width="5"
-                                                HorizontalAlignment="Left"
-                                                Background="{StaticResource Green}"
-                                                Opacity="0" />
-                                            <ContentPresenter
-                                                x:Name="dataContent"
-                                                Margin="{TemplateBinding Padding}"
-                                                HorizontalAlignment="Left"
-                                                VerticalAlignment="Center"
-                                                IsHitTestVisible="True"
-                                                Opacity="0.7" />
-                                        </Grid>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="true">
-                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                                <Trigger.EnterActions>
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
-                                                            <DoubleAnimation
-                                                                Storyboard.TargetName="line"
-                                                                Storyboard.TargetProperty="Opacity"
-                                                                To="1"
-                                                                Duration="0:0:0.3" />
-                                                        </Storyboard>
-                                                    </BeginStoryboard>
-                                                </Trigger.EnterActions>
-                                                <Trigger.ExitActions>
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
-                                                            <DoubleAnimation
-                                                                Storyboard.TargetName="line"
-                                                                Storyboard.TargetProperty="Opacity"
-                                                                To="0"
-                                                                Duration="0:0:0.3" />
-                                                        </Storyboard>
-                                                    </BeginStoryboard>
-                                                </Trigger.ExitActions>
-                                            </Trigger>
-                                            <Trigger Property="IsChecked" Value="true">
-                                                <Setter TargetName="bg" Property="Background" Value="{StaticResource Green}" />
-                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                                <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </RadioButton.Template>
-                            </RadioButton>
-                        </ui:ZTNavExpander.Header>
-                        <ItemsControl ItemTemplateSelector="{DynamicResource MenuItemSelector}" ItemsSource="{Binding Childer}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ui:ZTNavExpander>
-                </DataTemplate>
-                <DataTemplate x:Key="MenuItemDataTemplate">
-                    <RadioButton
-                        Height="40"
-                        Padding="20,0"
-                        Content="{Binding Name}"
-                        FocusVisualStyle="{x:Null}"
-                        Foreground="Black"
-                        GroupName="Item"
-                        IsChecked="{Binding IsSelected}">
-                        <RadioButton.Template>
-                            <ControlTemplate TargetType="RadioButton">
-                                <Grid>
-                                    <Border x:Name="bg" Background="Transparent" />
-                                    <Grid
-                                        x:Name="line"
-                                        Width="5"
-                                        HorizontalAlignment="Left"
-                                        Background="{StaticResource Green}"
-                                        Opacity="0" />
-                                    <ContentPresenter
-                                        x:Name="dataContent"
-                                        Margin="{TemplateBinding Padding}"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        IsHitTestVisible="True"
-                                        Opacity="0.7" />
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="true">
-                                        <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                        <Trigger.EnterActions>
-                                            <BeginStoryboard>
-                                                <Storyboard>
-                                                    <DoubleAnimation
-                                                        Storyboard.TargetName="line"
-                                                        Storyboard.TargetProperty="Opacity"
-                                                        To="1"
-                                                        Duration="0:0:0.3" />
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </Trigger.EnterActions>
-                                        <Trigger.ExitActions>
-                                            <BeginStoryboard>
-                                                <Storyboard>
-                                                    <DoubleAnimation
-                                                        Storyboard.TargetName="line"
-                                                        Storyboard.TargetProperty="Opacity"
-                                                        To="0"
-                                                        Duration="0:0:0.3" />
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </Trigger.ExitActions>
-                                    </Trigger>
-                                    <Trigger Property="IsChecked" Value="true">
-                                        <Setter TargetName="bg" Property="Background" Value="{StaticResource Green}" />
-                                        <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                        <Setter TargetName="dataContent" Property="Opacity" Value="1" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </RadioButton.Template>
-                    </RadioButton>
-                </DataTemplate>
-            </ItemsControl.Resources>
-        </ItemsControl>
+
+        <Grid Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <ui:ZTTextBox
+                Width="190"
+                Height="35"
+                Margin="5,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalContentAlignment="Center"
+                Watermark="请输入关键字进行过滤" />
+            <ItemsControl
+                Grid.Row="1"
+                ItemTemplateSelector="{DynamicResource MenuItemSelector}"
+                ItemsSource="{Binding SysRoles}">
+                <ItemsControl.Resources>
+                    <Selector:MenuItemDataTemplateSelector x:Key="MenuItemSelector" />
+                    <DataTemplate x:Key="MenuItemsDataTemplate">
+                        <ui:ZTNavExpander
+                            Margin="0"
+                            Padding="0,0,10,0"
+                            IsExpanded="True">
+                            <ui:ZTNavExpander.Header>
+                                <RadioButton
+                                    Width="200"
+                                    Height="40"
+                                    Padding="10,0"
+                                    Command="{Binding DataContext.QueryParamCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}, AncestorLevel=1}}"
+                                    CommandParameter="{Binding}"
+                                    Content="{Binding Name}"
+                                    FocusVisualStyle="{x:Null}"
+                                    Foreground="Black"
+                                    GroupName="SysadminItem"
+                                    IsChecked="{Binding IsSelected}">
+                                    <RadioButton.Template>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Grid>
+                                                <Border x:Name="bg" Background="Transparent" />
+                                                <Grid
+                                                    x:Name="line"
+                                                    Width="5"
+                                                    HorizontalAlignment="Left"
+                                                    Background="#3E6FF8"
+                                                    Opacity="0" />
+                                                <ContentPresenter
+                                                    x:Name="dataContent"
+                                                    Margin="{TemplateBinding Padding}"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    IsHitTestVisible="True"
+                                                    Opacity="0.7" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation
+                                                                    Storyboard.TargetName="line"
+                                                                    Storyboard.TargetProperty="Opacity"
+                                                                    To="1"
+                                                                    Duration="0:0:0.3" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                    <Trigger.ExitActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation
+                                                                    Storyboard.TargetName="line"
+                                                                    Storyboard.TargetProperty="Opacity"
+                                                                    To="0"
+                                                                    Duration="0:0:0.3" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.ExitActions>
+                                                </Trigger>
+                                                <Trigger Property="IsChecked" Value="true">
+                                                    <Setter TargetName="bg" Property="Background" Value="#3E6FF8" />
+                                                    <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                    <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </RadioButton.Template>
+                                </RadioButton>
+                            </ui:ZTNavExpander.Header>
+                            <ItemsControl ItemTemplateSelector="{DynamicResource MenuItemSelector}" ItemsSource="{Binding Childer}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </ui:ZTNavExpander>
+                    </DataTemplate>
+                    <DataTemplate x:Key="MenuItemDataTemplate">
+                        <RadioButton
+                            Height="40"
+                            Padding="20,0"
+                            Command="{Binding DataContext.QueryParamCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}, AncestorLevel=1}}"
+                            CommandParameter="{Binding}"
+                            Content="{Binding Name}"
+                            FocusVisualStyle="{x:Null}"
+                            Foreground="Black"
+                            GroupName="SysadminItem"
+                            IsChecked="{Binding IsSelected}">
+                            <RadioButton.Template>
+                                <ControlTemplate TargetType="RadioButton">
+                                    <Grid>
+                                        <Border x:Name="bg" Background="Transparent" />
+                                        <Grid
+                                            x:Name="line"
+                                            Width="5"
+                                            HorizontalAlignment="Left"
+                                            Background="#3E6FF8"
+                                            Opacity="0" />
+                                        <ContentPresenter
+                                            x:Name="dataContent"
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            IsHitTestVisible="True"
+                                            Opacity="0.7" />
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetName="line"
+                                                            Storyboard.TargetProperty="Opacity"
+                                                            To="1"
+                                                            Duration="0:0:0.3" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetName="line"
+                                                            Storyboard.TargetProperty="Opacity"
+                                                            To="0"
+                                                            Duration="0:0:0.3" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                        <Trigger Property="IsChecked" Value="true">
+                                            <Setter TargetName="bg" Property="Background" Value="#3E6FF8" />
+                                            <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                            <Setter TargetName="dataContent" Property="Opacity" Value="1" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </RadioButton.Template>
+                        </RadioButton>
+                    </DataTemplate>
+                </ItemsControl.Resources>
+            </ItemsControl>
+        </Grid>
 
         <Border
-            Grid.RowSpan="2"
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
+            Margin="0"
             BorderBrush="LightGray"
             BorderThickness="0.5" />
+
         <Grid Grid.Column="1" Grid.ColumnSpan="2">
             <StackPanel Margin="5" Orientation="Horizontal">
                 <ui:ZTButton
@@ -199,16 +216,13 @@
                     Type="Normal" />
             </StackPanel>
 
-            <StackPanel
-                Margin="0,5,50,5"
-                HorizontalAlignment="Right"
-                Orientation="Horizontal">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <ui:ZTTextBox
                     Width="210"
                     VerticalContentAlignment="Center"
                     FontSize="16"
                     Text="{Binding QueryStr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Watermark="职位名称" />
+                    Watermark="登入账号" />
                 <ui:ZTButton
                     Width="50"
                     Margin="10,0"
@@ -226,16 +240,17 @@
             Grid.Row="1"
             Grid.Column="1"
             Grid.ColumnSpan="2"
+            Margin="0"
             PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"
             ScrollViewer.HorizontalScrollBarVisibility="Auto">
             <ui:ZTDataGrid
                 AutoGenerateColumns="False"
-                BorderThickness="1"
+                BorderThickness="0.5"
                 CanUserAddRows="False"
                 ColumnHeaderHeight="40"
                 DataGridStyle="Standard"
                 IsReadOnly="True"
-                ItemsSource="{Binding SysPostList}">
+                ItemsSource="{Binding SysAdminList}">
                 <ui:ZTDataGrid.Columns>
                     <DataGridTemplateColumn MinWidth="50" MaxWidth="100">
                         <DataGridTemplateColumn.Header>
@@ -275,7 +290,7 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
+                    <!--<DataGridTemplateColumn MinWidth="80" MaxWidth="80">
                         <DataGridTemplateColumn.Header>
                             <TextBlock HorizontalAlignment="Center" Text="头像" />
                         </DataGridTemplateColumn.Header>
@@ -284,10 +299,10 @@
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Name}" />
+                                    Text="{Binding HeadPic}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    </DataGridTemplateColumn>-->
                     <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
                         <DataGridTemplateColumn.Header>
                             <TextBlock HorizontalAlignment="Center" Text="姓名" />
@@ -297,7 +312,7 @@
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Number}" />
+                                    Text="{Binding FullName}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -312,25 +327,13 @@
                                     Margin="15,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Status}" />
+                                    Text="{Binding RoleGroupName}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
 
-                    <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
-                        <DataGridTemplateColumn.Header>
-                            <TextBlock HorizontalAlignment="Center" Text="排序" />
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Text="{Binding Sort}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+
 
                     <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
                         <DataGridTemplateColumn.Header>
@@ -341,7 +344,7 @@
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Sort}" />
+                                    Text="{Binding Sex}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -355,7 +358,7 @@
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Sort}" />
+                                    Text="{Binding Mobile}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -367,9 +370,25 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock
+                                    Margin="15,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Sort}" />
+                                    Text="{Binding Status, Converter={StaticResource StatusToStringConverter}}">
+                                    <TextBlock.Resources>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Status}" Value="True">
+                                                    <Setter Property="Background" Value="#f0f9eb" />
+                                                    <Setter Property="Foreground" Value="Green" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Status}" Value="False">
+                                                    <Setter Property="Background" Value="#fef0f0" />
+                                                    <Setter Property="Foreground" Value="Red" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Resources>
+                                </TextBlock>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -436,5 +455,19 @@
             </ui:ZTDataGrid>
         </ScrollViewer>
 
+        <Border
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0"
+            BorderBrush="LightGray"
+            BorderThickness="0,0.5" />
+
+
+        <Border
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            BorderBrush="LightGray"
+            BorderThickness="0.5" />
     </Grid>
 </UserControl>

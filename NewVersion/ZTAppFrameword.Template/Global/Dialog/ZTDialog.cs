@@ -376,7 +376,6 @@ namespace ZTAppFrameword.Template.Global
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally

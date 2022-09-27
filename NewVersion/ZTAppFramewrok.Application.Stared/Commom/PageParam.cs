@@ -18,6 +18,8 @@ namespace ZTAppFramewrok.Application.Stared
         /// </summary>
         public int Limit { get; set; } = 10;
         public string Key { get; set; }
+
+        public long? Id { get; set; }
     }
 
    

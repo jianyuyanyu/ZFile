@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Documents;
 using ZTAppFrameword.Template.Global;
 using ZTAppFramework.Admin.Model.Sys;
+using ZTAppFramework.Admin.Model.Sys.SysAdmin;
 using ZTAppFramework.Application.Service;
+using ZTAppFramewrok.Application.Stared;
 using ZTAppFreamework.Stared;
 using ZTAppFreamework.Stared.ViewModels;
 
@@ -18,22 +20,22 @@ namespace ZTAppFramework.Admin.ViewModels
     public class SysAdminViewModel : NavigationViewModel
     {
         #region UI
-        private List<SysPostModel> _SysAdminList;
-        public List<SysPostModel> SysAdminList
+        private List<SysAdminModel> _SysAdminList;
+        public List<SysAdminModel> SysAdminList
         {
             get { return _SysAdminList; }
             set { SetProperty(ref _SysAdminList, value); }
         }
 
-        private ObservableCollection<SysRoleModel> _sysRoles=new ObservableCollection<SysRoleModel>();
+        private ObservableCollection<SysRoleModel> _sysRoles = new ObservableCollection<SysRoleModel>();
         public ObservableCollection<SysRoleModel> SysRoles
         {
             get { return _sysRoles; }
             set { SetProperty(ref _sysRoles, value); }
         }
 
-        private List<SysPostModel> _SelectList = new List<SysPostModel>();
-        public List<SysPostModel> SelectList
+        private List<SysAdminModel> _SelectList = new List<SysAdminModel>();
+        public List<SysAdminModel> SelectList
         {
             get { return _SelectList; }
             set { SetProperty(ref _SelectList, value); }
@@ -56,23 +58,23 @@ namespace ZTAppFramework.Admin.ViewModels
 
         public DelegateCommand QueryCommand { get; }
 
-        public DelegateCommand<SysPostModel> ModifCommand { get; }
+        public DelegateCommand<SysAdminModel> ModifCommand { get; }
 
-        public DelegateCommand<SysPostModel> DeleteSeifCommand { get; }
+        public DelegateCommand<SysAdminModel> DeleteSeifCommand { get; }
 
-        public DelegateCommand<SysPostModel> CheckedCommand { get; }
+        public DelegateCommand<SysAdminModel> CheckedCommand { get; }
 
-        public DelegateCommand<SysPostModel> UncheckedCommand { get; }
+        public DelegateCommand<SysAdminModel> UncheckedCommand { get; }
 
-
+        public DelegateCommand<SysRoleModel> QueryParamCommand { get; }
         #endregion
 
         #region Service
-        private readonly SysAdminService _sysAdminService;
+        private readonly AdminService _sysAdminService;
         private readonly RoleService _SysroleService;
         #endregion
 
-        public SysAdminViewModel(RoleService SysroleService, SysAdminService sysAdminService)
+        public SysAdminViewModel(RoleService SysroleService, AdminService sysAdminService)
         {
             _sysAdminService = sysAdminService;
             _SysroleService = SysroleService;
@@ -85,6 +87,16 @@ namespace ZTAppFramework.Admin.ViewModels
             CheckedAllCommand = new(CheckedAll);
             UnCheckedAllCommand = new(UnCheckedAll);
             QueryCommand = new(Query);
+            QueryParamCommand = new DelegateCommand<SysRoleModel>(QueryParam);
+        }
+
+        private async void QueryParam(SysRoleModel Param)
+        {
+            if (Param.Id == 0)
+                await GetListInfo();
+            else
+                await GetListInfo("", Param.Id);
+
         }
 
         #region Event
@@ -100,7 +112,7 @@ namespace ZTAppFramework.Admin.ViewModels
 
         void UnCheckedAll()
         {
-            foreach (var item in SysPostList)
+            foreach (var item in SysAdminList)
             {
                 item.IsSelected = false;
                 SelectList.Remove(item);
@@ -108,15 +120,15 @@ namespace ZTAppFramework.Admin.ViewModels
         }
         void CheckedAll()
         {
-            foreach (var item in SysPostList)
+            foreach (var item in SysAdminList)
             {
 
                 item.IsSelected = true;
                 SelectList.Add(item);
             }
         }
-        void Unchecked(SysPostModel Param) => SelectList.Remove(Param);
-        void Checked(SysPostModel Param) => SelectList.Add(Param);
+        void Unchecked(SysAdminModel Param) => SelectList.Remove(Param);
+        void Checked(SysAdminModel Param) => SelectList.Add(Param);
         void DeleteSelect()
         {
             if (SelectList.Count <= 0)
@@ -139,7 +151,7 @@ namespace ZTAppFramework.Admin.ViewModels
             //    }
             //}, System.Windows.MessageBoxButton.YesNo);
         }
-        void Modif(SysPostModel Param)
+        void Modif(SysAdminModel Param)
         {
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "编辑");
@@ -152,7 +164,7 @@ namespace ZTAppFramework.Admin.ViewModels
                 }
             });
         }
-        void DeleteSeif(SysPostModel Param)
+        void DeleteSeif(SysAdminModel Param)
         {
             //ShowDialog("提示", "确定要删除码", async x =>
             //{
@@ -182,17 +194,22 @@ namespace ZTAppFramework.Admin.ViewModels
             });
         }
 
-        async Task GetListInfo(string Query = "")
+        async Task GetListInfo(string Key = "", long Id = 0)
         {
-            //var r = await _sysAdminService.GetPostList(new ZTAppFramewrok.Application.Stared.PageParam() { Key = Query == "" ? null : Query });
-            //if (r.Success)
-            //{
-            //    SysPostList = Map<List<SysPostModel>>(r.data.Items).OrderBy(X => X.Sort).ToList();
-            //}
+            var r = await _sysAdminService.GetPostList(new ZTAppFramewrok.Application.Stared.PageParam()
+            {
+                Id = Id == 0 ? null : Id,
+                Key = Key == "" ? null : Key
+            });
+
+            if (r.Success)
+            {
+                SysAdminList = Map<List<SysAdminModel>>(r.data.Items);
+            }
 
             SelectList.Clear();
         }
-      
+
         async Task GetSysRoleList()
         {
             SysRoles.Clear();
@@ -209,7 +226,7 @@ namespace ZTAppFramework.Admin.ViewModels
                         info.Childer.Add(item);
                     }
                 }
-                SysRoles.Add(new SysRoleModel() { Name="所有",Id=0});
+                SysRoles.Add(new SysRoleModel() { Name = "所有", Id = 0 });
                 SysRoles.AddRange(list.Where(x => x.ParentId == 0));
                 SysRoles.First().IsSelected = true;
             }

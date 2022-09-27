@@ -9,6 +9,7 @@ using System.Windows.Media.Animation;
 using ZTAppFramework.SqliteCore.Implements;
 using ZTAppFramework.SqliteCore.Models;
 using ZTAppFramewrok.Application.Stared;
+using ZTAppFramewrok.Application.Stared.Commom;
 using ZTAppFramewrok.Application.Stared.HttpManager;
 using ZTAppFreamework.Stared;
 using ZTAppFreamework.Stared.Attributes;
@@ -129,6 +130,26 @@ namespace ZTAppFramework.Application.Service
                     result.Success = true;
                     result.Message = "修改信息成功";
                 }
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = api.message;
+            }
+            return result;
+        }
+
+
+        [ApiUrl("Pages")]
+        public async Task<AppliResult<PageResult<SysAdminDto>>> GetPostList(PageParam pageParam)
+        {
+            AppliResult<PageResult<SysAdminDto>> result = new AppliResult<PageResult<SysAdminDto>>();
+            var api = await _apiClinet.GetAsync<PageResult<SysAdminDto>>(GetEndpoint(), pageParam);
+            if (api.success && api.Code == 200)
+            {
+                result.Success = true;
+                result.Message = api.message;
+                result.data = api.data;
             }
             else
             {

@@ -40,10 +40,7 @@
                     Type="Normal" />
             </StackPanel>
 
-            <StackPanel
-                Margin="0,5,50,5"
-                HorizontalAlignment="Right"
-                Orientation="Horizontal">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <ui:ZTTextBox
                     Width="210"
                     VerticalContentAlignment="Center"
