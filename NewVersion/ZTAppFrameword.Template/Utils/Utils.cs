@@ -51,5 +51,8 @@ namespace ZTAppFrameword.Template.Utils
                 return new DataGridLength(1, DataGridLengthUnitType.Auto);
             }
         }
+
+
+
     }
 }

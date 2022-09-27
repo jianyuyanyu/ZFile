@@ -22,4 +22,5 @@
     <Converter:SwitchToggleMarginConverter x:Key="SwitchToggleMarginConverter" />
     <Converter:HalfConverter x:Key="HalfConverter" />
     <Converter:Minus2Converter x:Key="Minus2Converter" />
+    <Converter:MultiComboBoxIsCheckedConverter x:Key="MultiComboBoxIsCheckedConverter" />
 </ResourceDictionary>

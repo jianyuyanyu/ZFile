@@ -20,5 +20,7 @@
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/DataGridStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/MessageStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/DialogStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/MultiComboBoxStyle.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

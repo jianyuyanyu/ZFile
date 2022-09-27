@@ -161,6 +161,7 @@ namespace ZTAppFramework.Admin.ViewModels
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {
                     await GetListInfo();
+                    SysRoles.First().IsSelected = true;
                 }
             });
         }
@@ -184,12 +185,13 @@ namespace ZTAppFramework.Admin.ViewModels
         {
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "添加");
-            ZTDialog.ShowDialogWindow(AppView.SysPostModifyName, dialogParameter, async x =>
+            ZTDialog.ShowDialogWindow(AppView.SysAdminModifyName, dialogParameter, async x =>
             {
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {
 
                     await GetListInfo();
+                    SysRoles.First().IsSelected = true;
                 }
             });
         }

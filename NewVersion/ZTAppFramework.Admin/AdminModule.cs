@@ -68,6 +68,7 @@ namespace ZTAppFramework.Admin
             ZTDialog.RegisterDialog<OrganizeModifyView>(AppView.OrganizeModifyName);
             ZTDialog.RegisterDialog<RoleModifyView>(AppView.RoleModifyName);
             ZTDialog.RegisterDialog<SysPostModifyView>(AppView.SysPostModifyName);
+            ZTDialog.RegisterDialog<SysAdminModifyView>(AppView.SysAdminModifyName);
         }
     }
 }

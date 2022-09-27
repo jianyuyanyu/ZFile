@@ -24,7 +24,7 @@ namespace ZTAppFramework.Application.Service
         }
 
         [ApiUrl("List")]
-        public async Task<AppliResult<List<SysRoleDto>>> GetList(string Key)
+        public async Task<AppliResult<List<SysRoleDto>>> GetList(string Key="")
         {
             AppliResult<List<SysRoleDto>> result = new AppliResult<List<SysRoleDto>>() ;
 
