@@ -61,7 +61,7 @@ namespace ZTAppFramework.Admin
             services.RegisterForNavigation<RoleView, RoleViewModel>(AppView.RoleName);
             services.RegisterForNavigation<SysPostView, SysPostViewModel>(AppView.SysPostName);
             services.RegisterForNavigation<SysAdminView, SysAdminViewModel>(AppView.SysAdminName);
-
+            services.RegisterForNavigation<SysMenuView, SysMenuViewModel>(AppView.SysMenuName);
 
             ZTDialog.RegisterDialogWindow<DialogWindowBase>("window");
             ZTDialog.RegisterDialog<DialogMessageView>(AppView.DialogMessageName);

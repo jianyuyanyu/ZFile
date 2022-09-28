@@ -31,6 +31,10 @@
 
         public const string SysAdminModifyName = "SysAdminModifyView";//用户管理Edit页面
 
+        public const string SysMenuName = "SysMenuView";//资源管理页面
+
+        public const string SysMenuModifyName = "SysMenuModifyView";//资源管理Edit页面
+
         public const string WorkbenchName = "WorkbenchView";//工作台
 
         public const string UserCenterName = "UserCenterView";//用户中心
