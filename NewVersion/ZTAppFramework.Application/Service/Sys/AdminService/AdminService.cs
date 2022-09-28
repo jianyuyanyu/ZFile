@@ -159,5 +159,65 @@ namespace ZTAppFramework.Application.Service
             return result;
         }
 
+        [ApiUrl("")]
+        public async Task<AppliResult<bool>> Add(SysAdminDto Param)
+        {
+            AppliResult<bool> result = new AppliResult<bool>();
+            var api=await _apiClinet.PostAsync<bool>(GetEndpoint(), Param);
+            if (api.success && api.Code == 200)
+            {
+                result.data = api.data;
+                result.Success = true;
+                result.Message = "添加成功!";
+            }
+            else
+            {
+                result.data = api.data;
+                result.Success = false;
+                result.Message = api.message;
+            }
+            return result;
+        }
+
+        [ApiUrl("")]
+        public async Task<AppliResult<bool>> Modif(SysAdminDto Param)
+        {
+            AppliResult<bool> result = new AppliResult<bool>();
+            var api = await _apiClinet.PutAsync<bool>(GetEndpoint(), Param);
+            if (api.success && api.Code == 200)
+            {
+                result.data = api.data;
+                result.Success = true;
+                result.Message = "修改成功!";
+            }
+            else
+            {
+                result.data = api.data;
+                result.Success = false;
+                result.Message = api.message;
+            }
+            return result;
+        }
+
+
+        [ApiUrl("")]
+        public async Task<AppliResult<bool>> Delete(string Id)
+        {
+            AppliResult<bool> result = new AppliResult<bool>();
+            var api = await _apiClinet.DeleteAsync<bool>(GetEndpoint(), new { Ids = Id });
+            if (api.success && api.Code == 200)
+            {
+                result.Success = true;
+                result.data = api.data;
+                result.Message = api.message;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = api.message;
+            }
+
+            return result;
+        }
     }
 }

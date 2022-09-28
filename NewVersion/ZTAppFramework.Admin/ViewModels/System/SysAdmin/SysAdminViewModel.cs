@@ -136,27 +136,27 @@ namespace ZTAppFramework.Admin.ViewModels
                 Show("消息", "请选择要删除得数据");
                 return;
             }
-            //ShowDialog("提示", $"确定要删除{SelectList.Count()}个数据吗？如果删除项中含有子集将会被一并删除", async x =>
-            //{
-            //    if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
-            //    {
-            //        string DelIdStr = string.Join(',', SelectList.Select(X => X.Id));
-            //        var r = await _sysAdminService.Delete(DelIdStr);
-            //        if (r.Success)
-            //        {
-            //            Show("消息", "删除成功!");
-            //            await GetListInfo();
-            //            return;
-            //        }
-            //    }
-            //}, System.Windows.MessageBoxButton.YesNo);
+            ShowDialog("提示", $"确定要删除{SelectList.Count()}个数据吗？", async x =>
+            {
+                if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
+                {
+                    string DelIdStr = string.Join(',', SelectList.Select(X => X.Id));
+                    var r = await _sysAdminService.Delete(DelIdStr);
+                    if (r.Success)
+                    {
+                        Show("消息", "删除成功!");
+                        await GetListInfo();
+                        return;
+                    }
+                }
+            }, System.Windows.MessageBoxButton.YesNo);
         }
         void Modif(SysAdminModel Param)
         {
             ZTDialogParameter dialogParameter = new ZTDialogParameter();
             dialogParameter.Add("Title", "编辑");
             dialogParameter.Add("Param", Param);
-            ZTDialog.ShowDialogWindow(AppView.SysPostModifyName, dialogParameter, async x =>
+            ZTDialog.ShowDialogWindow(AppView.SysAdminModifyName, dialogParameter, async x =>
             {
                 if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
                 {
@@ -167,19 +167,19 @@ namespace ZTAppFramework.Admin.ViewModels
         }
         void DeleteSeif(SysAdminModel Param)
         {
-            //ShowDialog("提示", "确定要删除码", async x =>
-            //{
-            //    if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
-            //    {
-            //        var r = await _sysAdminService.Delete(Param.Id.ToString());
-            //        if (r.Success)
-            //        {
-            //            Show("消息", "删除成功!");
-            //            await GetListInfo();
-            //            return;
-            //        }
-            //    }
-            //}, System.Windows.MessageBoxButton.YesNo);
+            ShowDialog("提示", "确定要删除码", async x =>
+            {
+                if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
+                {
+                    var r = await _sysAdminService.Delete(Param.Id.ToString());
+                    if (r.Success)
+                    {
+                        Show("消息", "删除成功!");
+                        await GetListInfo();
+                        return;
+                    }
+                }
+            }, System.Windows.MessageBoxButton.YesNo);
         }
         void Add()
         {

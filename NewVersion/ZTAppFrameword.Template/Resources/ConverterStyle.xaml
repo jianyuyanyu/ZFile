@@ -23,4 +23,8 @@
     <Converter:HalfConverter x:Key="HalfConverter" />
     <Converter:Minus2Converter x:Key="Minus2Converter" />
     <Converter:MultiComboBoxIsCheckedConverter x:Key="MultiComboBoxIsCheckedConverter" />
+
+    <!--  sex  -->
+    <Converter:SexBoyInverseConverter x:Key="SexBoyInverseConverter" />
+    <Converter:SexGirlInverseConverter x:Key="SexGirlInverseConverter" />
 </ResourceDictionary>

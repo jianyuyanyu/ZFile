@@ -165,7 +165,6 @@ namespace ZTAppFrameword.Template.Converters
     }
     #endregion
 
-
     #region Minus 2
     internal class Minus2Converter : IValueConverter
     {
@@ -182,4 +181,32 @@ namespace ZTAppFrameword.Template.Converters
 
     #endregion
 
+    #region Sex -> True or False
+    internal class SexBoyInverseConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+
+            return value?.ToString()=="男"?true:false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+
+    internal class SexGirlInverseConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value?.ToString() == "女" ? true : false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+    #endregion
 }

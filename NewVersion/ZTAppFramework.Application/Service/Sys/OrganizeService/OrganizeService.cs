@@ -27,6 +27,7 @@ namespace ZTAppFramework.Application.Service
 
 
         }
+
         [ApiUrl("List")]
         public async Task<AppliResult<List<SysOrganizeDto>>> GetList(string Key)
         {

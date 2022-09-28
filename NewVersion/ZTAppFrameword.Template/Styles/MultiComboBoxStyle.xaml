@@ -21,7 +21,7 @@
         <Setter Property="ShadowColor" Value="#888888" />
         <Setter Property="MaxDropDownHeight" Value="150" />
         <Setter Property="ItemHeight" Value="30" />
-        <Setter Property="MaxTextLength" Value="200" />
+        <Setter Property="MaxTextLength" Value="10" />
         <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True" />
         <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />

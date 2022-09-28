@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Media;
 using ZTAppFrameword.Template.Global;
 
@@ -27,6 +29,7 @@ namespace ZTAppFrameword.Template.Control
         static ZTMultiComboBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ZTMultiComboBox), new FrameworkPropertyMetadata(typeof(ZTMultiComboBox)));
+
         }
         #endregion
         public virtual string GenerateText(IList selectedItems)
@@ -80,7 +83,6 @@ namespace ZTAppFrameword.Template.Control
 
         #region 属性
 
-
         [Bindable(true)]
         public IList MultiSelectedItems
         {
@@ -90,9 +92,17 @@ namespace ZTAppFrameword.Template.Control
 
         // Using a DependencyProperty as the backing store for MultiSelectedItems.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MultiSelectedItemsProperty =
-            DependencyProperty.Register("MultiSelectedItems", typeof(IList), typeof(ZTMultiComboBox), new FrameworkPropertyMetadata(default(IList), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            DependencyProperty.Register("MultiSelectedItems", typeof(IList), typeof(ZTMultiComboBox), new PropertyMetadata(Chanagerlist));
 
-
+        private static void Chanagerlist(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var comboBox = (ZTMultiComboBox)d;
+            if (comboBox.MultiSelectedItems == null) return;
+            comboBox.BeginUpdateSelectedItems();
+            for (int i = 0; i < comboBox.MultiSelectedItems.Count; i++)
+                comboBox.SelectedItems.Add(comboBox.MultiSelectedItems[i]);
+            comboBox.EndUpdateSelectedItems();
+        }
 
         public Brush HoverBorderBrush
         {
@@ -257,6 +267,7 @@ namespace ZTAppFrameword.Template.Control
             Loaded += MultiComboBox_Loaded;
             SizeChanged -= MultiComboBox_SizeChanged;
             SizeChanged += MultiComboBox_SizeChanged;
+
         }
 
         #region Event
@@ -292,7 +303,6 @@ namespace ZTAppFrameword.Template.Control
             UpdateText();
         }
         #endregion
-
 
         #region Function
 
@@ -333,6 +343,7 @@ namespace ZTAppFrameword.Template.Control
             return new ZTMultiComboBoxItem();
         }
 
+
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             if (!IsLoaded)
@@ -342,16 +353,16 @@ namespace ZTAppFrameword.Template.Control
                 //添加用户选中的当前项.
                 foreach (var item in e.AddedItems)
                 {
-                    MultiSelectedItems.Add(item);
+                    if (!MultiSelectedItems.Contains(item))
+                        MultiSelectedItems.Add(item);
                 }
                 //删除用户取消选中的当前项
                 foreach (var item in e.RemovedItems)
                 {
-                    MultiSelectedItems.Remove(item);
+                    if (MultiSelectedItems.Contains(item))
+                        MultiSelectedItems.Remove(item);
                 }
             }
-           
-
             UpdateText();
             base.OnSelectionChanged(e);
         }

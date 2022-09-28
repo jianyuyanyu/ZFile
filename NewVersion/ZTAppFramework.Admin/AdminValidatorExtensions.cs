@@ -6,8 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Device;
+using ZTAppFramework.Admin.Model.Sys.SysAdmin;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Admin.Validations.Sys;
+using ZTAppFramework.Admin.Validations.Sys.SysAdmin;
 using ZTAppFramework.Admin.Validations.Sys.SysPost;
 using ZTAppFramework.Admin.Validations.Users;
 using ZTAppFramewrok.Application.Stared;
@@ -38,8 +40,8 @@ namespace ZTAppFramework.Admin
             services.RegisterScoped<IValidator<SysOrganizeParm>, SysOrganizeParmValidator>();
             services.RegisterScoped<IValidator<SysRoleParm>, SysRoleParmValidator>();
             services.RegisterScoped<IValidator<SysPostParm>, SysPostParmValidator>();
+            services.RegisterScoped<IValidator<SysAdminModel>, SysAdminParmValidator>();
             
-
 
         }
 
