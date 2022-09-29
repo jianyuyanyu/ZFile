@@ -17,6 +17,8 @@ using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using ZTAppFrameword.Template.Control;
 using ZTAppFramework.PictureMarker.Extensions;
+using ZTAppFramework.PictureMarker.Formulas;
+using ZTAppFramework.PictureMarker.Model;
 
 namespace ZTAppFramework.PictureMarker.PictureBasic
 {
@@ -49,41 +51,35 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
 
         #region 屏幕坐标数据
         protected Point mouseUpPoint;
-
         protected Point mouseDownPoint;
-
         protected Point mouseMovePoint;
-
         public MouseButton MouseButtonState;
-
         protected Point lastPoint = new Point(0, 0);
         #endregion
 
         #region 边框数据
-        Path Pre_DrawPaht = new Path();
+        Path DrawPath = new Path();
 
         protected DoubleAnimation ThicknessAnima;
         #endregion
 
         #region 放大缩小
         public double DefaultScaleLevel = -1;
-
         public double ScaleLevel = 1;
-
         public double MaxScaleLeve = 0;
         public double MinScaleLeve = 0;
+
         #endregion
-
         public TextBlock PosinText = new TextBlock();
-
-
         public Point CurrentPoint { get => relativePoint(Mouse.GetPosition(MyCanvas)); }//当前坐标
 
-
+        #region Helepr
+        CircleHeleper CircleHelepr;
+        #endregion
         public PictureBase(Canvas canvas)
         {
+            CircleHelepr = new CircleHeleper();
             MyCanvas = canvas;
-
             MyCanvas.Cursor = Cursors.Cross;
             //滚轮
             MyCanvas.MouseWheel += MyCanvas_MouseWheel;
@@ -97,7 +93,6 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
             MyCanvas.LostFocus += MyCanvas_LostFocus;
             MyCanvas.MouseLeave += MyCanvas_MouseLeave;
             MyCanvas.MouseEnter += MyCanvas_MouseEnter;
-
             InitData();
         }
 
@@ -154,7 +149,7 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
             Canvas.SetZIndex(ImageControl, -1);
             resetPositions();
             reRender();
-          //  FitWindow(true);
+            FitWindow(false);
             MyCanvas.Focus();
             ImageControl.Focusable = true;
             ImageControl.Focus();
@@ -183,10 +178,7 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
                 ImgInfo.CurrentBitmap = bi;
                 ImageControl.Source = bi;
             }
-
         }
-
-
 
         #region MouseEvent
         void MyCanvas_MouseEnter(object sender, MouseEventArgs e)
@@ -208,21 +200,59 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
         {
             mouseMovePoint = e.GetPosition(MyCanvas);
             UpdateTextBox();
+            MouseMove();
+
+            if (IsDrap)
+            {
+                MyCanvas.Cursor = Cursors.ScrollAll;
+                currentTranslate.X += (mouseMovePoint.X - lastPoint.X);
+                currentTranslate.Y += (mouseMovePoint.Y - lastPoint.Y);
+                e.Handled = true;
+                reRender();
+            }
+            lastPoint = mouseMovePoint;
+        }
+
+        protected virtual void MouseMove()
+        {
+
         }
 
         void MyCanvas_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MyCanvas.Cursor = Cursors.Cross;
             mouseUpPoint = e.GetPosition(MyCanvas);
+
+            MouserUp();
+            MyCanvas.Focus();
+            ImageControl.Focusable = true;
+            ImageControl.Focus();
+            IsDrap = false;
+
         }
+
+        protected virtual void MouserUp() {
+
+            CircleData model = null;
+            if (!CircleHelepr.IsMeetCirclMethod())
+                CircleHelepr.AddPoint(relativePoint(mouseUpPoint));
+            else
+                model= CircleHelepr.Start_Compute_Three_Point_Draw_Cirle();
+            if (model != null)
+                MessageBox.Show($"获取圆的参数为X{model.CircleX}.Y:{model.CircleY}半径为:{model.CircleR}");
+        }
+
 
         void MyCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
             mouseDownPoint = e.GetPosition(MyCanvas);
             MouseButtonState = e.ChangedButton;
+            MouseDown();
             lastPoint = mouseDownPoint;
             MyCanvas.Cursor = Cursors.ScrollAll;
         }
+
+        protected virtual void MouseDown() { IsDrap = true; }
 
         void MyCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
         {
@@ -237,6 +267,8 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
             else
                 ScaleLevel /= scaleTimes;
 
+
+
             currentScale.CenterX = 0;// relativePoint( scaleCenter).X * scaleLevel;
             currentScale.CenterY = 0;// relativePoint( scaleCenter).Y * scaleLevel;
 
@@ -245,6 +277,7 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
                 correction = 1 / scaleTimes;
             else
                 correction = scaleTimes;
+
 
             currentTranslate.X += Math.Round(relativePoint(scaleCenter).X, 0) * (bef - ScaleLevel) * correction;
             currentTranslate.Y += Math.Round(relativePoint(scaleCenter).Y, 0) * (bef - ScaleLevel) * correction;
@@ -276,11 +309,8 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
             ThicknessAnima = new DoubleAnimation();
             ThicknessAnima.RepeatBehavior = new RepeatBehavior(0);
             currentScale.CenterX = currentScale.CenterY = 0;
-
             tfGroup.Children.Add(currentScale);
-
             tfGroup.Children.Add(currentTranslate);
-
             MyCanvas.Children.Add(PosinText);
         }
 
@@ -299,6 +329,9 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
         {
             currentScale.ScaleX = ScaleLevel;
             currentScale.ScaleY = ScaleLevel;
+
+            DrawPath.StrokeThickness = 2 / ScaleLevel;
+            DrawPath.RenderTransform = tfGroup;
 
             if (ImageControl != null)
                 ImageControl.RenderTransform = tfGroup;
@@ -329,7 +362,7 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
             if (IsPointInImage(mouseMovePoint))
                 PosinText.Text = $"X:{Convert.ToInt32(CurrentPoint.X)},Y:{Convert.ToInt32(CurrentPoint.Y)}";
             else
-                PosinText.Text = $"已经超出图片坐标X:{Convert.ToInt32(mouseMovePoint.X)},Y:{Convert.ToInt32(mouseMovePoint.Y)}";
+                PosinText.Text = $"已经超出图片坐标X:{Convert.ToInt32(mouseMovePoint.X)}, Y:{Convert.ToInt32(mouseMovePoint.Y)}";
             PosinText.Background = new SolidColorBrush(Colors.Red);
             Canvas.SetLeft(PosinText, mouseMovePoint.X);
             Canvas.SetTop(PosinText, mouseMovePoint.Y + 5);
