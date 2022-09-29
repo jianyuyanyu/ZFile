@@ -9,7 +9,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="220" />
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -17,7 +17,6 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-
         <Grid Grid.RowSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
@@ -184,12 +183,10 @@
                 </ItemsControl.Resources>
             </ItemsControl>
         </Grid>
-
         <Border
             Margin="0"
             BorderBrush="LightGray"
             BorderThickness="0.5" />
-
         <Grid Grid.Column="1" Grid.ColumnSpan="2">
             <StackPanel Margin="5" Orientation="Horizontal">
                 <ui:ZTButton
@@ -454,15 +451,12 @@
 
             </ui:ZTDataGrid>
         </ScrollViewer>
-
         <Border
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Margin="0"
             BorderBrush="LightGray"
             BorderThickness="0,0.5" />
-
-
         <Border
             Grid.RowSpan="2"
             Grid.Column="1"

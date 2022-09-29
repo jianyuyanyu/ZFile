@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Documents;
 using ZTAppFrameword.Template.Global;
 using ZTAppFramework.Admin.Model.Sys;
-using ZTAppFramework.Admin.Model.Sys.SysAdmin;
+
 using ZTAppFramework.Application.Service;
 using ZTAppFramewrok.Application.Stared;
 using ZTAppFreamework.Stared;

@@ -21,6 +21,7 @@
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/MessageStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/DialogStyle.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/MultiComboBoxStyle.xaml" />
-
+        <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/TreeViewStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ZTAppFrameword.Template;component/Styles/TreeViewItemStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

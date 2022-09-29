@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,7 @@ namespace ZTAppFramewrok.Application.Stared
         /// <summary>
         /// 菜单名称
         /// </summary>
-        [Required]
-        [StringLength(30)]
+
         public string Name { get; set; }
 
         /// <summary>
@@ -75,13 +75,13 @@ namespace ZTAppFramewrok.Application.Stared
         /// <summary>
         /// 排序
         /// </summary>
-        [Required]
+      
         public int Sort { get; set; } = 1;
 
         /// <summary>
         /// 状态
         /// </summary>
-        [Required]
+     
         public bool Status { get; set; } = true;
 
         /// <summary>
@@ -93,8 +93,7 @@ namespace ZTAppFramewrok.Application.Stared
         /// <summary>
         /// 菜单类型
         /// </summary>
-        [Required]
-        [StringLength(20)]
+
         public string Types { get; set; }
 
         /// <summary>
@@ -105,7 +104,7 @@ namespace ZTAppFramewrok.Application.Stared
         /// <summary>
         /// 创建时间
         /// </summary>
-        [Required]
+
         public DateTime CreateTime { get; set; } = DateTime.Now;
 
         /// <summary>
@@ -124,7 +123,7 @@ namespace ZTAppFramewrok.Application.Stared
         public string UpdateUser { get; set; }
 
 
-        public List<SysMenuDto> Childer { get; set; }
+        public ObservableCollection<SysMenuDto> Childer { get; set; }
     }
 
 

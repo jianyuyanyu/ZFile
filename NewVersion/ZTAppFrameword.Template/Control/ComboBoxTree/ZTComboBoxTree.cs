@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ZTAppFrameword.Template.Control.ComboBoxTree
+namespace ZTAppFrameword.Template.Control
 {
     [TemplatePart(Name = "ParentPanel", Type = typeof(Grid))]
     [TemplatePart(Name = "ActualTreeView", Type = typeof(TreeView))]

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Device;
-using ZTAppFramework.Admin.Model.Sys.SysAdmin;
+using ZTAppFramework.Admin.Model.Sys;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Admin.Validations.Sys;
 using ZTAppFramework.Admin.Validations.Sys.SysAdmin;

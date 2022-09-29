@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZTAppFramework.Admin.Model.Sys.SysAdmin
+namespace ZTAppFramework.Admin.Model.Sys
 {
     /// <summary>
     ///********************************************

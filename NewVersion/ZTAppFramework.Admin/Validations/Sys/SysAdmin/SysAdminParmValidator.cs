@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZTAppFramework.Admin.Model.Sys.SysAdmin;
+using ZTAppFramework.Admin.Model.Sys;
 using ZTAppFramewrok.Application.Stared;
 
 namespace ZTAppFramework.Admin.Validations.Sys.SysAdmin

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,9 +31,9 @@ namespace ZTAppFramework.Application.Service
         /// </summary>
         /// <returns></returns>
         [ApiUrl("List")]
-        public async Task<AppliResult<List<SysMenuDto>>> GetMenuList()
+        public async Task<AppliResult<ObservableCollection<SysMenuDto>>> GetMenuList()
         {
-            AppliResult<List<SysMenuDto>> res = new AppliResult<List<SysMenuDto>>() { Success = false, Message = "未知异常",data=new List<SysMenuDto>() };
+            AppliResult<ObservableCollection<SysMenuDto>> res = new AppliResult<ObservableCollection<SysMenuDto>>() { Success = false, Message = "未知异常",data=new ObservableCollection<SysMenuDto>() };
 
             var api = await _apiClinet.GetAsync<List<SysMenuDto>>(GetEndpoint(),_apiClinet._accessTokenManager.userInfo.Id);
             if (api.success)
@@ -42,7 +43,7 @@ namespace ZTAppFramework.Application.Service
                     var info= res.data.FirstOrDefault(x => x.Id == item.ParentId);
                     if (info != null)
                     {
-                        if (info.Childer == null) info.Childer = new List<SysMenuDto>();
+                        if (info.Childer == null) info.Childer = new ObservableCollection<SysMenuDto>();
                         info.Childer.Add(item);
                     }
                     else
