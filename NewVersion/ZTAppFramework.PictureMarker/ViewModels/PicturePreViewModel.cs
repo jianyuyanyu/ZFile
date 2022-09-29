@@ -10,7 +10,6 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using ZTAppFrameword.Template.Global;
 using ZTAppFramework.PictureMarker.Extensions;
-using ZTAppFramework.PictureMarker.PictureBasic;
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.PictureMarker.ViewModels
@@ -31,7 +30,7 @@ namespace ZTAppFramework.PictureMarker.ViewModels
         #endregion
 
         #region 属性
-        PictureBase Picture;
+        PictureBasic Picture;
         Canvas MyCanvas;
         string IMGPath;
         #endregion
@@ -40,15 +39,15 @@ namespace ZTAppFramework.PictureMarker.ViewModels
             LoadedCommand = new DelegateCommand<Canvas>(Loaded);
         }
 
-
-
         #region Event
 
         private void Loaded(Canvas Param)
         {
             MyCanvas = Param;
-            Picture = new PictureBase(Param);
-            Picture.LoadImgFile(IMGPath);
+           //var Viewer = new ImageViewer(Param);
+            Picture = new PictureBasic(Param);
+    
+            Picture.LoadImg(IMGPath);
         }
 
         #endregion

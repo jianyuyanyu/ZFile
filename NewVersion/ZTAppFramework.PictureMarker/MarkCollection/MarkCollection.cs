@@ -18,6 +18,7 @@ namespace ZTAppFramework.PictureMarker
     /// </summary>
     public class MarkCollection
     {
+
         /// <summary>
         /// 矩阵集合
         /// </summary>
@@ -27,7 +28,6 @@ namespace ZTAppFramework.PictureMarker
         /// 复杂矩阵
         /// </summary>
         PathGeometry Path = new PathGeometry();
-
         PathGeometry FictPath = new PathGeometry();
         public MarkCollection()
         {

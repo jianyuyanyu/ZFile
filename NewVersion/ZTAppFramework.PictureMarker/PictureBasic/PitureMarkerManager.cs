@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZTAppFramework.PictureMarker.PictureBasic
+namespace ZTAppFramework.PictureMarker
 {
     /// <summary>
     ///********************************************
@@ -15,7 +15,7 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
     /// </summary>
     public class PitureMarkerManager
     {
-         MarkCollection marks;
+        MarkCollection marks;
 
         public PitureMarkerManager()
         {
