@@ -125,7 +125,7 @@ namespace ZTAppFramework.Admin.ViewModels
 
         private void GoPage(MenuModel Parm)
         {
-
+           
             SelectPage = Parm;// MenuList.First().Childer.First();
             SelectPage.IsSelected = true;
 
@@ -145,7 +145,6 @@ namespace ZTAppFramework.Admin.ViewModels
             }
 
 
-         
         }
     }
 }

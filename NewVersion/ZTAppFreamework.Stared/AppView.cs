@@ -48,5 +48,11 @@
         public const string UserEditPasswordName = "UserEditPasswordView";//修改密码界面
 
         public const string UserNoticSettingsName = "UserNoticSettingsView";//通知设置界面
+
+
+        #region 扩展页面
+
+        public const string PicturePreName = "PicturePreView";//通知设置界面
+        #endregion
     }
 }

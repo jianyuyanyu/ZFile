@@ -8,6 +8,7 @@ using Prism.Regions;
 
 using System.Windows;
 using ZTAppFramework.Admin;
+using ZTAppFramework.PictureMarker;
 
 namespace ZTAppFramework
 {
@@ -26,6 +27,7 @@ namespace ZTAppFramework
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule<AdminModule>();
+            moduleCatalog.AddModule<PictureMarkerModule>();
             base.ConfigureModuleCatalog(moduleCatalog);
         }
 

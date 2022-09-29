@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using ZTAppFrameword.Template.Global;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Application.Service;
@@ -64,6 +65,19 @@ namespace ZTAppFramework.Admin.ViewModels
         /// <param name="parm"></param>
         private async void Execute(string parm)
         {
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.Filter = "Files (*.png)|*.png|Files(*.jpg)|*.jpg";
+            if (dialog.ShowDialog() == true)
+            {
+                ZTDialogParameter dialogParameter = new ZTDialogParameter();
+                dialogParameter.Add("Title", "消息");
+                dialogParameter.Add("ImgPath", dialog.FileName);
+                ZTDialog.ShowDialogWindow(AppView.PicturePreName, dialogParameter, "window");
+            }
+        
+            return;
+
+
             switch (parm)
             {
                 case "LoginUser":
