@@ -65,17 +65,17 @@ namespace ZTAppFramework.Admin.ViewModels
         /// <param name="parm"></param>
         private async void Execute(string parm)
         {
-            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
-            dialog.Filter = "Files (*.png)|*.png|Files(*.jpg)|*.jpg";
-            if (dialog.ShowDialog() == true)
-            {
-                ZTDialogParameter dialogParameter = new ZTDialogParameter();
-                dialogParameter.Add("Title", "消息");
-                dialogParameter.Add("ImgPath", dialog.FileName);
-                ZTDialog.ShowDialogWindow(AppView.PicturePreName, dialogParameter, "window");
-            }
+            //Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            //dialog.Filter = "Files (*.png)|*.png|Files(*.jpg)|*.jpg";
+            //if (dialog.ShowDialog() == true)
+            //{
+            //    ZTDialogParameter dialogParameter = new ZTDialogParameter();
+            //    dialogParameter.Add("Title", "消息");
+            //    dialogParameter.Add("ImgPath", dialog.FileName);
+            //    ZTDialog.ShowDialogWindow(AppView.PicturePreName, dialogParameter, "window");
+            //}
         
-            return;
+            //return;
 
 
             switch (parm)
