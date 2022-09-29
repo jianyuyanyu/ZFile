@@ -15,8 +15,6 @@ namespace ZTAppFramework.Admin.ViewModels
 {
     public class SysMenuViewModel : NavigationViewModel
     {
-
-
         #region UI
         private ObservableCollection<SysMenuModel> _MenuTreeList;
         public ObservableCollection<SysMenuModel> MenuTreeList
@@ -25,6 +23,7 @@ namespace ZTAppFramework.Admin.ViewModels
             set { SetProperty(ref _MenuTreeList, value); }
         }
         #endregion
+
         #region Command
         public DelegateCommand<SysMenuModel> CheckedCommand { get; }
         #endregion
@@ -160,6 +159,8 @@ namespace ZTAppFramework.Admin.ViewModels
             }
         }
         #endregion
+
+
         #endregion
 
 
