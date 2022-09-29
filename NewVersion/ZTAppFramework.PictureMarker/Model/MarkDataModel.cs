@@ -34,11 +34,16 @@ namespace ZTAppFramework.PictureMarker.Model
         /// </summary>
         public string Data { get; set; }
 
-
         /// <summary>
         /// 角度
         /// </summary>
         public double Angle { get; set; }
+
+        /// <summary>
+        /// 层级
+        /// </summary>
+        public int Layer { get; set; }
+
 
         Rect rect = Rect.Empty;
 
@@ -98,7 +103,7 @@ namespace ZTAppFramework.PictureMarker.Model
         }
 
         //设置矩阵数据
-        public void SetRectangle(Rect rec, double angle, bool modify)
+        public void SetRectangle(Rect rec, double angle)
         {
 
             rect = rec;

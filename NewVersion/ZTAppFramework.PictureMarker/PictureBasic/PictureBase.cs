@@ -39,14 +39,17 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
 
         public bool IsDrap { get; set; }//是否拖拽
 
+
+
         #region 缩放拖拽控件
-        protected TransformGroup tfGroup = new TransformGroup();
+        public TransformGroup tfGroup = new TransformGroup();
 
-        protected ScaleTransform currentScale = new ScaleTransform();
+        public ScaleTransform currentScale = new ScaleTransform();
 
-        protected TranslateTransform currentTranslate = new TranslateTransform();
+        public TranslateTransform currentTranslate = new TranslateTransform();
 
-        protected TranslateTransform positionTranslate = new TranslateTransform();
+        public TranslateTransform positionTranslate = new TranslateTransform();
+
         #endregion
 
         #region 屏幕坐标数据
@@ -58,9 +61,8 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
         #endregion
 
         #region 边框数据
-        Path DrawPath = new Path();
-
         protected DoubleAnimation ThicknessAnima;
+
         #endregion
 
         #region 放大缩小
@@ -68,12 +70,13 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
         public double ScaleLevel = 1;
         public double MaxScaleLeve = 0;
         public double MinScaleLeve = 0;
-
         #endregion
         public TextBlock PosinText = new TextBlock();
-        public Point CurrentPoint { get => relativePoint(Mouse.GetPosition(MyCanvas)); }//当前坐标
+        //相对图片当前坐标
+        public Point CurrentPoint { get => relativePoint(Mouse.GetPosition(MyCanvas)); }
 
         #region Helepr
+
         CircleHeleper CircleHelepr;
         #endregion
         public PictureBase(Canvas canvas)
@@ -105,7 +108,6 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
             else
                 LoadImage(data.ImgDataTranformBit());
         }
-
         void LoadImage(BitmapImage bitmap, int width = -1, int height = -1)
         {
             ImgInfo.CurrentBitmap = bitmap;
@@ -145,7 +147,7 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
                 ScaleLevel = DefaultScaleLevel;
             }
 
-            GetMaxandMinScaleLeve();
+          
             Canvas.SetZIndex(ImageControl, -1);
             resetPositions();
             reRender();
@@ -154,7 +156,6 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
             ImageControl.Focusable = true;
             ImageControl.Focus();
         }
-
         async void loadAsync(BitmapImage image)
         {
             BitmapImage bi = null;
@@ -178,6 +179,34 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
                 ImgInfo.CurrentBitmap = bi;
                 ImageControl.Source = bi;
             }
+        }
+
+        //放大居住
+        public virtual void FitWindow(bool withMaxScale)
+        {
+            if (ImgInfo.CurrentBitmap == null || MyCanvas == null) return;
+            //if (isEditing) { isEditing = false; }
+            double hr = MyCanvas.ActualWidth / ImgInfo.PictureWidth;
+            double vr = MyCanvas.ActualHeight / ImgInfo.PictureHeight;
+
+            if (withMaxScale)
+                ScaleLevel = Math.Max(hr, vr);
+            else
+                ScaleLevel = Math.Min(hr, vr);
+
+            if (withMaxScale == false)
+            {
+                var scaleWidth = ImgInfo.PictureWidth * ScaleLevel;
+                var scaleHeight = ImgInfo.PictureHeight * ScaleLevel;
+                currentTranslate.X = (MyCanvas.ActualWidth - scaleWidth) / 2;
+                currentTranslate.Y = (MyCanvas.ActualHeight - scaleHeight) / 2;
+            }
+            else
+            {
+                currentTranslate.X = currentTranslate.Y = 0;
+            }
+
+            reRender();
         }
 
         #region MouseEvent
@@ -284,37 +313,19 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
             reRender();
         }
         #endregion
-
-
-        protected Point absolutePoint(Point r)
+        public Point absolutePoint(Point r)
         {
             Point sp = currentScale.Transform(new Point(0, 0));
             Point tp = currentTranslate.Transform(new Point(0, 0));
             return new Point(r.X * ScaleLevel + sp.X + tp.X, r.Y * ScaleLevel + sp.Y + tp.Y);
-
         }
-        protected Point relativePoint(Point p)
+        public Point relativePoint(Point p)
         {
             Point sp = currentScale.Transform(new Point(0, 0));
             Point tp = currentTranslate.Transform(new Point(0, 0));
             return new Point((p.X - sp.X - tp.X) / ScaleLevel, (p.Y - sp.Y - tp.Y) / ScaleLevel);
         }
-
-
-
-
-        void InitData()
-        {
-            ImgInfo = new PictureInfo();
-            ThicknessAnima = new DoubleAnimation();
-            ThicknessAnima.RepeatBehavior = new RepeatBehavior(0);
-            currentScale.CenterX = currentScale.CenterY = 0;
-            tfGroup.Children.Add(currentScale);
-            tfGroup.Children.Add(currentTranslate);
-            MyCanvas.Children.Add(PosinText);
-        }
-
-
+       
         /// <summary>
         /// 刷新坐标
         /// </summary>
@@ -325,20 +336,16 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
             currentTranslate.X = 0;
             currentTranslate.Y = 0;
         }
-        protected virtual void reRender()
+        public virtual void reRender()
         {
             currentScale.ScaleX = ScaleLevel;
             currentScale.ScaleY = ScaleLevel;
-
-            DrawPath.StrokeThickness = 2 / ScaleLevel;
-            DrawPath.RenderTransform = tfGroup;
 
             if (ImageControl != null)
                 ImageControl.RenderTransform = tfGroup;
 
         }
-
-        protected bool IsPointInImage(Point p)
+        public bool IsPointInImage(Point p)
         {
             if (ImgInfo.CurrentBitmap != null)
             {
@@ -350,13 +357,10 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
             }
             return false;
         }
-
-        protected void HideCoordinate()
+        public void HideCoordinate()
         {
             MyCanvas.Cursor = Cursors.Arrow;
         }
-
-
         void UpdateTextBox()
         {
             if (IsPointInImage(mouseMovePoint))
@@ -367,40 +371,15 @@ namespace ZTAppFramework.PictureMarker.PictureBasic
             Canvas.SetLeft(PosinText, mouseMovePoint.X);
             Canvas.SetTop(PosinText, mouseMovePoint.Y + 5);
         }
-
-
-        void GetMaxandMinScaleLeve()
+        void InitData()
         {
-            double hr = MyCanvas.ActualWidth / ImgInfo.PictureWidth;
-            double vr = MyCanvas.ActualHeight / ImgInfo.PictureHeight;
-            MaxScaleLeve = Math.Max(hr, vr);
-            MinScaleLeve = Math.Min(hr, vr);
-        }
-        public virtual void FitWindow(bool withMaxScale)
-        {
-            if (ImgInfo.CurrentBitmap == null || MyCanvas == null) return;
-            //if (isEditing) { isEditing = false; }
-            double hr = MyCanvas.ActualWidth / ImgInfo.PictureWidth;
-            double vr = MyCanvas.ActualHeight / ImgInfo.PictureHeight;
-
-            if (withMaxScale)
-                ScaleLevel = Math.Max(hr, vr);
-            else
-                ScaleLevel = Math.Min(hr, vr);
-
-            if (withMaxScale == false)
-            {
-                var scaleWidth = ImgInfo.PictureWidth * ScaleLevel;
-                var scaleHeight = ImgInfo.PictureHeight * ScaleLevel;
-                currentTranslate.X = (MyCanvas.ActualWidth - scaleWidth) / 2;
-                currentTranslate.Y = (MyCanvas.ActualHeight - scaleHeight) / 2;
-            }
-            else
-            {
-                currentTranslate.X = currentTranslate.Y = 0;
-            }
-
-            reRender();
+            ImgInfo = new PictureInfo();
+            ThicknessAnima = new DoubleAnimation();
+            ThicknessAnima.RepeatBehavior = new RepeatBehavior(0);
+            currentScale.CenterX = currentScale.CenterY = 0;
+            tfGroup.Children.Add(currentScale);
+            tfGroup.Children.Add(currentTranslate);
+            MyCanvas.Children.Add(PosinText);
         }
     }
 }

@@ -22,12 +22,22 @@ namespace ZTAppFramework.PictureMarker
         /// 矩阵集合
         /// </summary>
         Dictionary<MarkData, RectangleGeometry> Marks = new Dictionary<MarkData, RectangleGeometry>();
+
         /// <summary>
         /// 复杂矩阵
         /// </summary>
         PathGeometry Path = new PathGeometry();
-        PathGeometry FictPath = new PathGeometry();
 
+        PathGeometry FictPath = new PathGeometry();
+        public MarkCollection()
+        {
+
+        }
+        public MarkCollection(ScaleTransform currentScale, TranslateTransform currentTranslate)
+        {
+            CurrentScale = currentScale;
+            CurrentTranslate = currentTranslate;
+        }
 
         public PathGeometry PathGeometry => RefreshPath();
 
