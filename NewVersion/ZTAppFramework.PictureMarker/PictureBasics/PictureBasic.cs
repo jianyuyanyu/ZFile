@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -9,15 +10,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using ZTAppFramework.PictureMarker.Formulas;
 
 namespace ZTAppFramework.PictureMarker
 {
     public class PictureBasic
     {
         public Canvas MyCanvas { get; set; }
-        PictureMouseCollection mouseCollection;
+        PictureMouseCollection MC;
         MouseButton mouseButtonStatus;
-      
+
         #region 动画
         protected DoubleAnimation ThicknessAnima;
         protected RectangleGeometry DrawRec;
@@ -33,11 +35,11 @@ namespace ZTAppFramework.PictureMarker
         public PictureBasic(Canvas canvas)
         {
             MyCanvas = canvas;
-            mouseCollection = new PictureMouseCollection(canvas);
-            mouseCollection.AddPath(DrawPath);
-            mouseCollection.MouseDownAction += MouseDown;
-            mouseCollection.MouseMoveAction += MouseMove;
-            mouseCollection.MouseUpAction += MouseUp;
+            MC = new PictureMouseCollection(canvas);
+            MC.AddPath(DrawPath);
+            MC.MouseDownAction += MouseDown;
+            MC.MouseMoveAction += MouseMove;
+            MC.MouseUpAction += MouseUp;
             InitData();
         }
 
@@ -45,43 +47,46 @@ namespace ZTAppFramework.PictureMarker
         {
             ThicknessAnima = new DoubleAnimation();
             ThicknessAnima.RepeatBehavior = new RepeatBehavior(0);
-            mouseCollection.InitData();
+            MC.InitData();
         }
 
-        public void LoadImg(string FilePath) => mouseCollection.LoadImgFile(FilePath);
+        public void LoadImg(string FilePath) => MC.LoadImgFile(FilePath);
 
         void MouseMove(Point sPoint, Point MovePoint)
         {
             if (IsDraw)
                 DrawRectangle(sPoint, MovePoint);
-            Point mp = mouseCollection.getInImagePoint(MovePoint);
-            Rect rect = new Rect(mouseCollection.relativePoint(sPoint), MovePoint);
-        
+            Point mp = MC.getInImagePoint(MovePoint);
+            Rect rect = new Rect(MC.relativePoint(sPoint), MovePoint);
+            MC.UpdateTextBox();
 
-            if (rect.Width * rect.Height >= 30&& DrawRec!=null)
-            {
-                Point lp = mouseCollection.absolutePoint(new Point(DrawRec.Rect.X, DrawRec.Rect.Y));
-                mouseCollection.UpdateTextBox($"宽{DrawRec.Rect.Width},高{DrawRec.Rect.Height}");
-            }
         }
-
+        List<Point> points = new List<Point>();
         void MouseUp(Point sPoint, Point ePoint)
         {
             UpdateKeyUp();
             if (IsDraw)
             {
                 //不允许从图片区域以外开始画线，mouseDownPoint必须在图片区域内
-                Point mp = mouseCollection.getInImagePoint(ePoint);
-                Rect rect = new Rect(mouseCollection.relativePoint(sPoint), mp);
-                if (rect.Width * rect.Height >= 30)
+                Point p = MC.relativePoint(ePoint);
+                points.Add(p);
+                if (points.Count() >= 2)
                 {
-                    Point lp = mouseCollection.absolutePoint(new Point(DrawRec.Rect.X, DrawRec.Rect.Y));
-                    //isEditing = true;
-                    //Rect range = new Rect(absolutePoint(new Point(0, 0)), new Size(ImgInfo.PictureWidth * ScaleLevel, ImgInfo.PictureHeight * ScaleLevel));
-                    ////Editor.Show(new Rect(lp.X, lp.Y, DrawRec.Rect.Width * scaleLevel, DrawRec.Rect.Height * scaleLevel), DrawPath.Stroke, scaleLevel, true, range: range);
-                    ////Editor.Commit();
-                    //isEditing = false;
+                    GeometryGroup group = new GeometryGroup();
+                    var Cp = new Point(points[1].X, points[0].Y);
+                    LineGeometry lineA = new LineGeometry(points[0], points[1]);
+                    LineGeometry lineB = new LineGeometry(points[1], Cp);
+                     LineGeometry lineC = new LineGeometry(Cp, points[0]);
+                    group.Children.Add(lineA);
+                    group.Children.Add(lineB);
+                    group.Children.Add(lineC);
+                    AngleFormulas angle = new AngleFormulas(points[0], points[1]);
+                    var a = angle.GetCosaAngle();
+                    DrawPath.Data = group;
+                    MessageBox.Show(a.ToString());
+                    points.Clear();
                 }
+
             }
             IsDraw = false;
         }
@@ -101,8 +106,8 @@ namespace ZTAppFramework.PictureMarker
         void DrawRectangle(Point sPoint, Point ePoint)
         {
             MyCanvas.Cursor = Cursors.Cross;
-            Point sp = mouseCollection.relativePoint(sPoint);
-            Point eP = mouseCollection.getInImagePoint(ePoint);
+            Point sp = MC.relativePoint(sPoint);
+            Point eP = MC.getInImagePoint(ePoint);
             if (eP.X == 0 && eP.Y == 0)
             {
                 DrawPath.Visibility = Visibility.Visible;
@@ -118,7 +123,7 @@ namespace ZTAppFramework.PictureMarker
             {
                 DrawRec.Rect = new Rect(sp, eP);
             }
-            mouseCollection.SetIsDrap(false);
+            MC.SetIsDrap(false);
         }
 
         public virtual void UpdataKeyDown()

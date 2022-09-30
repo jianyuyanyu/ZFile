@@ -38,7 +38,6 @@ namespace ZTAppFramework.PictureMarker.Formulas
             Points.Add(Points.Count, point);
         }
 
-
         public CircleData Start_Compute_Three_Point_Draw_Cirle()
         {
             double a = Points[0].X - Points[1].X;// X1-X2

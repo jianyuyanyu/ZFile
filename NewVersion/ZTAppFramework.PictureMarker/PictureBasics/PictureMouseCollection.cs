@@ -332,12 +332,12 @@ namespace ZTAppFramework.PictureMarker
 
         public void UpdateTextBox(string str="")
         {
-            if (string.IsNullOrEmpty(str)) return;
-            //if (IsPointInImage(mouseMovePoint))
-            //    PosinText.Text = $"X:{Convert.ToInt32(CurrentPoint.X)},Y:{Convert.ToInt32(CurrentPoint.Y)}";
-            //else
-            //    PosinText.Text = $"已经超出图片坐标X:{Convert.ToInt32(mouseMovePoint.X)}, Y:{Convert.ToInt32(mouseMovePoint.Y)}";
-            PosinText.Text = str;
+         
+            if (IsPointInImage(mouseMovePoint))
+                PosinText.Text = $"X:{Convert.ToInt32(CurrentPoint.X)},Y:{Convert.ToInt32(CurrentPoint.Y)}";
+            else
+                PosinText.Text = $"已经超出图片坐标X:{Convert.ToInt32(mouseMovePoint.X)}, Y:{Convert.ToInt32(mouseMovePoint.Y)}";
+
             PosinText.Background = new SolidColorBrush(Colors.Red);
             Canvas.SetLeft(PosinText, mouseMovePoint.X);
             Canvas.SetTop(PosinText, mouseMovePoint.Y + 5);
