@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZTAppFramework.PictureMarker.Extensions;
+using ZTAppFramework.PictureMarker.Model;
 
 namespace ZTAppFramework.PictureMarker
 {
