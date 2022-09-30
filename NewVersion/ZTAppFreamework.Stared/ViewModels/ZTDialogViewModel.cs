@@ -56,19 +56,15 @@ namespace ZTAppFreamework.Stared.ViewModels
         public DelegateCommand CancelCommand { get; set; }
         #endregion
 
-
         public ZTDialogViewModel()
         {
             SaveCommand = new DelegateCommand(OnSave);
             CancelCommand = new DelegateCommand(Cancel);
         }
 
-
         public event Action<IZTDialogResult> RequestClose;
         public abstract void Cancel();
-
         public abstract void OnSave();
-
         public bool CanCloseDialog()
         {
             return true;
