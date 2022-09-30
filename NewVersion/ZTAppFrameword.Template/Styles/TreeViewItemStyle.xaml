@@ -80,7 +80,7 @@
                                 </TransformGroup>
                             </Grid.LayoutTransform>
                             <Grid x:Name="contentAnimationGrid">
-                                <ItemsPresenter x:Name="ItemsHost" Visibility="Collapsed" />
+                                <ItemsPresenter x:Name="ItemsHost" VerticalAlignment="Center" />
                             </Grid>
                         </Grid>
                     </Grid>

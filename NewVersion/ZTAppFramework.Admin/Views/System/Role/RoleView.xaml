@@ -40,7 +40,6 @@
                     HoverBackground="#f56c6c"
                     Type="Normal" />
             </StackPanel>
-
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <ui:ZTTextBox
                     Width="210"

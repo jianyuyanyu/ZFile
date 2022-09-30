@@ -120,5 +120,23 @@ namespace ZTAppFramework.Application.Service.Sys.SysMenu
 
             return result;
         }
+
+        [ApiUrl("")]
+        public async Task<AppliResult<SysMenuDto>> Query(string id)
+        {
+            AppliResult<SysMenuDto> result = new AppliResult<SysMenuDto>();
+            var api = await _apiClinet.GetAsync<SysMenuDto>(GetEndpoint(), queryParameters: new { Id = id });
+            if (api.success && api.Code == 200)
+            {
+                result.Success = true;
+                result.data = api.data;
+            }
+            else
+            {
+                result.Message = api.message;
+                result.Success = false;
+            }
+            return result;
+        }
     }
 }

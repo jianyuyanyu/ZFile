@@ -67,5 +67,7 @@ namespace ZTAppFreamework.Stared.ViewModels
         public virtual async Task OnNavigatedToAsync(NavigationContext navigationContext = null) => await Task.CompletedTask;
 
         #endregion 
+
+
     }
 }

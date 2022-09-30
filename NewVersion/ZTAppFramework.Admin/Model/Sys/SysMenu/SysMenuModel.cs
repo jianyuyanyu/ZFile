@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZTAppFramewrok.Application.Stared;
 
 namespace ZTAppFramework.Admin.Model.Sys
 {
@@ -190,6 +191,18 @@ namespace ZTAppFramework.Admin.Model.Sys
             get { return _CreateUser; }
             set { SetProperty(ref _CreateUser, value); }
         }
+        /// <summary>
+        /// 接口权限
+        /// </summary>
+        private List<SysMenuApiUrl> _Api;
+        public List<SysMenuApiUrl> Api
+        {
+            get { return _Api; }
+            set { SetProperty(ref _Api, value); }
+        }
+
+     
+
 
         private ObservableCollection<SysMenuModel> _Childer;
         public ObservableCollection<SysMenuModel> Childer

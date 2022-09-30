@@ -24,6 +24,7 @@ namespace ZTAppFramework.PictureMarker
         protected DoubleAnimation ThicknessAnima;
         protected RectangleGeometry DrawRec;
         #endregion
+
         #region Path
         Path DrawPath = new();
         #endregion

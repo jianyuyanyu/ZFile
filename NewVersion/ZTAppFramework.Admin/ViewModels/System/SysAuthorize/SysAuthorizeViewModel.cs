@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Sys;
 using ZTAppFramework.Application.Service;
@@ -13,9 +12,10 @@ using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
 {
-    public class SysMenuViewModel : NavigationViewModel
+    public class SysAuthorizeViewModel : NavigationViewModel
     {
         #region UI
+
         private ObservableCollection<SysMenuModel> _MenuTreeList;
         public ObservableCollection<SysMenuModel> MenuTreeList
         {
@@ -23,52 +23,58 @@ namespace ZTAppFramework.Admin.ViewModels
             set { SetProperty(ref _MenuTreeList, value); }
         }
 
-        private SysMenuModel _SelectedItems;
 
-        public SysMenuModel SelectedItems
+
+        private ObservableCollection<SysRoleModel> _sysRoles = new ObservableCollection<SysRoleModel>();
+       
+
+        public ObservableCollection<SysRoleModel> SysRoles
         {
-            get { return _SelectedItems; }
-            set { SetProperty(ref _SelectedItems, value); }
+            get { return _sysRoles; }
+            set { SetProperty(ref _sysRoles, value); }
         }
         #endregion
 
         #region Command
-        public DelegateCommand<SysMenuModel> CheckedCommand { get; }
 
-        public DelegateCommand<SysMenuModel> GoMenuInfoCommand { get; }
         #endregion
 
-        #region Serviec
+        #region Service
+        private readonly RoleService _SysroleService;
         private readonly MenuService _SysMenuSerVice;
         #endregion
-        public SysMenuViewModel(MenuService SysMenuSerVice)
+
+        #region 属性
+
+        #endregion
+        public SysAuthorizeViewModel(RoleService SysroleService, MenuService SysMenuSerVice)
         {
+            _SysroleService = SysroleService;
             _SysMenuSerVice = SysMenuSerVice;
-            CheckedCommand = new DelegateCommand<SysMenuModel>(ExcuteChecked);
-            GoMenuInfoCommand = new DelegateCommand<SysMenuModel>(GoMenuInfo);
         }
-
-
-
-
-
-
         #region Event
 
-        private void GoMenuInfo(SysMenuModel Param)
+        async Task GetSysRoleList()
         {
-            SelectedItems = Param;
-        }
-
-
-        async Task GetMenuTreeInfo()
-        {
-            var r = await _SysMenuSerVice.GetMenuList();
+            SysRoles.Clear();
+            var r = await _SysroleService.GetList("");
             if (r.Success)
             {
-                MenuTreeList = Map<ObservableCollection<SysMenuModel>>(r.data);
+                var list = Map<List<SysRoleModel>>(r.data).OrderBy(X => X.Sort).ToList();
+                foreach (var item in list)
+                {
+                    var info = list.FirstOrDefault(x => x.Id == item.ParentId);
+                    if (info != null)
+                    {
+                        info.Childer = info.Childer ?? new List<SysRoleModel>();
+                        info.Childer.Add(item);
+                    }
+                }
+                SysRoles.AddRange(list.Where(x => x.ParentId == 0));
+                SysRoles.First().IsSelected = true;
             }
         }
+
 
         #region TreeViewEvent
         private void ExcuteChecked(SysMenuModel Param)
@@ -178,20 +184,22 @@ namespace ZTAppFramework.Admin.ViewModels
         }
         #endregion
 
-
+        async Task GetMenuTreeInfo()
+        {
+            var r = await _SysMenuSerVice.GetMenuList();
+            if (r.Success)
+            {
+                MenuTreeList = Map<ObservableCollection<SysMenuModel>>(r.data);
+            }
+        }
         #endregion
 
-
-        #region Override
-
+        #region overrdie
         public override async Task OnNavigatedToAsync(NavigationContext navigationContext = null)
         {
+            await GetSysRoleList();
             await GetMenuTreeInfo();
         }
-
-
         #endregion
-
-
     }
 }

@@ -93,7 +93,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZT.Generator", "NewCoreApi\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "图片标记模块", "图片标记模块", "{FCF23DFA-3A1F-4DA0-98B1-D74D9ABC9744}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZTAppFramework.PictureMarker", "NewVersion\ZTAppFramework.PictureMarker\ZTAppFramework.PictureMarker.csproj", "{796CA448-1079-4195-A794-236CC526B975}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZTAppFramework.PictureMarker", "NewVersion\ZTAppFramework.PictureMarker\ZTAppFramework.PictureMarker.csproj", "{796CA448-1079-4195-A794-236CC526B975}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "相机模块", "相机模块", "{79D9F528-07C0-4577-A790-75EC6EFE7E50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -519,6 +521,7 @@ Global
 		{A297C503-9D16-4C95-A201-2AD5597D7505} = {FA49F0F9-294A-4C72-85C8-9E8375500EB0}
 		{FCF23DFA-3A1F-4DA0-98B1-D74D9ABC9744} = {EA2B2C3F-2B6C-4044-880D-D16509C11151}
 		{796CA448-1079-4195-A794-236CC526B975} = {FCF23DFA-3A1F-4DA0-98B1-D74D9ABC9744}
+		{79D9F528-07C0-4577-A790-75EC6EFE7E50} = {EA2B2C3F-2B6C-4044-880D-D16509C11151}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5FF6B21-B981-42E6-89C1-D5C6F90D2989}
