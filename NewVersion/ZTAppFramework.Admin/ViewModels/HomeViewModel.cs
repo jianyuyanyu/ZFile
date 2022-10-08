@@ -92,7 +92,8 @@ namespace ZTAppFramework.Admin.ViewModels
                             _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.SysMenuName);break;
                         case "权限设置":
                             _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.SysAuthorizeName); break;
-                            
+                        case "系统日志":
+                            _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.SysLogsName); break;
                         default:
                             _RegionManager?.Regions[AppView.HomeName]?.RequestNavigate(AppView.UserPerferfabName); break;
                       
