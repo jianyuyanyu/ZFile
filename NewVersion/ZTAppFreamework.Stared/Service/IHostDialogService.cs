@@ -12,8 +12,6 @@ namespace ZTAppFreamework.Stared.Service
     /// </summary>
     public interface IHostDialogService :IDialogService
     {
-
-
         IDialogResult ShowWindow(string name);
     }
 }
