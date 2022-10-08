@@ -63,7 +63,7 @@ namespace ZTAppFramework.Admin
             services.RegisterForNavigation<SysAdminView, SysAdminViewModel>(AppView.SysAdminName);
             services.RegisterForNavigation<SysMenuView, SysMenuViewModel>(AppView.SysMenuName);
             services.RegisterForNavigation<SysAuthorizeView, SysAuthorizeViewModel>(AppView.SysAuthorizeName);
-            
+            services.RegisterForNavigation<SyslogView,SyslogViewModel>(AppView.SysLogsName);
             ZTDialog.RegisterDialogWindow<DialogWindowBase>("window");
             ZTDialog.RegisterDialog<DialogMessageView>(AppView.DialogMessageName);
             ZTDialog.RegisterDialog<OrganizeModifyView>(AppView.OrganizeModifyName);

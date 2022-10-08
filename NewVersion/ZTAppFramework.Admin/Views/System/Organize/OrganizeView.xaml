@@ -69,6 +69,7 @@
             ColumnHeaderHeight="40"
             DataGridStyle="Standard"
             IsReadOnly="True"
+            
             ItemsSource="{Binding OrganizesList}">
             <ui:ZTDataGrid.Columns>
                 <DataGridTemplateColumn MinWidth="50" MaxWidth="100">

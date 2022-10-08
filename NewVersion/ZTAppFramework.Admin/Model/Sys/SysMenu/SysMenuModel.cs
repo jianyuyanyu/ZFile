@@ -19,6 +19,14 @@ namespace ZTAppFramework.Admin.Model.Sys
     /// </summary>
     public class SysMenuModel:BindableBase
     {
+        private bool _IsSelected;
+
+        public bool IsSelected
+        {
+            get { return _IsSelected; }
+            set { SetProperty(ref _IsSelected, value); }
+        }
+
 
         private bool _IsChecked;
 

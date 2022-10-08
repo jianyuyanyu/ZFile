@@ -72,7 +72,7 @@
                             Command="{Binding DataContext.GoMenuInfoCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ui:ZTTreeView}, AncestorLevel=1}}"
                             CommandParameter="{Binding}"
                             GroupName="MenuName"
-                            IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             RadioButtonStyle="Button">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -154,7 +154,8 @@
                         <ui:ZTTextBox
                             Width="210"
                             Height="30"
-                            VerticalContentAlignment="Center" />
+                            VerticalContentAlignment="Center"
+                            Text="{Binding Info.Name}" />
                     </StackPanel>
 
                     <StackPanel Margin="10,10,0,0" Orientation="Horizontal">
@@ -166,7 +167,9 @@
                         <ui:ZTTextBox
                             Width="210"
                             Height="30"
-                            VerticalContentAlignment="Center" />
+                            VerticalContentAlignment="Center"
+                            IsEnabled="False"
+                            Text="{Binding Info.Name}" />
                     </StackPanel>
 
                     <StackPanel Margin="10,10,0,0" Orientation="Horizontal">
@@ -208,7 +211,8 @@
                         <ui:ZTTextBox
                             Width="210"
                             Height="30"
-                            VerticalContentAlignment="Center" />
+                            VerticalContentAlignment="Center"
+                            Text="{Binding Info.Code}" />
                     </StackPanel>
                     <TextBlock
                         Margin="110,2,20,0"
@@ -224,7 +228,8 @@
                         <ui:ZTTextBox
                             Width="210"
                             Height="30"
-                            VerticalContentAlignment="Center" />
+                            VerticalContentAlignment="Center"
+                            Text="{Binding Info.Urls}" />
                     </StackPanel>
 
                     <StackPanel Margin="10,10,0,0" Orientation="Horizontal">
@@ -264,7 +269,8 @@
                         <ui:ZTTextBox
                             Width="210"
                             Height="30"
-                            VerticalContentAlignment="Center" />
+                            VerticalContentAlignment="Center"
+                            Text="{Binding Info.VuePath}" />
                     </StackPanel>
                     <TextBlock
                         Margin="110,2,20,0"
@@ -289,10 +295,19 @@
                             VerticalAlignment="Center"
                             FontSize="14"
                             Text="是否显示" />
-                        <ui:ZTTextBox
-                            Width="210"
-                            Height="30"
-                            VerticalContentAlignment="Center" />
+                        <StackPanel Orientation="Horizontal">
+                            <ui:ZTRadioButton
+                                Width="80"
+                                CheckedBackground="#79bbff"
+                                Content="显示"
+                                Cursor="Hand"
+                                IsChecked="{Binding Info.Status}" />
+                            <ui:ZTRadioButton
+                                CheckedBackground="#79bbff"
+                                Content="隐藏"
+                                Cursor="Hand"
+                                IsChecked="{Binding Info.Status, Converter={StaticResource BoolInverseConverter}}" />
+                        </StackPanel>
                     </StackPanel>
 
                     <StackPanel Margin="10,10,0,0" Orientation="Horizontal">
@@ -301,10 +316,17 @@
                             VerticalAlignment="Center"
                             FontSize="14"
                             Text="是否全屏" />
-                        <ui:ZTTextBox
-                            Width="210"
-                            Height="30"
-                            VerticalContentAlignment="Center" />
+                        <StackPanel Orientation="Horizontal">
+                            <ui:ZTRadioButton
+                                Width="80"
+                                CheckedBackground="#79bbff"
+                                Content="是"
+                                Cursor="Hand" />
+                            <ui:ZTRadioButton
+                                CheckedBackground="#79bbff"
+                                Content="否"
+                                Cursor="Hand" />
+                        </StackPanel>
                     </StackPanel>
 
                     <ui:ZTButton

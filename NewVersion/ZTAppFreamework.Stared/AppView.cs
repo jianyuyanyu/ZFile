@@ -37,6 +37,8 @@
 
         public const string SysAuthorizeName = "SysAuthorizeView";//权限管理界面
 
+        public const string SysLogsName = "SysLogsView";//日志界面
+
         public const string WorkbenchName = "WorkbenchView";//工作台
 
         public const string UserCenterName = "UserCenterView";//用户中心

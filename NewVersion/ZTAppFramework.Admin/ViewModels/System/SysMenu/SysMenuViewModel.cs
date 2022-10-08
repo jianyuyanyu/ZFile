@@ -9,6 +9,7 @@ using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Sys;
 using ZTAppFramework.Application.Service;
+using ZTAppFramework.Application.Service.Sys.SysMenu;
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
@@ -28,7 +29,17 @@ namespace ZTAppFramework.Admin.ViewModels
         public SysMenuModel SelectedItems
         {
             get { return _SelectedItems; }
-            set { SetProperty(ref _SelectedItems, value); }
+            set
+            {
+                SetProperty(ref _SelectedItems, value);
+            }
+        }
+
+        private SysMenuModel _Info;
+        public SysMenuModel Info
+        {
+            get { return _Info; }
+            set { SetProperty(ref _Info, value); }
         }
         #endregion
 
@@ -40,10 +51,12 @@ namespace ZTAppFramework.Admin.ViewModels
 
         #region Serviec
         private readonly MenuService _SysMenuSerVice;
+        private readonly SysMenuService _sysMenuService;
         #endregion
-        public SysMenuViewModel(MenuService SysMenuSerVice)
+        public SysMenuViewModel(MenuService SysMenuSerVice, SysMenuService sysMenuService)
         {
             _SysMenuSerVice = SysMenuSerVice;
+            _sysMenuService = sysMenuService;
             CheckedCommand = new DelegateCommand<SysMenuModel>(ExcuteChecked);
             GoMenuInfoCommand = new DelegateCommand<SysMenuModel>(GoMenuInfo);
         }
@@ -58,6 +71,17 @@ namespace ZTAppFramework.Admin.ViewModels
         private void GoMenuInfo(SysMenuModel Param)
         {
             SelectedItems = Param;
+            GetMenuInfo();
+
+        }
+
+        async void GetMenuInfo()
+        {
+            var r = await _sysMenuService.Query(SelectedItems.Id.ToString());
+            if (r.Success)
+            {
+                Info = Map<SysMenuModel>(r.data);
+            }
         }
 
 
@@ -188,10 +212,8 @@ namespace ZTAppFramework.Admin.ViewModels
         {
             await GetMenuTreeInfo();
             SelectedItems = MenuTreeList.First();
-            SelectedItems.IsChecked = true;        
+            SelectedItems.IsSelected = true;
         }
-
-
         #endregion
 
 

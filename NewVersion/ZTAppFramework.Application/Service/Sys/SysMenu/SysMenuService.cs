@@ -26,7 +26,7 @@ namespace ZTAppFramework.Application.Service.Sys.SysMenu
         {
 
         }
-        
+     
         [ApiUrl("List")]
         public async Task<AppliResult<List<SysAdminDto>>> GetList()
         {
@@ -125,7 +125,7 @@ namespace ZTAppFramework.Application.Service.Sys.SysMenu
         public async Task<AppliResult<SysMenuDto>> Query(string id)
         {
             AppliResult<SysMenuDto> result = new AppliResult<SysMenuDto>();
-            var api = await _apiClinet.GetAsync<SysMenuDto>(GetEndpoint(), queryParameters: new { Id = id });
+            var api = await _apiClinet.GetAsync<SysMenuDto>(GetEndpoint()+ id);
             if (api.success && api.Code == 200)
             {
                 result.Success = true;
