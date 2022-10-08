@@ -32,9 +32,7 @@ namespace ZTAppFramework.Camera.Extensions
                     source = BitmapSource.Create(mat.Cols, mat.Rows, 96, 96, PixelFormats.Rgb24, null, mat.Data, size, mat.Cols * 3);
                     break;
             }
-
             source?.Freeze();
-
             return source;
         }
     }

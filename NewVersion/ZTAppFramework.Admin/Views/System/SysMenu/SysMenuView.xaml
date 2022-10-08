@@ -72,6 +72,7 @@
                             Command="{Binding DataContext.GoMenuInfoCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ui:ZTTreeView}, AncestorLevel=1}}"
                             CommandParameter="{Binding}"
                             GroupName="MenuName"
+                            IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             RadioButtonStyle="Button">
                             <Grid>
                                 <Grid.ColumnDefinitions>

@@ -187,6 +187,8 @@ namespace ZTAppFramework.Admin.ViewModels
         public override async Task OnNavigatedToAsync(NavigationContext navigationContext = null)
         {
             await GetMenuTreeInfo();
+            SelectedItems = MenuTreeList.First();
+            SelectedItems.IsChecked = true;        
         }
 
 
