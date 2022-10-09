@@ -63,6 +63,7 @@
                         <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBorderBrush}" />
                     </Trigger>
                     <Trigger Property="IsPressed" Value="True">
+                        <Setter TargetName="bg" Property="BorderThickness" Value="1" />
                         <Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" />
                         <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />
                     </Trigger>
@@ -184,7 +185,7 @@
 
 
                     <Trigger Property="IsPressed" Value="True">
-                        <!--<Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" />-->
+                        <Setter TargetName="bg" Property="BorderThickness" Value="1" />
                         <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />
                     </Trigger>
                     <Trigger Property="IsEnabled" Value="False">
@@ -259,9 +260,10 @@
             </Trigger>
             <Trigger Property="Type" Value="Warm">
                 <Setter Property="Background" Value="Orange" />
-                <Setter Property="HoverBackground" Value="OrangeRed" />
+                <Setter Property="HoverBackground" Value="#323232" />
                 <Setter Property="Foreground" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
+
             </Trigger>
             <Trigger Property="Type" Value="Danger">
                 <Setter Property="Background" Value="Red" />
