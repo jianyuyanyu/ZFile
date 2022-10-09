@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZTAppFramework.Camera.Enums
 {
+
     /// <summary>
     ///********************************************
     /// 创建人        ：  ZT
