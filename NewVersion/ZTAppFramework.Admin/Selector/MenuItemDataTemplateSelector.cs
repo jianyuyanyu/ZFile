@@ -26,10 +26,24 @@ namespace ZTAppFramework.Admin.Selector
             {
                 var fe = container as FrameworkElement;
                 SysRoleModel menuItem = item as SysRoleModel;
-                if (menuItem.Childer!=null)
-                    return fe.FindResource("MenuItemsDataTemplate") as DataTemplate;
+                if (menuItem != null)
+                {
+                    if (menuItem.Childer != null)
+                        return fe.FindResource("MenuItemsDataTemplate") as DataTemplate;
+                    else
+                        return fe.FindResource("MenuItemDataTemplate") as DataTemplate;
+
+                }
                 else
-                    return fe.FindResource("MenuItemDataTemplate") as DataTemplate;
+                {
+                    SysLogMenuModel menuLogItem = item as SysLogMenuModel;
+                    if (menuLogItem.Childer != null)
+                        return fe.FindResource("MenuItemsDataTemplate") as DataTemplate;
+                    else
+                        return fe.FindResource("MenuItemDataTemplate") as DataTemplate;
+                }
+
+                
             }
             return null;
         }

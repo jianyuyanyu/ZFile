@@ -185,7 +185,7 @@
 
 
                     <Trigger Property="IsPressed" Value="True">
-                        <Setter TargetName="bg" Property="BorderThickness" Value="1" />
+
                         <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />
                     </Trigger>
                     <Trigger Property="IsEnabled" Value="False">
