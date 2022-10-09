@@ -27,4 +27,6 @@
     <!--  sex  -->
     <Converter:SexBoyInverseConverter x:Key="SexBoyInverseConverter" />
     <Converter:SexGirlInverseConverter x:Key="SexGirlInverseConverter" />
+
+    <Converter:WidthAndHeightToInTwonConverter x:Key="WidthAndHeightToInTwonConverter" />
 </ResourceDictionary>

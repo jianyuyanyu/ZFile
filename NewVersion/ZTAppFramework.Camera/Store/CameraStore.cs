@@ -20,6 +20,8 @@ namespace ZTAppFramework.Camera.Store
     public class CameraStore
     {
         public ObservableCollection<CameraInfoWrapper> Cameras { get; private set; }
+
+        public ObservableCollection<CameraDataInfo> CameraInfos { get; private set; }
         public CameraStore()
         {
             Initialize();
@@ -31,9 +33,11 @@ namespace ZTAppFramework.Camera.Store
 
         public void Refresh()
         {
+            CameraInfos.Clear();
             int NUM = 0;
             foreach (var item in CameraService.GetDeviceInfos())
-            {      
+            {
+                CameraInfos.Add(item);
                 Add(NUM, item);
                 NUM++;
             }
@@ -43,7 +47,7 @@ namespace ZTAppFramework.Camera.Store
         void Initialize()
         {
             Cameras = new ObservableCollection<CameraInfoWrapper>();
-           
+            CameraInfos=new ObservableCollection<CameraDataInfo>();
         }
 
     }

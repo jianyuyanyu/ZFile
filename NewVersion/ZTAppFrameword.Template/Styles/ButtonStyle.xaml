@@ -63,7 +63,7 @@
                         <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=HoverBorderBrush}" />
                     </Trigger>
                     <Trigger Property="IsPressed" Value="True">
-                        <Setter TargetName="bg" Property="BorderThickness" Value="1" />
+
                         <Setter TargetName="bg" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" />
                         <Setter TargetName="bg" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />
                     </Trigger>
