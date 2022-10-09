@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Data;
+
 using ZTAppFramework.Camera.Model;
 using ZTAppFramework.Camera.Service;
 
@@ -43,7 +43,7 @@ namespace ZTAppFramework.Camera.Store
         void Initialize()
         {
             Cameras = new ObservableCollection<CameraInfoWrapper>();
-            BindingOperations.EnableCollectionSynchronization(Cameras, new object());
+           
         }
 
     }
