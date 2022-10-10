@@ -93,6 +93,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "相机模块", "相机模�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZTAppFramework.Camera", "NewVersion\ZTAppFramework.Camera\ZTAppFramework.Camera.csproj", "{67961A75-A484-4875-B693-29CFE771183B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "控制卡", "控制卡", "{F33F2803-4B32-4F53-9C9F-7B8960293C0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZTAppFramework.Card", "NewVersion\ZTAppFramework.Card\ZTAppFramework.Card.csproj", "{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -439,6 +443,18 @@ Global
 		{67961A75-A484-4875-B693-29CFE771183B}.Release|iPhone.Build.0 = Release|Any CPU
 		{67961A75-A484-4875-B693-29CFE771183B}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{67961A75-A484-4875-B693-29CFE771183B}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Release|iPhone.Build.0 = Release|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -486,6 +502,8 @@ Global
 		{796CA448-1079-4195-A794-236CC526B975} = {FCF23DFA-3A1F-4DA0-98B1-D74D9ABC9744}
 		{79D9F528-07C0-4577-A790-75EC6EFE7E50} = {EA2B2C3F-2B6C-4044-880D-D16509C11151}
 		{67961A75-A484-4875-B693-29CFE771183B} = {79D9F528-07C0-4577-A790-75EC6EFE7E50}
+		{F33F2803-4B32-4F53-9C9F-7B8960293C0D} = {EA2B2C3F-2B6C-4044-880D-D16509C11151}
+		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD} = {F33F2803-4B32-4F53-9C9F-7B8960293C0D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5FF6B21-B981-42E6-89C1-D5C6F90D2989}
