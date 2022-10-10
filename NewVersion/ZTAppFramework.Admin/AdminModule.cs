@@ -50,7 +50,6 @@ namespace ZTAppFramework.Admin
             //页面
             services.RegisterForNavigation<MainView, MainViewModel>(AppView.MainName);
             services.RegisterForNavigation<HomeView, HomeViewModel>(AppView.HomeName);
-
             services.RegisterForNavigation<OrganizeView, OrganizeViewModel>(AppView.OrganizeName);
             services.RegisterForNavigation<WorkbenchView, WorkbenchViewModel>(AppView.WorkbenchName);
             services.RegisterForNavigation<UserCenterView, UserCenterViewModel>(AppView.UserCenterName);
@@ -64,6 +63,7 @@ namespace ZTAppFramework.Admin
             services.RegisterForNavigation<SysMenuView, SysMenuViewModel>(AppView.SysMenuName);
             services.RegisterForNavigation<SysAuthorizeView, SysAuthorizeViewModel>(AppView.SysAuthorizeName);
             services.RegisterForNavigation<SyslogView,SyslogViewModel>(AppView.SysLogsName);
+
             ZTDialog.RegisterDialogWindow<DialogWindowBase>("window");
             ZTDialog.RegisterDialog<DialogMessageView>(AppView.DialogMessageName);
             ZTDialog.RegisterDialog<OrganizeModifyView>(AppView.OrganizeModifyName);

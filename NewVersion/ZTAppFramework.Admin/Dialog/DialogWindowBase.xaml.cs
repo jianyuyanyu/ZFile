@@ -23,7 +23,7 @@ namespace ZTAppFramework.Admin.Dialog
         public DialogWindowBase()
         {
             InitializeComponent();
-           // this.MouseLeftButtonDown += DialogWindowBase_MouseLeftButtonDown;
+            this.MouseLeftButtonDown += DialogWindowBase_MouseLeftButtonDown;
         }
 
         private void DialogWindowBase_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -20,9 +20,11 @@ namespace ZTAppFramework.Card.Service
     {
 
         public Smc304CardFactory CardFactory = new Smc304CardFactory();
+
         Smc304Card _Cardinfo;
         public bool Connect()
-        {
+        {   
+            if (_Cardinfo != null)return true;
             _Cardinfo = CardFactory.Connect();
             if (_Cardinfo == null) return false;
             return true;
