@@ -179,6 +179,7 @@ namespace ZTAppFramework.PictureMarker
         void MyCanvas_MouseEnter(object sender, MouseEventArgs e)
         {
             MyCanvas.Focus();
+            if (ImageControl == null) return;
             ImageControl.Focusable = true;
             ImageControl.Focus();
         }

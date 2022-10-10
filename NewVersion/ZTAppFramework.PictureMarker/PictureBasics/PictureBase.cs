@@ -1,7 +1,6 @@
-using DryIoc;
+
 using System;
 using System.Collections.Generic;
-
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography.Xml;
@@ -15,7 +14,6 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
-using ZTAppFrameword.Template.Control;
 using ZTAppFramework.PictureMarker.Extensions;
 using ZTAppFramework.PictureMarker.Formulas;
 using ZTAppFramework.PictureMarker.Model;
