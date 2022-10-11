@@ -10,7 +10,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using ZTAppFramework.PictureMarker.Enums;
 using ZTAppFramework.PictureMarker.Formulas;
+using ZTAppFramework.PictureMarker.Model;
 
 namespace ZTAppFramework.PictureMarker
 {
@@ -19,7 +21,7 @@ namespace ZTAppFramework.PictureMarker
         public Canvas MyCanvas { get; set; }
         PictureMouseCollection MC;
         MouseButton mouseButtonStatus;
-
+        DrawTypeEnums DrawType=DrawTypeEnums.Nome;
         #region 动画
         protected DoubleAnimation ThicknessAnima;
         protected RectangleGeometry DrawRec;
@@ -33,8 +35,11 @@ namespace ZTAppFramework.PictureMarker
         bool IsLeftShift;
         bool IsDraw;
         #endregion
+
+        CircleHeleper CircleHelepr;
         public PictureBasic(Canvas canvas)
         {
+            CircleHelepr = new CircleHeleper();
             MyCanvas = canvas;
             MC = new PictureMouseCollection(canvas);
             MC.AddPath(DrawPath);
@@ -43,15 +48,17 @@ namespace ZTAppFramework.PictureMarker
             MC.MouseUpAction += MouseUp;
             InitData();
         }
-
         void InitData()
         {
             ThicknessAnima = new DoubleAnimation();
             ThicknessAnima.RepeatBehavior = new RepeatBehavior(0);
             MC.InitData();
         }
-
         public void LoadImg(string FilePath) => MC.LoadImgFile(FilePath);
+        public void SetImgInfo(Image image, double width, double height) => MC.SetImgInfo(image, width, height);
+        public void FitWindow(bool Fit) => MC.FitWindow(Fit);
+
+        public void SetDrawType(DrawTypeEnums enums) => DrawType = enums;
 
         void MouseMove(Point sPoint, Point MovePoint)
         {
@@ -77,7 +84,7 @@ namespace ZTAppFramework.PictureMarker
                     var Cp = new Point(points[1].X, points[0].Y);
                     LineGeometry lineA = new LineGeometry(points[0], points[1]);
                     LineGeometry lineB = new LineGeometry(points[1], Cp);
-                     LineGeometry lineC = new LineGeometry(Cp, points[0]);
+                    LineGeometry lineC = new LineGeometry(Cp, points[0]);
                     group.Children.Add(lineA);
                     group.Children.Add(lineB);
                     group.Children.Add(lineC);
@@ -90,6 +97,39 @@ namespace ZTAppFramework.PictureMarker
 
             }
             IsDraw = false;
+
+            if (DrawType == DrawTypeEnums.Round)
+            {
+                DrawRound(ePoint);
+            }
+        }
+
+        void DrawRound(Point p)
+        {   
+            
+       
+            CircleData info = null;
+            if (!CircleHelepr.IsMeetCirclMethod())
+            {
+                CircleHelepr.AddPoint(MC.relativePoint(p));
+                if (CircleHelepr.IsMeetCirclMethod())
+                {
+                    info = CircleHelepr.Start_Compute_Three_Point_Draw_Cirle();
+                    GeometryGroup group = new GeometryGroup();
+                    var Ellipse = new EllipseGeometry(new Point(info.CircleX, info.CircleY), info.CircleR, info.CircleR);
+                    group.Children.Add(Ellipse);
+                    DrawPath.Data = group;
+                }
+                else
+                {
+                    PathGeometry Path = new PathGeometry();
+                    foreach (var item in CircleHelepr.Points.Values)
+                    {
+                        Path.AddGeometry(new RectangleGeometry(new Rect(item, item)));
+                    }
+                    DrawPath.Data = Path;
+                }
+            }
         }
 
         void MouseDown(Point Point, MouseButton Status)
@@ -136,6 +176,7 @@ namespace ZTAppFramework.PictureMarker
         {
             IsLeftShift = false;
         }
+
 
     }
 }

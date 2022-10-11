@@ -4,19 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZTAppFramework.Card
+namespace ZTAppFramework.PictureMarker.Enums
 {
     /// <summary>
     ///********************************************
-    /// 创建人        ：  ZT
-    /// 创建时间    ：  2022/10/10 9:46:09 
-    /// Description   ：  轴号
+    /// 创建人        ：  WeiXiaolei
+    /// 创建时间    ：  2022/10/11 14:08:02 
+    /// Description   ：  
     ///********************************************/
     /// </summary>
-    public enum AxisEnum
+    public enum DrawTypeEnums
     {
-        AxisX,
-        AxisY,
-        AxisO,
+        Nome,//无
+        Round//圆
     }
 }

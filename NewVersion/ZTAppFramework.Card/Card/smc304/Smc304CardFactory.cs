@@ -18,12 +18,11 @@ namespace ZTAppFramework.Card.Card.smc304
         public Smc304Card Connect()
         {
             Smc304Card DevInfo=new Smc304Card();
-            if (!DevInfo.LoadAxisParamInfo()) return null;
-            if (!DevInfo.LoadCardConfigParamInfo()) return null;
+            if (!DevInfo.LoadAxisParamInfo())throw new Exception("加载轴配置文件报错");
+            if (!DevInfo.LoadCardConfigParamInfo()) throw new Exception("轴参数文件报错");
             DevInfo.ConnectCard();
             return DevInfo;
         }
-
 
     }
 }

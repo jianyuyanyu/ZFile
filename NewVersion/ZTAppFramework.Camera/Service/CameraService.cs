@@ -7,6 +7,7 @@ using ZTAppFramework.Camera.Camera.Hiks;
 using ZTAppFramework.Camera.Camera.interfaces;
 using ZTAppFramework.Camera.Enums;
 using ZTAppFramework.Camera.Model;
+using static MvCamCtrl.NET.MyCamera;
 
 namespace ZTAppFramework.Camera.Service
 {
@@ -128,6 +129,23 @@ namespace ZTAppFramework.Camera.Service
             if (_camera != null)
             {
                 if (_camera.SetTriggerMode(isTriggerMode))
+                {
+                    if (ParameterChanged != null)
+                        ParameterChanged(GetParameterInfo());
+
+                    return true;
+                }
+            }
+
+
+            return false;
+        }
+
+        public bool SetPixelFormat(MvGvspPixelType type)
+        {
+            if (_camera != null)
+            {
+                if (_camera.SetPixelFormat(type))
                 {
                     if (ParameterChanged != null)
                         ParameterChanged(GetParameterInfo());

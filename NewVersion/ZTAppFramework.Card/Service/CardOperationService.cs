@@ -1,3 +1,4 @@
+using Leadshine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,21 +37,53 @@ namespace ZTAppFramework.Card.Service
         bool IsConnect()
         {
             if (_cardServer == null) return false;
-
             return true;
         }
 
         public void InchingMove(AxisEnum Axis, int AddOrBackMove, SMCDefaultModel config)
         {
-            if (!IsConnect()) throw new Exception("控制卡未链接");
-            if (_CardInfo.RunStatus != RunStatus.Normal)
-                 throw new Exception("空闲状态才能执行操纵");
+            try
+            {
+                if (!IsConnect()) throw new Exception("控制卡未链接");
+                if (_CardInfo.RunStatus != RunStatus.Normal)
+                    throw new Exception("空闲状态才能执行操纵");
+                _SmcCard.InchingMove(Axis, AddOrBackMove, config);
+            }
+            catch (Exception)
+            {
 
-            _SmcCard.InchingMove(Axis, AddOrBackMove, config);
-
-
+               
+            }   
         }
 
+        public void StartCardMove(AxisEnum axis, int AddOrBackMove, SMCDefaultModel config)
+        {
+            try
+            {
+                if (!IsConnect()) throw new Exception("控制卡未链接");
+                _SmcCard.StartCardMove(axis, AddOrBackMove, config);
+            }
+            catch (Exception)
+            {
+
+               
+            }
+          
+        }
+
+        public void StopMove(AxisEnum axis, int StopType = 0)
+        {
+            try
+            {
+                if (!IsConnect()) throw new Exception("控制卡未链接");
+                _SmcCard.StopMove(axis, StopType);
+            }
+            catch (Exception)
+            {
+
+            }
+           
+        }
 
 
 

@@ -4,19 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZTAppFramework.Card
+namespace ZTAppFramework.Card.Model
 {
     /// <summary>
     ///********************************************
     /// 创建人        ：  ZT
-    /// 创建时间    ：  2022/10/10 9:46:09 
-    /// Description   ：  轴号
+    /// 创建时间    ：  2022/10/11 15:29:51 
+    /// Description   ：  IO参数
     ///********************************************/
     /// </summary>
-    public enum AxisEnum
+    public class WHIODefine
     {
-        AxisX,
-        AxisY,
-        AxisO,
+        public const int E_STOP = 2; // 紧急停止 IN2
     }
 }

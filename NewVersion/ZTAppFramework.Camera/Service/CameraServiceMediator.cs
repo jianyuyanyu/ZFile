@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZTAppFramework.Camera.Enums;
 using ZTAppFramework.Camera.Model;
+using static MvCamCtrl.NET.MyCamera;
 
 namespace ZTAppFramework.Camera.Service
 {
@@ -75,6 +76,11 @@ namespace ZTAppFramework.Camera.Service
         public bool SetGain(CameraDataInfo info, double value)
         {
             return _serviceDictionary[info].SetParameter(ECameraParameter.Gain, value);
+        }
+
+        public bool SetPixelFormat(CameraDataInfo info, int type)
+        {
+            return _serviceDictionary[info].SetPixelFormat((MvGvspPixelType)type);
         }
 
         public (double Cur, double Min, double Max) GetExposure(CameraDataInfo info)

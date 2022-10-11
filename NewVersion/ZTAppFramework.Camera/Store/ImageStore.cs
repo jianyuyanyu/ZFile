@@ -25,7 +25,7 @@ namespace ZTAppFramework.Camera.Store
         private Dictionary<int, GrabInfo> _grabInfoDictionary;
         private Dictionary<int, Mat> _matDictionary;
 
-        private Dictionary<int, Action<BitmapSource>> _sourceCreated;
+        private Dictionary<int, Action<int,BitmapSource>> _sourceCreated;
 
         private CameraStore _cameraStore;
 
@@ -38,7 +38,7 @@ namespace ZTAppFramework.Camera.Store
             _grabInfoDictionary = new Dictionary<int, GrabInfo>();
             _matDictionary = new Dictionary<int, Mat>();
 
-            _sourceCreated = new Dictionary<int, Action<BitmapSource>>();
+            _sourceCreated = new Dictionary<int, Action<int, BitmapSource>>();
 
             mediator.ImageGrabbed += ImageGrabbed;
             mediator.GrabDone += GrabDone;
@@ -61,11 +61,11 @@ namespace ZTAppFramework.Camera.Store
             _matDictionary[id] = grabInfo.ToMat();
 
             if (_sourceCreated.ContainsKey(id))
-                _sourceCreated[id]?.Invoke(_sourceDictionary[id]);
+                _sourceCreated[id]?.Invoke(id,_sourceDictionary[id]);
         }
 
 
-        public void Subscribe(int id, Action<BitmapSource> action)
+        public void Subscribe(int id, Action<int, BitmapSource> action)
         {
             if (_sourceCreated.ContainsKey(id))
                 _sourceCreated[id] += action;
@@ -73,7 +73,7 @@ namespace ZTAppFramework.Camera.Store
                 _sourceCreated.Add(id, action);
         }
 
-        public void Unsubscribe(int id, Action<BitmapSource> action)
+        public void Unsubscribe(int id, Action<int, BitmapSource> action)
         {
             if (_sourceCreated.ContainsKey(id))
                 _sourceCreated[id] -= action;

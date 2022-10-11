@@ -5,9 +5,12 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Media3D;
 using ZTAppFramework.Camera.Camera.interfaces;
 using ZTAppFramework.Camera.Enums;
 using ZTAppFramework.Camera.Model;
+using static MvCamCtrl.NET.MyCamera;
 
 namespace ZTAppFramework.Camera.Camera.Hiks
 {
@@ -303,6 +306,17 @@ namespace ZTAppFramework.Camera.Camera.Hiks
             return true;
         }
 
+        /// <summary>
+        /// 设置像素格式
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public bool SetPixelFormat(MvGvspPixelType type)
+        {
+            if (MyCamera.MV_OK != _device.MV_CC_SetEnumValue_NET("PixelFormat", (uint)type))
+                return false;
+            return true;
+        }
 
         public CameraParameterInfo GetParameterInfo()
         {
@@ -401,6 +415,9 @@ namespace ZTAppFramework.Camera.Camera.Hiks
 
             return dictionary;
         }
+
+
+       
 
     }
 }

@@ -58,12 +58,70 @@ namespace ZTAppFramework.PictureMarker
             else
                 LoadImage(data.ImgDataTranformBit());
         }
+        private byte[] ConvertToBytes(BitmapSource bitmapSource)
+        {
+            byte[] buffer = null;
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();
+            encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+            encoder.Save(memoryStream);
+            memoryStream.Position = 0;
+            if (memoryStream.Length > 0)
+            {
+                using (System.IO.BinaryReader br = new System.IO.BinaryReader(memoryStream))
+                {
+                    buffer = br.ReadBytes((int)memoryStream.Length);
+                }
+            }
+            memoryStream.Close();
+            return buffer;
+        }
+        public void LoadBitmapImage(BitmapSource FilePath)
+        {
+            var data = ConvertToBytes(FilePath);
+            var size = data.GetJpgSize();
+            if (size.HasValue)
+                LoadImage(data.ImgDataTranformBit(true, 200), size.Value.Width, size.Value.Height);
+            else
+                LoadImage(data.ImgDataTranformBit());
+        }
+
+
+        public void SetImgInfo(Image img, double width, double height)
+        {
+            ImageControl = img;
+            ImgInfo.PictureWidth = (int)width;
+            ImgInfo.PictureHeight = (int)height;
+
+            if (DefaultScaleLevel < 0)
+            {
+                double hr = MyCanvas.ActualWidth / ImgInfo.PictureWidth;
+                double vr = MyCanvas.ActualHeight / ImgInfo.PictureHeight;
+                ScaleLevel = Math.Max(hr, vr);
+            }
+            else
+            {
+                ScaleLevel = DefaultScaleLevel;
+            }
+
+            Canvas.SetZIndex(ImageControl, -1);
+            resetPositions();
+            reRender();
+            FitWindow(false);
+            MyCanvas.Focus();
+            ImageControl.Focusable = true;
+            ImageControl.Focus();
+
+        }
 
         void LoadImage(BitmapImage bitmap, int width = -1, int height = -1)
         {
             ImgInfo.CurrentBitmap = bitmap;
             if (ImageControl != null)
+            {
                 MyCanvas.Children.Remove(ImageControl);
+            }
+
             SetIsDrap(false);
             if (width > -1 && height > -1)
             {
@@ -85,6 +143,8 @@ namespace ZTAppFramework.PictureMarker
                 Stretch = Stretch.Uniform
             };
             MyCanvas.Children.Add(ImageControl);
+
+
             if (DefaultScaleLevel < 0)
             {
                 double hr = MyCanvas.ActualWidth / ImgInfo.PictureWidth;
@@ -178,14 +238,16 @@ namespace ZTAppFramework.PictureMarker
         }
         void MyCanvas_MouseEnter(object sender, MouseEventArgs e)
         {
-            MyCanvas.Focus();
             if (ImageControl == null) return;
+            MyCanvas.Focus();
             ImageControl.Focusable = true;
             ImageControl.Focus();
+            PosinText.Visibility = Visibility.Visible;
         }
         void MyCanvas_MouseLeave(object sender, MouseEventArgs e)
         {
             MyCanvas.Focusable = false;
+            PosinText.Visibility = Visibility.Collapsed;
         }
         void MyCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -318,7 +380,7 @@ namespace ZTAppFramework.PictureMarker
         }
         public bool IsPointInImage(Point p)
         {
-            if (ImgInfo.CurrentBitmap != null)
+            if (ImageControl != null)
             {
                 Point rp = relativePoint(p);
                 if (rp.X >= 0 && rp.Y >= 0 && rp.X <= ImgInfo.PictureWidth && rp.Y <= ImgInfo.PictureHeight)
@@ -331,9 +393,9 @@ namespace ZTAppFramework.PictureMarker
 
         public Point CurrentPoint { get => relativePoint(Mouse.GetPosition(MyCanvas)); }
 
-        public void UpdateTextBox(string str="")
+        public void UpdateTextBox(string str = "")
         {
-         
+            //  if (string.IsNullOrEmpty(str)) return;
             if (IsPointInImage(mouseMovePoint))
                 PosinText.Text = $"X:{Convert.ToInt32(CurrentPoint.X)},Y:{Convert.ToInt32(CurrentPoint.Y)}";
             else
@@ -342,6 +404,34 @@ namespace ZTAppFramework.PictureMarker
             PosinText.Background = new SolidColorBrush(Colors.Red);
             Canvas.SetLeft(PosinText, mouseMovePoint.X);
             Canvas.SetTop(PosinText, mouseMovePoint.Y + 5);
+            Canvas.SetZIndex(PosinText, 999);
+        }
+
+        public void FitWindow(bool withMaxScale)
+        {
+            if (ImageControl == null || MyCanvas == null) return;
+            //if (isEditing) { isEditing = false; }
+            double hr = MyCanvas.ActualWidth / ImgInfo.PictureWidth;
+            double vr = MyCanvas.ActualHeight / ImgInfo.PictureHeight;
+
+            if (withMaxScale)
+                ScaleLevel = Math.Max(hr, vr);
+            else
+                ScaleLevel = Math.Min(hr, vr);
+
+            if (withMaxScale == false)
+            {
+                var scaleWidth = ImgInfo.PictureWidth * ScaleLevel;
+                var scaleHeight = ImgInfo.PictureHeight * ScaleLevel;
+                currentTranslate.X = (MyCanvas.ActualWidth - scaleWidth) / 2;
+                currentTranslate.Y = (MyCanvas.ActualHeight - scaleHeight) / 2;
+            }
+            else
+            {
+                currentTranslate.X = currentTranslate.Y = 0;
+            }
+
+            reRender();
         }
 
 

@@ -33,5 +33,8 @@ namespace ZTAppFramework.Card.Service
         public bool IsConnect() => _Cardinfo == null ? false : true;
 
         public Smc304Card GetCard() => _Cardinfo;
+        public AxisParm GetAxisParamInfo() => _Cardinfo.GetAxisParamInfo();
+        public SMCDefaultModel GetSMCDefaultParamInfo() => _Cardinfo.GetSMCDefaultParamInfo();
+
     }
 }

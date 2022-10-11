@@ -18,7 +18,7 @@ namespace ZTAppFramework.PictureMarker.Formulas
     public class CircleHeleper
     {
         #region 属性
-        Dictionary<int, Point> Points = new Dictionary<int, Point>();
+       public Dictionary<int, Point> Points = new Dictionary<int, Point>();
         #endregion
         public CircleHeleper()
         {

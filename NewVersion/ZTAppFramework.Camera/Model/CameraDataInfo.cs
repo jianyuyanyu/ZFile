@@ -27,6 +27,7 @@ namespace ZTAppFramework.Camera.Model
     public class CameraDataInfo : IEquatable<CameraDataInfo>
     {
 
+        public int Index { get; set; }
         /// <summary>
         /// 制造商
         /// </summary>

@@ -67,6 +67,7 @@ namespace ZTAppFramework.Card.Card
         {
             WorkState = false;
         }
+
         #region 更新信息
 
         /// <summary>
@@ -102,6 +103,7 @@ namespace ZTAppFramework.Card.Card
             return AxisPosStatus;
         }
         #endregion
+
         void UpdateInfo()
         {
             WorkState = true;
@@ -126,9 +128,13 @@ namespace ZTAppFramework.Card.Card
         public SMCDefaultModel GetSMCDefaultParamInfo() => DeepCopy<SMCDefaultModel>(Config);
         #endregion
 
-
         #region 操作
-        //点动
+        /// <summary>
+        /// 点动
+        /// </summary>
+        /// <param name="Axis"></param>
+        /// <param name="AddOrBackMove"></param>
+        /// <param name="config"></param>
         public void InchingMove(AxisEnum Axis, int AddOrBackMove, SMCDefaultModel config)
         {
             if (config == null) config = this.Config;
@@ -141,8 +147,65 @@ namespace ZTAppFramework.Card.Card
             st = LTSMC.smc_set_dec_stop_time(_ConnectNo, (ushort)Axis, config.DecelerationTime);
             st = LTSMC.smc_pmove_unit(_ConnectNo, (ushort)Axis, config.DisplacementThreshold, 0);//定长运动
         }
-        #endregion
 
+        /// <summary>
+        /// 停止移动
+        /// </summary>
+        /// <param name="axis"></param>
+        /// <param name="StopType"></param>
+        public void StopMove(AxisEnum axis, int StopType = 0)
+        {
+            int st = LTSMC.smc_stop(_ConnectNo, (ushort)axis, (ushort)StopType);
+        }
+
+        /// <summary>
+        /// 连续运动
+        /// </summary>
+        /// <param name="axis"></param>
+        /// <param name="config"></param>
+        /// <param name="MoveType"></param>
+        public void StartCardMove(AxisEnum axis, int AddOrBackMove, SMCDefaultModel config )
+        {
+            if (config == null)
+                config = this.Config;
+            int st = LTSMC.smc_set_s_profile(_ConnectNo, (ushort)axis, 0, config.Sprofile);//设置S段时间（0-0.05s)
+            if (st != 0) throw new Exception("设置S段时间异常");
+
+            st = LTSMC.smc_set_profile_unit(_ConnectNo,
+                (ushort)axis,
+                config.StartSpeed,
+                config.RunSpeed,
+                config.AccelTime,
+                config.DecelerationTime,
+                config.StartSpeed);//设置起始速度、运行速度、停止速度、加速时间、减速时间
+            if (st != 0) throw new Exception("设置起始速度、运行速度、停止速度、加速时间、减速时间异常");
+            st = LTSMC.smc_set_dec_stop_time(_ConnectNo, (ushort)axis, config.DecelerationTime);//设置减速停止时间
+            if (st != 0) throw new Exception("设置减速停止时间异常");
+            st = LTSMC.smc_vmove(_ConnectNo, (ushort)axis, (ushort)AddOrBackMove);//连续运动
+            if (st != 0) throw new Exception("开启连续运动异常");
+        }
+        /// <summary>
+        /// 获取物理急停状态
+        /// </summary>
+        /// <returns></returns>
+        public int GetE_STOPStatus()
+        {
+            uint n = LTSMC.smc_read_inport(_ConnectNo, 0);
+            if ((n >> WHIODefine.E_STOP) == 1)
+                return 1;
+            return 0;
+        }
+
+        /// <summary>
+        /// 紧急停止所有轴
+        /// </summary>
+        public void Setsmc_Emg_stop()
+        {
+            var st = LTSMC.smc_emg_stop(_ConnectNo);
+            if (st != 0)
+                throw new Exception("立即停止所有轴失败");
+        }
+        #endregion
 
         #region 配置导入
         public bool LoadAxisParamInfo()

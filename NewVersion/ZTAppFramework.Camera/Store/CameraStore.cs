@@ -37,6 +37,7 @@ namespace ZTAppFramework.Camera.Store
             int NUM = 0;
             foreach (var item in CameraService.GetDeviceInfos())
             {
+                item.Index = NUM;
                 CameraInfos.Add(item);
                 Add(NUM, item);
                 NUM++;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZTAppFramework.Camera.Enums;
 using ZTAppFramework.Camera.Model;
+using static MvCamCtrl.NET.MyCamera;
 
 namespace ZTAppFramework.Camera.Camera.interfaces
 {
@@ -30,7 +31,7 @@ namespace ZTAppFramework.Camera.Camera.interfaces
         bool SetTriggerMode(bool isTriggerMode);
         bool SetAuto(ECameraAutoType type, ECameraAutoValue value);
         bool SetROI(uint x, uint y, uint width, uint height);
-
+        bool SetPixelFormat(MvGvspPixelType type);
         CameraParameterInfo GetParameterInfo();
     }
 }
