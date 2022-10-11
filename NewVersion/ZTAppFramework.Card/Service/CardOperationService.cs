@@ -23,6 +23,8 @@ namespace ZTAppFramework.Card.Service
         private readonly CardServer _cardServer;
         Smc304Card _SmcCard;
         private CardInfo _CardInfo;
+
+        public Action<string> ErrorMessageEvent;
         #endregion
         public CardOperationService(CardServer cardServer)
         {
@@ -30,13 +32,14 @@ namespace ZTAppFramework.Card.Service
             if (IsConnect())
             {
                 _SmcCard = _cardServer.GetCard();
+                if (_SmcCard == null) return;
                 _CardInfo = _SmcCard.cardInfo;
             }         
         }
 
         bool IsConnect()
         {
-            if (_cardServer == null) return false;
+            if (_SmcCard == null) return false;
             return true;
         }
 
@@ -49,10 +52,9 @@ namespace ZTAppFramework.Card.Service
                     throw new Exception("空闲状态才能执行操纵");
                 _SmcCard.InchingMove(Axis, AddOrBackMove, config);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-               
+                ErrorMessageEvent?.Invoke(ex.Message);
             }   
         }
 
@@ -63,10 +65,9 @@ namespace ZTAppFramework.Card.Service
                 if (!IsConnect()) throw new Exception("控制卡未链接");
                 _SmcCard.StartCardMove(axis, AddOrBackMove, config);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-               
+                ErrorMessageEvent?.Invoke(ex.Message);
             }
           
         }
@@ -78,9 +79,9 @@ namespace ZTAppFramework.Card.Service
                 if (!IsConnect()) throw new Exception("控制卡未链接");
                 _SmcCard.StopMove(axis, StopType);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                ErrorMessageEvent?.Invoke(ex.Message);
             }
            
         }
