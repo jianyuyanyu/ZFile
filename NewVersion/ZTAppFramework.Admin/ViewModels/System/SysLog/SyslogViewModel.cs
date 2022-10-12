@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Sys;
 using ZTAppFramework.Application.Service;
-
+using ZTAppFramewrok.Application.Stared;
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
@@ -16,7 +16,7 @@ namespace ZTAppFramework.Admin.ViewModels
     {
         #region Ui
         private List<SysLogMenuModel> _MenuList;
-       
+
 
         public List<SysLogMenuModel> MenuList
         {
@@ -47,7 +47,7 @@ namespace ZTAppFramework.Admin.ViewModels
             UnCheckedAllCommand = new DelegateCommand(UnChecked);
             CreateMenu();
         }
-    
+
         #region CommandEvenet
 
         void CheckedAll()
@@ -92,7 +92,7 @@ namespace ZTAppFramework.Admin.ViewModels
 
         async Task GetLogInfo()
         {
-
+            var r = await _SysLogSerivce.GetPostList(new PageParam() { Page=0,Limit=20});
         }
         #endregion
 

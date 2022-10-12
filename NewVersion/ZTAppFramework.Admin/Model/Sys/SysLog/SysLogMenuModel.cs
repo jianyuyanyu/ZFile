@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZTAppFramewrok.Application.Stared;
 
 namespace ZTAppFramework.Admin.Model.Sys
 {
@@ -22,7 +23,6 @@ namespace ZTAppFramework.Admin.Model.Sys
             get { return _IsSelected; }
             set { SetProperty(ref _IsSelected, value); }
         }
-
 
         private string _Name;
 
