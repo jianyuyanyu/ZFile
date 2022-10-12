@@ -23,6 +23,14 @@ namespace ZTAppFramework.Admin.ViewModels
             get { return _MenuList; }
             set { SetProperty(ref _MenuList, value); }
         }
+
+        private List<SysLogModel>  _SysLogList;
+
+        public List<SysLogModel> SysLogList
+        {
+            get { return  _SysLogList; }
+            set { SetProperty(ref  _SysLogList, value); }
+        }
         #endregion
 
         #region Command
@@ -93,6 +101,10 @@ namespace ZTAppFramework.Admin.ViewModels
         async Task GetLogInfo()
         {
             var r = await _SysLogSerivce.GetPostList(new PageParam() { Page=0,Limit=20});
+            if (r.Success)
+            {
+                SysLogList = Map<List<SysLogModel>>(r.data.Items);
+            }
         }
         #endregion
 

@@ -230,7 +230,7 @@
                 ColumnHeaderHeight="40"
                 DataGridStyle="Standard"
                 IsReadOnly="True"
-                ItemsSource="{Binding SysAdminList}">
+                ItemsSource="{Binding SysLogList}">
                 <ui:ZTDataGrid.Columns>
                     <DataGridTemplateColumn MinWidth="50" MaxWidth="100">
                         <DataGridTemplateColumn.Header>
@@ -269,37 +269,23 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-
-                    <!--<DataGridTemplateColumn MinWidth="80" MaxWidth="80">
-                        <DataGridTemplateColumn.Header>
-                            <TextBlock HorizontalAlignment="Center" Text="头像" />
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Text="{Binding HeadPic}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>-->
                     <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
                         <DataGridTemplateColumn.Header>
-                            <TextBlock HorizontalAlignment="Center" Text="姓名" />
+                            <TextBlock HorizontalAlignment="Center" Text="级别" />
                         </DataGridTemplateColumn.Header>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding FullName}" />
+                                    Text="{Binding Level}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn MinWidth="140" MaxWidth="140">
+                    <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
                         <DataGridTemplateColumn.Header>
-                            <TextBlock HorizontalAlignment="Center" Text="所属角色" />
+                            <TextBlock HorizontalAlignment="Center" Text="用户" />
                         </DataGridTemplateColumn.Header>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -307,7 +293,7 @@
                                     Margin="15,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding RoleGroupName}" />
+                                    Text="{Binding OperateUser}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -315,37 +301,37 @@
 
 
 
-                    <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
+                    <DataGridTemplateColumn MinWidth="200" MaxWidth="200">
                         <DataGridTemplateColumn.Header>
-                            <TextBlock HorizontalAlignment="Center" Text="性别" />
+                            <TextBlock HorizontalAlignment="Center" Text="操作地址" />
                         </DataGridTemplateColumn.Header>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Sex}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-
-                    <DataGridTemplateColumn MinWidth="140" MaxWidth="140">
-                        <DataGridTemplateColumn.Header>
-                            <TextBlock HorizontalAlignment="Center" Text="手机号" />
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Text="{Binding Mobile}" />
+                                    Text="{Binding Address}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
                     <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
                         <DataGridTemplateColumn.Header>
-                            <TextBlock HorizontalAlignment="Center" Text="状态" />
+                            <TextBlock HorizontalAlignment="Center" Text="提交类型" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Method}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn MinWidth="80" MaxWidth="80">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="IP" />
                         </DataGridTemplateColumn.Header>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -353,41 +339,52 @@
                                     Margin="15,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Status, Converter={StaticResource StatusToStringConverter}}">
-                                    <TextBlock.Resources>
-                                        <Style TargetType="{x:Type TextBlock}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Status}" Value="True">
-                                                    <Setter Property="Background" Value="#f0f9eb" />
-                                                    <Setter Property="Foreground" Value="Green" />
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Status}" Value="False">
-                                                    <Setter Property="Background" Value="#fef0f0" />
-                                                    <Setter Property="Foreground" Value="Red" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Resources>
-                                </TextBlock>
+                                    Text="{Binding IP}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
                     <DataGridTemplateColumn MinWidth="140" MaxWidth="140">
                         <DataGridTemplateColumn.Header>
-                            <TextBlock HorizontalAlignment="Center" Text="创建时间" />
+                            <TextBlock HorizontalAlignment="Center" Text="浏览器信息" />
                         </DataGridTemplateColumn.Header>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding CreateTime, StringFormat=yyyy-MM-dd HH:mm:ss}" />
+                                    Text="{Binding Browser}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
+                    <DataGridTemplateColumn MinWidth="140" MaxWidth="140">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="执行时长（毫秒）" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding ExecutionDuration}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
+                    <DataGridTemplateColumn MinWidth="140" MaxWidth="140">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="操作时间" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding OperateTime, StringFormat={}yyyy-MM-dd HH:mm:ss}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTemplateColumn
                         Width="*"
                         MinWidth="140"
@@ -398,17 +395,6 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                                    <ui:ZTButton
-                                        Width="50"
-                                        Height="30"
-                                        Background="#409eff"
-                                        Command="{Binding DataContext.ModifCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid, AncestorLevel=1}}"
-                                        CommandParameter="{Binding .}"
-                                        Content="&#xe620;"
-                                        Cursor="Hand"
-                                        FontFamily="{StaticResource FontAwesome}"
-                                        HoverBackground="#79bbff"
-                                        Type="Normal" />
                                     <ui:ZTButton
                                         Width="50"
                                         Height="30"
