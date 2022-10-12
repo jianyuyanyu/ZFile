@@ -28,8 +28,6 @@ namespace ZTAppFramework.Application
             services.RegisterScoped<RoleService>();
             services.RegisterScoped<SysPostService>();
             services.RegisterScoped<SysLogSerivce>();
-            
-
 
         }
       
