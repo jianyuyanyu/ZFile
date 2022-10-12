@@ -247,7 +247,7 @@
                                             FontFamily="{StaticResource FontAwesome}"
                                             FontSize="16"
                                             Text="{Binding name}"
-                                            Visibility="{Binding ElementName=IsCheckBoxVis, Path=IsChecked, Converter={StaticResource BoolToInvisibleConverter}, Mode=OneWay}" />
+                                            Visibility="{Binding ElementName=IsCheckBoxVis, Path=IsChecked, Converter={StaticResource BoolToVisibleConverter}, Mode=OneWay}" />
                                     </StackPanel>
                                 </RadioButton.Content>
                             </RadioButton>

@@ -20,7 +20,10 @@ namespace ZTAppFramework.Admin.ViewModels
         #endregion
 
         #region Command
-
+        public DelegateCommand CheckedAllCommand { get; }
+        public DelegateCommand UnCheckedAllCommand { get; }
+        public DelegateCommand CheckedCommand { get; }
+        public DelegateCommand UncheckedCommand { get; }
         #endregion
 
         #region Service
@@ -32,9 +35,25 @@ namespace ZTAppFramework.Admin.ViewModels
         #endregion
         public SyslogViewModel()
         {
-            MenuList=new List<SysLogMenuModel>();
+            MenuList = new List<SysLogMenuModel>();
+            CheckedAllCommand = new DelegateCommand(CheckedAll);
+            UnCheckedAllCommand = new DelegateCommand(UnChecked);
             CreateMenu();
         }
+    
+        #region CommandEvenet
+
+        void CheckedAll()
+        {
+
+        }
+
+        void UnChecked()
+        {
+
+        }
+
+        #endregion
 
         #region Event
         void CreateMenu()
@@ -52,13 +71,15 @@ namespace ZTAppFramework.Admin.ViewModels
                 }
             });
 
-            MenuList.Add(new SysLogMenuModel() { Name = "日志类型",
-                Childer=new List<SysLogMenuModel>() 
+            MenuList.Add(new SysLogMenuModel()
+            {
+                Name = "日志类型",
+                Childer = new List<SysLogMenuModel>()
                 {
                   new SysLogMenuModel(){  Name="登入日志"} ,
                   new SysLogMenuModel(){  Name="操作日志"} ,
                 }
-            
+
             });
         }
         #endregion

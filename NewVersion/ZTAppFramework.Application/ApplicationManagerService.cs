@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZTAppFramework.Application.Service;
 
+
 namespace ZTAppFramework.Application
 {
     /// <summary>
@@ -26,7 +27,7 @@ namespace ZTAppFramework.Application
             services.RegisterScoped<OperatorService>();
             services.RegisterScoped<RoleService>();
             services.RegisterScoped<SysPostService>();
-      
+            services.RegisterScoped<SysLogSerivce>();
             
 
 

@@ -10,7 +10,7 @@ using ZTAppFramewrok.Application.Stared.Sys.SysPost.Parm;
 using ZTAppFreamework.Stared.Attributes;
 using ZTAppFramewrok.Application.Stared.HttpManager.Model;
 
-namespace ZTAppFramework.Application.Service.Sys.SysMenu
+namespace ZTAppFramework.Application.Service
 {
     /// <summary>
     ///********************************************
