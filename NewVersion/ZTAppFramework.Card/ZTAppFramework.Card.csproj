@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\WHFreamework\WHFreamework.Data\WHFreamework.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="LTSMC.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

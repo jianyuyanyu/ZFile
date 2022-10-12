@@ -115,10 +115,10 @@ namespace ZTAppFramework.PictureMarker
                 if (CircleHelepr.IsMeetCirclMethod())
                 {
                     info = CircleHelepr.Start_Compute_Three_Point_Draw_Cirle();
-                    GeometryGroup group = new GeometryGroup();
-                    var Ellipse = new EllipseGeometry(new Point(info.CircleX, info.CircleY), info.CircleR, info.CircleR);
-                    group.Children.Add(Ellipse);
-                    DrawPath.Data = group;
+                    //GeometryGroup group = new GeometryGroup();
+                    //var Ellipse = new EllipseGeometry(new Point(info.CircleX, info.CircleY), info.CircleR, info.CircleR);
+                    //group.Children.Add(Ellipse);
+                    //DrawPath.Data = group;
                 }
                 else
                 {
