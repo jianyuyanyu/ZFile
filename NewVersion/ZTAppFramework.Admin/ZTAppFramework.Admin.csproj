@@ -11,6 +11,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Validations\Sys\SysMenu\" />
+    <Folder Include="Validations\Sys\SysLog\" />
     <Folder Include="Validations\Workbench\" />
   </ItemGroup>
 </Project>

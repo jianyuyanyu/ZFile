@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 using ZTAppFramework.Admin.Model.Device;
 using ZTAppFramework.Admin.Model.Menus;
 using ZTAppFramework.Admin.Model.Sys;
-
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramewrok.Application.Stared;
-using ZTAppFramewrok.Application.Stared.Operator.Parm;
-using ZTAppFramewrok.Application.Stared.Sys.SysPost.Parm;
+using ZTAppFramewrok.Application.Stared.Sys;
 
 namespace ZTAppFramework.Admin
 {
@@ -38,7 +36,7 @@ namespace ZTAppFramework.Admin
             CreateMap<SysPostModel, SysPostParm>().ReverseMap();
             CreateMap<SysAdminModel, SysAdminDto>().ReverseMap();
             CreateMap<SysMenuModel, SysMenuDto>().ReverseMap();
-            
+            CreateMap<SysLogModel, SysLogDto>().ReverseMap();
 
 
         }

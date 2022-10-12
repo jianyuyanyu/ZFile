@@ -8,7 +8,7 @@ using ZTAppFrameword.Template.Global;
 using ZTAppFramework.Admin.Model.Sys;
 using ZTAppFramework.Application.Service;
 using ZTAppFramewrok.Application.Stared;
-using ZTAppFramewrok.Application.Stared.Sys.SysPost.Parm;
+using ZTAppFramewrok.Application.Stared.Sys;
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels

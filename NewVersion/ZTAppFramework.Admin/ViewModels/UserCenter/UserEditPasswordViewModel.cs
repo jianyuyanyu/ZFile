@@ -6,7 +6,7 @@ using System.Linq;
 using ZTAppFrameword.Template.Global;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Application.Service;
-using ZTAppFramewrok.Application.Stared.Operator.Parm;
+using ZTAppFramewrok.Application.Stared;
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels

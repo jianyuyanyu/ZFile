@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZTAppFramewrok.Application.Stared.Sys.SysPost.Parm;
+using ZTAppFramewrok.Application.Stared.Sys;
 
 namespace ZTAppFramework.Admin.Validations.Sys.SysPost
 {

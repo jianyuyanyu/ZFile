@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ZTAppFramewrok.Application.Stared.Commom;
 using ZTAppFramewrok.Application.Stared;
 using ZTAppFramewrok.Application.Stared.HttpManager;
-using ZTAppFramewrok.Application.Stared.Sys.SysPost.Parm;
+using ZTAppFramewrok.Application.Stared.Sys;
 using ZTAppFreamework.Stared.Attributes;
 using ZTAppFramewrok.Application.Stared.HttpManager.Model;
 

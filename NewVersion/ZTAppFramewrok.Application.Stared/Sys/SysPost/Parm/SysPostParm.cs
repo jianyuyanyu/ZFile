@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZTAppFramewrok.Application.Stared.Sys.SysPost.Parm
-{
+namespace ZTAppFramewrok.Application.Stared.Sys
+{ 
     /// <summary>
     ///********************************************
     /// 创建人        ：  WeiXiaolei

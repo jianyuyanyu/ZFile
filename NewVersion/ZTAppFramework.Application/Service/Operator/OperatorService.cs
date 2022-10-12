@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZTAppFramewrok.Application.Stared;
 using ZTAppFramewrok.Application.Stared.HttpManager;
-using ZTAppFramewrok.Application.Stared.Operator.Parm;
+using ZTAppFramewrok.Application.Stared;
 using ZTAppFreamework.Stared.Attributes;
 
 namespace ZTAppFramework.Application.Service

@@ -13,7 +13,7 @@ using ZTAppFramework.Admin.Validations.Sys.SysAdmin;
 using ZTAppFramework.Admin.Validations.Sys.SysPost;
 using ZTAppFramework.Admin.Validations.Users;
 using ZTAppFramewrok.Application.Stared;
-using ZTAppFramewrok.Application.Stared.Sys.SysPost.Parm;
+using ZTAppFramewrok.Application.Stared.Sys;
 using ZTAppFreamework.Stared.Validations;
 
 namespace ZTAppFramework.Admin

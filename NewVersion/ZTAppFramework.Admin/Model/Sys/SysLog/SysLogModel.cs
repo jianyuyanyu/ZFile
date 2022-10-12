@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZTAppFramewrok.Application.Stared;
 
-namespace ZTAppFramework.Admin.Model.Sys.SysLog
+namespace ZTAppFramework.Admin.Model.Sys
 {
     /// <summary>
     ///********************************************
@@ -116,32 +117,53 @@ namespace ZTAppFramework.Admin.Model.Sys.SysLog
             get { return _Status; }
             set { SetProperty(ref _Status, value); }
         }
+
         /// <summary>
         /// 详细信息
         /// </summary>
-        public string Message { get; set; }
+        private string _Message;
+        public string Message
+        {
+            get { return _Message; }
+            set { SetProperty(ref _Message, value); }
+        }
 
         /// <summary>
         /// 返回结果
         /// </summary>
-        public string ReturnValue { get; set; }
+        private string _ReturnValue;
+        public string ReturnValue
+        {
+            get { return _ReturnValue; }
+            set { SetProperty(ref _ReturnValue, value); }
+        }
 
         /// <summary>
         /// 操作时间
         /// </summary>
-
-        public DateTime OperateTime { get; set; } = DateTime.Now;
-
+        private DateTime _OperateTime = DateTime.Now;
+        public DateTime OperateTime
+        {
+            get { return _OperateTime; }
+            set { SetProperty(ref _OperateTime, value); }
+        }
         /// <summary>
         /// 浏览器信息
         /// </summary>
-        public string Browser { get; set; }
-
+        private string _Browser;
+        public string Browser
+        {
+            get { return _Browser; }
+            set { SetProperty(ref _Browser, value); }
+        }
         /// <summary>
         /// 执行时长
         /// </summary>
-
-        public int ExecutionDuration { get; set; } = 0;
-
+        private int _ExecutionDuration=0;
+        public int ExecutionDuration
+        {
+            get { return _ExecutionDuration; }
+            set { SetProperty(ref _ExecutionDuration, value); }
+        }
     }
 }
