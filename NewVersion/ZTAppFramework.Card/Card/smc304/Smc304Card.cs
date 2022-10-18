@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using WHFreamework.Data.Utils;
 using ZTAppFramework.Card.Model;
 
 
@@ -61,7 +60,7 @@ namespace ZTAppFramework.Card.Card
         {
             _ConnectNo = ConnectNo;
             cardInfo = new CardInfo();
-            Task.Run(UpdateInfo);
+          // 
         }
 
         ~Smc304Card()
@@ -122,7 +121,11 @@ namespace ZTAppFramework.Card.Card
             if (st != 0)
                 cardInfo.CardConnectStatus = false;
             else
+            {
                 cardInfo.CardConnectStatus = true;
+                Task.Run(UpdateInfo);
+            }
+               
         }
         #region 查询
         public AxisParm GetAxisParamInfo() => DeepCopy<AxisParm>(axisParm);
@@ -222,12 +225,42 @@ namespace ZTAppFramework.Card.Card
             }
 
         }
+
+        public void SetAxisParam(AxisParm model) => axisParm = model;
+
+        public bool SaveAxisParamInfo()
+        {
+            try
+            {
+                return XMLHelper.SerializeToXmlFile<AxisParm>(axisParm, ConfigPath);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public bool LoadCardConfigParamInfo()
         {
             try
             {
                 Config = XMLHelper.SerializerXMLToObject<SMCDefaultModel>(DefaultCardConfig);
                 return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
+        public void SetDefaultParam(SMCDefaultModel model) => Config = model;
+
+        public bool SaveConfigParamInfo()
+        {
+            try
+            {
+                return XMLHelper.SerializeToXmlFile<SMCDefaultModel>(Config, DefaultCardConfig);
             }
             catch (Exception)
             {
@@ -250,6 +283,10 @@ namespace ZTAppFramework.Card.Card
             }
             return (T)retval;
         }
+
+     
+
+
 
         #endregion
 

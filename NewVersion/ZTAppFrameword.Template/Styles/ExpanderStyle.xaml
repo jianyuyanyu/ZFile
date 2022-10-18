@@ -192,4 +192,169 @@
     </Style>
 
     <Style BasedOn="{StaticResource ZTExpanderStyle}" TargetType="{x:Type local:ZTNavExpander}" />
+
+
+    <Style x:Key="WHDataExpanderStyle" TargetType="local:WHExpander">
+        <Setter Property="HeaderHeight" Value="30" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="HeaderBackground" Value="LightSkyBlue" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HeaderHorizontalAlignment" Value="Left" />
+        <Setter Property="HeaderVerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="20,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:WHExpander">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <ToggleButton
+                            x:Name="header"
+                            MinHeight="{TemplateBinding HeaderHeight}"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HeaderHorizontalAlignment}"
+                            VerticalContentAlignment="{TemplateBinding HeaderVerticalAlignment}"
+                            Background="{TemplateBinding HeaderBackground}"
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            FocusVisualStyle="{x:Null}"
+                            Foreground="{TemplateBinding Foreground}"
+                            IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <ToggleButton.Template>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border
+                                        x:Name="bg"
+                                        Background="{TemplateBinding Background}"
+                                        Opacity="0.7">
+                                        <Grid Margin="{TemplateBinding Padding}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                            <Grid
+                                                x:Name="iconGrid"
+                                                Grid.Column="1"
+                                                Width="20">
+
+                                                <Border
+                                                    Width="15"
+                                                    Height="15"
+                                                    Background="#dddddd">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect
+                                                            BlurRadius="3"
+                                                            Direction="1"
+                                                            Opacity="1"
+                                                            ShadowDepth="0" />
+                                                    </Border.Effect>
+                                                </Border>
+
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter TargetName="bg" Property="Opacity" Value="1" />
+                                        </Trigger>
+
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="bg" Property="Opacity" Value="1" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+                        <Grid
+                            x:Name="contentGrid"
+                            Grid.Row="1"
+                            Background="{TemplateBinding Background}">
+                            <Grid.LayoutTransform>
+                                <TransformGroup>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="ContentSiteScaleTransform" />
+                                        <RotateTransform Angle="0" />
+                                    </TransformGroup>
+                                </TransformGroup>
+                            </Grid.LayoutTransform>
+                            <Grid x:Name="contentAnimationGrid">
+                                <ContentPresenter
+                                    x:Name="content"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                    Visibility="Collapsed" />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="contentAnimationGrid"
+                                            Storyboard.TargetProperty="Opacity"
+                                            From="0"
+                                            To="1"
+                                            Duration="0:0:0" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ContentSiteScaleTransform"
+                                            Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                            From="0"
+                                            To="1"
+                                            Duration="0:0:0">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="content"
+                                            Storyboard.TargetProperty="Visibility"
+                                            Duration="0:0:0.2">
+                                            <DiscreteObjectKeyFrame KeyTime="0%" Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="contentAnimationGrid"
+                                            Storyboard.TargetProperty="Opacity"
+                                            From="1"
+                                            To="0"
+                                            Duration="0:0:0" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ContentSiteScaleTransform"
+                                            Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                            From="1"
+                                            To="0"
+                                            Duration="0:0:0">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="content"
+                                            Storyboard.TargetProperty="Visibility"
+                                            Duration="0:0:0.2">
+                                            <DiscreteObjectKeyFrame KeyTime="100%" Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource WHDataExpanderStyle}" TargetType="{x:Type local:WHExpander}" />
 </ResourceDictionary>

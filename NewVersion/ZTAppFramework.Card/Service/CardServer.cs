@@ -34,7 +34,14 @@ namespace ZTAppFramework.Card.Service
 
         public Smc304Card GetCard() => _Cardinfo;
         public AxisParm GetAxisParamInfo() => _Cardinfo.GetAxisParamInfo();
+
+        public void SetAxisParam(AxisParm model) => _Cardinfo.SetAxisParam(model);
+        public bool SaveAxisParam() => _Cardinfo.SaveAxisParamInfo();
+
         public SMCDefaultModel GetSMCDefaultParamInfo() => _Cardinfo.GetSMCDefaultParamInfo();
 
+        public bool SaveDefaultConfig()=>_Cardinfo.SaveConfigParamInfo();
+
+        public void SetDefaultParam(SMCDefaultModel model) => _Cardinfo.SetDefaultParam(model);
     }
 }
