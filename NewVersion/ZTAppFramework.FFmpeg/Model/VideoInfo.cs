@@ -15,5 +15,23 @@ namespace ZTAppFramework.FFmpeg.Model
     /// </summary>
     public class VideoInfo
     {
+        public TimeSpan Duration { get; set; }//视频时长
+
+        public string CodecId { get; set; }
+        public string CodecName { get; set; }
+        public int Bitrate { get;  set; }
+        public double FrameRate { get;  set; }
+        public int FrameWidth { get;  set; }
+        public int FrameHeight { get;  set; }
+        public TimeSpan frameDuration { get;  set; }
+
+        //Duration = Time
+        //CodecId = video
+        // CodecName = ffm
+        // Bitrate = (int)
+        // FrameRate = ffm
+        // FrameWidth = vi
+        // FrameHeight = v
+        // frameDuration =
     }
 }
