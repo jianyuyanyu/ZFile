@@ -89,4 +89,45 @@ namespace ZTAppFrameword.Template.Converters
         }
     }
     #endregion
+
+
+    #region 物料
+    public class CalibrationToStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null) return "未知";
+            int type = int.Parse(value.ToString());//标定单位，0:mll,1:mm,2cm
+            if (type == 0) return "mll";
+            else if (type == 1) return "mm";
+            else if (type == 2) return "cm";
+            else
+                return "未知";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+    public class CompanyTypeToStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null) return "未知";
+            int type = int.Parse(value.ToString());//第1个点标定类型0：圆，1：长方形，2椭圆，10：其他
+            if (type == 0) return "圆";
+            else if (type == 1) return "长方形";
+            else if (type == 2) return "椭圆";
+            else if (type == 10) return "其他";
+            else
+                return "未知";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+    #endregion
 }

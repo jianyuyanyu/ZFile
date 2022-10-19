@@ -32,4 +32,6 @@
     <Converter:RunStatusToColorConverter x:Key="RunStatusToColorConverter" />
     <Converter:AxisStatusToColorConverter x:Key="AxisStatusToColorConverter" />
     <Converter:AxisStatusToStringConverter x:Key="AxisStatusToStringConverter" />
+    <Converter:CalibrationToStringConverter x:Key="CalibrationToStringConverter" />
+    <Converter:CompanyTypeToStringConverter x:Key="CompanyTypeToStringConverter" />
 </ResourceDictionary>
