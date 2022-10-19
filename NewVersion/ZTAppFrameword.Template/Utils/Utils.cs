@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
 
-namespace ZTAppFrameword.Template.Utils
+namespace ZTAppFramework.Template.Utils
 {
     /// <summary>
     ///********************************************

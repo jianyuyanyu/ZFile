@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:enum="clr-namespace:ZTAppFrameword.Template.Enums"
-    xmlns:local="clr-namespace:ZTAppFrameword.Template.Control">
+    xmlns:enum="clr-namespace:ZTAppFramework.Template.Enums"
+    xmlns:local="clr-namespace:ZTAppFramework.Template.Control">
     <Style x:Key="ZTLoadingStyle" TargetType="local:ZTLoading">
         <Setter Property="Background" Value="White" />
         <Style.Triggers>

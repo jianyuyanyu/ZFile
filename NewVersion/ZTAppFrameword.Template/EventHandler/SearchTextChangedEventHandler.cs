@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ZTAppFrameword.Template
+namespace ZTAppFramework.Template
 {
     public class SearchTextChangedEventArgs : RoutedEventArgs
     {

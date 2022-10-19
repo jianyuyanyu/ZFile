@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Converter="clr-namespace:ZTAppFrameword.Template.Converters">
+    xmlns:Converter="clr-namespace:ZTAppFramework.Template.Converters">
     <Converter:BoolInverseConverter x:Key="BoolInverseConverter" />
     <Converter:Add3Converter x:Key="Add3Converter" />
     <Converter:GridLengthConverter x:Key="GridLengthConverter" />

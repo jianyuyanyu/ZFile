@@ -45,7 +45,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Version0.1Framwork", "Versi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewVersion", "NewVersion", "{EA2B2C3F-2B6C-4044-880D-D16509C11151}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZTAppFrameword.Template", "NewVersion\ZTAppFrameword.Template\ZTAppFrameword.Template.csproj", "{BDB72C93-8A30-4094-8EE3-4331CFF766B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZTAppFramework.Template", "NewVersion\ZTAppFrameword.Template\ZTAppFramework.Template.csproj", "{BDB72C93-8A30-4094-8EE3-4331CFF766B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZTAppFramework", "NewVersion\ZTAppFramework\ZTAppFramework.csproj", "{C5E67590-BFA9-49F3-88FE-BBC1003E80CA}"
 EndProject
@@ -95,7 +95,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZTAppFramework.Camera", "Ne
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "控制卡", "控制卡", "{F33F2803-4B32-4F53-9C9F-7B8960293C0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZTAppFramework.Card", "NewVersion\ZTAppFramework.Card\ZTAppFramework.Card.csproj", "{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZTAppFramework.Card", "NewVersion\ZTAppFramework.Card\ZTAppFramework.Card.csproj", "{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

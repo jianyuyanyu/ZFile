@@ -8,7 +8,7 @@ using System.Windows.Data;
 using System.Windows;
 using System.Windows.Media;
 
-namespace ZTAppFrameword.Template.Converters
+namespace ZTAppFramework.Template.Converters
 {
   
     internal class ProgressBarCornerRadiusConverter : IValueConverter

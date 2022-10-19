@@ -8,9 +8,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using ZTAppFrameword.Template.Enums;
+using ZTAppFramework.Template.Enums;
 
-namespace ZTAppFrameword.Template.Control
+namespace ZTAppFramework.Template.Control
 {
     /// <summary>
     ///********************************************

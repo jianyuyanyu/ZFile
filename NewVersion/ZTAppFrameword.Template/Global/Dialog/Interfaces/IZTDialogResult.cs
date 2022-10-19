@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZTAppFrameword.Template.Enums;
+using ZTAppFramework.Template.Enums;
 
-namespace ZTAppFrameword.Template.Global
+namespace ZTAppFramework.Template.Global
 {
     /// <summary>
     ///********************************************

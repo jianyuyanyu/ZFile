@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows;
 
-namespace ZTAppFrameword.Template.Extensions
+namespace ZTAppFramework.Template.Extensions
 {
     /// <summary>
     ///********************************************

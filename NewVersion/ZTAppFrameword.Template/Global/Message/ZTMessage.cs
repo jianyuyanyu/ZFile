@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using ZTAppFrameword.Template.Control;
+using ZTAppFramework.Template.Control;
 
-namespace ZTAppFrameword.Template.Global
+namespace ZTAppFramework.Template.Global
 {
     /// <summary>
     ///********************************************

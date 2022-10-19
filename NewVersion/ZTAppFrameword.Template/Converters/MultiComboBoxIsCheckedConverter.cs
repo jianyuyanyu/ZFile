@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
-using ZTAppFrameword.Template.Extensions;
+using ZTAppFramework.Template.Extensions;
 
-namespace ZTAppFrameword.Template.Converters
+namespace ZTAppFramework.Template.Converters
 {
     internal class MultiComboBoxIsCheckedConverter : IMultiValueConverter
     {

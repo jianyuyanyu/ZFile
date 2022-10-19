@@ -8,7 +8,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows;
 
-namespace ZTAppFrameword.Template.Converters
+namespace ZTAppFramework.Template.Converters
 {
     /// <summary>
     ///********************************************

@@ -16,6 +16,7 @@ namespace ZTAppFramework.PictureMarker.Enums
     public enum DrawTypeEnums
     {
         Nome,//无
+        Included,//夹角计算
         Round//圆
     }
 }

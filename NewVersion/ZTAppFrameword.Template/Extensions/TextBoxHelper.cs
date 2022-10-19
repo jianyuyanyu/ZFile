@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using ZTAppFrameword.Template.Enums;
+using ZTAppFramework.Template.Enums;
 
-namespace ZTAppFrameword.Template.Extensions
+namespace ZTAppFramework.Template.Extensions
 {
     /// <summary>
     ///  输入框帮助类型

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows;
 
-namespace ZTAppFrameword.Template.Converters
+namespace ZTAppFramework.Template.Converters
 {
     /// <summary>
     ///********************************************

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ZTAppFrameword.Template.Control 
+namespace ZTAppFramework.Template.Control 
 { 
     /// <summary>
     /// 表格控件

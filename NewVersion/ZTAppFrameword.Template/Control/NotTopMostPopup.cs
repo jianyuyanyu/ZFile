@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Interop;
 
-namespace ZTAppFrameword.Template.Control
+namespace ZTAppFramework.Template.Control
 {
     public class NotTopMostPopup : Popup
     {

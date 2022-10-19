@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows;
 
-namespace ZTAppFrameword.Template.Control
+namespace ZTAppFramework.Template.Control
 {
     /// <summary>
     ///********************************************

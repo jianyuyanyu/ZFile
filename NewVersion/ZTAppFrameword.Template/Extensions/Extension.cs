@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZTAppFrameword.Template.Extensions
+namespace ZTAppFramework.Template.Extensions
 {
     /// <summary>
     ///********************************************

@@ -78,22 +78,22 @@ namespace ZTAppFramework.PictureMarker
                 //不允许从图片区域以外开始画线，mouseDownPoint必须在图片区域内
                 Point p = MC.relativePoint(ePoint);
                 points.Add(p);
-                if (points.Count() >= 2)
-                {
-                    GeometryGroup group = new GeometryGroup();
-                    var Cp = new Point(points[1].X, points[0].Y);
-                    LineGeometry lineA = new LineGeometry(points[0], points[1]);
-                    LineGeometry lineB = new LineGeometry(points[1], Cp);
-                    LineGeometry lineC = new LineGeometry(Cp, points[0]);
-                    group.Children.Add(lineA);
-                    group.Children.Add(lineB);
-                    group.Children.Add(lineC);
-                    AngleFormulas angle = new AngleFormulas(points[0], points[1]);
-                    var a = angle.GetCosaAngle();
-                    DrawPath.Data = group;
-                    MessageBox.Show(a.ToString());
-                    points.Clear();
-                }
+                //if (points.Count() >= 2)
+                //{
+                //    GeometryGroup group = new GeometryGroup();
+                //    var Cp = new Point(points[1].X, points[0].Y);
+                //    LineGeometry lineA = new LineGeometry(points[0], points[1]);
+                //    LineGeometry lineB = new LineGeometry(points[1], Cp);
+                //    LineGeometry lineC = new LineGeometry(Cp, points[0]);
+                //    group.Children.Add(lineA);
+                //    group.Children.Add(lineB);
+                //    group.Children.Add(lineC);
+                //    AngleFormulas angle = new AngleFormulas(points[0], points[1]);
+                //    var a = angle.GetCosaAngle();
+                //    DrawPath.Data = group;
+                //    MessageBox.Show(a.ToString());
+                //    points.Clear();
+                //}
 
             }
             IsDraw = false;
@@ -101,6 +101,37 @@ namespace ZTAppFramework.PictureMarker
             if (DrawType == DrawTypeEnums.Round)
             {
                 DrawRound(ePoint);
+            }
+            else if (DrawType == DrawTypeEnums.Included)
+            {
+                //不允许从图片区域以外开始画线，mouseDownPoint必须在图片区域内
+                Point p = MC.relativePoint(ePoint);
+                points.Add(p);
+                if (points.Count() > 2)
+                {
+                    GeometryGroup group = new GeometryGroup();
+                    LineGeometry lineA = new LineGeometry(points[0], points[1]);
+                    LineGeometry lineB = new LineGeometry(points[1], points[2]);
+                    group.Children.Add(lineA);
+                    group.Children.Add(lineB);
+                    DrawPath.Data = group;
+                    points.Clear();
+                    DrawType = DrawTypeEnums.Nome;
+                }
+                else
+                {
+                    GeometryGroup group = new GeometryGroup();
+                    foreach (var item in points)
+                    {
+                        RectangleGeometry lineA = new RectangleGeometry() { Rect = new Rect(item.X, item.Y, 0, 0) };
+                        group.Children.Add(lineA);
+                    }
+                    DrawPath.Data = group;
+
+                 
+                }
+
+               
             }
         }
 

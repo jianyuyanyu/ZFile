@@ -8,10 +8,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Threading;
-using ZTAppFrameword.Template.Control;
+using ZTAppFramework.Template.Control;
 
 
-namespace ZTAppFrameword.Template.Global
+namespace ZTAppFramework.Template.Global
 {
     /// <summary>
     ///********************************************

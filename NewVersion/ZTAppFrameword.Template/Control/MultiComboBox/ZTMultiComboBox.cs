@@ -12,9 +12,9 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Media;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 
-namespace ZTAppFrameword.Template.Control
+namespace ZTAppFramework.Template.Control
 {
     public class ZTMultiComboBox : System.Windows.Controls.Primitives.MultiSelector
     {

@@ -38,7 +38,6 @@ namespace ZTAppFramework.Admin
             var container = ContainerLocator.Container;
             if (!Authorization()) ExitApplication();
             var shell = container.Resolve<object>(AppView.MainName);
-
             if (shell is Window view)
             {
                 var regionManager = container.Resolve<IRegionManager>();

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
-using ZTAppFrameword.Template.Utils;
+using ZTAppFramework.Template.Utils;
 
-namespace ZTAppFrameword.Template.Converters
+namespace ZTAppFramework.Template.Converters
 {
     /// <summary>
     /// 基础转换器

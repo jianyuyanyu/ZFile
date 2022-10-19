@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace ZTAppFrameword.Template.Animations
+namespace ZTAppFramework.Template.Animations
 {
     /// <summary>
     ///********************************************
