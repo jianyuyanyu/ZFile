@@ -8,6 +8,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZTAppFramework.Application\ZTAppFramework.Application.csproj" />
+    <ProjectReference Include="..\ZTAppFramework.FFmpeg\ZTAppFramework.FFmpeg.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Validations\Sys\SysMenu\" />

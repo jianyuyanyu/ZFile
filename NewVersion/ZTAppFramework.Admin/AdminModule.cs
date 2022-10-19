@@ -11,7 +11,7 @@ using ZTAppFramework.SqliteCore;
 using ZTAppFramewrok.Application.Stared.HttpManager;
 using ZTAppFreamework.Stared;
 using ZTAppFreamework.Stared.Service;
-
+using ZTAppFramework.FFmpeg.Service;
 
 namespace ZTAppFramework.Admin
 {
@@ -36,6 +36,8 @@ namespace ZTAppFramework.Admin
             services.RegisterSingleton<AppStartService>();
             services.RegisterSingleton<AccessTokenManager>();
             services.RegisterSingleton<ApiClinetRepository>();
+            services.RegisterSingleton<FFmpegService>();
+            
             //应用逻辑
             services.RegisterApplicationManager();
             services.RegisterStaredManager();

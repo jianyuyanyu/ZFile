@@ -14,6 +14,7 @@ using ZTAppFramework.Application.Service;
 using ZTAppFramewrok.Application.Stared;
 using ZTAppFreamework.Stared;
 using ZTAppFreamework.Stared.ViewModels;
+using ZTAppFramework.FFmpeg.Service;
 
 namespace ZTAppFramework.Admin.ViewModels
 {
@@ -21,6 +22,7 @@ namespace ZTAppFramework.Admin.ViewModels
     {
         private readonly AdminService _userLoginService;
         private readonly CaptchaService _captchaService;
+        private readonly FFmpegService _FFmpegService;
 
         #region UI
         private ObservableCollection<UserLoginModel> _AccountList;
@@ -50,11 +52,13 @@ namespace ZTAppFramework.Admin.ViewModels
         public DelegateCommand<string> ExecuteCommand { get; }
         #endregion
 
-        public LoginViewModel(AdminService userLoginService, CaptchaService captchaService)
+        public LoginViewModel(AdminService userLoginService, CaptchaService captchaService,FFmpegService fFmpegService)
         {
+
             AccountList = new ObservableCollection<UserLoginModel>();
             _userLoginService = userLoginService;
             _captchaService = captchaService;
+            _FFmpegService = fFmpegService;
             Login = new UserLoginModel();
             ExecuteCommand = new DelegateCommand<string>(Execute);
         }

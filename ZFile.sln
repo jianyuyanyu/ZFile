@@ -99,6 +99,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZTAppFramework.Template", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "播放器(FFMPEG)", "播放器(FFMPEG)", "{4C9CB870-8B25-4AFF-AE55-E2D35F51EAB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZTAppFramework.FFmpeg", "NewVersion\ZTAppFramework.FFmpeg\ZTAppFramework.FFmpeg.csproj", "{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -457,6 +459,18 @@ Global
 		{D3546E2B-3FD4-42C5-B491-26333FD06AF7}.Release|iPhone.Build.0 = Release|Any CPU
 		{D3546E2B-3FD4-42C5-B491-26333FD06AF7}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{D3546E2B-3FD4-42C5-B491-26333FD06AF7}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Release|iPhone.Build.0 = Release|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -507,6 +521,7 @@ Global
 		{1B57F42D-8BA8-45F8-81FB-2D9F097FEAFD} = {F33F2803-4B32-4F53-9C9F-7B8960293C0D}
 		{D3546E2B-3FD4-42C5-B491-26333FD06AF7} = {EA2B2C3F-2B6C-4044-880D-D16509C11151}
 		{4C9CB870-8B25-4AFF-AE55-E2D35F51EAB8} = {EA2B2C3F-2B6C-4044-880D-D16509C11151}
+		{C35C8AC8-9DBA-4ACB-A0EF-72F61C22EB51} = {4C9CB870-8B25-4AFF-AE55-E2D35F51EAB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5FF6B21-B981-42E6-89C1-D5C6F90D2989}
