@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 
 namespace ZTAppFreamework.Stared.ViewModels
 {
@@ -70,14 +70,14 @@ namespace ZTAppFreamework.Stared.ViewModels
             return true;
         }
 
-        public virtual void OnDialogClosed(ZTAppFrameword.Template.Enums.ButtonResult result)
+        public virtual void OnDialogClosed(ZTAppFramework.Template.Enums.ButtonResult result)
         {
             ZTDialogResult dialogResult = new ZTDialogResult();
             dialogResult.Result = result;
             RequestClose?.Invoke(dialogResult);
         }
 
-        public virtual void OnDialogClosed() => OnDialogClosed(ZTAppFrameword.Template.Enums.ButtonResult.Yes);
+        public virtual void OnDialogClosed() => OnDialogClosed(ZTAppFramework.Template.Enums.ButtonResult.Yes);
         public virtual void OnDialogOpened(IZTDialogParameter parameters)
         {
             Title = parameters.GetValue<string>("Title");

@@ -5,7 +5,7 @@ using Prism.Mvvm;
 using System;
 using System.Text;
 using System.Xml.Serialization;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 using ZTAppFreamework.Stared.Validations;
 
 namespace ZTAppFreamework.Stared.ViewModels

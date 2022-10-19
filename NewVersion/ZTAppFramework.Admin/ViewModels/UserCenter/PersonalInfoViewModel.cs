@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Application.Service;
 using ZTAppFramewrok.Application.Stared;

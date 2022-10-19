@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 using ZTAppFramework.Admin.Model.Sys;
 using ZTAppFramework.Application.Service;
 using ZTAppFramewrok.Application.Stared;
@@ -100,7 +100,7 @@ namespace ZTAppFramework.Admin.ViewModels
         #region Override
         public override void Cancel()
         {
-            OnDialogClosed(ZTAppFrameword.Template.Enums.ButtonResult.No);
+            OnDialogClosed(ZTAppFramework.Template.Enums.ButtonResult.No);
         }
 
         public override async void OnSave()

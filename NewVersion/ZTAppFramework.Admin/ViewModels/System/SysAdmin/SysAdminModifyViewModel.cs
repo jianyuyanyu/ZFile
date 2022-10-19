@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Media;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 using ZTAppFramework.Admin.Model.Sys;
 
 using ZTAppFramework.Application.Service;
@@ -150,7 +150,7 @@ namespace ZTAppFramework.Admin.ViewModels
 
         public override void Cancel()
         {
-            OnDialogClosed(ZTAppFrameword.Template.Enums.ButtonResult.No);
+            OnDialogClosed(ZTAppFramework.Template.Enums.ButtonResult.No);
         }
 
         public override async void OnSave()

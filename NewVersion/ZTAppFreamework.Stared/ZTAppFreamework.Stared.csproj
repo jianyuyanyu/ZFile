@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ZTAppFrameword.Template\ZTAppFramework.Template.csproj" />
+    <ProjectReference Include="..\ZTAppFramework.Template\ZTAppFramework.Template.csproj" />
   </ItemGroup>
 
 </Project>

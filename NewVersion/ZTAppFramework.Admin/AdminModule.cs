@@ -1,7 +1,7 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 using ZTAppFramework.Admin.Dialog;
 using ZTAppFramework.Admin.ViewModels;
 using ZTAppFramework.Admin.Views;

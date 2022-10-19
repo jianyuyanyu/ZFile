@@ -3,7 +3,7 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 using ZTAppFreamework.Stared.ViewModels;
 
 namespace ZTAppFramework.Admin.ViewModels
@@ -16,7 +16,7 @@ namespace ZTAppFramework.Admin.ViewModels
         }
         public override void Cancel()
         {
-            OnDialogClosed(ZTAppFrameword.Template.Enums.ButtonResult.No);   
+            OnDialogClosed(ZTAppFramework.Template.Enums.ButtonResult.No);   
         }
 
         public override void OnSave()

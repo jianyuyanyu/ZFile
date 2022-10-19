@@ -3,7 +3,7 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Application.Service;
 using ZTAppFramewrok.Application.Stared;

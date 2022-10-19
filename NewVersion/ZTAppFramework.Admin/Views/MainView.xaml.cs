@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using ZTAppFrameword.Template.Control;
+using ZTAppFramework.Template.Control;
 
 namespace ZTAppFramework.Admin.Views
 {

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 using ZTAppFramework.Admin.Model.Sys;
 using ZTAppFramework.Application.Service;
 using ZTAppFreamework.Stared;
@@ -116,7 +116,7 @@ namespace ZTAppFramework.Admin.ViewModels
             }
             ShowDialog("提示", $"确定要删除{SelectList.Count()}个数据吗？如果删除项中含有子集将会被一并删除", async x =>
             {
-                if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
+                if (x.Result == ZTAppFramework.Template.Enums.ButtonResult.Yes)
                 {
                     string DelIdStr = string.Join(',', SelectList.Select(X => X.Id));
                     var r = await _sysPostService.Delete(DelIdStr);
@@ -136,7 +136,7 @@ namespace ZTAppFramework.Admin.ViewModels
             dialogParameter.Add("Param", Param);
             ZTDialog.ShowDialogWindow(AppView.SysPostModifyName, dialogParameter, async x =>
             {
-                if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
+                if (x.Result == ZTAppFramework.Template.Enums.ButtonResult.Yes)
                 {
                     await GetListInfo();
                 }
@@ -146,7 +146,7 @@ namespace ZTAppFramework.Admin.ViewModels
         {
             ShowDialog("提示", "确定要删除码", async x =>
             {
-                if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
+                if (x.Result == ZTAppFramework.Template.Enums.ButtonResult.Yes)
                 {
                     var r = await _sysPostService.Delete(Param.Id.ToString());
                     if (r.Success)
@@ -164,7 +164,7 @@ namespace ZTAppFramework.Admin.ViewModels
             dialogParameter.Add("Title", "添加");
             ZTDialog.ShowDialogWindow(AppView.SysPostModifyName, dialogParameter, async x =>
             {
-                if (x.Result == ZTAppFrameword.Template.Enums.ButtonResult.Yes)
+                if (x.Result == ZTAppFramework.Template.Enums.ButtonResult.Yes)
                 {
 
                     await GetListInfo();

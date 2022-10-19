@@ -8,7 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 using ZTAppFramework.Admin.Model.Users;
 using ZTAppFramework.Application.Service;
 using ZTAppFramewrok.Application.Stared;

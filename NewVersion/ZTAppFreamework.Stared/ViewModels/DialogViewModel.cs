@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZTAppFrameword.Template.Global;
+using ZTAppFramework.Template.Global;
 
 namespace ZTAppFreamework.Stared.ViewModels
 {

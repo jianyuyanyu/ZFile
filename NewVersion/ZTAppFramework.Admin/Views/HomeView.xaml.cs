@@ -2,8 +2,8 @@
 using System;
 using System.Windows.Controls;
 using System.Windows.Input;
-using ZTAppFrameword.Template.Control;
-using ZTAppFrameword.Template.Animations;
+using ZTAppFramework.Template.Control;
+using ZTAppFramework.Template.Animations;
 
 namespace ZTAppFramework.Admin.Views
 {

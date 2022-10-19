@@ -2,7 +2,7 @@
     x:Class="ZTAppFramework.Admin.Views.UserPererfabView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:UI="clr-namespace:ZTAppFrameword.Template.Control;assembly=ZTAppFrameword.Template"
+    xmlns:UI="clr-namespace:ZTAppFramework.Template.Control;assembly=ZTAppFramework.Template"
     xmlns:prism="http://prismlibrary.com/">
     <Grid>
         <Grid.RowDefinitions>

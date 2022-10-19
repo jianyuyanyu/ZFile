@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:ZTAppFramework.Admin.Views"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:region="clr-namespace:ZTAppFreamework.Stared;assembly=ZTAppFreamework.Stared"
-    xmlns:ui="clr-namespace:ZTAppFrameword.Template.Control;assembly=ZTAppFrameword.Template"
+    xmlns:ui="clr-namespace:ZTAppFramework.Template.Control;assembly=ZTAppFramework.Template"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid Background="#222B44">
         <Grid.ColumnDefinitions>
