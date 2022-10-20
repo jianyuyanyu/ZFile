@@ -333,8 +333,8 @@ namespace ZTAppFramework.Camera.Camera.Hiks
         private IDictionary<ECameraParameter, CameraParameter> GetParameterDictionary()
         {
             var dictionary = new Dictionary<ECameraParameter, CameraParameter>();
-            var width = new MyCamera.MVCC_INTVALUE();//高
-            var height = new MyCamera.MVCC_INTVALUE();//宽
+            var width = new MyCamera.MVCC_INTVALUE();//宽
+            var height = new MyCamera.MVCC_INTVALUE();//高
             var offsetX = new MyCamera.MVCC_INTVALUE(); //偏移量X
             var offsetY = new MyCamera.MVCC_INTVALUE();//偏移量Y
             var exposure = new MyCamera.MVCC_FLOATVALUE();//暴光

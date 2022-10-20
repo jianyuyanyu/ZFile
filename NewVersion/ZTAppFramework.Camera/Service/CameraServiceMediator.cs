@@ -94,6 +94,13 @@ namespace ZTAppFramework.Camera.Service
             return (exposure.Current, exposure.Min, exposure.Max);
         }
 
+        public CameraParameterInfo GetCameraParameInfo(CameraDataInfo info)
+        {
+            var parameterInfo = _serviceDictionary[info].GetParameterInfo();
+            if (parameterInfo == null) return null;
+            return parameterInfo;
+        }
+
         public (double Cur, double Min, double Max) GetGain(CameraDataInfo info)
         {
             var parameterInfo = _serviceDictionary[info].GetParameterInfo();
