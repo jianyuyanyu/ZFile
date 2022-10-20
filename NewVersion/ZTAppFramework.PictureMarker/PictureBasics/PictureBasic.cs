@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -13,6 +14,7 @@ using System.Windows.Shapes;
 using ZTAppFramework.PictureMarker.Enums;
 using ZTAppFramework.PictureMarker.Formulas;
 using ZTAppFramework.PictureMarker.Model;
+using ZTDJ;
 
 namespace ZTAppFramework.PictureMarker
 {
@@ -37,6 +39,15 @@ namespace ZTAppFramework.PictureMarker
         #endregion
 
         CircleHeleper CircleHelepr;
+
+        RJPEG rJPEG;
+        public void loadImg(string path)
+        {
+            if (rJPEG != null) rJPEG.Dispose();
+            byte[] data = System.IO.File.ReadAllBytes(path);
+            rJPEG = RJPEG.FromBytes(data);
+           
+        }
         public PictureBasic(Canvas canvas)
         {
             CircleHelepr = new CircleHeleper();
@@ -66,13 +77,25 @@ namespace ZTAppFramework.PictureMarker
                 DrawRectangle(sPoint, MovePoint);
             Point mp = MC.getInImagePoint(MovePoint);
             Rect rect = new Rect(MC.relativePoint(sPoint), MovePoint);
-            MC.UpdateTextBox();
+            if (rJPEG != null)
+            {
+                Point p = MC.relativePoint(MovePoint);
+                var a = rJPEG.GetTemp((int)MC.CurrentPoint.X, (int)MC.CurrentPoint.Y);
+                MC.UpdateTextBox($"温度:{a}");
+            }
+            else
+            {
+                MC.UpdateTextBox();
+            }
+
 
         }
         List<Point> points = new List<Point>();
         void MouseUp(Point sPoint, Point ePoint)
         {
             UpdateKeyUp();
+         
+
             if (IsDraw)
             {
                 //不允许从图片区域以外开始画线，mouseDownPoint必须在图片区域内
