@@ -90,9 +90,12 @@ namespace ZTAppFramework.PictureMarker
         public void SetImgInfo(Image img, double width, double height)
         {
             ImageControl = img;
+            ImageControl.Width = width;
+            ImageControl.Height = height;
+         
             ImgInfo.PictureWidth = (int)width;
             ImgInfo.PictureHeight = (int)height;
-
+            
             if (DefaultScaleLevel < 0)
             {
                 double hr = MyCanvas.ActualWidth / ImgInfo.PictureWidth;
@@ -103,6 +106,7 @@ namespace ZTAppFramework.PictureMarker
             {
                 ScaleLevel = DefaultScaleLevel;
             }
+           
 
             Canvas.SetZIndex(ImageControl, -1);
             resetPositions();
@@ -397,7 +401,9 @@ namespace ZTAppFramework.PictureMarker
         {
             //  if (string.IsNullOrEmpty(str)) return;
             if (IsPointInImage(mouseMovePoint))
-                PosinText.Text = $"X:{Convert.ToInt32(CurrentPoint.X)},Y:{Convert.ToInt32(CurrentPoint.Y)}";
+            {
+                PosinText.Text = $"X:{Convert.ToInt32(CurrentPoint.X)},Y:{Convert.ToInt32(CurrentPoint.Y)}\r\n+{str}";
+            }
             else
                 PosinText.Text = $"已经超出图片坐标X:{Convert.ToInt32(mouseMovePoint.X)}, Y:{Convert.ToInt32(mouseMovePoint.Y)}";
 
