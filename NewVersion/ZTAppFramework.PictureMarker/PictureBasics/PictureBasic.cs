@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using ZTAppFramework.PictureMarker.Enums;
-using ZTAppFramework.PictureMarker.Formulas;
+
 using ZTAppFramework.PictureMarker.Model;
-using ZTDJ;
+
 
 namespace ZTAppFramework.PictureMarker
 {
@@ -40,14 +40,7 @@ namespace ZTAppFramework.PictureMarker
 
         CircleHeleper CircleHelepr;
 
-        RJPEG rJPEG;
-        public void loadImg(string path)
-        {
-            if (rJPEG != null) rJPEG.Dispose();
-            byte[] data = System.IO.File.ReadAllBytes(path);
-            rJPEG = RJPEG.FromBytes(data);
-           
-        }
+       
         public PictureBasic(Canvas canvas)
         {
             CircleHelepr = new CircleHeleper();
@@ -77,16 +70,16 @@ namespace ZTAppFramework.PictureMarker
                 DrawRectangle(sPoint, MovePoint);
             Point mp = MC.getInImagePoint(MovePoint);
             Rect rect = new Rect(MC.relativePoint(sPoint), MovePoint);
-            if (rJPEG != null)
-            {
-                Point p = MC.relativePoint(MovePoint);
-                var a = rJPEG.GetTemp((int)MC.CurrentPoint.X, (int)MC.CurrentPoint.Y);
-                MC.UpdateTextBox($"温度:{a}");
-            }
-            else
-            {
+            //if (rJPEG != null)
+            //{
+            //    Point p = MC.relativePoint(MovePoint);
+            //    var a = rJPEG.GetTemp((int)MC.CurrentPoint.X, (int)MC.CurrentPoint.Y);
+            //    MC.UpdateTextBox($"温度:{a}");
+            //}
+            //else
+            //{
                 MC.UpdateTextBox();
-            }
+            //}
 
 
         }
@@ -153,8 +146,32 @@ namespace ZTAppFramework.PictureMarker
 
                  
                 }
-
-               
+            }
+            else if (DrawType == DrawTypeEnums.AngleFormulas)
+            {
+                Point p = MC.relativePoint(ePoint);
+                points.Add(p);
+                if (points.Count() >= 2)
+                {
+                    points.Add(FormulasHeleper.FormulasAngleNewPoint(30, points[0], points[1]));
+                    GeometryGroup group = new GeometryGroup();
+                    LineGeometry lineA = new LineGeometry(points[0], points[1]);
+                    LineGeometry lineB = new LineGeometry(points[0], points[2]);
+                    group.Children.Add(lineA);
+                    group.Children.Add(lineB);
+                    DrawPath.Data = group;
+                    points.Clear();
+                }
+                else
+                {
+                    GeometryGroup group = new GeometryGroup();
+                    foreach (var item in points)
+                    {
+                        RectangleGeometry lineA = new RectangleGeometry() { Rect = new Rect(item.X, item.Y, 0, 0) };
+                        group.Children.Add(lineA);
+                    }
+                    DrawPath.Data = group;
+                }
             }
         }
 

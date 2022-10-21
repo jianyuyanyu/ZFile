@@ -17,6 +17,7 @@ namespace ZTAppFramework.PictureMarker.Enums
     {
         Nome,//无
         Included,//夹角计算
+        AngleFormulas,//旋转后坐标计算
         Round//圆
     }
 }

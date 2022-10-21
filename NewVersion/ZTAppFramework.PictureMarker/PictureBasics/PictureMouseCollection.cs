@@ -249,9 +249,10 @@ namespace ZTAppFramework.PictureMarker
             PosinText.Visibility = Visibility.Visible;
         }
         void MyCanvas_MouseLeave(object sender, MouseEventArgs e)
-        {
+        {   
             MyCanvas.Focusable = false;
             PosinText.Visibility = Visibility.Collapsed;
+            IsDrap = false;
         }
         void MyCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {

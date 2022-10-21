@@ -8,9 +8,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="ZTDJ">
-      <HintPath>C:\Users\Administrator\Downloads\SDKs-DjiImage-main\ZTDJ\bin\Debug\net6.0\ZTDJ.vmp.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 </Project>

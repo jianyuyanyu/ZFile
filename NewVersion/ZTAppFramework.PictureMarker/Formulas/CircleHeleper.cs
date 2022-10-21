@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using ZTAppFramework.PictureMarker.Model;
 
-namespace ZTAppFramework.PictureMarker.Formulas
+namespace ZTAppFramework.PictureMarker
 {
     /// <summary>
     ///********************************************
@@ -37,7 +37,6 @@ namespace ZTAppFramework.PictureMarker.Formulas
                 throw new Exception("Point More than three"); ;
             Points.Add(Points.Count, point);
         }
-
         public CircleData Start_Compute_Three_Point_Draw_Cirle()
         {
             double a = Points[0].X - Points[1].X;// X1-X2
